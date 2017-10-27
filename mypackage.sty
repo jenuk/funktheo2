@@ -1,0 +1,209 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypackage}[2017/10/20 My Package]
+
+% Declares Options:
+% colorful - prints myemph and thm headings in color
+% no-proof - ignores bewe enviroment
+% no-indent - no hang-indent for theorems
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[ngerman]{babel}
+
+\RequirePackage{microtype} % improves microtypographie
+\RequirePackage[shortlabels]{enumitem} % gives enumerate an optional argument
+\setlist[enumerate,1]{label={(\roman*)}} % default numbering is roman
+
+\RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} %nicer math
+\RequirePackage{thmtools, mathtools} %even better math
+\RequirePackage{dsfont} %Double Stroke letters, i.e. \mathds{N}
+\RequirePackage{stmaryrd} % \lightning
+\RequirePackage[dvipsnames]{xcolor} %makes things colorful
+\RequirePackage{etoolbox} % AtBeginEnviroment, AtEndEnviroment
+%\RequirePackage{miama} % qed - font %was too small
+\RequirePackage{aurical} % qed - font
+\RequirePackage{bm} % poor man bold, \bm
+\RequirePackage{nicefrac} % \nicefrac
+\RequirePackage{comment} % comment enviroments for shorter versions
+
+\RequirePackage[inline, marginclue]{fixme} % includes colorful notes to fix in the future (use the draft Option in your documentclass, if there are notes)
+\fxsetup{theme=color}
+
+\RequirePackage{tikz} % for painting and stuff
+\usetikzlibrary{snakes, angles, patterns, quotes, calc, intersections}
+
+%swap the meaning of two commands
+\RequirePackage{letltxmacro}
+\newcommand{\swap}[2]{
+\LetLtxMacro{\temp}{#1}
+\LetLtxMacro{#1}{#2}
+\LetLtxMacro{#2}{\temp}
+}
+
+
+%\setlength\parindent{0pt} % no automatic indention for new par
+
+% defining various sets
+\newcommand{\NN}{\ensuremath{\mathds{N}}}
+\newcommand{\ZZ}{\ensuremath{\mathds{Z}}}
+\newcommand{\QQ}{\ensuremath{\mathds{Q}}}
+\newcommand{\RR}{\ensuremath{\mathds{R}}}
+\newcommand{\CC}{\ensuremath{\mathds{C}}}
+\newcommand{\EE}{\ensuremath{\mathds{E}}}
+
+%shorter commands for arrows
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Longrightarrow}
+\newcommand{\Rla}{\Longleftrightarrow}
+\newcommand{\xto}{\xrightarrow}
+
+%defines \abs and \norm
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+%swap some greek letters
+\swap{\phi}{\varphi}
+\swap{\epsilon}{\varepsilon}
+\swap{\theta}{\vartheta}
+%making leqslant and geqslant the default
+\let\leqold\leqslant
+\let\geqold\geqslant
+\swap{\leq}{\leqold}
+\swap{\geq}{\geqold}
+
+
+%Defining math-Operators
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator*{\res}{res}
+\newcommand{\opd}{\,\mathrm{d}}
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\Set}[1]{\left\{\,#1\,\right\}}
+
+%Defining text-Commands
+\newcommand{\Quote}[1]{\glqq{}#1\grqq{}}
+\newcommand{\oE}{o.\,E.}
+\newcommand{\Ang}{\textit{Ang}}
+\newcommand{\blitz}{\ensuremath{\lightning}}
+\newcommand{\mail}[1]{\texttt{\href{mailto:#1}{#1}}}
+
+
+%for special emphasis
+%for black and white output
+\newcommand{\myemphfont}{\scshape}
+\newcommand{\myanmerkungfont}{\mdseries}
+\newcommand{\myheadfont}{\bfseries}
+
+%for a colorful document
+\DeclareOption{colorful}{
+    \renewcommand{\myemphfont}{\color{Orange}} % make this fancier later
+    \renewcommand{\myanmerkungfont}{\mdseries}
+    \renewcommand{\myheadfont}{\color{TealBlue!50!NavyBlue}\bfseries}
+}
+
+\newcommand{\myemph}[1]{{\myemphfont #1}}
+\newcommand{\mystackrel}[2]{\overset{\text{\myanmerkungfont #1}}{#2}}
+
+%redefining qed
+\renewcommand{\qedsymbol}{\text{\Fontlukas\bfseries\slshape\myheadfont q.\,e.\,d.}}
+%\renewcommand{\qedsymbol}{\text{\Large\fmmfamily\myheadfont q.\,e.\,d.}}
+
+%for no hanging indent change this length to 0em
+\newlength\myhangindent
+\setlength{\myhangindent}{1.5em}
+
+\makeatletter
+%Hanging paragraphs
+\newenvironment{hang}[1][\myhangindent]
+{\let\OLDPAR\par\hangindent#1\def\par{\OLDPAR\hangindent#1\parindent#1} \noindent\ignorespaces}
+%{\let\par\OLDPAR \par}
+{\par}
+\AfterEndEnvironment{hang}{\par\@afterindentfalse\@afterheading}
+
+%for hang-indented theorems
+%\begin{stackoverflow-magic}
+
+\newcommand{\dummy}[1]{#1}
+\newcommand{\xdeclaretheorem}[2][]{%
+  \declaretheorem[#1]{#2}%
+  \AtBeginEnvironment{#2}{%
+      \patchcmd\@thm
+        {\trivlist}
+        {\list{}{\leftmargin\myhangindent\itemindent-15em}}
+        {}{}%
+      %dummy makes things better, dunno why
+      \patchcmd\thmt@original@end\dummy{#2}{\endtrivlist}{\endlist}{}{}%
+    }
+    \AfterEndEnvironment{#2}{\par\@afterindentfalse\@afterheading}
+}
+\makeatother
+%\end{stackoverflow magic}
+
+\DeclareOption{no-indent}{
+    \renewcommand{\xdeclaretheorem}[2][]{\declaretheorem[#1]{#2}}
+    \setlength{\myhangindent}{0em}
+}
+
+%define theorem-environment
+\declaretheoremstyle[
+    bodyfont=\itshape,
+    headfont=\kern-\myhangindent\myheadfont,
+    headindent=0pt,
+    notefont=\myemphfont,
+    ]{theorem-style}
+
+\declaretheoremstyle[
+    notefont=\myemphfont,
+    headfont=\kern-\myhangindent\myheadfont,
+    headindent=0pt,
+    ]{definition-style}
+
+\declaretheoremstyle[
+    headfont=\kern-\myhangindent\myheadfont\mdseries\itshape,
+    headindent=0pt,
+    notefont=\myemphfont,
+    ]{remark-style}
+
+\declaretheoremstyle[
+    headfont=\kern-\myhangindent\myheadfont\mdseries\itshape,
+    headindent=0pt,
+    notefont=\myemphfont,
+    qed=\qedsymbol
+    ]{proof-style}
+
+\xdeclaretheorem[name=Satz, style=theorem-style, parent=chapter]{satz}
+\xdeclaretheorem[name=Lemma, style=theorem-style, sibling=satz]{lemm}
+\xdeclaretheorem[name=Proposition, style=theorem-style, sibling=satz]{prop}
+\xdeclaretheorem[name=Korollar, style=theorem-style, sibling=satz]{koro}
+
+\xdeclaretheorem[name=Definition, style=definition-style, sibling=satz]{defi}
+\xdeclaretheorem[name=Beispiel, style=definition-style, sibling=satz]{bsp}
+
+\xdeclaretheorem[name=Bemerkung, style=remark-style, sibling=satz]{beme}
+\xdeclaretheorem[name=Zusatz, style=remark-style, sibling=satz]{zusa}
+\xdeclaretheorem[name=Erinnerung, style=remark-style, sibling=satz]{erin}
+\xdeclaretheorem[name=Notation, style=remark-style, sibling=satz]{nota}
+
+\xdeclaretheorem[name=Beweis, style=proof-style, numbered=no]{bewe}
+
+\DeclareOption{no-proof}{\excludecomment{bewe}}
+
+\ProcessOptions\relax
+\endinput

@@ -1,0 +1,86 @@
+\newdate{19. Oktober 2017}
+
+\setcounter{chapter}{-1}
+\chapter{Wiederholung}
+
+\begin{defi}
+Sei $D \subseteq \CC$ offen. $f\colon D \ra \CC$ heißt \myemph{holomorph}, falls $f$ in jedem $z_0 \in D$ komplex differenzierbar ist, d.\,h.
+\[
+	f'(z_0) = \lim_{h \to \infty} \frac{f(z_o + h)-f(z_0)}{h}
+\]
+existiert.
+\end{defi}
+
+\begin{satz}[Cauchyscher Integralsatz für Sterngebiete]
+Sei $D\subseteq\CC$ ein Sterngebiet, $f\colon D \ra \CC$ holomorph.
+Dann gilt
+\begin{enumerate}
+\item $f$ hat auf $D$ eine Stammfunktion.
+\item $\int _ C f(z) \opd z = 0$ für jede stückweise glatte, geschlossene Kurve $C \subseteq D$.
+\end{enumerate}
+\end{satz}
+
+\begin{satz}[Cauchysche Integralformel]
+Sei $D\subseteq\CC$ offen und $\conj{U_r(z_0)} \subseteq D$. Dann gilt für alle $z\in U_r(z_0)$
+\[
+	f(z) = \frac{1}{2\pi i} \int _ C \frac{f(w)}{w-z}\opd w
+\]
+wobei $C$ gegeben ist durch $z_0 + re^{2\pi it}$ für $t\in[0,1]$.
+\end{satz}
+
+Daraus folgen einige Aussagen:
+\begin{itemize}
+\item $f:D \ra \CC$ holomorph, dann ist $f \in \mathcal{C}^\infty$.
+\item \emph{Satz von Taylor}: $f:U_r(z_0) \ra \CC$ holomorph, dann gilt
+\[
+	f(z) = \sum _{n=0}^\infty a_n(z-z_0)^n \qquad \text{mit } a_n = \frac{f^{(n)}(z_0)}{n!}\,.
+\]
+\item $f$ ist genau dann auf $D$ holomorph, wenn $f$ auf $D$ analytisch ist ist.
+\item Lokale Abbildungseigenschaften holomorpher Funktionen
+\begin{itemize}
+\item Identitätssatz
+\item Satz von der Gebietstreue
+\item Maximumsprinzip
+\end{itemize}
+\end{itemize}
+
+\begin{defi}[Singularitäten]
+Sei $D\subseteq \CC$ offen, $f\colon D \ra \CC$ holomorph, $a \not\in D$, $\dot{U}_r(a) \subseteq{D}$.
+Dann heißt $a$ eine \myemph{Singularität} von $f$.
+Die Klassifikationen einer Singularität sind
+\begin{itemize}
+\item $a$ ist \emph{hebbar} (Riemannscher Hebbarkeitssatz)
+\item $a$ ist ein \emph{Pol} (\,$\lim\limits_{z\to a} \abs{f(z)} = \infty$ wobei $z\not=a$ gelten muss)
+\item $a$ ist wesentlich (Casorati-Weierstraß)
+\end{itemize}
+\end{defi}
+
+\begin{satz}[Laurentzerlegung]
+Sei $\mathcal{R} = \Set{z\in\CC \mid r < \abs{z-a} < R}$ ein Ringgebiet mit $0 \leq r < R \leq \infty$, $f\colon \mathcal{R} \ra \CC$ holomorph.
+Dann existiert eine eindeutige Zerlegung
+\[
+	f(z) = g(z-a) + h\left(\frac{1}{z-a}\right) \qquad z\in\mathcal{R}
+\]
+wobei $g\colon U_R(0) \ra \CC$ der \myemph{Nebenteil} und $h\colon U_{\inv r}(0)\ra\CC$ der \myemph{Hauptteil} holomorph mit $h(0) = 0$.
+\end{satz}
+
+\emph{Anwendung auf Singularitäten:}
+$f\colon D \ra \CC$ holomorph und $a$ eine Singularität von $f$.
+Dann gibt es $\delta > 0$ mit $\dot U_\delta(a) \subseteq D$. Dann gilt
+\[
+	f(z) = \sum_{n=-\infty}^\infty a_n(z-a)^n \qquad z\in\dot U_\delta(a)
+\]
+\begin{itemize}[$\ra$]
+\item $a$ ist genau dann hebbar, wenn $a_n = 0$ für alle $n \leq -1$.
+\item $a$ ist genau dann ein Pol der Ordnung $m\geq 1$, wenn $a_{-m} \not= 0$ und $a_n = 0$ für alle $n < -m$.
+\item $a$ ist genau dann wesentlich, wenn es unendlich viele $n < 0$ gibt mit $a_n \not= 0$.
+\end{itemize}
+
+\begin{satz}[Residuensatz]
+Sei $D\subseteq\CC$ ein Elementargebiet, $z_1, \ldots, z_h \in D$, $f\colon D\setminus\Set{z_1, \ldots, z_h} \ra \CC$ holomorph und $C$ eine glatte geschlossene Kurve in $D\setminus\Set{z_1, \ldots, z_h}$.
+Dann gilt
+\[
+	\int_C f(z) \opd z = 2\pi i \sum_{j=1}^h \res\limits_{z=z_j}f \cdot \mathcal{X}(C, z_j)
+\]
+wobei $\res\limits_{z=z_j}f$ das Residuum von $f$ ist und $\mathcal{X}(C, z_j)$ die Umlaufzahl von $C$ um $z_j$ ist.
+\end{satz}

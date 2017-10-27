@@ -1,0 +1,20 @@
+\documentclass{scrartcl}
+
+\newcounter{chapter}
+\setcounter{chapter}{0}
+\setcounter{section}{0}
+\newcommand{\chapter}[1]{\stepcounter{chapter}\noindent {\Large \bfseries Kapitel \thechapter: #1}}
+\usepackage{mypackage}
+
+%\setcounter{satz}{3}
+
+\newcommand{\mydate}{}
+\newcommand{\newdate}[1]{\renewcommand{\mydate}{#1}}
+
+%\usepackage{hyperref}
+
+\begin{document}
+
+\include{vorlesungen/vl171023}
+
+\end{document}

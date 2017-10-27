@@ -1,0 +1,37 @@
+\newcommand{\mydate}{}
+\newcommand{\newdate}[1]{\renewcommand{\mydate}{#1}}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyfoot[OC, EC]{}
+\fancyfoot[EL, OR]{\textbf\thepage}
+\fancyhead[EL]{\textbf{\nouppercase\rightmark}}
+\fancyhead[OR]{\textbf{\nouppercase\leftmark}}
+\fancyhead[ER, OL]{}
+
+\renewcommand{\maketitle}{
+\begin{titlepage}
+\vspace*{3cm}
+
+\begin{center}
+\rule{12cm}{1.5pt}
+\vspace{0.5cm}
+
+{\Huge\bfseries Funktionentheorie II}
+
+\vspace{1cm}
+
+{\LARGE im Wintersemster 2017\,/\,18
+
+Vorlesung von Prof. Dr. Winfried Kohnen}
+\vspace{1cm}
+\rule{12cm}{1.5pt}
+
+\vspace{4cm}
+{\LARGE Vorlesungsmitschrieb von \\[0.1\baselineskip] Jonas Müller \\[0.5\baselineskip]
+Heidelberg, den \today}
+
+\end{center}
+\end{titlepage}
+}

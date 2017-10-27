@@ -1,0 +1,298 @@
+\newdate{23. Oktober 2017}
+
+\chapter{Konstruktion meromorpher und holomorpher Funktionen}
+
+\section{Partialbruchzerlegung}
+\begin{satz}[Partialbruchzerlegung rationaler Funktionen]
+Seien $p, q$ zwei Polynome über $\CC$, $q \not\equiv 0$ und $R(z) = \frac{p(z)}{q(z)}$ für $z\in\CC$ mit $g(q)\not=0$ die zugehörige rationale Funktion.
+Seien $z_1, \ldots, z_h$ die verschiedenen Polstellen mit den Ordnungen $\mu_1,\ldots, \mu_h$.
+Dann gibt es eindeutig bestimmte Polynome $p_1(z), \ldots, p_h(z)$ mit $p_r(0) = 0$ ($r=1,\ldots,h$) und ein eindeutig bestimmtes Polynom $p_0$, so dass gilt
+\[
+	R(z) = \sum_{r=0}^h p_r\left(\frac{1}{z-z_r}\right) + p_0(z) \qquad z \in \CC\setminus\Set{z_1, \ldots, z_h}
+\]
+Außerdem gilt $\grad p_r = \mu_r$ für $r=1,\ldots,h$.
+\end{satz}
+
+\begin{bewe}
+Für jedes $r=1,\ldots,h$ sei $p_r$ der Hauptteil der Laurententwicklung von $R$ bezüglich der Polstelle $z_r$.
+Dann ist $p_r$ ein Polynom vom Grad $\mu_r$.
+Sei
+\[
+	p_0(z) := R(z) - \sum_{r=1}^h p_r\left(\frac{1}{z-z_r}\right)\,.
+\]
+Dann hat $p_0$ keinen Hauptteil mehr, d.\,h. $p_0$ hat in $z_1,\ldots,z_h$ hebbare Singularitäten, ist also auf ganz $\CC$ holomorph.
+Aber $p_0$ ist nach Konstruktion eine rationale Funktion.
+Also ist $p_0$ ein Polynom.
+Das heißt es existieren $p_0, \ldots, p_h$ wie behauptet, es verbleibt die Eindeutigkeit zu zeigen.
+
+Sei eine weitere Darstellung wie oben gegeben durch $\tilde{p_0}, \ldots, \tilde{p_h}$.
+Sei $\nu \in \Set{1,\ldots,k}$.
+Dann gilt
+\begin{align}\label{eq:satz1.1.eind}
+	R(z)
+	&= \tilde{p_\nu}\left(\frac{1}{1-z_\nu}\right) + \sum_{\substack{r=1\\\scriptscriptstyle r\not=\nu}}^h \tilde{p_r}\left(\frac{1}{1-z_r}\right) + \tilde{p_0}(z) \\
+	&= p_\nu\left(\frac{1}{1-z_\nu}\right) + \sum_{\substack{r=1\\\scriptscriptstyle r\not=\nu}}^h p_r\left(\frac{1}{1-z_r}\right) + p_0(z)
+	\,.
+\end{align}
+Die ersten Summanden sind in einer kleinen punktierten Umgebungen von $z_0$ holomorph, der Rest in der gesamten Umgebung.
+Also ist \eqref{eq:satz1.1.eind} die Laurentzerlegung von $R$ bezüglich $z_nu$.
+Da die Laurententwicklung eindeutig ist, folgt $p_nu = \tilde{p_nu}$.
+Da dies für alle $\nu \in \Set{1,\ldots,k}$ gilt, folgt bereits $p_0 = \tilde{p_0}$.
+\end{bewe}
+
+\emph{Ziel:} Man beweise einen ähnlichen Satz für beliebige meromorphe Funktionen auf $\CC$. (Erinnerung: eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung $f\colon \CC\setminus S \ra \CC$, wobei $S\subseteq \CC$ diskret ist, d.\,h. $S$ hat in $\CC$ keinen Häufungspunkt (insbesondere ist $\CC\setminus S$ offen), und die Punkte aus S sind Pole von $f$.)
+
+\emph{Problem:} Ist $S$ unendlich, so ist die Summe über die Hauptteile $\sum _{s \in S} p_s\frac{1}{z-s})$ im Allgemeinen nicht mehr konvergent.
+
+\emph{Lösung:} Man addiere konvergenz erzeugende Summanden!
+
+\begin{satz}[Partialbruchsatz von Mittag-Leffler]
+\begin{enumerate}
+\item Sei $S\subseteq\CC$ diskret. Jedem $s \in S$ sei eine ganze Funktion $h_s\colon \CC \ra \CC$ mit $h_s(0) = 0$ zugeordnet.
+(Man nennt $\Set{h_s}_{s \in S}$ eine \myemph{Hauptteilverteilung}.)
+Dann gibt es eine holomorphe Funktion $h\colon \CC\setminus S \ra \CC$, deren Hauptteil in $s\in S$ durch $h_s(\frac{1}{z-s})$ gegeben wird.
+(Man nennt $h$ eine Lösung der Hauptteilverteilung.)
+Ist $H$ eine weitere Lösung, so existiert eine ganze Funktion $g$ mit $H = h + g$.
+\item Sei $f$ eine auf $\CC$ meromorphe Funktion mit einer Polstellenmenge $S$ und Hauptteilen $p_s$ ($s\in S$).
+(Beachte: $p_s$ ist ein Polynom mit $p_s(0) = 0$.)
+Dann existieren Polynome $q_s$ ($s \in S$) und eine ganze Funktion $g$, sodass gilt
+\[
+	f(z) = \sum \limits _{s\in S} \left(p_s\left(\frac{1}{z-s}\right) - q_s(z)\right) + g(z)
+\]
+wobei die Summe in der Klammer auf kompakten Teilmengen $K \subseteq \CC \setminus S$ absolut gleichmäßig konvergiert.
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+\begin{enumerate}
+\item Ist $S$ endlich, so ist $h(z) = \sum _{s\in S} h_s(\frac{1}{z-s})$ eine Lösung (siehe Beweis von Satz 1.1).
+
+Sei nun $S$ unendlich.
+Zeige dafür zunächst, dass $S$ abzählbar ist.
+Sei $K \subseteq \CC$ kompakt, dann ist $K \cap S$ beschränkt.
+
+\emph{Angenommen} $K\cap S$ ist unendlich. Nach Bolzano-Weierstraß hat dann $K \cap S$, also auch $S$, einen Häufungspunkt. \blitz
+
+Also ist $S \cap K$ endlich. Da $\CC = \bigcap_{n \geq 1} \conj{U_n(0)}$ und $\conj{U_n(0)}$ kompakt, ist $S$ abzählbar.
+
+Sei $s_0, s_1, \ldots, s_n, \ldots$ eine Abzählung derart, dass
+\[
+	\abs{s_0} \leq \abs{s_1} \leq \ldots \leq \abs{s_n} \leq \ldots \to \infty
+\]
+(Beachte: falls $0 \in S$, dann $s_0=0$, ferner $\abs{s_n}>0$ für $n \geq 1$.)
+Schreibe $h_n := h_{s_n}$ für $n \geq 0$.
+
+Sei nun $n\geq 1$ fest.
+Dann ist die auf der offenen nichtleeren Kreisschreibe $U_{\abs{s_n}}(0)$ holomorphe Funktion $h_n(\frac{1}{z-s_n})$ um den Ursprung in eine Potenzreihe entwickelbar (Taylor), welche auf kompakten Teilmengen gleichmäßig absolut konvergiert.
+Nach Definition der Konvergenz existiert daher ein Polynom $q_n(z)$ sodass
+\[
+	\abs{h_n\left(\frac{1}{z-s_n}\right)-q_n(z)} \leq \frac{1}{n^2} \qquad \forall z \in \CC\colon \abs{z} \leq \frac{\abs{s_n}}{2}
+\]
+Sei $K\subseteq\CC$ kompakt. Dann existiert $N\in \NN$ sodass für $n\in\NN$ mit $n\geq N$ und $z \in K$ gilt $\abs{z} \leq \frac{\abs{s_n}}{2}$ (denn $\abs{s_n} \to \infty$).
+Es folgt dass die Reihe
+\[
+	h(z) := h_0\left(\frac{1}{z-s_0}\right) + \sum\limits_{n\geq1} \left(h_n\left(\frac{1}{z-s_n}\right) - q_n(z)\right)
+\]
+auf Kompakta $K \subseteq \CC \setminus S$ gleichmäßig absolut konvergiert, denn $\sum_{n\geq 1} \frac{1}{n^2} < \infty$.
+Nach Weierstraß ist daher $h(z)$ auf $\CC\setminus S$ holomorph.
+Schreibt man $h(z) = h_m(\frac{1}{z-s_m}) + \text{Rest}$ ($m\geq 0$ fest),  so folgt, dass $h(z)$ eine Lösung der Hauptteilverteilung ist.
+
+Sei $H$ eine weitere Lösung. Dann haben $h$ und $H$ dieselbe Postellenmenge $S$ und die gleichen Hauptteile für $s \in S$.
+Daraus folgt $g(z) := H(z) - h(z)$ hat in allen Punkten $s\in S$ hebbare Singularitäten, ist also ganz.
+
+\item Sei $\Set{p_s}_{s\in S}$ die angegebene Hauptteilverteilung. Dieser hat als Lösung per Definition $f$.
+Ferner existiert die im Beweis von Satz 2, (i) konstruierte Lösung.
+Nach der Eindeutigkeit stimmen daher beide Lösung bis auf eine ganze Funktion $g$ überein.
+\end{enumerate}
+\end{bewe}
+
+\emph{Praktische Anwendung von Satz 2} Gegeben sei eine meromorphe Funktion $f$ auf $\CC$ mit Polstellenmenge $S$.
+\begin{enumerate}
+\item Man bestimme die Hauptteile für alle $s\in S$.
+\item Man untersuche $\sum _{s\in S} p_s(\frac{1}{z-s})$ auf Konvergenz und bestimme gegebenenfalls Polynome $q_s$ ($s\in S$) (durch Abbruch der entsprechenden Taylor-Reihe), sodass $\sum _{s\in S} (p_s(\frac{1}{z-s})-q_s(z))$ auf Kompakta $K \subseteq \CC\setminus S$ gleichmäßig absolut konvergiert.
+\item Man bestimme eine ganze Funktion $g$, so dass
+\[
+	f(z) = \sum_{s\in S} \left(p_s\left(\frac{1}{z-s}\right)-q_s(z)\right) + g(z) \qquad \forall z\in \CC\setminus S
+\]
+\end{enumerate}
+
+\begin{bsp}
+\begin{enumerate}
+\item Es gilt
+\begin{equation}\label{eqn:bsp1.3.i}
+	\frac{\pi^2}{(\sin \pi z)^2} = \sum _ {n \in \ZZ} \frac{1}{(z-n)^2} \qquad \text{für } z\in \CC\setminus\ZZ
+\end{equation}
+wobei die Summe rechts auf Kompakta $K \subseteq \CC\setminus\ZZ$ gleichmäßig absolut konvergiert.
+\begin{bewe}
+Siehe unten.
+\end{bewe}
+
+\item \emph{Partialbruchzerlegung des Kotangens}
+\begin{equation}\label{eqn:bsp1.3.ii}
+	\pi\cot(\pi z)
+	= \frac{1}{z} + \sum _{n \in \ZZ\setminus\{0\}} \left( \frac{1}{z-n} + \frac{1}{n}\right)
+	\qquad (z \in \CC\setminus\ZZ)
+\end{equation}
+
+\begin{bewe}
+Siehe unten.
+\end{bewe}
+\end{enumerate}
+\end{bsp}
+
+\begin{bewe}
+\begin{enumerate}
+\item Die Polstellenmenge ist offensichtlich $S=\ZZ$.
+
+Bestimmung der Hauptteile:
+Sei $z \not= 0$, $z$ nahe bei Null.
+Dann ist
+\[
+	\frac{\pi}{\sin(\pi z)}
+	= \frac{1}{z} \frac{1}{\frac{\sin(\pi z)}{\pi z}}
+	= \frac{1}{z} \cdot (1+a_2z^2+\ldots)
+\]
+wobei $\frac{\sin\pi z}{\pi z}$ in $z=0$ eine hebbare Singularität dort den Wert 1 hat und eine gerade Funktion ist.
+Also
+\[
+	\frac{\pi^2}{\sin(\pi z)^2}
+	= \frac{1}{z^2} \cdot (1+2a_2z^2+\ldots)
+	= \frac{1}{z^2} + 2a_2 + \ldots
+\]
+Also ist der Hauptteil in $z=0$ bereits $\frac{1}{z^2}$.
+
+Sei $n\in\ZZ$ fest.
+Für $z\not= n$, $z$ nahe bei $n$ gilt
+\begin{align*}
+	\frac{\pi^2}{\sin(\pi z)^2}
+	&= \frac{\pi^2}{\sin^2(\pi(z-n) + \pi n)} \\
+	&= \frac{\pi^2}{\sin^2(\pi(z-n))} \\
+	&= \frac{1}{(z-n)^2} + 2a_2 + \ldots
+\end{align*}
+Also ist der Hauptteil von $\frac{\pi^2}{\sin(\pi z)^2}$ von $z=n$ bereits $\frac{1}{(z-n)^2}$.
+
+Konvergenz der Reihe in \eqref{eqn:bsp1.3.i}:
+Sei $K \subseteq \CC$ kompakt.
+Es gelte $\abs z \leq c$ für $z \in K$.
+Für $n\in \ZZ$ mit $\abs n \geq 2c$ gilt
+\[
+	\abs{z-n} = \abs{n-z} \geq \abs n - \abs z \geq \abs z - c \geq \frac{\abs n}{2} \qquad \forall z \in K
+\]
+Also
+\[
+	\sum _ {\abs n \geq 2c} \frac{1}{\abs{z-n}^2}
+	\leq \sum _{\abs n \geq 2c} \frac{4}{\abs n^2}
+	< \infty
+\]
+Daher ist 
+\[
+	\sum _ {n \in \ZZ} \frac{1}{\abs{z-n}^2} 
+\]
+auf Kompakta in $\CC\setminus\ZZ$ gleichmäßig absolut konvergent.
+
+\emph{Folgerung:} Beide Seiten von \eqref{eqn:bsp1.3.i} sind auf $\CC\setminus\ZZ$ holomorphe Funktionen mit den gleichen Polstellen und gleichen Hauptteilen. Daher folgt
+\[
+	\frac{\pi^2}{\sin(\pi z)^2} = \sum _{n\in\ZZ} \frac{1}{(z-n)^2} + g(z) \qquad (z\in\CC\setminus\ZZ)
+\]
+wobei $g$ ganz ist.
+
+\emph{Zeige} $g \equiv 0$.
+Es gilt für $z = x + iy \in \CC$
+\begin{align*}
+	{\sin^2\pi z}
+	&= \abs{\frac{e^{\pi i z}-e^{-\pi i z}}{2}}^2 \\
+	&= \frac{1}{4} (e^{\pi i z}-e^{-\pi i z}) \conj{(e^{\pi i z}-e^{-\pi i z})} \\
+	&= \ldots \\
+	&= \frac{1}{4} (e^{-2\pi y} + e^{2\pi y}) - \frac{1}{2} \cos(2\pi x) \\
+	&\xto{\abs y \to \infty} \infty \quad \text{gleichmäßig in } x
+\end{align*}
+denn $\cos(2\pi x)$ ($x\in\RR$) ist beschränkt.
+Also $\abs{\frac{\pi^2}{sin^2\pi z}} \to 0$ für $\abs y \to \infty$ gleichmäßig in $x$.
+Insbesondere ist $\frac{\pi^2}{sin(\pi z)^2}$ beschränkt auf
+\[
+	R := \Set{z = x+iy \mid \abs x \leq 1, \abs y \geq 1}
+\]
+
+\emph{Zeige} rechte Seite von \eqref{eqn:bsp1.3.i} ebenfalls auf $R$ beschränkt.
+Sei $z\in R, n \not= 0$. Dann
+\begin{align*}
+	\abs{z-n}^2
+	&= (x-n)^2+y^2
+	= \abs{n-x}^2+y^2 \\
+	&\geq (\abs n - \abs x)^2 +y^2
+	\geq(\abs n -1)^2 + y^2 \\
+	&\geq (\abs n - 1)^2 + 1
+\end{align*}
+Also für $z \in R$ gilt
+\begin{equation}\label{eq:bsp1.3.i.2}
+	\sum _ {n\in \ZZ} \frac{1}{\abs{z-n}^2}
+	= \frac{1}{z^2} + \sum _{n \not= 0} \frac{1}{\abs{z-n}^2}
+	\leq 1 + \sum _ {n\not= 0} \frac{1}{(\abs n -1)^2+1}
+	< \infty
+\end{equation}
+Daher ist $g(z)$ auf $R$ beschränkt. Aber $g(z+1) = g(z)$ für $z \in \CC$.
+Trivialerweise ist $g$ auf $\Set{z = x+iy\mid \abs x \leq 1, \abs y \leq 1}$ beschränkt.
+Also ist $g$ auf $\CC$ beschränkt, nach Liouville ist $g\equiv c$ konstant.
+
+Aus \eqref{eq:bsp1.3.i.2} folgt, dass $\sum _ {n\in \ZZ} \frac{1}{\abs{z-n}^2}$ gleichmäßig absolut konvergiert.
+Sei $z=x+iy \in\CC$ mit $x\in\RR$ fest.
+Dann folgt
+\[
+	\lim_{y\to\infty} \sum _ {n\in \ZZ} \frac{1}{\abs{z-n}^2}
+	= \sum _ {n\in \ZZ} \lim_{y\to\infty} \frac{1}{\abs{z-n}^2}
+	= 0\,,
+\]
+da 
+\[
+	\lim_{y\to\infty} \frac{1}{\abs{z-n}^2}
+	= \lim_{y\to\infty} \frac{1}{(x-n)^2+y^2}
+	= 0\,.
+\]
+Und wir wissen bereits, dass $\frac{\pi^2}{sin^2\pi z} \to 0$ für $\abs y \to \infty$.
+Also muss bereits gelten $c=0$.
+
+
+
+
+
+\item Vorgehen wie in (i):
+%Beachte zunächst absolut gleichmäßig konvergierende Reihe auf Kompakta.
+%($\frac{1}{z-n} + \frac{1}{n} = \frac{z}{n(z-n)}$, ähnlich wie bei (i)).
+Man sieht $S = \ZZ$ und der Hauptteil in $z=n\in\ZZ$ ist $\frac{1}{z-n}$.
+Da $\sum _{n \in \ZZ}\frac{1}{z-n}$ schlechte Konvergenzeigenschaften hat, muss man Polynome abziehen.
+Beachte für $n\not=0$ ist $\frac{1}{z-n} |_{z=0} = - \frac{1}{n}$.
+Damit folgt dann die Behauptung.
+
+\vspace{2em}
+
+Alternativ kann man (i) + Trick benutzen:
+Differenziere beide Seiten von \eqref{eqn:bsp1.3.ii}:
+\begin{align*}
+	\frac{\opd}{\opd z} \left( \frac{1}{z} + \sum _{n \in \ZZ\setminus\{0\}} \left( \frac{1}{z-n} + \frac{1}{n}\right) \right)
+	&= -\frac{1}{z^2} - \sum _{n \in \ZZ\setminus\{0\}} \frac{1}{(z-n)^2} \\
+	&= \sum _ {n\in\ZZ} \frac{1}{(z-n)^2}
+\end{align*}
+und
+\begin{align*}
+	\frac{\opd}{\opd z} \left( \pi \cot(\pi z)\right)
+	&= \pi \frac{\opd}{\opd z} \left( \frac{\cos(\pi z)}{\sin(\pi z)}\right) \\
+	&= \pi \frac{-\pi\sin(\pi z)\sin(\pi z) - \pi\cos(\pi z)\cos(\pi z)}{\sin(\pi z)^2} \\
+	&= -\frac{\pi^2}{\sin(\pi z)^2}\,.
+\end{align*}
+
+Da $\CC\setminus\ZZ$ ein Gebiet ist, unterscheiden sich die rechte und linke Seite (da die Ableitungen nach (i) gleich sind) nur um eine Konstante $c$.
+Zeige $c=0$.
+Hierfür zeige, dass $\pi \cot(\pi z)$ und $\frac{1}{z} + \sum _{n \in \ZZ\setminus\{0\}} \left( \frac{1}{z-n} + \frac{1}{n}\right)$ ungerade sind.
+Es gilt
+\begin{align*}
+	-\frac{1}{z} + \sum _{n \in \ZZ\setminus\{0\}} \left( \frac{1}{-z-n} + \frac{1}{n}\right)
+	&= - \left(\frac{1}{z} + \sum _{n \in \ZZ\setminus\{0\}} \left( \frac{1}{z+n} - \frac{1}{n}\right)\right) \\
+	&= - \left(\frac{1}{z} + \sum _{n \in \ZZ\setminus\{0\}} \left( \frac{1}{z-n} + \frac{1}{n}\right)\right)
+	\,,
+\end{align*}
+wobei der letzte Schritt folgt, wenn wir $n \mapsto -n$ ersetzen, was eine bijektive Abbildung von $\ZZ \setminus\{0\}$ auf sich selbst ist.
+
+Es muss also gelten, dass $c$ ungerade ist.
+Für eine ungerade Konstante gilt bereits $c=0$.
+\end{enumerate}
+\end{bewe}
