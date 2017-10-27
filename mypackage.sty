@@ -16,6 +16,7 @@
 
 \RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} %nicer math
 \RequirePackage{thmtools, mathtools} %even better math
+\renewcommand{\listtheoremname}{Liste der Sätze}
 \RequirePackage{dsfont} %Double Stroke letters, i.e. \mathds{N}
 \RequirePackage{stmaryrd} % \lightning
 \RequirePackage[dvipsnames]{xcolor} %makes things colorful
@@ -30,7 +31,16 @@
 \fxsetup{theme=color}
 
 \RequirePackage{tikz} % for painting and stuff
-\usetikzlibrary{snakes, angles, patterns, quotes, calc, intersections}
+\usetikzlibrary{angles, patterns, quotes, calc, intersections}
+
+\RequirePackage{makeidx} % to create an index page
+\makeindex
+\RequirePackage{idxlayout}
+
+\RequirePackage[]{appendix} %to create an Appendix
+\renewcommand{\appendixname}{Anhang}
+\renewcommand{\appendixtocname}{Anhang}
+\renewcommand{\appendixpagename}{Anhang}
 
 %swap the meaning of two commands
 \RequirePackage{letltxmacro}
@@ -118,7 +128,7 @@
     \renewcommand{\myheadfont}{\color{TealBlue!50!NavyBlue}\bfseries}
 }
 
-\newcommand{\myemph}[1]{{\myemphfont #1}}
+\newcommand{\myemph}[1]{{\index{#1}\myemphfont #1}}
 \newcommand{\mystackrel}[2]{\overset{\text{\myanmerkungfont #1}}{#2}}
 
 %redefining qed

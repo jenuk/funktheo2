@@ -2,4 +2,8 @@
 *.toc
 *.log
 *.out
+*.idx
+*.ind
+*.ilg
+*.loe
 *.synctex.gz
