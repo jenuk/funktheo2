@@ -202,7 +202,7 @@ Außerdem ist das Produkt unbedingt konvergent, d.\,h. jede Umordnung konvergier
 \begin{align*}
 	\lim_{h\to0} \frac{\Log (1+h)}{h}
 	&= \lim_{h\to0} \frac{\Log (1+h) - \Log 1}{h} \\
-	&= \at{\frac{\opd}{\opd z} \Log z}{z=1}
+	&= \at{\derive \Log z}{z=1}
 	= \at{\frac{1}{z}}{z=1}
 	= 1
 	\,.
@@ -296,7 +296,7 @@ Ist $h\colon U_r(z_0) \ra \CC$ holomorph, $h$ nicht identisch Null, $h(z) = (z-z
 
 \emph{Frage:} Gibt es eine ganze Funktion $h\colon \CC \ra \CC$ derart, dass (i) $h(z) = 0$ genau dann, wenn $z\in S$ und (ii) $\ord_{z=s} h = m_s$ für alle $s \in S$.
 
-Man nennt $\Set{(s, m_s) \mid s\in S}$ eine \myemph{Nullstellenverteilung}.
+Man nennt $\Set{(s, m_s) \mid s\in S}$ eine \myemph[Verteilungen!Nullstellenverteilung]{Nullstellenverteilung}.
 Und eine Funktion $h$ wie oben heißt Lösung der Nullstellenverteilung.
 
 \emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von \myemph{Weierstraß-Produkten} konstruieren!

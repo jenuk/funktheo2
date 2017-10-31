@@ -27,6 +27,7 @@
 \RequirePackage{bm} % poor man bold, \bm
 \RequirePackage{nicefrac} % \nicefrac
 \RequirePackage{comment} % comment enviroments for shorter versions
+\RequirePackage{xparse} % for complex macros
 
 \RequirePackage[inline, marginclue]{fixme} % includes colorful notes to fix in the future (use the draft Option in your documentclass, if there are notes)
 \fxsetup{theme=color}
@@ -109,6 +110,11 @@
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\Set}[1]{\left\{\,#1\,\right\}}
 \newcommand\at[2]{\left.#1\right|_{#2}}
+\NewDocumentCommand{\derive}{s O{} G{z}}
+{\IfBooleanTF{#1}
+    {\frac{\partial#2}{\partial#3}}
+    {\frac{\opd#2}{\opd#3}}%
+}
 
 %Defining text-Commands
 \newcommand{\Quote}[1]{\glqq{}#1\grqq{}}
@@ -131,7 +137,12 @@
     \renewcommand{\myheadfont}{\color{TealBlue!50!NavyBlue}\bfseries}
 }
 
-\newcommand{\myemph}[1]{{\index{#1}\myemphfont #1}}
+%\newcommand{\myemph}[1]{{\index{#1}\myemphfont #1}}
+\NewDocumentCommand{\myemph}{o m}
+{\IfValueTF{#1}
+    {{\index{#1}\myemphfont #2}}
+    {{\index{#2}\myemphfont #2}}%
+}
 \newcommand{\mystackrel}[2]{\overset{\text{\myanmerkungfont #1}}{#2}}
 
 %redefining qed
