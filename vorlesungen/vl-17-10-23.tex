@@ -73,7 +73,7 @@ Sei $K \subseteq \CC$ kompakt, dann ist $K \cap S$ beschränkt.
 
 \emph{Angenommen} $K\cap S$ ist unendlich. Nach Bolzano-Weierstraß hat dann $K \cap S$, also auch $S$, einen Häufungspunkt. \blitz
 
-Also ist $S \cap K$ endlich. Da $\CC = \bigcap_{n \geq 1} \conj{U_n(0)}$ und $\conj{U_n(0)}$ kompakt, ist $S$ abzählbar.
+Also ist $S \cap K$ endlich. Da $\CC = \bigcap_{n \geq 1} \closure{U_n(0)}$ und $\closure{U_n(0)}$ kompakt, ist $S$ abzählbar.
 
 Sei $s_0, s_1, \ldots, s_n, \ldots$ eine Abzählung derart, dass
 \[
@@ -184,9 +184,9 @@ Also
 	\leq \sum _{\abs n \geq 2c} \frac{4}{\abs n^2}
 	< \infty
 \]
-Daher ist 
+Daher ist
 \[
-	\sum _ {n \in \ZZ} \frac{1}{\abs{z-n}^2} 
+	\sum _ {n \in \ZZ} \frac{1}{\abs{z-n}^2}
 \]
 auf Kompakta in $\CC\setminus\ZZ$ gleichmäßig absolut konvergent.
 
@@ -242,7 +242,7 @@ Dann folgt
 	= \sum _ {n\in \ZZ} \lim_{y\to\infty} \frac{1}{\abs{z-n}^2}
 	= 0\,,
 \]
-da 
+da
 \[
 	\lim_{y\to\infty} \frac{1}{\abs{z-n}^2}
 	= \lim_{y\to\infty} \frac{1}{(x-n)^2+y^2}

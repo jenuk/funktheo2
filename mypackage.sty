@@ -15,6 +15,7 @@
 \setlist[enumerate,1]{label={(\roman*)}} % default numbering is roman
 
 \RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} %nicer math
+\addtolength{\jot}{1em} % add space between lines in align
 \RequirePackage{thmtools, mathtools} %even better math
 \renewcommand{\listtheoremname}{Liste der Sätze}
 \RequirePackage{dsfont} %Double Stroke letters, i.e. \mathds{N}
@@ -94,9 +95,10 @@
 
 %Defining math-Operators
 \newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\closure}[1]{\overline{#1}}
 \renewcommand{\Re}{\mathrm{Re}}
 \renewcommand{\Im}{\mathrm{Im}}
-\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator*{\ord}{ord}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Arg}{Arg}
@@ -106,6 +108,7 @@
 \newcommand{\opd}{\,\mathrm{d}}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\Set}[1]{\left\{\,#1\,\right\}}
+\newcommand\at[2]{\left.#1\right|_{#2}}
 
 %Defining text-Commands
 \newcommand{\Quote}[1]{\glqq{}#1\grqq{}}
@@ -209,6 +212,7 @@
 \xdeclaretheorem[name=Bemerkung, style=remark-style, sibling=satz]{beme}
 \xdeclaretheorem[name=Zusatz, style=remark-style, sibling=satz]{zusa}
 \xdeclaretheorem[name=Erinnerung, style=remark-style, sibling=satz]{erin}
+\xdeclaretheorem[name=Erinnerung, style=remark-style, numbered=no]{erin*}
 \xdeclaretheorem[name=Notation, style=remark-style, sibling=satz]{nota}
 
 \xdeclaretheorem[name=Beweis, style=proof-style, numbered=no]{bewe}
