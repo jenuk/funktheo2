@@ -1,0 +1,138 @@
+\newdate{30. Oktober 2017}
+
+\begin{satz}\label{satz:zusammenhang-konvergenz-log-reihe}
+Es gilt folgender Zusammenhang
+\begin{enumerate}
+\item Sei $1+a_n \not= 0$ für $n \geq 1$. Dann ist
+\[
+	\sum _{n=1}^\infty \Log (1+a_n)
+\]
+genau dann absolut konvergent, wenn $\sum_{n=1}^\infty a_n$ absolut konvergiert.
+
+\item Sei $\sum_{n=1}^\infty a_n$ absolut konvergiert. Dann ist $\prod _{n=1}^\infty (1+a_n)$ konvergent.
+Außerdem ist das Produkt unbedingt konvergent, d.\,h. jede Umordnung konvergiert und hat den gleichen Limes.
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+\begin{enumerate}
+\item Es gilt
+\begin{align*}
+	\lim_{h\to0} \frac{\Log (1+h)}{h}
+	&= \lim_{h\to0} \frac{\Log (1+h) - \Log 1}{h} \\
+	&= \at{\frac{\opd}{\opd z} \Log z}{z=1}
+	= \at{\frac{1}{z}}{z=1}
+	= 1
+	\,.
+\end{align*}
+Daher auch
+\[
+	\lim_{h\to0}\,\abs{\frac{\Log (1+h)}{h}} = 1
+	\,.
+\]
+Falls (Fall 1) $\sum_{n=1}^\infty \abs{a_n}$ oder (Fall 2) $\sum_{n=1}^\infty \abs{\Log (1+a_n)}$ konvergent ist, so folgt $a_n\xto{n\to\infty} 0$.
+\emph{Denn} für Fall 1 ist dies gerade die notwendige Konvergenz-Bedingung.
+Und für Fall 2 lautet die entsprechende Bedingung $\Log (1+a_n) \xto{n\to\infty} 0$, da $\exp$ stetig ist, folgt
+\[
+	1 + a_n
+	= e ^{\Log (1+a_n)}
+	\xto{n\to\infty} e^0
+	= 1
+	\,.
+\]
+Also $a_n \xto{n\to\infty} 0$.
+
+Damit folgt, für $\epsilon > 0$, gilt für alle $a_n$ mit $n$ groß genug, dass
+\[
+	(1-\epsilon)\abs{a_n}
+	\leq \abs{\Log(1+a_n)}
+	\leq (1+\epsilon)\abs{a_n}
+\]
+
+Die Aussage des Satzes folgt jetzt aus dem Majoranten-Kriterium.
+
+\item Ist $\sum_{n=1}^\infty \abs{a_n}$ konvergent, dann gilt $a_n \xto{n\to\infty} 0$, also $\abs{a_n} < \frac{1}{2}$ für alle $n > N$.
+Dann $1+a_n \not= 0$ für alle $n > N$, also folgt die Konvergenz von $\prod_{k=N+1}^\infty (1+a_n)$ aus (i) und \autoref{satz:konvergenz-unendlicher-produkte} (ii).
+Also ist insbesondere $\prod_{k=1}^\infty (1+a_n)$ konvergent.
+
+Die unbedingte Konvergenz von $\prod_{n\geq N+1}(1+a_n)$  (also auch von $\prod_{n\geq1} (1+a_n)$) folgt wegen (\autoref{satz:konvergenz-unendlicher-produkte} (ii)):
+\[
+	\sum \abs{\Log (1+a_n)} < \infty \Rla \sum \Log (1+a_n) \text{ ist absolut konvergent}
+\]
+\end{enumerate}
+\end{bewe}
+
+\begin{satz}
+Sei $D \subseteq \CC$ offen und $(f_n)_{n\in\NN}$ eine Folge holomorpher Funktionen $f_n\colon D\ra\CC$ derart, dass die Reihe $\sum_{n=1}^\infty f_n(z)$ auf jedem Kompaktum $K\subseteq D$ gleichmäßig, absolut konvergiert.
+Dann ist
+\[
+	F(z) := \prod_{n=1}^\infty (1+f_n(z)) \qquad z\in D
+\]
+ein unbedingt konvergentes Produkt und $F$ ist eine auf $D$ holomorphe Funktion.
+Insbesondere gilt $F(z) = 0$ genau dann wenn $1+f_n(z) = 0$ für ein $n\in\NN$.
+\end{satz}
+
+\begin{bewe}
+Unbedingte Konvergenz des Produktes folgt aus \autoref{satz:zusammenhang-konvergenz-log-reihe} (ii) mit $a_n = f_n(z)$ für $z\in D$.
+
+Es verbleibt zu zeigen, dass $F$ holomorph auf $D$ ist.
+
+Sei $U \subseteq D$ offen mit $\closure U \subseteq D$ kompakt.
+Es genügt Holomorphie von $F$ für beliebiges solches $U$ zu zeigen.
+Da $U$ kompakt ist, ist $\sum_{n=1}^\infty f_n(z)$ auf $\closure U$ (also auch auf $U$) absolut gleichmäßig konvergent.
+Nach dem notwendigen Konvergenzkriterium für gleichmäßige Konvergenz konvergiert daher $(f_n)_{n\in\NN}$ auf $U$ gleichmäßig gegen Null.
+
+Es gibt also ein $m\in\NN$, so dass für $n > m$ für $z\in U$ gilt
+\begin{equation}\label{satz1.10.bewe}
+	\abs{f_n(z)} < 1
+\end{equation}
+Also (siehe Beweis von \autoref{satz:zusammenhang-konvergenz-log-reihe} (i) mit $\epsilon = \frac{1}{2}$)
+\[
+	\abs{\Log(1+f_n(z))} \leq \frac{3}{2}\abs{f_n(z)}
+\]
+
+Die Reihe $\sum_{n=m+1}^\infty f_n(z)$ ist auf $U$ gleichmäßig absolut konvergent, nach dem Cauchy-Kriterium für gleichmäßige Konvergenz und wegen \eqref{satz1.10.bewe} ist daher
+\[
+	S_m(z) := \sum_{n=m+1}^\infty \Log(1+f_n(z))
+\]
+auf $U$ gleichmäßig konvergent.
+
+Nach dem Satz von Weierstraß (FT 1) folgt, dass $S_m(z)$ auf $U$ holomorph ist.
+Also ist $e^{S_m(z)} = \prod_{n=m+1}^\infty (1+f_n(z))$ auf $U$ holomorph (siehe Beweis von \autoref{satz:konvergenz-unendlicher-produkte} (ii)).
+Damit ist
+\[
+	F(z) = (1+f_1(z)) \cdot \ldots \cdot (1+f_m(z)) \prod_{n=m+1}^\infty (1+f_n(z))
+\]
+auf $U$ holomorph.
+\end{bewe}
+
+\begin{erin*}
+Ist $h\colon U_r(z_0) \ra \CC$ holomorph, $h$ nicht identisch Null, $h(z) = (z-z_0)^m g(z)$ mit $m>0$ und $g(z_0) \not= 0$, so nnent man $\ord_ {z=z_0} h = m$ die Ordnung von $z_0$ bezüglich h.
+\end{erin*}
+
+\emph{Problem:} Gegeben $S\subseteq \CC$ diskret. Zu jedem $s\in S$ sei ein $m_s \in \NN$ gegeben.
+
+\emph{Frage:} Gibt es eine ganze Funktion $h\colon \CC \ra \CC$ derart, dass (i) $h(z) = 0$ genau dann, wenn $z\in S$ und (ii) $\ord_{z=s} h = m_s$ für alle $s \in S$.
+
+Man nennt $\Set{(s, m_s) \mid s\in S}$ eine \myemph{Nullstellenverteilung}.
+Und eine Funktion $h$ wie oben heißt Lösung der Nullstellenverteilung.
+
+\emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von \myemph{Weierstraß-Produkten} konstruieren!
+
+\begin{satz}[Weierstraß'scher Produktsatz]
+\begin{enumerate}
+\item Sei $S\subseteq \CC$ diskret und für jedes $s\in S$ sei ein $m_s \in \NN$ gegeben. Dann hat die Nullstellenverteilung $\Set{(s, m_s) \mid s\in S}$ eine Lösung $h$.
+Alle Lösungen erhält man als $H(z) = h(z)\cdot e^{g(z)}$ wobei $h$ eine gegebene Lösung und $g$ ganz ist.
+
+\item Sei $f$ ganz und nicht identisch Null, $S=\Set{z\in\CC \mid f(z) = 0}\subseteq\CC$ (Beachte $S$ ist diskret).
+Dann gibt es zu jedem $s\in S$ ein Polynom $P_s$ und eine ganze Funktion $g$, so dass gilt
+\[
+	f(z) =
+	\begin{cases}
+		\displaystyle \prod_{s\in S} \left(1-\frac{z}{s}\right)^{m_s} e^{P_s(z)}\cdot e^{g(z)} & 0 \not\in S \\
+		\displaystyle z^{m_0} \cdot \prod_{\substack{s\in S\\ \scriptscriptstyle s\not=0}} \left(1-\frac{z}{s}\right)^{m_s} e^{P_s(z)}\cdot e^{g(z)} & 0 \in S
+	\end{cases}
+\]
+wobei die Produkte rechts auf Kompakta $K\subseteq \CC$ unbedingt konvergent sind.
+\end{enumerate}
+\end{satz}
