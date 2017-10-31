@@ -1,3 +1,185 @@
+\section{Unendliche Produkte}
+
+\newdate{26. Oktober 2017}
+
+Gegeben sei eine Folge $(p_n)_{n\in\NN}$ komplexer Zahlen.
+Wir wollen nun in sinnvoller Weise das unendliche Produkt
+\[
+	\prod _ {n=1} ^\infty p_n
+\]
+definieren.
+Ein naheliegender Vorschlag dafür ist:
+$\prod _ {n=1} ^\infty p_n$ heißt konvergent, falls die Folge $(P_n)_{n\in\NN}$ der Partialprodukte $P_N = \prod _{n=1}^N p_n$ konvergent ist.
+In diesem Fall setzen wir
+\[
+	\prod_{n=1} ^\infty p_n := \lim_{N\to\infty} P_n =: P\,.
+\]
+
+Das Problem was sich mit dieser Definition stellt ist, dass falls einer der Faktoren Null ist, so ist der Wert des Produktes gleich $0$.
+Dieses hängt also gar nicht von der Gesamtheit der Faktoren ab.
+Ferner möchte man oft $\prod _{n=1}^N p_n$ bzw. $P$ mit der Summe $\sum _{n=1}^N \log p_n$ bzw. mit $\log P$ vergleichen.
+Und das geht nur falls $p_n\not=0$ für alle $n\in\NN$ und entsprechend $P\not=0$.
+Später wollen wir allerdings holomorphe Funktionen als Produkte darstellen, dies sollte auch möglich sein, wenn diese Nullstellen haben.
+
+\begin{defi}[Unendliches Produkt]
+Sei $(p_n)_{n\in\NN}$ eine Folge in $\CC$ derart, dass nur endlich viele der $p_n$ Null sind.
+Sei $m\in \NN$ der größte Index mit $p_m = 0$ (und $m:=0$, falls $p_n \not= 0$ für alle $n\in\NN$).
+Dann heißt das \myemph{unendliche Produkt}
+\[
+	\prod_{n=1}^\infty p_n
+\]
+konvergent, falls der Limes
+\[
+	\lim_{\substack{N\to\infty\\ \scriptscriptstyle N \geq m+1}} P_n \text{ mit } P_N = \prod _ {n=m+1} ^N p_n
+\]
+existiert und ungleich Null ist.
+Man setzt dann
+\[
+	\prod _ {n=1} ^\infty p_n :=
+	\begin{cases}
+		\lim\limits_{N\to\infty} P_n &\text{falls } m=0 \\
+		0 &\text{sonst}
+	\end{cases}
+	\,.
+\]
+Dabei ist zu beachten, dass nach Definition ein konvergentes unendliches Produkt den Wert 0 genau dann hat, wenn ein Faktor gleich Null ist.
+\end{defi}
+
+\begin{bsp}
+\begin{enumerate}
+\item Das unendliche Produkt $\prod_{n\geq2}(1-\frac{1}{n^2})$ ist konvergent und hat den Wert $\frac{1}{2}$.
+\begin{bewe} Zunächst sind alle Faktoren ungleich Null und
+\begin{align*}
+	P_n
+	&= \prod_{n=2}^N \left(1-\frac{1}{n^2}\right)
+	= \prod_{n=2}^N \frac{(n-1)(n+1)}{n^2} \\
+	&= \frac{(2\cdot3\cdot\,\ldots\,\cdot(N-1))\,\cdot\,(3\cdot4\cdot\,\ldots\,\cdot(N+1)}{(2\cdot3\cdot\,\ldots\,\cdot N)\,\cdot\,(2\cdot3\cdot\,\ldots\,\cdot N)} \\
+	&= \frac{1}{N}\frac{N+1}{2} \\
+	&= \frac{1}{2}\left(1+\frac{1}{N}\right) \\
+	&\xto{N \to \infty} \frac{1}{2}
+\end{align*}
+\end{bewe}
+
+\item $\prod_{n\geq1}(1-\frac{1}{n^2}) = 0\cdot \prod_{n\geq2}(1-\frac{1}{n^2})$ ist konvergent und hat Wert 0
+
+\item $\prod_{n=1}^\infty \frac{1}{n}$ ist nicht konvergent in unserem Sinn.
+Denn
+\[
+	P_N
+	= \prod_{n=1}^N \frac{1}{n} = \frac{1}{N!}\xto{N\to\infty}0
+	\,.
+\]
+\end{enumerate}
+\end{bsp}
+
+\begin{satz}\label{satz:konvergenz-unendlicher-produkte}
+Für eine unendliche Reihe $\prod_{n=1} ^\infty p_n$ gilt:
+\begin{enumerate}
+\item Ist $\prod_{n=1} ^\infty p_n$ konvergent, so gilt notwendigerweise $\lim\limits_{n\to\infty}p_n=1$.
+\item Sei $p_n \not= 0$ für alle $n\in \NN$.
+Dann ist $\prod_{n=1} ^\infty p_n$ konvergent genau dann, wenn
+\[
+	\sum _{n=1}^\infty \Log p_n
+\]
+konvergiert. (Erinnerung $\Log z = \log \abs z + i\Arg z$ der Hauptwert des Logarithmus und $-\pi < \Arg z \leq \pi$ das Argument von $z$.)
+Insbesondere ist $\prod_{n=1} ^\infty p_n = P$, so existiert $h\in\ZZ$ so dass
+\[
+	\sum _{n=1}^\infty \Log p_n = \Log P + 2\pi ih
+\]
+gilt.
+Ist umgekehrt $S = \sum _{n=1}^\infty \Log p_n$, so gilt
+\[
+	e^S = \prod_{n=1} ^\infty p_n
+\]
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+\begin{enumerate}
+\item Es ist
+\[
+	p_{N+1}
+	= \frac{P_{N+1}}{P_N}
+	\xto{N\to\infty} \frac{P}{P}
+	= 1
+	\,.
+\]
+für $N\geq m+1$, hierbei benutzt man $p_n \not= 0$ für $n\geq m+1$ und $P \not= 0$.
+
+\item Es gelte
+\[
+	S
+	= \sum _{n=1}^\infty \Log p_n
+	\,.
+\]
+Also $S = \lim \limits _{N\to\infty} S_N$ mit $S_n = \sum_{n=1}^N \Log p_n$.
+Da $\exp$ stetig ist, folgt
+\begin{align*}
+	0
+	\not= e^S
+	&= \lim _ {N\to \infty} e^{S_n} = \lim_{N\to\infty} e^{\log p_1 + \ldots + \log p_n} \\
+	&= \lim _ {N\to \infty} e^{\log p_1} \cdot\,\ldots\,\cdot e^{\log p_n}
+	= \lim _ {N\to \infty} (p_1 \cdot\,\ldots\,\cdot p_N) \\
+	&= \lim _ {N\to \infty} \prod _{n=1}^N p_n
+	= P
+	\,.
+\end{align*}
+
+Gelte nun andererseits $\prod_{n=1}^\infty p_n = P$.
+Wir wollen zeigen, dass $\sum _{n=1}^\infty \Log p_n = \Log P + 2\pi ih$.
+
+Aus $\prod_{n=1}^\infty p_n = P$ folgt
+\[
+	\frac{\prod_{n=1}^N p_n}{P} \xto{N\to\infty} 1
+\]
+
+Sei
+\[
+	\epsilon_N := \Log \left(\frac{\prod_{n=1}^N p_n}{P}\right)
+\]
+Wegen der Stetigkeit von $\Log z$ in $z=1$ und $\Log 1 = 0$ folgt
+\[
+	\lim_{N\to\infty}\epsilon_N = \Log 1 = 0
+\]
+
+Wir wollen nun zeigen, dass es für jedes $N\in\NN$ ein $h_N\in\ZZ$ gibt mit
+\begin{equation}\label{eq:satz1.6.bewe}
+	\epsilon_N = \sum_{n=1}^N \Log p_n - \Log P + 2\pi i h_N
+\end{equation}
+Zunächst gilt  offensichtlich $\exp \epsilon_N = \frac{\prod_{n=1}^\infty p_n}{P}$.
+Nach den Additionstheoremen und wegen $\exp\Log z = z$ gilt außerdem
+\[
+	\exp \left(\sum_{n=1}^N \Log p_n - \Log P\right)
+	= \frac{\prod_{n=1}^\infty p_n}{P}
+\]
+Für $z, z' \in \CC$ folgt aus $\exp z = \exp z'$ stets, dass $z-z'\in 2\pi i\ZZ$.
+
+Damit folgt dann \eqref{eq:satz1.6.bewe}.
+
+Es gilt
+\[
+	2\pi i(h_{N+1}-h_N) = \Log p_{N+1} + \epsilon_{N+1}-\epsilon_N \xto{N\to\infty} 0
+\]
+da alle Einzelterme der rechten Seite gegen 0 gehen.
+Da $h_{N+1}, h_N\in\ZZ$ folgt $(h_{N+1} - h_N)_{N\geq 1}$ ist konstant für große $N$, also $h_{N+1} = h_N$ für alle großen $N$, d.\,h. $h_n = h$ für $N$ groß.
+
+Nun gilt wegen \eqref{eq:satz1.6.bewe} und $\lim \epsilon_N = 0$, dass
+\[
+	\sum_{n=1}^N \Log p_n
+	\xto{N\to\infty}
+	\Log P - 2\pi i h
+	\,.
+\]
+\end{enumerate}
+\end{bewe}
+
+\begin{nota}
+Man schreibt oft $p_n = 1 + a_n$. Dann lautet die notwendige Konvergenzbedingung aus dem Satz, dass $a_n \xto{n\to\infty} 0$.
+\end{nota}
+
+
+
+
 \newdate{30. Oktober 2017}
 
 \begin{satz}\label{satz:zusammenhang-konvergenz-log-reihe}

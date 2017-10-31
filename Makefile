@@ -20,5 +20,7 @@ clean:
 	rm -f script.ilg
 	rm -f script.loe
 	rm -f script.synctex.gz
-	rm -f vorlesungen/*.aux
-	rm -f vorlesungen/*.log
+	rm -f vorlesungen/chapter0/*.aux
+	rm -f vorlesungen/chapter0/*.log
+	rm -f vorlesungen/chapter1/*.aux
+	rm -f vorlesungen/chapter1/*.log
