@@ -1,12 +1,14 @@
 # Funktionentheorie 2
 
-Ein Skript der Vorlesung Funktionentheorie 2 aus dem Wintersemster 2017/18 an der Universität Heidelberg.
+Dies ist ein nicht offizielles Skript der Vorlesung Funktionentheorie 2 aus dem Wintersemster 2017/18 gehalten von Professor Winfired Kohnen an der Universität Heidelberg.
 Das Skript wurde von mir in der Vorlesung mitgetext und wird mit pdflatex kompiliert.
+Deshalb kann es Fehler enthalten und ich übernehme keine Garantie für Richtigkeit.
 
-Bei Fehlern mach doch bitte ein neues Issue auf, behebe den Fehler oder schreibe mir.
+Bei Fehlern, kannst du mir gerne schreiben oder ein Issue eröffnen.
 
 
 ## Makefile
 
-Mit dem Makefile kann das Skript kompliert werden (via `script`), dabei wird das Skript zweimal kompiliert, damit Referenzen richtig verlinkt werden.
-Und temporäre Dateien wieder löschen (via `clean`). Einfaches ausführen von `make`führt erst `script` und anschließend `clean` aus
+Mit dem Makefile kann das Skript kompliert werden (via `script`), dabei wird das Skript zweimal kompiliert, damit Referenzen richtig verlinkt werden und die Indizes erstellt.
+Und temporäre Dateien können wieder gelöscht werden (via `clean`). Einfaches ausführen von `make`führt erst `script` und anschließend `clean` aus.
+Das Skript kann auch ohne Ausgabe von LaTeX kompiliert werden (via `silent`).
