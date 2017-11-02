@@ -24,7 +24,7 @@ Später wollen wir allerdings holomorphe Funktionen als Produkte darstellen, die
 \begin{defi}[Unendliches Produkt]
 Sei $(p_n)_{n\in\NN}$ eine Folge in $\CC$ derart, dass nur endlich viele der $p_n$ Null sind.
 Sei $m\in \NN$ der größte Index mit $p_m = 0$ (und $m:=0$, falls $p_n \not= 0$ für alle $n\in\NN$).
-Dann heißt das \myemph{unendliche Produkt}
+Dann heißt das \myemph[unendliches Produkt]{unendliche Produkt}
 \[
 	\prod_{n=1}^\infty p_n
 \]
@@ -244,7 +244,7 @@ Die unbedingte Konvergenz von $\prod_{n\geq N+1}(1+a_n)$  (also auch von $\prod_
 \end{enumerate}
 \end{bewe}
 
-\begin{satz}
+\begin{satz}\label{satz:prod_holomorpher_fkt}
 Sei $D \subseteq \CC$ offen und $(f_n)_{n\in\NN}$ eine Folge holomorpher Funktionen $f_n\colon D\ra\CC$ derart, dass die Reihe $\sum_{n=1}^\infty f_n(z)$ auf jedem Kompaktum $K\subseteq D$ gleichmäßig, absolut konvergiert.
 Dann ist
 \[
@@ -299,22 +299,175 @@ Ist $h\colon U_r(z_0) \ra \CC$ holomorph, $h$ nicht identisch Null, $h(z) = (z-z
 Man nennt $\Set{(s, m_s) \mid s\in S}$ eine \myemph[Verteilungen!Nullstellenverteilung]{Nullstellenverteilung}.
 Und eine Funktion $h$ wie oben heißt Lösung der Nullstellenverteilung.
 
-\emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von \myemph{Weierstraß-Produkten} konstruieren!
+\emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von Weierstraß-Produkten konstruieren!
 
-\begin{satz}[Weierstraß'scher Produktsatz]
+\newdate{2. November 2017}
+
+\begin{satz}[Weierstraß'scher Produktsatz]\label{satz:weierstrasprodukt}
 \begin{enumerate}
 \item Sei $S\subseteq \CC$ diskret und für jedes $s\in S$ sei ein $m_s \in \NN$ gegeben. Dann hat die Nullstellenverteilung $\Set{(s, m_s) \mid s\in S}$ eine Lösung $h$.
 Alle Lösungen erhält man als $H(z) = h(z)\cdot e^{g(z)}$ wobei $h$ eine gegebene Lösung und $g$ ganz ist.
 
 \item Sei $f$ ganz und nicht identisch Null, $S=\Set{z\in\CC \mid f(z) = 0}\subseteq\CC$ (Beachte $S$ ist diskret).
+Für $s\in S$ sei $m_s := \ord_{z=s} f(z)$.
 Dann gibt es zu jedem $s\in S$ ein Polynom $P_s$ und eine ganze Funktion $g$, so dass gilt
 \[
 	f(z) =
 	\begin{cases}
-		\displaystyle \prod_{s\in S} \left(1-\frac{z}{s}\right)^{m_s} e^{P_s(z)}\cdot e^{g(z)} & 0 \not\in S \\
-		\displaystyle z^{m_0} \cdot \prod_{\substack{s\in S\\ \scriptscriptstyle s\not=0}} \left(1-\frac{z}{s}\right)^{m_s} e^{P_s(z)}\cdot e^{g(z)} & 0 \in S
+		\displaystyle \prod_{s\in S} \left(1-\frac{z}{s}\right)^{m_s}\cdot e^{P_s(z)}\cdot e^{g(z)} & 0 \not\in S \\
+		\displaystyle z^{m_0} \cdot \prod_{\substack{s\in S\\ \scriptscriptstyle s\not=0}} \left(1-\frac{z}{s}\right)^{m_s}\cdot e^{P_s(z)}\cdot e^{g(z)} & 0 \in S
 	\end{cases}
 \]
-wobei die Produkte rechts auf Kompakta $K\subseteq \CC$ unbedingt konvergent sind.
+wobei die Produkte rechts \myemph[Weierstraß-Produkt]{Weierstraß-Produkte} genannt werden, diese sind auf Kompakta $K\subseteq \CC$ unbedingt konvergent.
 \end{enumerate}
 \end{satz}
+
+\begin{bewe}
+\begin{enumerate}
+\item Falls $S$ endlich ist, so ist das Produkt $\prod _{s \in S} (z-s)^{m_s}$ eine Lösung.
+Sei $S$ nun unendlich.
+Wir können außerdem annehmen, dass $0 \not\in S$, denn eine Nullstelle in $z=0$ der Ordnung $m_0$ kann man immer durch Multiplikation mit $z^{m_0}$ erzeugen.
+
+Sei $s_1,\ s_2,\ \ldots, s_n,\ \ldots$\ nun eine Abzählung von $S$ mit 
+\[
+	0 < \abs{s_1} \leq \abs{s_2} \leq ... \to \infty
+	\,,
+\]
+und sei $m_n := m_{s_n}$.
+
+Da die holomorphe Funktion $(1-\frac{z}{s_n})^{m_n}$ auf dem Elementargebiet $U_{\abs{s_n}}(0)$ keine Nullstellen hat, kann man eine holomorphe Funktion $A_k\colon U_{\abs{s_n}}(0) \ra \CC$ finden (nach Funktionentheorie 1), so dass
+\[
+	\left(1-\frac{z}{s_n}\right)^{m_n}
+	= e^{-A_n(z)}
+	\qquad \text{für } \abs z < \abs{s_n}
+\]
+Es ist $e^{-A_n(0)} = 1$, also $A_n(0) \in 2\pi i\ZZ$.
+Also kann durch Addition eines ganzzahligen Vielfachen von $2\pi i$ erreicht werden, dass $A_n(0) = 0$.
+Die Potenzreihenentwicklung von $A_n$ um $z=0$ ist auf das Kompaktum $\abs z \leq \frac{\abs{s_n}}{2}$ absolut gleichmäßig konvergent.
+Also können wir durch Abbruch dieser Reihe ein Polynom $P_n$ finden, so dass für $\abs{z} \leq \frac{\abs{s_n}}{2}$ gilt
+\[
+	\abs{\left(1-\frac{z}{s_n}\right)^{m_n}\cdot e^{P_n(z)} - 1}
+	= \abs{e^{P_n(z) - A_n(z)} - 1}
+	\leq \frac{1}{n^2}
+	\,.
+\]
+
+Da $\sum_{n=1}^\infty \frac{1}{n^2}$ konvergent ist, ist die Reihe
+\[
+	\sum_{n=1}^\infty \abs{\left(1-\frac{z}{s_n}\right)^{m_n}\cdot e^{P_n(z)} - 1}
+\]
+auf Kompakta gleichmäßig, absolut konvergent. Durch anwenden von \autoref{satz:prod_holomorpher_fkt} erhalten wir, dass das Produkt
+\[
+	h(z) := \prod _{n=1}^\infty \left(1-\frac{z}{s_n}\right)^{m_n}\cdot e^{P_n(z)}
+\]
+auf $\CC$ unbedingt konvergiert und eine holomorphe Funktion ist.
+Offenbar ist $h$ eine Lösung der Nullstellenverteilung (Beachte $(1-\frac{z}{s_n})^{m_n} = s_n^{-m_n}(z-s_n)^{m_n}(-1)^{m_n}$).
+
+Sei $H$ nun eine weitere Lösung.
+Betrachte $\frac{H(z)}{h(z)}$ für $z\not\in S$. Diese Funktion hat in allen Punkten $s\in S$ hebbare Singularitäten und ist nullstellenfrei.
+Da $\CC$ ein Elementargebiet ist, existiert eine ganze Funktion $g$ mit $\frac{H(z)}{h(z)} = e^{g(z)}$, also $H(z) = h(z)\cdot e^{g(z)}$ für $z\in\CC$.
+
+
+
+\item Betrachte die Nullstellenverteilung $\Set{(s,m_s) \mid s \in S}$.
+Diese hat $f$ nach Definition als Lösung und auch die in (i) konstruierte Lösung.
+Nach (i) unterscheiden sich beide Lösungen nur um einen Faktor $e^{g(z)}$ mit $g$ ganz.
+Daraus folgt die Behauptung.
+\end{enumerate}
+\end{bewe}
+
+\begin{beme}
+Die holomorphen Funktionen $A_n(z)$ für $\abs z < \abs{s_n}$ sind durch die Bedingung
+\[
+	\left(1-\frac{z}{s_n}\right)^{m_n} = e^{-A_n(z)} \text{ und } A_n(0) = 0
+\]
+eindeutig bestimmt.
+
+\emph{Denn} wäre $\widetilde{A}_n$ eine weitere solche Funktion, so würde gelten $e^{-\widetilde{A}_n(z)} = e^{-A_n(z)}$. Damit folgt $e^{\widetilde{A}_n(z) - A_n(z)} = 1$. Also $\widetilde{A}_n(z) - A_n(z) = 2\pi it_z$ mit $t_z \in \ZZ$.
+Da $U_{\abs{s_n}}(0)$ zusammenhängend und $\widetilde{A}_n - A_n$ stetig ist, ist $z \mapsto 2\pi it_z$ stetig, also folgt $B := t_z$ konstant.
+Also gilt $\tilde{A_n}(z) - A_n(z) = B$.
+Und mit $z=0$ folgt $B=0$.
+
+Daher muss gelten $A_n(z) = -m_n\Log(1-\frac{z}{s_n})$ für $\abs z \leq \abs{s_n}$.
+\emph{Denn} zunächst ist $-m_n\Log(1-\frac{0}{s_n}) = 0$ klar, außerdem folgt mit den Additionstheoremen $e^{m_n\Log(1-\frac{z}{s_n})} = e^{\Log(1-\frac{z}{s_n})} \cdot\,\ldots\,\cdot e^{\Log(1-\frac{z}{s_n})} = (1-\frac{z}{s_n})^{m_n}$.
+
+Es ist $-\Log(1-z) = \sum_{\nu = 1}^\infty \frac{z^\nu}{\nu}$ für $\abs z < 1$.
+Also $A_n(z) = m_n \sum_{\nu = 1}^\infty \frac{1}{\nu}(\frac{z}{s_n})^\nu$ für $\abs z < \abs{s_n}$, die Polynome $P_n$ erhält man durch Abbruch dieser Reihe.
+\end{beme}
+
+\begin{koro}
+Jede auf $\CC$ meromorphe Funktion $f$ ist als Quotient zweier ganzer Funktionen darstellbar.
+\end{koro}
+
+\begin{bewe}
+Sei $f$ auf $\CC$ meromorph, $S$ die Polstellenmenge von $f$.
+Gelte $S\not= \emptyset$, sonst ist die Aussage klar.
+Für $s \in S$ sei $m_s := \ord_{z=s} f(z)$ (dabei ist die Polstellenordnung gemeint, eine natürliche Zahl).
+Nach \autoref{satz:weierstrasprodukt} existiert eine ganze Funktion $h$ mit Nullstellen genau in den Punkten aus $S$ und so dass die Nullstellenordnung von $h$ in $z=s$ genau $m_s$ ist.
+
+Sei $g:=f \cdot h$.
+Dann ist $g$ ganz, denn die Nullstellen kürzen sich gegen Polstellen.
+Es folgt $f = \frac{g}{h}$.
+\end{bewe}
+
+\begin{bsp}
+\begin{enumerate}
+\item Sei $S = \Set{n^2 \mid n \in \NN_0}$, $m_s = 1$ für alle $s\in S$.
+Dann ist
+\[
+	h(z) = z\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)
+\]
+eine Lösung der Nullstellenverteilung, denn $\sum_{n=1}^\infty \frac{z}{n^2}$ ist auf Kompakta gleichmäßig, absolut konvergent.
+
+\item $S = \ZZ$, $m_s = 1$ für alle $s\in S$. Die Reihe $\sum_{n\not=0} \frac{z}{n}$ hat schlechte Konvergenzeigenschaften, man muss also konvergenzerzeugende Faktoren einbauen.
+Der lineare Term von $A_n$ ist gleich $\frac{z}{n}$ mit $n\not=0$.
+Betrachte also
+\begin{align*}
+	\left(1-\frac{z}{n}\right)e^{z_n}
+	&= \left(1-\frac{z}{n}\right)\left(1+\frac{z}{n}+\frac{1}{2}\left(\frac{z}{n}\right)^2 + \ldots\right) \\
+	&= 1 - \frac{1}{2}\left(\frac{z}{n}\right)^2 + \text{ höhere Terme}
+\end{align*}
+(\emph{formal} $= 1 + (\frac{z}{n})^2B(\frac{z}{n})$, wobei $B(z) = \frac{(1-z)e^z-1}{z^2}$, $B(0) = -\frac{1}{2}$).
+
+Die Reihe $\sum_{n\not=0} (\frac{z}{n})^2B(\frac{z}{n})$ ist auf Kompakta gleichmäßig absolut konvergent, \emph{denn} gelte $\abs z \leq c$, dann gilt $\abs{\frac{z}{n}} \leq c$ und $B$ ist als stetige Funktion auf Kompakta beschränkt, damit gilt
+\[
+	\sum_{n\not=0} \abs{\left(\frac{z}{n}\right)^2 B\left(\frac{z}{n}\right)}
+	\leq C \sum _{n\not=0} \frac{1}{n^2}
+	< \infty
+	\,.
+\]
+
+Also ist
+\[
+	h(z) = z \prod_{n\not=0} \left(1-\frac{z}{n}\right)\cdot e^{\frac{z}{n}}
+\]
+eine Lösung der gegebenen Verteilung.
+
+\emph{Beachte} $h(z) = z \prod_{n\geq 1} (1-\frac{z}{n})\cdot e^{\frac{z}{n}} \cdot \prod_{n\leq 1} (1-\frac{z}{n})\cdot e^{\frac{z}{n}} = z \prod_{n\geq 1} (1-\frac{z^2}{n^2})$ da die Produkte unbedingt konvergent sind.
+
+\item Es gilt
+\[
+	\sin\pi z
+	= \pi z \prod_{n\geq 1} \left(1-\frac{z^2}{n^2}\right)
+	\qquad \text{für } z \in \CC
+\]
+\emph{Denn:} Beide Seiten sind Lösungen der Nullstellenverteilung $\Set{(n, 1) \mid n\in\ZZ}$.
+Nach \autoref{satz:weierstrasprodukt} existiert eine ganze Funktion $g$, so dass
+\[
+	e^{g(z)} \sin\pi z
+	= \pi z \prod_{n\geq 1} \left(1-\frac{z^2}{n^2}\right)
+	\qquad z\in\CC
+\]
+
+Beachte $\frac{\sin\pi z}{\pi z}$ hat in $z=0$ eine hebbare Singularität (Taylorentwicklung) und dort den Wert 1.
+Schreibe 
+\[
+	e^{g(z)} \cdot \frac{\sin\pi z}{\pi z}
+	= \prod_{n\geq 1} \left(1-\frac{z^2}{n^2}\right)
+	\qquad z\in\CC
+	\,.
+\]
+Zeige nun $g$ konstant und $g\equiv 0$.
+Zweites folgt aus erstem durch auswerten in $z=0$ aus, dann gilt $e^{g(0)} = 1$, also $g(0) \in 2\pi i \ZZ$. Addiere ganzzahliges Vielfaches von $2\pi i$ und erreiche $g(0) = 0$.
+\end{enumerate}
+\end{bsp}
