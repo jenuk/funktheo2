@@ -11,15 +11,15 @@ silent:
 	pdflatex -interaction=batchmode script.tex
 
 clean:
-	rm -f script.aux
-	rm -f script.log
-	rm -f script.out
-	rm -f script.toc
-	rm -f script.idx
-	rm -f script.ind
-	rm -f script.ilg
-	rm -f script.loe
-	rm -f script.synctex.gz
+	rm -f *.aux
+	rm -f *.log
+	rm -f *.out
+	rm -f *.toc
+	rm -f *.idx
+	rm -f *.ind
+	rm -f *.ilg
+	rm -f *.loe
+	rm -f *.synctex.gz
 	rm -f vorlesungen/chapter0/*.aux
 	rm -f vorlesungen/chapter0/*.log
 	rm -f vorlesungen/chapter1/*.aux
