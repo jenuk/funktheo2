@@ -474,6 +474,61 @@ Schreibe
 	\,.
 \]
 Zeige nun $g$ konstant und $g\equiv 0$.
-Zweites folgt aus erstem durch auswerten in $z=0$ aus, dann gilt $e^{g(0)} = 1$, also $g(0) \in 2\pi i \ZZ$. Addiere ganzzahliges Vielfaches von $2\pi i$ und erreiche $g(0) = 0$.
+Zweites folgt aus erstem durch auswerten in $z=0$ aus, dann gilt $e^{g(0)} = 1$, also $g(0) \in 2\pi i \ZZ$.
+Addiere ganzzahliges Vielfaches von $2\pi i$ und erreiche $g(0) = 0$.
+Im folgenden gelte deshalb $g(0) = 0$.
+
+Für $\abs z < 1$ sind alle Faktoren rechts ungleich Null, damit folgt aus \autoref{satz:konvergenz-unendlicher-produkte} (ii):
+\[
+	\sum _ {n=1}^\infty \Log\left(1-\frac{z^2}{n^2}\right)
+	= \Log\left(e^{g(z)}\cdot \frac{\sin\pi z}{\pi z}\right) + 2\pi it_z
+\]
+mit $t_z \in \ZZ$.
+Damit erhalten wir
+\[
+	\sum_{n=1}^\infty \Log\left(1-\frac{z^2}{n^2}\right)
+	= \Log e^{g(z)} + \Log\left(\frac{\sin\pi z}{\pi z}\right) + 2\pi it_z
+\]
+für $\abs z < \delta$ und $0 < \delta$ klein.
+\emph{Denn} $\Log(w_1w_2) = \Log w_1 + \Log w_2$ für $w_1$, $w_2$ nahe bei 1,
+beachte $g(0) = 0$ und $g$ stetig.
+Also gilt
+\[
+	\sum_{n=1}^\infty \Log\left(1-\frac{z^2}{n^2}\right)
+	= g(z) + \Log\left(\frac{\sin\pi z}{\pi z}\right) + 2\pi it_z
+	\,,
+\]
+da $\Log e^{g(z)} = g(z)$ für $z$ bei $0$, denn $\Log$ und $\exp$ sind zueinander invers.
+
+Da die Reihe links absolut lokal gleichmäßig konvergiert, ist die Funktion stetig, also ist auch $z \mapsto 2\pi it_z$ stetig.
+Aber $t_z\in\ZZ$ und $U_\delta(0)$ ist zusammenhängend, also ist $t_z = t\in\ZZ$ konstant.
+
+Nach Weierstraß darf gliedweise differenziert werden:
+\[
+	\sum_{n=1}^\infty \frac{-2\frac{z}{n^2}}{1-\frac{z^2}{n^2}}
+	= g'(z) + \frac{1}{\frac{\sin\pi z}{\pi z}} \derive \left(\frac{\sin\pi z}{\pi z}\right)
+\]
+Also
+\begin{align*}
+	\sum _{n=1}^\infty \frac{2z}{z^2-n^2}
+	&= g'(z) + \frac{\pi z}{\sin\pi z} \cdot \frac{\pi\cos(\pi z)\cdot \pi z - \pi \sin(\pi z)}{\pi^2 z^2} \\
+	&= g'(z) + \pi \cot \pi z - \frac{1}{z}
+	\qquad z \in \dot{U}_\delta(0)
+	\,.
+\end{align*}
+
+Wir kennen bereits die Partialbruchzerlegung des Kotangens (\autoref{bsp:partialbruch_cot}):
+\begin{align*}
+	\pi \cot \pi z
+	&= \frac{1}{z} + \sum _{n\not=0} \left(\frac{1}{z-n} + \frac{1}{n}\right) \\
+	&= \frac{1}{z} + \sum _{n\geq 1} \left(\frac{1}{z-n} + \frac{1}{n} + \frac{1}{z+n} - \frac{1}{n}\right)
+	= \frac{1}{z} + \sum_{n\geq 1} \frac{2z}{z^2-n^2}
+	\,.
+\end{align*}
+
+Damit folgt $g'(z) = 0$ für $z\in \dot{U}_\delta(0)$.
+Also ist $g$ konstant auf $\dot{U}_\delta(0)$.
+Damit ist $g$ bereits auf ganz $\CC$ konstant, wegen des Identitätssatz.
+Insgesamt haben wir also $g\equiv 0$ (wegen $g(0) = 0$).
 \end{enumerate}
 \end{bsp}

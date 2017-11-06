@@ -1,0 +1,153 @@
+\section{Gamma-Funktion}
+
+\emph{Ausgangsproblem:} Man gebe eine \emph{vernünftige} Interpolationsfunktion für die Fakultät $n\mapsto n!$ für $n\in\NN_0$ an.
+D.\,h. man sucht eine (zumindest stetige Funktion) $P$ auf $\Set{x\in\RR \mid x > 0}$ mit
+\begin{enumerate}[a)]
+\item $P(n) = (n-1)!$ für $n\in\NN$,
+\item $P(x+1) = xP(x)$ für alle $x>0$ (Grundeigenschaft der Fakultät).
+\end{enumerate}
+
+\noindent Welche Eigenschaften hat $P$?
+Kann $P$ auf $\Set{z\in\CC \mid \Re(z) > 0}$ holomorph oder meromorph fortgesetzt werden?
+Vielleicht sogar auf ganz $\CC$?
+Durch welche Eigenschaften ist $P$ charakterisiert?
+
+\emph{Heuristische Vorgehensweise:} %vllt \subsection{•}?
+Für $n$ klein ist $(n-1)! = P(n)$ \myquote{klein}, nicht klar wie man interpolieren sollte.
+Für $n$ groß ist $P(n) = (n-1)!$ \myquote{riesengroß}, also wächst die Funktion \myquote{gleichmäßiger}und sollte daher einfacher zu interpolieren sein!
+
+Sei $x\in\NN$ fest, $N\in\NN$.
+Dann soll gelten
+\begin{align*}
+	P(x+N)
+	&= (N+x-1)\cdot\,\ldots\,\cdot(N+1)\cdot N \cdot (N-1)! \\
+	&= N^x\underbrace{\left(1+\frac{x-1}{N}\right)}_{\to 1}\underbrace{\left(1+\frac{x-2}{N}\right)}_{\to 1} \cdot\,\ldots\,\cdot \underbrace{\left(1+\frac{1}{N}\right)}_{\to 1}\cdot 1 \cdot (N-1)!
+\end{align*}
+Damit erhalten wir
+\[
+	\lim_{N\to\infty} \frac{N^x(N-1)!}{P(x+N)}
+	= 1
+	\,.
+\]
+Außerdem soll gelten
+\begin{align*}
+	P(x+N)
+	&= (x + N -1)! \\
+	&= (x + N -1)\cdot(x+N-2)\cdot\,\ldots\,\cdot (x+1)\cdot x\cdot P(x)
+	\,.
+\end{align*}
+Durch einsetzen erhalten wir
+\begin{equation}\label{gamma:herleitung_limes}
+	P(x)
+	= \lim _ {N\to\infty} \frac{N^x(N-1)!}{x(x+1)\ldots(x+N-1)}
+	\,.
+\end{equation}
+Also probiere man \eqref{gamma:herleitung_limes} als Definition für $P(x)$ oder sogar für $P(z)$ mit $z\in\CC, z \not= 0, -1, -2, \ldots$ aus, vorausgesetzt der Limes existiert.
+
+\begin{satz}\label{satz:gamma-fkt}
+Sei
+\[
+	D_{-\NN_0}
+	:= \Set{z\in\CC \mid z\not= 0, -1, -2, \ldots}
+	\,.
+\]
+\begin{enumerate}
+\item Durch
+\[
+	P(x)
+	= \lim _ {N\to\infty} \frac{N^x(N-1)!}{x(x+1)\ldots(x+N-1)}
+\]
+für $z\in D_{-\NN_0}$ wird eine holomorphe Funktion erklärt, diese heißt \myemph{Gamma-Funktion}. Obige Darstellung heißt \myemph[Gamma-Funktion!Gauß'sche Produktdarstellung]{Gauß'sche Produktdarstellung} von $P(z)$.
+
+\item Es gilt für $z\in D_{-\NN_0}$
+\[
+	P(z) = \frac{1}{z} \cdot \prod_{n=1}^\infty \frac{\left(1+\frac{1}{n}\right)^z}{1+\frac{z}{n}}
+\]
+die \myemph[Gamma-Funktion!Eulersche Produktdarstellung]{Eulersche Produktdarstellung}.
+(Beachte $N^z = e^{z\Log N}$ für $z\in\CC$, $N \in \NN$.)
+\item Es gilt $P(z+1) = zP(z)$ für alle $z\in D_{-\NN_0}$ und $P(n) = (n-1)^!$ für alle $n\in\NN$.
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+Zeige zunächst (i) und (ii):
+\begin{enumerate}
+\item[(i)+(ii)] Für $N\in\NN$ setze
+\[
+	P_N(z)
+	:= \frac{N^z(N-1)!}{z(z+1)\ldots(z+N-1)}
+	\,.
+\]
+Dann gilt
+\begin{align*}
+	\frac{P_{N+1}(z)}{P_N(z)}
+	&= \frac{(N+1)^zN!}{z(z+1)\ldots(z+N)} \cdot \frac{z(z+1)\ldots(z+N-1)}{N^z(N-1)!} \\
+	&= \frac{(N+1)^z}{N^z}\cdot \frac{N}{z+N}
+	= \left(1+\frac{1}{N}\right)^z\cdot \frac{1}{1+\frac{z}{N}}
+	\,.
+\end{align*}
+
+Für $z\in\CC$ fest sei $(1+w)^z = e^{z\Log(1+w)}$ für $\abs w < 1$.
+Dies ist eine holomorphe Funktion und hat um $w=0$ die Taylorentwicklung für $\abs w < 1$
+\[
+	(1+w)^z
+	= 1 + \sum_{n=1}^\infty \binom{z}{n} w^n
+	\,.
+\]
+wobei $\binom{z}{n} = \frac{z(z+1)\cdot\,\ldots\,\cdot (z-n+1)}{n!}$ der \myemph{verallgemeinerte Binominalkoeffizient} ist (Beweis diese Aussage durch Induktion).
+Schreibe nun
+\[
+	(1+w)^z
+	= 1 + zw + w^2A(z, w)
+\]
+wobei
+\[
+	A(z, w)
+	= \sum_{n=2}^\infty \binom{z}{n} w^{n-2}
+	\qquad \abs w < 1
+\]
+
+\emph{Behauptung} $A(z, w)$ ist auf Mengen der Form
+\[
+	\Set{z\in \CC \mid \abs z \leq c} \times \Set{w\in\CC \mid \abs w \leq \alpha}
+	\qquad 0< c, 0 < \alpha < 1
+\]
+beschränkt, denn
+\begin{align*}
+	\abs{A(z, w)}
+	&\leq \sum_{n=2}^\infty \abs{{z \choose n}} \cdot \abs{w}^{n-2} \\
+	&\leq \sum_{n=2}^\infty \frac{c(c+1)\ldots(c+n-1)}{n!}\alpha^{n-2} \\
+	&= A(-c, -\alpha)
+	< \infty
+	\,.
+\end{align*}
+
+Sei $K\subseteq D_{-\NN_0}$ kompakt.
+Dann gilt für alle $z\in K$ und $N \in \NN$ (mit $N$ groß genug) unter Benutzung der geometrischen Reihe und mit $w=\frac{1}{N}$, dass
+%wäre cool, wenn man das schöner hinkriegt
+\begin{align*}
+	&\quad\left(1+\frac{1}{N}\right)^z \cdot \frac{1}{1+\frac{z}{N}} \\
+	&= \left(1 + \frac{z}{N} + \frac{1}{N^2}A\left(z, \frac{1}{N}\right)\right) \left(1-\frac{z}{N}+\left(\frac{z}{N}\right)^2B\left(\frac{z}{n}\right)\right)\\[1.3em] %extra space for single long formular
+	\begin{split}
+		&= 1 - \frac{z^2}{N^2} + \left(1+\frac{z}{N}\right)\left(\frac{z}{N}\right)^2 B\left(\frac{z}{n}\right)+\frac{1}{N^2}A\left(z, \frac{1}{N}\right)\left(1-\frac{z}{N}\right) \\
+		&\qquad+ \frac{1}{N^2}A\left(z, \frac{1}{N}\right) \cdot \left(\frac{z}{N}\right)^2\cdot B\left(\frac{z}{n}\right)
+	\end{split}\\
+\end{align*}
+Also $\abs{\left(1+\frac{1}{N}\right)^z \cdot \frac{1}{1+\frac{z}{N}} - 1} \leq \frac{C}{N^2}$ für ein $C > 0$.
+Wegen $\sum_{N=1}^\infty \frac{1}{N^2} < \infty$ und \autoref{satz:prod_holomorpher_fkt} folgt, dass
+\[
+	\prod_{N=1}^\infty \frac{P_{N+1}(z)}{P_N(z)}
+\]
+unbedingt konvergent und eine holomorphe Funktion definiert auf $D_{-\NN_0}$.
+Alle Faktoren sind ungleich Null, also nach Definition
+\begin{align*}
+	\prod _{N=1}^\infty \frac{P_{N+1}(z)}{P_N(z)}
+	&= \lim _{M \to \infty} \prod_{N=1}^M \frac{P_{N+1}(z)}{P_N(z)} \\
+	&= \lim _{M \to \infty} \frac{P_{2}(z)}{P_1(z)}\cdot \frac{P_{3}(z)}{P_2(z)} \cdot\,\ldots\,\cdot \frac{P_{M+1}(z)}{P_M(z)} \\
+	&= \lim _{M\to\infty} \frac{P_{M+1}(z)}{P_1(z)}
+	= \frac{1}{z} \lim _{M\to\infty} P_M(z)
+	\,,
+\end{align*}
+dies war die Behauptung.
+\end{enumerate}
+\end{bewe}
