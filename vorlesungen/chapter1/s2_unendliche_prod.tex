@@ -389,7 +389,13 @@ Also gilt $\tilde{A_n}(z) - A_n(z) = B$.
 Und mit $z=0$ folgt $B=0$.
 
 Daher muss gelten $A_n(z) = -m_n\Log(1-\frac{z}{s_n})$ für $\abs z \leq \abs{s_n}$.
-\emph{Denn} zunächst ist $-m_n\Log(1-\frac{0}{s_n}) = 0$ klar, außerdem folgt mit den Additionstheoremen $e^{m_n\Log(1-\frac{z}{s_n})} = e^{\Log(1-\frac{z}{s_n})} \cdot\,\ldots\,\cdot e^{\Log(1-\frac{z}{s_n})} = (1-\frac{z}{s_n})^{m_n}$.
+\emph{Denn} zunächst ist $-m_n\Log(1-\frac{0}{s_n}) = 0$ klar, außerdem folgt mit den Additionstheoremen 
+\[
+	e^{m_n\Log(1-\frac{z}{s_n})}
+	= e^{\Log(1-\frac{z}{s_n})} \cdot\,\ldots\,\cdot e^{\Log(1-\frac{z}{s_n})}
+	= (1-\frac{z}{s_n})^{m_n}
+	\,.
+\]
 
 Es ist $-\Log(1-z) = \sum_{\nu = 1}^\infty \frac{z^\nu}{\nu}$ für $\abs z < 1$.
 Also $A_n(z) = m_n \sum_{\nu = 1}^\infty \frac{1}{\nu}(\frac{z}{s_n})^\nu$ für $\abs z < \abs{s_n}$, die Polynome $P_n$ erhält man durch Abbruch dieser Reihe.
@@ -423,7 +429,7 @@ eine Lösung der Nullstellenverteilung, denn $\sum_{n=1}^\infty \frac{z}{n^2}$ i
 Der lineare Term von $A_n$ ist gleich $\frac{z}{n}$ mit $n\not=0$.
 Betrachte also
 \begin{align*}
-	\left(1-\frac{z}{n}\right)e^{z_n}
+	\left(1-\frac{z}{n}\right)e^{\frac{z}{n}}
 	&= \left(1-\frac{z}{n}\right)\left(1+\frac{z}{n}+\frac{1}{2}\left(\frac{z}{n}\right)^2 + \ldots\right) \\
 	&= 1 - \frac{1}{2}\left(\frac{z}{n}\right)^2 + \text{ höhere Terme}
 \end{align*}
