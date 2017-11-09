@@ -54,8 +54,8 @@ Sei
 \begin{enumerate}
 \item Durch
 \[
-	P(x)
-	= \lim _ {N\to\infty} \frac{N^x(N-1)!}{x(x+1)\ldots(x+N-1)}
+	P(z)
+	= \lim _ {N\to\infty} \frac{N^z(N-1)!}{z(z+1)\ldots(z+N-1)}
 \]
 für $z\in D_{-\NN_0}$ wird eine holomorphe Funktion erklärt, diese heißt \myemph{Gamma-Funktion}. Obige Darstellung heißt \myemph[Gamma-Funktion!Gauß'sche Produktdarstellung]{Gauß'sche Produktdarstellung} von $P(z)$.
 
@@ -65,7 +65,7 @@ für $z\in D_{-\NN_0}$ wird eine holomorphe Funktion erklärt, diese heißt \mye
 \]
 die \myemph[Gamma-Funktion!Eulersche Produktdarstellung]{Eulersche Produktdarstellung}.
 (Beachte $N^z = e^{z\Log N}$ für $z\in\CC$, $N \in \NN$.)
-\item Es gilt $P(z+1) = zP(z)$ für alle $z\in D_{-\NN_0}$ und $P(n) = (n-1)^!$ für alle $n\in\NN$.
+\item Es gilt $P(z+1) = zP(z)$ für alle $z\in D_{-\NN_0}$ und $P(n) = (n-1)!$ für alle $n\in\NN$.
 \end{enumerate}
 \end{satz}
 
@@ -148,6 +148,257 @@ Alle Faktoren sind ungleich Null, also nach Definition
 	= \frac{1}{z} \lim _{M\to\infty} P_M(z)
 	\,,
 \end{align*}
-dies war die Behauptung.
+dies zeigt die Behauptungen (i) und (ii).
+
+\item[(iii)] Es gilt für alle $z+1\in D_{-\NN_0}$
+\begin{align*}
+	P(z+1)
+	&= \lim_{N\to\infty} \frac{N^{z+1}(N-1)!}{(z+1)(z+2)\ldots(z+N)} \\
+	&= \lim_{N\to\infty} \frac{N}{z+N}\cdot\frac{zN^z(N-1)!}{z(z+1)(z+2)\ldots(z+N-1)}
+	= zP(z)
+	\,.
+\end{align*}
+Es gilt weiter
+\[
+	P(1)
+	= \lim_{N\to\infty} \frac{N(N-1)!}{N!}
+	= 1
+	\,.
+\]
+Induktiv folgt damit $P(n+1) = n!$ für alle $n\in\NN_0$.
+\end{enumerate}
+\end{bewe}
+
+\begin{nota}
+Ab jetzt bezeichnen wir die Funktion $P$ aus \autoref{satz:gamma-fkt} mit $\Gamma$.
+\end{nota}
+
+\begin{satz}\label{satz:gamma-eigenschaften}
+Für die $\Gamma$-Funktion gelten folgende Eigenschaften:
+\begin{enumerate}
+\item Die Gammafunktion lässt sich in ganz $\CC$ meromorph fortsetzen mit einfachen Polstellen in $D_{-\NN_o}$. Und es gilt
+\[
+	\res_{z=-n} \Gamma(z)
+	= \frac{(-1)^n}{n}
+	\qquad \text{für alle } n\in\NN_0
+\]
+
+\item die Funktion $z\mapsto \frac{1}{\Gamma(z)}$ ist ganz mit hebbaren Singularitäten in $z\in-\NN_0$. Es gilt die Weierstraß-Produktentwicklung
+\[
+	\frac{1}{\Gamma(z)} = ze^{\gamma z} \prod_{n=1}^\infty \left(1+\frac{z}{n}\right)e^{-\frac{z}{n}}
+\]
+mit $\gamma = \lim_{n\to\infty} 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} - \log(n) = 0,57721\dots$ die \myemph{Euler-Mascheroni-Konstante}.
+
+\item Es gilt für alle $z\in\CC\setminus\ZZ$ der \myemph{Ergänzungssatz}:
+\[
+	\Gamma(z)\Gamma(1-z)
+	= \frac{\pi}{\sin(\pi z)}
+\]
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+\begin{enumerate}
+\item Es gilt mit \autoref{satz:gamma-fkt} (iii) für $N\in\NN$:
+\[
+	\Gamma(z+N+1)
+	= (z+N)\ldots(z+1)z\Gamma(z)
+	\,.
+\]
+Damit erhält man
+\[
+	\Gamma(z)
+	= \frac{\Gamma(z+N+1)}{z(z+1) \ldots (z+N)}
+\]
+Also
+\[
+	\Gamma(z) = \frac{g(z)}{z-(-N)}
+\]
+wobei $g$ lokal holomorph und $g(-N) \not=0$.
+
+Also besitzt $\Gamma$ in $z=-N$ einen Pol der Ordnung 1 mit Residuen
+\begin{align*}
+	\res_{z=-N} \Gamma(z)
+	&= \lim _{z\to-N} (z+N)\Gamma(z)
+	= g(-N) \\
+	&= \frac{\Gamma(1)}{(-N)(-N+1)(-N+2)\ldots(-1)} \\
+	&= \frac{(-1)^N}{N!}
+	\,.
+\end{align*}
+
+\item Sei $a_n = 1 + \frac{1}{2} + \ldots + \frac{1}{n} - \log(n)$.
+
+Zeige zunächst $a_n$ ist eine konvergente Folge.
+Zunächst gilt
+\[
+	a_n - a_{n+1}
+	= -\frac{1}{n+1} + \log\left(1+\frac{1}{n}\right)
+	\geq 0
+	\,.
+\]
+denn 
+\begin{align*}
+	\log\left(1+\frac{1}{n}\right)
+	&= \int_1^{1+\frac{1}{n}} \frac{1}{t} \opd t
+	\geq \int_1^{1+\frac{1}{n}} \frac{n}{n+1} \opd t \\
+	&= \frac{1}{n}\frac{n}{n+1}
+	= \frac{1}{n+1}
+	\,.
+\end{align*}
+Also ist die Folge $a_n$ monoton fallend.
+Weiter gilt
+\begin{align*}
+	\sum_{\nu=1}^n \frac{1}{\nu}
+	&= \sum_{\nu=1}^n \int_\nu^{\nu+1} \frac{1}{\nu}\opd t
+	\geq \sum_{\nu=1}^n \int_\nu^{\nu+1} \frac{1}{t}\opd t \\
+	&= \int_1^{n+1}\frac{1}{t}\opd t
+	= \log(n+1)
+	\geq \log(n)
+\end{align*}
+
+Also ist $a_n \geq 0$ für alle $n\in\NN$.
+Aus dem Satz über die monotone Folge, folgt, dass die $a_n$ konvergieren.
+Den Grenzwert bezeichnen wir mit $\gamma$.
+
+Nun folgt
+\[
+	\frac{N^z}{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}}
+	= e^{z(Log(N)- 1 - \frac{1}{2} - \frac{1}{3} - \ldots - \frac{1}{N})}
+	\xto{N\to\infty} e^{-\gamma z}
+	\,,
+\]
+also
+\begin{align*}
+	z\Gamma(z)
+	&= \Gamma(z+1) 
+	= \frac{N^{z+1} (N-1)!}{(z+1)(z+2)\ldots(z+N)} \\
+	&= \lim_{N\to\infty} \frac{N^z}{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}} \frac{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}N!}{(z+1)\ldots(z+N)} \\
+	&= e^{-\gamma z} \lim_{N\to\infty} \frac{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}N!}{(z+1)\ldots(z+N)} \\
+	&= e^{-\gamma z} \prod_{n=1}^\infty \left(1+\frac{z}{n}\right)^{-1}e^{\frac{z}{n}}
+	\,.
+\end{align*}
+Damit erhalten wir
+\[
+	\frac{1}{\Gamma(z)}
+	= ze^{\gamma z} \prod_{n=1}^\infty \left(1+\frac{z}{n}\right)e^{-\frac{z}{n}}
+	\,.
+\]
+Insbesondere gilt diese Schreibweise auch für $z\in-\NN_0$.
+
+\item Aus $z\Gamma(z) = \Gamma(z+1)$ für $z\in D_{-\NN_0}$ folgt
+\[
+	\Gamma(1-z)\Gamma(z)
+	= -z \Gamma(-z)\Gamma(z)
+	\,,
+\]
+also für $z\not\in \ZZ$ (\autoref{bsp:nullstellenverteilungen})
+\begin{align*}
+	\frac{1}{\Gamma(1-z)\Gamma(z)}
+	&= -\frac{1}{z\Gamma(-z)\Gamma(z)} \\
+	&= -\frac{1}{z}(-z)ze^{-\gamma z}e^{\gamma z}\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right) \\
+	&= \frac{1}{\pi} \sin(\pi z)
+	\,.
+\end{align*}
+\end{enumerate}
+\end{bewe}
+
+\begin{satz}[Charakterisierung nach Wielandt]
+\begin{enumerate}
+\item Die Gammafunktion ist auf jedem Vertikalstreifen
+\[
+	\Set{z=x+iy \in\CC \mid a \leq x \leq b}
+\]
+mit $0 < a \leq b$ beschränkt.
+
+\item Es sei $D\subseteq D_{-\NN_0}$ ein Gebiet, welches den Vertikalstreifen $\Set{z=x+iy \in\CC \mid 1 \leq x \leq 2}$ enthält.
+Sei $f\colon D\ra \CC$ eine holomorphe Funktion mit den Eigenschaften
+\begin{enumerate}[(a)]
+\item $zf(z) = f(z+1)$ für alle $z, z+1\in D$,
+\item $f$ ist auf dem Streifen $1\leq x \leq 2$ beschränkt.
+\end{enumerate}
+Dann gilt:
+$f(z) = f(1) \Gamma(z)$ für $z\in D$.
+\end{enumerate}
+\end{satz}
+
+\begin{beme}
+Die Voraussetzung $D$ Gebiet darf nicht weggelassen werden.
+Denn sei $D := \Set{z = x+iy\in\CC \mid \frac{1}{2} < x < 3} \dot\cup\ U_1(10)$ und
+\[
+	f(z) :=
+	\begin{cases}
+		\Gamma(z) &\text{wenn } \frac{1}{2} < x < 3 \text{ für } z=x+iy \\
+		0 &\text{sonst}
+	\end{cases}
+	\,.
+\]
+Dann erfüllt $f$ offensichtlich die Bedingungen (a) und (b), aber es gilt nicht $f(z) = \Gamma(z)$ für alle $z\in D$.
+\end{beme}
+
+\begin{bewe}
+\begin{enumerate}
+\item Für beliebiges $z=x+iy\in\CC$ mit $0 < a \leq \Re(z) \leq b$ gilt wegen
+\[
+	\abs{N^z}
+	= \abs{e^{\log(n)(x+iy)}}
+	= N^x
+\]
+und $\abs{w} \geq \Re(w)$ für alle $w\in\CC$:
+\begin{align*}
+	\abs{\Gamma(z)}
+	&= \lim_{N\to\infty} \abs{\frac{N^z(N-1)!}{z(z+1)(z+2)\ldots(z+N-1)}} \\
+	&\leq \lim_{N\to\infty} \frac{N^x(N-1)!}{x(x+1)\ldots(x+N-1)}
+	= \Gamma(x)
+\end{align*}
+und, da $\Gamma$ stetig ist und somit auf dem Kompaktum [a,b] beschränkt ist, ist $\Gamma(x)$ beschränkt.
+
+\item Durch die Vorschrift
+\[
+	f(z+1)
+	= zf(z)
+\]
+wird $f$ holomorph auf $1+D$ fortgesetzt, man erhält also eine holomorphe Funktion auf $D\cup (D+1)$
+Letzteres ist ein Gebiet, da $D$ und $1+D$ Gebiete und $D \cap (1+D)$ enthält die Gerade $\Set{z=x+iy\in\CC \mid x=2}$.
+
+Nach dem Identitätssatz ist die holomorphe Fortsetzung $\widetilde{f}$ von $f$ auf $D\cup (1+D)$ eindeutig bestimmt.
+Verfährt man nach dem selben Prinzip weiter, so erhält man eine eindeutig bestimmte holomorphe Fortsetzung $\widetilde{f}$ von $f$ auf dem Gebiet
+\[
+	D \cup (1+D) \cup (2+D) \cup (3+D) \cup ...
+\]
+
+Ebenso wird $f$ durch die Vorschrift $f(z+1) = zf(z)$ sukzessive auf
+\[
+	D \cup (-1+D) \cup (-2+D) \cup (-3+D) \cup ...
+\]
+meromorph fortgesetzt, mit Polstellen höchstens in den Punkten $-\NN_0$.
+Insgesamt erhält man also eine meromorphe Fortsetzung von $f$ auf ganz $\CC$ mit Polen in $-\NN_0$.
+Wegen des Identitätssatzes gilt global die Funktionalgleichung
+\[
+	zf(z) = f(z+1)
+\]
+und analog zu \autoref{satz:gamma-eigenschaften} (i) erhalten wir eine Laurent-Entwicklung von $f$ in jedem Punkt $z = -N \in -\NN_0$ der Form
+\[
+	f(z)
+	= \frac{(-1)^N}{N!}f(1)\frac{1}{N+z} + \ldots
+	\,.
+\]
+Sei
+\[
+	h(z)
+	= f(z) - f(1)\Gamma(z)
+	\qquad \text{für } z \in D_{-\NN_0}
+	\,.
+\]
+
+Nach \autoref{satz:gamma-eigenschaften} (i) definiert $h$ dann eine ganze Funktion auf $\CC$ und es gilt
+\[
+	h(z+1)
+	= zh(z)
+\]
+aus Stetigkeitsgründen in ganz $\CC$.
+Wegen (i) und (b) ist $h(z)$ beschränkt auf dem Streifen $1 \leq x \leq 2$.
+Es ist $h(z) = \frac{h(z+2)}{z(z+1)}$ für $z\not=0,\ z\not=-1$.
+Sei $-1 \leq x \leq 0$.
+Dann ist $1 \leq x+2 \leq 2$, also folgt aus der Beschränktheit von $h(z)$ in dem Streifen $1\leq x \leq 2$ und wegen $\abs z \geq \abs y$ die Beschränktheit von $h(z)$ in $-1 \leq x \leq 0$, $\abs y \geq 1$.
 \end{enumerate}
 \end{bewe}
