@@ -152,9 +152,7 @@ Nach den Additionstheoremen und wegen $\exp\Log z = z$ gilt außerdem
 	\exp \left(\sum_{n=1}^N \Log p_n - \Log P\right)
 	= \frac{\prod_{n=1}^\infty p_n}{P}
 \]
-Für $z, z' \in \CC$ folgt aus $\exp z = \exp z'$ stets, dass $z-z'\in 2\pi i\ZZ$.
-
-Damit folgt dann \eqref{eq:satz1.6.bewe}.
+Für $z, z' \in \CC$ folgt aus $\exp z = \exp z'$ stets, dass $z-z'\in 2\pi i\ZZ$. Damit folgt dann \eqref{eq:satz1.6.bewe}.
 
 Es gilt
 \[
@@ -199,14 +197,14 @@ Außerdem ist das Produkt unbedingt konvergent, d.\,h. jede Umordnung konvergier
 \begin{bewe}
 \begin{enumerate}
 \item Es gilt
-\begin{align*}
-	\lim_{h\to0} \frac{\Log (1+h)}{h}
-	&= \lim_{h\to0} \frac{\Log (1+h) - \Log 1}{h} \\
+\begin{align}\label{sec2:bewe:log(1+z)/z}
+	\lim_{z\to0} \frac{\Log (1+z)}{z}
+	&= \lim_{z\to0} \frac{\Log (1+z) - \Log 1}{z} \nonumber \\
 	&= \at{\derive \Log z}{z=1}
 	= \at{\frac{1}{z}}{z=1}
 	= 1
 	\,.
-\end{align*}
+\end{align}
 Daher auch
 \[
 	\lim_{h\to0}\,\abs{\frac{\Log (1+h)}{h}} = 1
@@ -224,11 +222,12 @@ Und für Fall 2 lautet die entsprechende Bedingung $\Log (1+a_n) \xto{n\to\infty
 \]
 Also $a_n \xto{n\to\infty} 0$.
 
-Damit folgt, für $\epsilon > 0$, gilt für alle $a_n$ mit $n$ groß genug, dass
+Damit folgt wegen \eqref{sec2:bewe:log(1+z)/z} für alle $a_n$, mit $n$ groß genug und für $\epsilon > 0$ beliebig, dass
 \[
 	(1-\epsilon)\abs{a_n}
 	\leq \abs{\Log(1+a_n)}
 	\leq (1+\epsilon)\abs{a_n}
+	\,.
 \]
 
 Die Aussage des Satzes folgt jetzt aus dem Majoranten-Kriterium.
@@ -239,7 +238,9 @@ Also ist insbesondere $\prod_{k=1}^\infty (1+a_n)$ konvergent.
 
 Die unbedingte Konvergenz von $\prod_{n\geq N+1}(1+a_n)$  (also auch von $\prod_{n\geq1} (1+a_n)$) folgt wegen (\autoref{satz:konvergenz-unendlicher-produkte} (ii)):
 \[
-	\sum \abs{\Log (1+a_n)} < \infty \Rla \sum \Log (1+a_n) \text{ ist absolut konvergent}
+	\sum \abs{\Log (1+a_n)} < \infty
+	\Rla
+	\sum \Log (1+a_n) \text{ ist unbedingt konvergent}
 \]
 \end{enumerate}
 \end{bewe}
@@ -261,7 +262,7 @@ Es verbleibt zu zeigen, dass $F$ holomorph auf $D$ ist.
 
 Sei $U \subseteq D$ offen mit $\closure U \subseteq D$ kompakt.
 Es genügt Holomorphie von $F$ für beliebiges solches $U$ zu zeigen.
-Da $U$ kompakt ist, ist $\sum_{n=1}^\infty f_n(z)$ auf $\closure U$ (also auch auf $U$) absolut gleichmäßig konvergent.
+Da $\closure U$ kompakt ist, ist $\sum_{n=1}^\infty f_n(z)$ auf $\closure U$ (also auch auf $U$) absolut gleichmäßig konvergent.
 Nach dem notwendigen Konvergenzkriterium für gleichmäßige Konvergenz konvergiert daher $(f_n)_{n\in\NN}$ auf $U$ gleichmäßig gegen Null.
 
 Es gibt also ein $m\in\NN$, so dass für $n > m$ für $z\in U$ gilt
@@ -289,17 +290,17 @@ auf $U$ holomorph.
 \end{bewe}
 
 \begin{erin*}
-Ist $h\colon U_r(z_0) \ra \CC$ holomorph, $h$ nicht identisch Null, $h(z) = (z-z_0)^m g(z)$ mit $m>0$ und $g(z_0) \not= 0$, so nennt man $\ord_ {z=z_0} h = m$ die Ordnung von $z_0$ bezüglich h.
+Ist $h\colon U_r(z_0) \ra \CC$ holomorph, $h$ nicht identisch Null, $h(z) = (z-z_0)^m g(z)$ mit $m\in\ZZ$ und $g(z_0) \not= 0$, so nennt man $\ord_ {z=z_0} h = m$ die Ordnung von $z_0$ bezüglich h.
 \end{erin*}
 
-\emph{Problem:} Gegeben $S\subseteq \CC$ diskret. Zu jedem $s\in S$ sei ein $m_s \in \NN$ gegeben.
+\noindent\emph{Problem:} Gegeben $S\subseteq \CC$ diskret. Zu jedem $s\in S$ sei ein $m_s \in \NN$ gegeben.
 
-\emph{Frage:} Gibt es eine ganze Funktion $h\colon \CC \ra \CC$ derart, dass (i) $h(z) = 0$ genau dann, wenn $z\in S$ und (ii) $\ord_{z=s} h = m_s$ für alle $s \in S$.
+\noindent\emph{Frage:} Gibt es eine ganze Funktion $h\colon \CC \ra \CC$ derart, dass (i) $h(z) = 0$ genau dann, wenn $z\in S$ und (ii) $\ord_{z=s} h = m_s$ für alle $s \in S$.
 
 Man nennt $\Set{(s, m_s) \mid s\in S}$ eine \myemph[Verteilungen!Nullstellenverteilung]{Nullstellenverteilung}.
 Und eine Funktion $h$ wie oben heißt Lösung der Nullstellenverteilung.
 
-\emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von Weierstraß-Produkten konstruieren!
+\noindent\emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von Weierstraß-Produkten konstruieren!
 
 \newdate{2. November 2017}
 
@@ -408,7 +409,7 @@ Jede auf $\CC$ meromorphe Funktion $f$ ist als Quotient zweier ganzer Funktionen
 \begin{bewe}
 Sei $f$ auf $\CC$ meromorph, $S$ die Polstellenmenge von $f$.
 Gelte $S\not= \emptyset$, sonst ist die Aussage klar.
-Für $s \in S$ sei $m_s := \ord_{z=s} f(z)$ (dabei ist die Polstellenordnung gemeint, eine natürliche Zahl).
+Für $s \in S$ sei $m_s := -\ord_{z=s} f(z) \in \NN$.
 Nach \autoref{satz:weierstrasprodukt} existiert eine ganze Funktion $h$ mit Nullstellen genau in den Punkten aus $S$ und so dass die Nullstellenordnung von $h$ in $z=s$ genau $m_s$ ist.
 
 Sei $g:=f \cdot h$.

@@ -4,27 +4,29 @@
 
 \begin{satz}[Partialbruchzerlegung rationaler Funktionen]
 Seien $p, q$ zwei Polynome über $\CC$, $q \not\equiv 0$ und $R(z) = \frac{p(z)}{q(z)}$ für $z\in\CC$ mit $g(q)\not=0$ die zugehörige rationale Funktion.
-Seien $z_1, \ldots, z_h$ die verschiedenen Polstellen mit den Ordnungen $\mu_1,\ldots, \mu_h$.
-Dann gibt es eindeutig bestimmte Polynome $p_1(z), \ldots, p_h(z)$ mit $p_r(0) = 0$ ($r=1,\ldots,h$) und ein eindeutig bestimmtes Polynom $p_0$, so dass gilt
+Seien $z_1, \ldots, z_k$ die verschiedenen Polstellen mit den Ordnungen $\mu_1,\ldots, \mu_k$.
+Dann gibt es eindeutig bestimmte Polynome $p_1(z), \ldots, p_k(z)$ mit $p_r(0) = 0$ ($r=1,\ldots,k$) und ein eindeutig bestimmtes Polynom $p_0$, so dass gilt
 \[
-	R(z) = \sum_{r=0}^h p_r\left(\frac{1}{z-z_r}\right) + p_0(z) \qquad z \in \CC\setminus\Set{z_1, \ldots, z_h}
+	R(z)
+	= \sum_{r=0}^k p_r\left(\frac{1}{z-z_r}\right) + p_0(z)
+	\qquad z \in \CC\setminus\Set{z_1, \ldots, z_k}
+	\,.
 \]
-Außerdem gilt $\grad p_r = \mu_r$ für $r=1,\ldots,h$.
+Außerdem gilt $\grad p_r = \mu_r$ für $r=1,\ldots,k$.
 \end{satz}
 
 \begin{bewe}
-Für jedes $r=1,\ldots,h$ sei $p_r$ der Hauptteil der Laurententwicklung von $R$ bezüglich der Polstelle $z_r$.
+Für jedes $r=1,\ldots,k$ sei $p_r$ der Hauptteil der Laurententwicklung von $R$ bezüglich der Polstelle $z_r$.
 Dann ist $p_r$ ein Polynom vom Grad $\mu_r$.
 Sei
 \[
-	p_0(z) := R(z) - \sum_{r=1}^h p_r\left(\frac{1}{z-z_r}\right)\,.
+	p_0(z) := R(z) - \sum_{r=1}^k p_r\left(\frac{1}{z-z_r}\right)\,.
 \]
-Dann hat $p_0$ keinen Hauptteil mehr, d.\,h. $p_0$ hat in $z_1,\ldots,z_h$ hebbare Singularitäten, ist also auf ganz $\CC$ holomorph.
+Dann hat $p_0$ keinen Hauptteil mehr, d.\,h. $p_0$ hat in $z_1,\ldots,z_k$ hebbare Singularitäten, ist also auf ganz $\CC$ holomorph.
 Aber $p_0$ ist nach Konstruktion eine rationale Funktion.
 Also ist $p_0$ ein Polynom.
-Das heißt es existieren $p_0, \ldots, p_h$ wie behauptet, es verbleibt die Eindeutigkeit zu zeigen.
 
-Sei eine weitere Darstellung wie oben gegeben durch $\tilde{p_0}, \ldots, \tilde{p_h}$.
+Das heißt es existieren $p_0, \ldots, p_k$ wie behauptet, es verbleibt die Eindeutigkeit zu zeigen. Sei eine weitere Darstellung wie oben gegeben durch $\tilde{p}_0, \ldots, \tilde{p}_h$.
 Sei $\nu \in \Set{1,\ldots,k}$.
 Dann gilt
 \begin{align}\label{eq:satz1.1.eind}
@@ -33,17 +35,21 @@ Dann gilt
 	&= p_\nu\left(\frac{1}{1-z_\nu}\right) + \sum_{\substack{r=1\\\scriptscriptstyle r\not=\nu}}^h p_r\left(\frac{1}{1-z_r}\right) + p_0(z)
 	\,. \nonumber
 \end{align}
-Die ersten Summanden sind in einer kleinen punktierten Umgebungen von $z_0$ holomorph, der Rest in der gesamten Umgebung.
-Also ist \eqref{eq:satz1.1.eind} die Laurentzerlegung von $R$ bezüglich $z_nu$.
-Da die Laurententwicklung eindeutig ist, folgt $p_nu = \tilde{p_nu}$.
-Da dies für alle $\nu \in \Set{1,\ldots,k}$ gilt, folgt bereits $p_0 = \tilde{p_0}$.
+Die ersten Summanden sind in einer kleinen punktierten Umgebungen von $z_\nu$ holomorph, der Rest in der gesamten Umgebung.
+Also ist \eqref{eq:satz1.1.eind} die Laurentzerlegung von $R$ bezüglich $z_\nu$.
+Da die Laurententwicklung eindeutig ist, folgt $p_\nu = \tilde{p}_\nu$.
+Da dies für alle $\nu \in \Set{1,\ldots,k}$ gilt, folgt bereits $p_0 = \tilde{p}_0$.
 \end{bewe}
 
-\emph{Ziel:} Man beweise einen ähnlichen Satz für beliebige meromorphe Funktionen auf $\CC$. (Erinnerung: eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung $f\colon \CC\setminus S \ra \CC$, wobei $S\subseteq \CC$ diskret ist, d.\,h. $S$ hat in $\CC$ keinen Häufungspunkt (insbesondere ist $\CC\setminus S$ offen), und die Punkte aus S sind Pole von $f$.)
+\emph{Ziel:} Man beweise einen ähnlichen Satz für beliebige meromorphe Funktionen auf $\CC$.
 
-\emph{Problem:} Ist $S$ unendlich, so ist die Summe über die Hauptteile $\sum _{s \in S} p_s\frac{1}{z-s})$ im Allgemeinen nicht mehr konvergent.
+\begin{erin*}
+Eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung $f\colon \CC\setminus S \ra \CC$, wobei $S\subseteq \CC$ diskret ist, d.\,h. $S$ hat in $\CC$ keinen Häufungspunkt (insbesondere ist $\CC\setminus S$ offen), und die Punkte aus S sind Pole von $f$.
+\end{erin*}
 
-\emph{Lösung:} Man addiere konvergenz erzeugende Summanden!
+\noindent\emph{Problem:} Ist $S$ unendlich, so ist die Summe über die Hauptteile $\sum _{s \in S} p_s(\frac{1}{z-s})$ im Allgemeinen nicht mehr konvergent.
+
+\noindent\emph{Lösung:} Man addiere konvergenz erzeugende Summanden!
 
 \begin{satz}[Partialbruchsatz von Mittag-Leffler]
 \begin{enumerate}
@@ -72,7 +78,7 @@ Sei $K \subseteq \CC$ kompakt, dann ist $K \cap S$ beschränkt.
 
 \emph{Angenommen} $K\cap S$ ist unendlich. Nach Bolzano-Weierstraß hat dann $K \cap S$, also auch $S$, einen Häufungspunkt. \blitz
 
-Also ist $S \cap K$ endlich. Da $\CC = \bigcap_{n \geq 1} \closure{U_n(0)}$ und $\closure{U_n(0)}$ kompakt, ist $S$ abzählbar.
+Also ist $S \cap K$ endlich. Da $\CC = \bigcup_{n \geq 1} \closure{U_n(0)}$ und $\closure{U_n(0)}$ kompakt, ist $S$ abzählbar.
 
 Sei $s_0, s_1, \ldots, s_n, \ldots$ eine Abzählung derart, dass
 \[
@@ -100,12 +106,12 @@ Sei $H$ eine weitere Lösung. Dann haben $h$ und $H$ dieselbe Postellenmenge $S$
 Daraus folgt $g(z) := H(z) - h(z)$ hat in allen Punkten $s\in S$ hebbare Singularitäten, ist also ganz.
 
 \item Sei $\Set{p_s}_{s\in S}$ die angegebene Hauptteilverteilung. Dieser hat als Lösung per Definition $f$.
-Ferner existiert die im Beweis von Satz 2, (i) konstruierte Lösung.
+Ferner existiert die im Beweis von (i) konstruierte Lösung.
 Nach der Eindeutigkeit stimmen daher beide Lösung bis auf eine ganze Funktion $g$ überein.
 \end{enumerate}
 \end{bewe}
 
-\emph{Praktische Anwendung von Satz 2} Gegeben sei eine meromorphe Funktion $f$ auf $\CC$ mit Polstellenmenge $S$.
+\emph{Praktische Anwendung von Satz 1.2} Gegeben sei eine meromorphe Funktion $f$ auf $\CC$ mit Polstellenmenge $S$.
 \begin{enumerate}
 \item Man bestimme die Hauptteile für alle $s\in S$.
 \item Man untersuche $\sum _{s\in S} p_s(\frac{1}{z-s})$ auf Konvergenz und bestimme gegebenenfalls Polynome $q_s$ ($s\in S$) (durch Abbruch der entsprechenden Taylor-Reihe), sodass $\sum _{s\in S} (p_s(\frac{1}{z-s})-q_s(z))$ auf Kompakta $K \subseteq \CC\setminus S$ gleichmäßig absolut konvergiert.
