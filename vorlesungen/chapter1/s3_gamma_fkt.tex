@@ -301,7 +301,7 @@ also für $z\not\in \ZZ$ (\autoref{bsp:nullstellenverteilungen})
 \end{enumerate}
 \end{bewe}
 
-\begin{satz}[Charakterisierung nach Wielandt]
+\begin{satz}[Charakterisierung nach Wielandt]\label{satz:wielandt}\leavevmode
 \begin{enumerate}
 \item Die Gammafunktion ist auf jedem Vertikalstreifen
 \[
@@ -309,7 +309,7 @@ also für $z\not\in \ZZ$ (\autoref{bsp:nullstellenverteilungen})
 \]
 mit $0 < a \leq b$ beschränkt.
 
-\item Es sei $D\subseteq D_{-\NN_0}$ ein Gebiet, welches den Vertikalstreifen $\Set{z=x+iy \in\CC \mid 1 \leq x \leq 2}$ enthält.
+\item Es sei $D\subseteq D_{-\NN_0}$ ein Gebiet, welches den Vertikalstreifen $1 \leq x \leq 2$ enthält.
 Sei $f\colon D\ra \CC$ eine holomorphe Funktion mit den Eigenschaften
 \begin{enumerate}[(a)]
 \item $zf(z) = f(z+1)$ für alle $z, z+1\in D$,
@@ -385,7 +385,7 @@ Sei
 \[
 	h(z)
 	= f(z) - f(1)\Gamma(z)
-	\qquad \text{für } z \in D_{-\NN_0}
+	\qquad \text{für } z \in \CCminusNN
 	\,.
 \]
 
@@ -395,9 +395,275 @@ Nach \autoref{satz:gamma-eigenschaften} (i) definiert $h$ dann eine ganze Funkti
 	= zh(z)
 \]
 aus Stetigkeitsgründen in ganz $\CC$.
+
 Wegen (i) und (b) ist $h(z)$ beschränkt auf dem Streifen $1 \leq x \leq 2$.
-Es ist $h(z) = \frac{h(z+2)}{z(z+1)}$ für $z\not=0,\ z\not=-1$.
+Es ist $h(z) = \frac{h(z+2)}{z(z+1)}$ für $z\in\CCminusNN$.
 Sei $-1 \leq x \leq 0$.
-Dann ist $1 \leq x+2 \leq 2$, also folgt aus der Beschränktheit von $h(z)$ in dem Streifen $1\leq x \leq 2$ und wegen $\abs z \geq \abs y$ die Beschränktheit von $h(z)$ in $-1 \leq x \leq 0$, $\abs y \geq 1$.
+Dann ist $1 \leq x+2 \leq 2$, also folgt aus der Beschränktheit von $h(z)$ in dem Streifen $1\leq x \leq 2$ und wegen $\abs z \geq \abs y$ die Beschränktheit von $h(z)$ in $\Set{z=x+iy\in\CC \mid -1 \leq x \leq 0, 1\leq\abs y}$.
+
+Da $h$ stetig ist und $-1 \leq x \leq 0, \abs y \leq 1$ kompakt ist, ist also $h(z)$ auf $-1\leq x \leq 0$ beschränkt.
+Sei
+\[
+	H(z) = h(z)h(1-z)
+	\qquad \text{für } z\in\CC
+	\,.
+\]
+Dann ist $H$ in $1 \leq x \leq 2$ beschränkt.
+Außerdem ist für alle $z\in\CC^\times$
+\[
+	H(z+1)
+	= h(z+1)h(-z)
+	= \frac{zh(z)h(1-z)}{-z}
+	= -H(z)
+	\,.
+\]
+Also gilt $\abs{H(z+1)} = \abs{H(z)}$ aus Stetigkeitsgründen für alle $z\in\CC$.
+Daher ist $H$ auf $\CC$ beschränkt, nach dem Satz von Liouville folgt damit
+\[
+	H(z)
+	= H(1)
+	= h(1)h(0)
+	= 0
+	\qquad z\in\CC
+	\,,
+\]
+da $h(1) = f(1) - f(1)\Gamma(1) = 0$.
+
+Hieraus folgt $h \equiv 0$, also die Behauptung.
+\emph{Denn} wäre $h(z_0) \not= 0$, so gäbe es aus Gründen der Stetigkeit eine Umgebung $U_\delta(z_0)$ mit $h(w) \not=0$ für alle $w\in U_\delta(z_0)$.
+Damit folgt $h|_{U_\delta(1-z_0)} \equiv 0$, also da $\CC$ ein Gebiet ist mit dem Identitätssatz $h\equiv 0$.
 \end{enumerate}
 \end{bewe}
+
+\begin{satz}[Legendresche Duplikationsformel]
+Es gilt 
+\[
+	\Gamma\left(\frac{z}{2}\right) \Gamma\left(\frac{z+1}{2}\right)
+	= \sqrt{\pi} \cdot 2^{1-z} \cdot \Gamma(z)
+	\qquad \text{für } z\in \CCminusNN
+\]
+\end{satz}
+
+\begin{bewe}
+Wir wollen den Satz von Wielandt (\autoref{satz:wielandt}) benutzen mit
+\[
+	f(z)
+	:= \frac{2^{z-1}\Gamma\left(\frac{z}{2}\right)\Gamma\left(\frac{z+1}{2}\right)}{\sqrt{\pi}}
+	\,.
+\]
+Dann gilt:
+$\CCminusNN$ enthält den Streifen $1\leq x \leq 2$ und $f$ ist dort holomorph.
+Es gilt
+\[
+	f(z+1)
+	= \frac{2^{z}\Gamma\left(\frac{z+1}{2}\right)\Gamma\left(1+\frac{z}{2}\right)}{\sqrt{\pi}}
+	= \frac{z2^{z-1}\Gamma(\frac{z}{2})\Gamma(\frac{z+1}{2})}{\sqrt{\pi}}
+	= zf(z)
+	\,.
+\]
+
+Nach \autoref{satz:wielandt} (i) ist $f$ beschränkt auf $1 \leq x \leq 2$.
+Somit gilt nach dem Satz von Wielandt (\autoref{satz:wielandt})
+\[
+	f(z)
+	= f(1)\Gamma(z)
+	\,.
+\]
+Es gilt weiterhin
+\[
+	f(1)
+	= \frac{\Gamma(\frac{1}{2})\Gamma(1)}{\sqrt{\pi}}
+\]
+und $\Gamma(\frac{1}{2})^2 = \frac{\pi}{\sin(\frac{\pi}{2})} = \pi$ nach dem Ergänzungssatz (\autoref{satz:gamma-eigenschaften}).
+
+Wegen $\Gamma(\frac{1}{2}) > 0$ (folgt aus der Produktformel von Euler (\autoref{satz:gamma-fkt}) gilt somit $\Gamma(\frac{1}{2}) = \sqrt{\pi}$ und damit $f(1) = 1$.
+\end{bewe}
+
+\begin{lemm}\label{lemma:majoranten-int}
+Sei $f\colon (0,1] \ra \RR$ stetig. $f(t) \geq 0$ für alle $t \in\RR$.
+Ist dann
+\[
+	\int_A^1 f(t) \opd t
+	\leq C
+	\qquad \text{für } 0 < A < 1
+	\,,
+\]
+so existiert
+\[
+	\lim_{A\to 0} \int_A^1 f(t) \opd t
+	\,.
+\]
+\end{lemm}
+\begin{bewe}
+Wir müssen zeigen, es gibt $a \in \RR$, so dass für jede Folge $(a_n)_{n\in\NN}$ mit $\lim_{n\to\infty} a_n = 0$ und $a_n > 0$ gilt
+\[
+	\lim_{n\to\infty} \int_{a_n}^1 f(t) \opd t
+	= a
+	\,.
+\]
+Sei zunächst $a_n = \frac{1}{n}$. Die Folge
+\[
+	\left(\int_{\frac{1}{n}}^1 f(t) \opd t\right)_{n\in\NN}
+\]
+ist monoton steigend und nach oben beschränkt, also existiert
+\[
+	a = \lim_{n\to\infty} \int_{\frac{1}{n}}^1 f(t) \opd t
+\]
+als die kleinste obere Schranke.
+
+Sei jetzt $(a_n)_{n\in\NN}$ beliebig und $a_n \xto{n\to\infty} 0$ mit $a_n > 0$ für alle $n\in\NN$.
+Sei $\epsilon > 0$.
+Dann existiert $N_0 \in \NN$ mit
+\[
+	a - \epsilon
+	< \int_{\frac{1}{N_0}}^1 f(t) \opd t
+	\,.
+\]
+Wegen $\lim_{n\to\infty} a_n = 0$ gibt es $N\in\NN$ mit $a_n \leq \frac{1}{N_0}$ für alle $n\in\NN$ mit $N < n$.
+Es folgt
+\[
+	a - \epsilon
+	< \int_{\frac{1}{N_0}}^1 f(t)\opd t
+	\leq \int_{a_n}^1 f(t)\opd t
+	\leq \int^1_{\frac{1}{N_n}} f(t)\opd t
+	\leq a
+	< a+\epsilon
+	\,.
+\]
+
+Damit folgt
+\[
+	\lim_{n\to\infty} \int_{a_n}^1 f(t) \opd t
+	= a
+	\,.
+\]
+\end{bewe}
+
+\begin{satz}[Eulersches Integral]\index{Gamma-Funktion!Eulersches Integral}
+\begin{enumerate}
+\item Das uneigentliche Integral
+\[
+	\int_0^\infty t^{z-1}e^{-t} \opd t
+\]
+mit $t^{z-1} = e^{(z-1)\log(t)}$ ist für $\Re(z) > 0$ absolut konvergent, d.\,h.
+\begin{align*}
+	\lim_{A\to 0} &\int_A^1 t^{\Re(z)-1}e^{-t} \opd t
+	\qquad \text{und} \\
+	\lim_{B\to\infty} &\int_1^B t^{\Re(z)-1}e^{-t} \opd t
+\end{align*}
+existieren.
+
+\item Für $\Re(z) > 0$ ist
+\[
+	\Gamma(z) = \int_0^\infty t^{z-1}e^{-t} \opd t
+\]
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+\begin{enumerate}
+\item Sei $z = x+iy \in\CC$ fest mit $x = \Re(z) > 0$.
+Es ist
+\[
+	\abs{t^{z-1}e^{-t}}
+	= t^{x-1}e^{-t}
+	\leq t^{x-1}
+	\qquad \text{für } t>0
+	\,.
+\]
+
+Daraus folgt, dass
+\[
+	\int_A^1 \abs{t^{z-1}e^{-t}}\opd t
+	\leq \int_A^1 t^{x-1} \opd t
+	= \at{\frac{1}{x}t^x}_A^1
+	= \frac{1}{x} (1-A^x)
+	\mystackrel{$\scriptstyle x > 0$}{\leq} \frac{1}{x}
+\]
+Nach dem Majorantenkriterium für Integrale folgt also die Existenz von
+\[
+	\lim_{A\to 0} \int_A^1 t^{\Re(z)-1}e^{-t} \opd t
+	\qquad \text{für } \Re(z) > 0
+	\,.
+\]
+
+Es gilt weiterhin
+\[
+	t ^{x-1} \leq C\cdot e^{\frac{t}{2}}
+	\qquad \text{für alle } t \geq 1
+\]
+mit geeignetem $C = C(x) > 0$.
+Daher folgt
+\[
+	\int_1^B t^{x-1} \opd t
+	\leq C(x) \int_1^B e^{-\frac{t}{2}} \opd t
+	= 2C(x) (e^{-\frac{1}{2}} -e^{-\frac{B}{2}})
+	\leq 2C(x)e^{\frac{1}{2}}
+	\,.
+\]
+Es folgt, dass 
+\[
+	\lim_{B\to\infty} \int_1^B t^{\Re(z)-1}e^{-t} \opd t
+\]
+existiert.
+
+
+
+\item Wir wollen wieder den Satz von Wielandt (\autoref{satz:wielandt}) benutzen mit
+\[
+	f(z) = \int_0^\infty t^{z-1}e^{-t} \opd t
+\]
+Für $\Re(z) > 0$ ist (Partielle Integration!)
+\[
+	f(z+1)
+	= \int_0^\infty t^ze^{-t} \opd t
+	= -e^{-t}t^z\bigg|_0^\infty - \int_0^\infty zt^{z-1}(-e^{-t}) \opd t
+	= zf(z)
+	\,.
+\]
+Das geht, wegen \autoref{lemma:majoranten-int}. Nach dem Leibniz-Kriterium ist das betrachte Integral holomorph, daher ist partielle Integration gerechtfertigt.
+
+Schließlich ist für $1 \leq x \leq 2$
+\begin{align*}
+	\int_0^\infty \abs{t^{z-1}e^{-t}}
+	&\leq \int_0^\infty t^{x-1}e^{-t} \opd t \\
+	&= \int_0^1 t^{x-1}e^{-t} \opd t + \int_1^\infty t^{x-1}e^{-t} \opd t \\
+	&\leq \int_0^1 e^{-t} \opd t + \int_1^\infty te^{-t} \opd t
+	= 1 + C
+	\qquad \text{für ein } C > 0
+	\,.
+\end{align*}
+Also ist $f(z)$ auf $1 \leq x \leq 2$ beschränkt.
+
+Schließlich muss man noch zeigen, dass $f(z)$ für $\Re(z) > 0$ holomorph ist.
+Es ist leicht zu sehen, dass 
+\[
+	f_n(z) = \int_{\frac{1}{n}}^n t^{z-1}e^{-t} \opd t
+\]
+holomorph ist für alle $n\in\NN$, da $\left[\frac{1}{n}, n\right]$ ein kompaktes Intervall ist (Leibniz-Regel).
+Unter Benutzung ähnlicher Argumente wie in (i) zeigt man, dass $(f_n)_{n\in\NN}$ auf Kompakta  $K\subseteq \Set{Re(z) \geq 0}$ gleichmäßig konvergiert.
+Damit folgt die Behauptung mit dem Satz von Weierstraß und die Aussage des Satzes folgt mit Wielandt (\autoref{satz:wielandt}), da
+\[
+	f(1)
+	= \int_0^\infty e^{-t} \opd t = 1
+\]
+klar ist.
+\end{enumerate}
+\end{bewe}
+
+\noindent\emph{Problem:} Wie verhält sich $\Gamma(z)$ für sehr große Werte $\abs{z}$? Kann man $\Gamma(z)$ dort durch eine \myquote{einfache Funktion} gut approximieren?
+
+\begin{satz}[Stirlingsche Formel]
+\begin{enumerate}
+\item Sei $\CC_- = \Set{z\in\CC \mid z \not= x, x \leq 0}$ die geschlitzte Ebene ohne die negative reelle Achse und $0$. 
+Für $z\in\CC_-$ gilt dann die Darstellung\footnote{Insbesondere gilt für natürliche Zahlen $n\in\NN$ \[(n-1)! \approx \sqrt{2\pi} \cdot n^{n-\frac{1}{2}} \cdot e^{-n}\]}
+\[
+	\Gamma(z) = \sqrt{2\pi} \cdot z^{z-\frac{1}{2}} \cdot e^{-z} \cdot e^{H(z)}
+\]
+mit einer Funktion $H(z)$, welche in jedem Winkelbereich
+\[
+	W_\delta = \Set{z\in\CC_- \mid -\pi + \delta < \Arg(z) < \pi - \delta}
+\]
+für $\abs z \to \infty$ gegen $0$ konvergiert.
+\end{enumerate}
+\end{satz}
