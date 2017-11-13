@@ -37,12 +37,12 @@
 
 \RequirePackage{makeidx} % to create an index page
 \makeindex
-\RequirePackage{idxlayout}
+\RequirePackage[totoc]{idxlayout}
 
-\RequirePackage[]{appendix} %to create an Appendix
-\renewcommand{\appendixname}{Anhang}
-\renewcommand{\appendixtocname}{Anhang}
-\renewcommand{\appendixpagename}{Anhang}
+%\RequirePackage[]{appendix} %to create an Appendix
+%\renewcommand{\appendixname}{Anhang}
+%\renewcommand{\appendixtocname}{Anhang}
+%\renewcommand{\appendixpagename}{Anhang}
 
 %swap the meaning of two commands
 \RequirePackage{letltxmacro}
@@ -62,6 +62,7 @@
 \newcommand{\RR}{\ensuremath{\mathds{R}}}
 \newcommand{\CC}{\ensuremath{\mathds{C}}}
 \newcommand{\EE}{\ensuremath{\mathds{E}}}
+\newcommand{\CCminusNN}{D_{-\NN_0}}
 
 %shorter commands for arrows
 \newcommand{\ra}{\rightarrow}
@@ -112,7 +113,7 @@
 \newcommand{\opd}{\,\mathrm{d}}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\Set}[1]{\left\{\,#1\,\right\}}
-\newcommand\at[2]{\left.#1\,\right|_{#2}}
+\newcommand\at[1]{\left.#1\,\right|}
 \NewDocumentCommand{\derive}{s O{} G{z}}
 {\IfBooleanTF{#1}
     {\frac{\partial#2}{\partial#3}}

@@ -4,10 +4,12 @@ script:
 	pdflatex script.tex
 	makeindex script.idx
 	pdflatex script.tex
+	pdflatex script.tex
 
 silent:
 	pdflatex -interaction=batchmode script.tex
 	makeindex script.idx
+	pdflatex -interaction=batchmode script.tex
 	pdflatex -interaction=batchmode script.tex
 
 clean:
