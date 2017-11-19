@@ -435,7 +435,7 @@ Damit folgt $h|_{U_\delta(1-z_0)} \equiv 0$, also da $\CC$ ein Gebiet ist mit de
 \end{enumerate}
 \end{bewe}
 
-\begin{satz}[Legendresche Duplikationsformel]
+\begin{satz}[Legendresche Duplikationsformel]\label{satz:legendre_dupli}
 Es gilt 
 \[
 	\Gamma\left(\frac{z}{2}\right) \Gamma\left(\frac{z+1}{2}\right)
@@ -653,17 +653,329 @@ klar ist.
 
 \noindent\emph{Problem:} Wie verhält sich $\Gamma(z)$ für sehr große Werte $\abs{z}$? Kann man $\Gamma(z)$ dort durch eine \myquote{einfache Funktion} gut approximieren?
 
-\begin{satz}[Stirlingsche Formel]
+\begin{satz}[Stirlingsche Formel]\label{satz:stirling}\leavevmode
 \begin{enumerate}
-\item Sei $\CC_- = \Set{z\in\CC \mid z \not= x, x \leq 0}$ die geschlitzte Ebene ohne die negative reelle Achse und $0$. 
+\item Sei $\CC_- = \Set{z\in\CC \mid z \not= x \text{ für } x\in\RR\colon x \leq 0}$ die geschlitzte Ebene ohne die negative reelle Achse und $0$. 
 Für $z\in\CC_-$ gilt dann die Darstellung\footnote{Insbesondere gilt für natürliche Zahlen $n\in\NN$ \[(n-1)! \approx \sqrt{2\pi} \cdot n^{n-\frac{1}{2}} \cdot e^{-n}\]}
 \[
-	\Gamma(z) = \sqrt{2\pi} \cdot z^{z-\frac{1}{2}} \cdot e^{-z} \cdot e^{H(z)}
+	\Gamma(z)
+	= \sqrt{2\pi} \cdot z^{z-\frac{1}{2}} \cdot e^{-z} \cdot e^{H(z)}
 \]
 mit einer Funktion $H(z)$, welche in jedem Winkelbereich
 \[
-	W_\delta = \Set{z\in\CC_- \mid -\pi + \delta < \Arg(z) < \pi - \delta}
+	W_\delta
+	= \Set{z\in\CC_- \mid -\pi + \delta < \Arg(z) < \pi - \delta}
+	\qquad \text{mit } \delta > 0
 \]
 für $\abs z \to \infty$ gegen $0$ konvergiert.
+\item Für $x>$ ist
+\[
+	\Gamma(x)
+	= \sqrt{2\pi} \cdot x^{x-\frac{1}{2}} \cdot e^{x-\frac{1}{2}} \cdot e^{\frac{\theta(x)}{12x}}
+\]
+mit $0 < \theta(x) < 1$.
 \end{enumerate}
 \end{satz}
+
+Für den Beweis zeigen wir zunächst einige Lemma.
+
+\begin{lemm}\label{lemma:stirling:hl1}
+Für $z\in\CC_-$ sei
+\[
+	H_0(z) := \left(z+\frac{1}{2}\right)\left(\Log(z+1)-\Log(z)\right) - 1
+\]
+Sei $A=\CC_- \cap \Set{z\in\CC \mid \abs{z+\frac{1}{2}} > \frac{1}{2}}$.
+Für $z\in A$ gilt dann
+\begin{equation}\label{eqn:h0_reihe}
+	H_0(z)
+	= \sum_{\substack{\nu \geq 2 \\ \scriptscriptstyle \nu \text{ gerade}}} \frac{1}{\nu+1} \left(\frac{1}{2z+1}\right)^\nu
+\end{equation}
+\end{lemm}
+
+\begin{bewe}
+Sei $K \subseteq A$ kompakt.
+Dann existiert $c>1$, so dass $\abs{z+\frac{1}{2}} \geq \frac{c}{2}$ für alle $z\in K$, also konvergiert die Reihe \eqref{eqn:h0_reihe} auf Kompakta absolut und gleichmäßig und stellt somit eine in $A$ holomorphe Funktion da.
+Für $x\in\RR$, $x>0$ gilt
+\begin{align*}
+	\log(x+1) - \log(x)
+	&= \log\left(\frac{x+1}{x}\right)
+	= \log\left(\frac{1+\frac{1}{2x+1}}{1-\frac{1}{2x+1}}\right) \\
+	&= \log\left(1+\frac{1}{2x+1}\right) - \log\left(1-\frac{1}{2x+1}\right)\\
+	&= \sum_{\nu \geq 1} \frac{(-1)^{\nu+1}}{\nu} \left(\frac{1}{2x+1}\right)^\nu + \sum_{\nu \geq 1} \frac{1}{\nu}\left(\frac{1}{2x+1}\right)^\nu
+	\,,
+\end{align*}
+wobei sich die letzte Gleichheit aus $0 < \frac{1}{2x+1} < 1$ und
+\[
+	\log(1+\delta) = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}\delta^n
+	\qquad \abs \delta < 1
+\]
+ergibt.
+Damit erhalten wir
+\[
+	\log(x+1) - \log(x)	
+	= 2\cdot\mkern-15mu\sum_{\substack{\nu \geq 1\\ \scriptscriptstyle \nu \text{ ungerade}}} \mkern-10mu \frac{1}{\nu} \left(\frac{1}{2x+1}\right)^\nu.
+\]
+Für $x > 0$ folgt also
+\begin{align*}
+	H_0(x)
+	&= \left(x+\frac{1}{2}\right) (\log(x+1)-\log(x)) - 1 \\
+	&= \left(\sum_{\substack{\nu \geq 1\\ \scriptscriptstyle \nu \text{ ungerade}}} \frac{1}{\nu} \left(\frac{1}{2x+1}\right)^{\nu-1}\right) -1 \\
+	&= \sum_{\substack{\nu \geq 2\\ \scriptscriptstyle \nu \text{ ungerade}}} \frac{1}{\nu} \left(\frac{1}{2x+1}\right)^{\nu - 1}
+\end{align*}
+also gilt \eqref{eqn:h0_reihe} für $z\in A\cap \RR_{\geq 0}$, beide Seiten sind in $A$ holomorphe Funktionen, also gilt \eqref{eqn:h0_reihe} nach dem Identitätssatz.
+\end{bewe}
+
+\begin{lemm}\label{lemma:stirling:hl2}
+Für $z\in\CC_-$ mit $\abs{z+\frac{1}{2}} > 1$ ist
+\[
+	\abs{H_0(z)}
+	\leq \frac{1}{2} \frac{1}{\abs{2z+1}^2}
+	\,.
+\]
+\end{lemm}
+
+\begin{bewe}
+Für $\abs{z+\frac{1}{2}} > 1$ ist $\frac{1}{\abs{2z+1}} < \frac{1}{2}$.
+Mit $w=\frac{1}{2z+1}$ ist für $\abs w < \frac{1}{2}$ dann nach \autoref{lemma:stirling:hl1}
+\begin{align*}
+	\abs{H_0(z)}
+	&\leq \frac{\abs w ^2}{3} + \frac{\abs w ^4}{5} + \frac{\abs w ^6}{7} + \ldots \\
+	&\leq \frac{\abs w ^2}{3} (1 + \abs{w}^2 + \abs{w}^4 + \ldots) \\
+	&\leq \frac{\abs w ^2}{3} \left(1 +\left(\frac{1}{2}\right)^2+\left(\frac{1}{2}\right)^4+ \ldots \right) \\
+	&= \frac{\abs{w}^2}{3} \cdot \frac{1}{1-(\frac{1}{2})^2}
+	= \frac{4}{3} \cdot \frac{\abs{w}^2}{3}
+	\leq \frac{1}{2} \abs{w}^2
+	\,.
+\end{align*}
+\end{bewe}
+
+\begin{lemm}\label{lemma:stirling:hl3}
+Sei
+\[
+	H(z)
+	= \sum_{k=0}^\infty H_0(z+k)
+	\qquad z\in\CC_-
+	\,.
+\]
+\begin{enumerate}
+\item Die Reihe $H(z)$ konvergiert auf jeder Teilmenge $\CC_-$ absolut und gleichmäßig und ist damit eine holomorphe Funktion in $\CC_-$.
+
+\item Es gilt
+\begin{equation}\label{eqn:h_lim}
+	\lim_{\substack{\abs{z}\to\infty\\ \scriptscriptstyle z\in W_\delta}} H(z) = 0
+	\,.
+\end{equation}
+\end{enumerate}
+\end{lemm}
+
+\begin{bewe}
+\begin{enumerate}
+\item Sei $K\subseteq \CC_-$ kompakt.
+Für $n\in\NN_0$, $n$ groß, ist dann
+\[
+	\abs{(z+n) + \frac{1}{2}}
+	= \abs{\left(n+\frac{1}{2}\right) - (-z)}
+	\geq n+\frac{1}{2} - \abs{z}
+	> 1
+	\qquad z\in K
+	\,.
+\]
+Also folgt für solche $n$ für alle $z\in K$ nach \autoref{lemma:stirling:hl2}
+\[
+	\abs{H_0(z+n)}
+	\leq \frac{1}{2} \frac{1}{\abs{2(z+n)+1}^2}
+	\leq \frac{1}{2}\cdot \frac{1}{n^2}
+	\,,
+\]
+falls $n$ zusätzlich noch so groß ist, dass $2(x+n) + 1 \geq n$, d.\,h. $x \geq \frac{-(n+1)}{2}$.
+
+Weil $\sum_{n=0}^\infty \frac{1}{n^2}$ absolut konvergiert, also $H(z)$ auf $K$ gleichmäßig absolut konvergiert, ist $H(z)$ auf $\CC_-$ holomorph.
+
+
+
+\item Es genügt \eqref{eqn:h_lim} für kleines $\delta$, z.\,B. $\delta < \frac{\pi}{2}$, zu zeigen.
+Dann ist
+\[
+	W_\delta
+	= \Set{z = x+iy\in\CC \mid x > 0 \text{ oder } \abs{y} > C\abs{x}}
+\]
+mit geeignetem $C = C(\delta) > 0$.
+
+Offenbar gibt es $N(\delta) \in \NN$ so dass für alle $n \geq N(\delta)$ und $z\in W_\delta$ gilt
+\[
+	z+n \in \CC_-
+	\text{ und }
+	\abs{(z+n)+\frac{1}{2}} > 1
+	\,.
+\]
+Also folgt nach \autoref{lemma:stirling:hl2}
+\begin{align*}
+	\abs{H_0(z+n)}
+	&\leq \frac{1}{2} \frac{1}{\abs{2(z+n)+1}^2} \\
+	&= \frac{1}{2} \frac{1}{(2x+2n+1)^2+4y^2}
+	\qquad \forall n \geq N(\delta), z\in W_\delta
+\end{align*}
+
+Für $x > 0$ ist
+\[
+	(2x+2n+1)^2+4y^2\geq (2n+1)^2
+	\,.
+\]
+
+Für $\abs{y} > c\abs x$ ist
+\begin{align*}
+	(2x+2n+1)^2+4y^2
+	&\geq (2x+2n+1)^2 + 4C^2x^2 \\
+	&\geq (2x_{0,n} + 2n + 1)^2 + 4C^2x_{0,n}^2
+	\geq 4C^2x_{0,n}^2
+\end{align*}
+mit $x_{0,n} = -\frac{2n+1}{2+2C^2}$, denn die Funktion $x\mapsto (2x+2n+1)^2+4C^2x^2$ für $x\in\RR$ nimmt ihr Minimum in $x_{0,n}$ an (Analysis 1).
+Es folgt daher
+\[
+	\abs{H_0(z+n)} \leq C_1\cdot \frac{1}{(2n+1)^2}
+	\qquad \forall n\geq N(\delta), z \in W_\delta
+\]
+mit geeignetem $C_1 = C_1(\delta) > 0$.
+
+Sei $\epsilon > 0$. Da $\sum_{n=0}^\infty \frac{1}{(2n+1)^2} < \infty$, existiert $N(\epsilon) \in \NN$ mit $\sum_{n\geq N(\epsilon)} \frac{1}{(2n+1)^2} \leq \epsilon$.
+Sei $N := \max (N(\delta),\,N(\epsilon))$.
+Für $z\in W_\delta$ folgt dann
+\[
+	\sum_{n\geq N} \abs{H_0(z+n)} \leq C'\sum_{n\geq N} \frac{1}{(2n+1)^2}
+	\leq C'\epsilon
+	\,.
+\]
+Sei $n < N$. Für $z\in W_\delta$, $\abs z$ groß, ist dann
+\[
+	\abs{(z+n) + \frac{1}{2}}
+	= \abs{z-\left(-n-\frac{1}{2}\right)}
+	\geq \abs z - \abs{n+\frac{1}{2}}
+	> 1
+	\,.
+\]
+Also gilt nach \autoref{lemma:stirling:hl2} für solche $n$ und $z$
+\[
+	\abs{H_0(z+n)}
+	\leq \frac{1}{2} \frac{1}{\abs{2(z+n)+1}^2}
+	\longrightarrow 0
+	\qquad \text{für } \abs z \to \infty,\, z \in W_\delta
+\]
+Insgesamt folgt also
+\[
+	\lim_{\substack{\abs{z}\to\infty\\ \scriptscriptstyle z\in W_\delta}} H(z) = 0
+	\,.
+\]
+\end{enumerate}
+\end{bewe}
+
+\begin{lemm}\label{lemma:stirling:hl4}
+Sei 
+\[
+	h(z) = z^{z-\frac{1}{2}}e^{-z}e^{H(z)}
+	\,.
+\]
+\begin{enumerate}
+\item Dann gilt
+\[
+	h(z+1)
+	= zh(z)
+\]
+\item $h(z)$ ist beschränkt in $1 \leq x \leq 2$.
+\end{enumerate}
+\end{lemm}
+
+\begin{bewe}
+\begin{enumerate}
+\item Es ist $h(z) = \exp((z-\frac{1}{2})\Log(z) - z + H(z))$, also folgt
+\begin{align*}
+	\frac{h(z+1)}{h(z)}
+	&= \exp\left( \left(z+\frac{1}{2}\right)\Log(z+1) - (z+1)+H(z+1)\right. \\
+	&\qquad - \left.\left(\left(z-\frac{1}{2}\right)\Log(z) - z + H(z)\right) \right) \\
+	&= \exp((H(z+1) - H(z) + H_0(z) + \Log(z))
+	= z
+	\,,
+\end{align*}
+wegen der Teleskopsumme
+\begin{align*}
+	H(z+1) - H(z)
+	&= \sum_{k=0}^\infty H_0(z+k+1) - \sum_{k=0}^\infty H_0(z+k) \\
+	&= -H_0(z)
+	\,.
+\end{align*}
+
+
+
+
+\item Die Funktion $e^{-z}$ ist auf $1 \leq x \leq 2$ beschränkt. Im Winkelbereich $W_{\frac{\pi}{2}}$ gilt $H(z) \xto{\abs z \to \infty} 0$ nach \autoref{lemma:stirling:hl3}, insbesondere ist $e^{H(z)}$ in $1 \leq x \leq 2$ beschränkt.
+Es ist
+\[
+	\abs{z^{z-\frac{1}{2}}}
+	= \abs{e^{(z-\frac{1}{2})\Log(z)}}
+	= e^{\Re\left(\left(z-\frac{1}{2}\right)\Log(z)\right)}
+\]
+und
+\begin{align*}
+	\Re\left( \left(z-\frac{1}{2}\right)\Log(z)\right)
+	&= \Re\left( \left(x-\frac{1}{2} + iy\right) \left(\log\abs z+ i \Arg(z)\right)\right) \\
+	&= \left(x-\frac{1}{2}\right)\log\abs{z} - y \Arg(z) \\
+	&\mystackrel{$y\not=0$}{=} y \left(\left(x-\frac{1}{2}\right)\frac{\log\abs z}{y} - \Arg(z)\right)
+	\,.
+\end{align*}
+\end{enumerate}
+\end{bewe}
+
+\begin{bewe}[Stirlingsche Formel \autoref{satz:stirling}]\leavevmode
+\begin{enumerate}
+\item Nach dem Satz von Wielandt (\autoref{satz:wielandt}) folgt mit \autoref{lemma:stirling:hl4}
+\[
+	\Gamma(z) = Ah(z)
+\]
+für ein $A\in\CC^\times$.
+Nach der Legendreschen Duplikationsformel (\autoref{satz:legendre_dupli}) ist für ein $n\in\NN$:
+\begin{align*}
+	\sqrt{\pi}
+	&= 2^{n-1} \frac{\Gamma(\frac{n}{2}) \Gamma(\frac{n+1}{2})}{\Gamma(n)}
+	= 2^{n-1} \frac{h(\frac{n}{2}) h(\frac{n+1}{2})}{h(n)} \cdot A \\
+	&= A \cdot 2^{n-1}\frac{\left(\frac{n}{2}\right)^{\frac{n}{2}-1} e^{-\frac{n}{2}} e^{H(\frac{n}{2})} \cdot \left(\frac{n+1}{2}\right)^{\frac{n+1}{2}-1} e^{-\frac{n+1}{2}} e^{H(\frac{n+1}{2})}}{n^{n-\frac{1}{2}}e^{-n}e^{H(n)}} \\
+	&= A \cdot 2^{-\frac{1}{2}}n^{-\frac{n}{2}}(1+n)^{\frac{n}{2}} e^{-\frac{1}{2}} e^{H(\frac{n}{2})+H(\frac{n+1}{2}) - H(n)} \\
+	&= A\cdot (2e)^{-\frac{1}{2}} \left(1+\frac{1}{n}\right)^\frac{n}{2} \cdot e^{H(\frac{n}{2})+H(\frac{n+1}{2}) - H(n)} \\
+	&\xto{n\to\infty} \frac{A}{\sqrt{2}}
+\end{align*}
+Also $A = \sqrt{2\pi}$. Das beweist (i).
+
+
+
+\item Nach (i) ist für $x > 0$
+\[
+	\Gamma(x) = \sqrt{2\pi} \cdot x^{x-\frac{1}{2}} e^{-x} e^{H(x)}
+\]
+für $x>0$ ist mit $w = \frac{1}{2x+1}$ nach \autoref{lemma:stirling:hl1}
+\[
+	H_0(x) = \sum_{\substack{\nu\geq 2 \\ \scriptscriptstyle \nu \text{ gerade}}} \frac{1}{\nu+1}w^\nu
+	= \frac{1}{3}w^2 + \frac{1}{5}w^4 + \ldots
+\]
+also folgt
+\begin{align*}
+	0
+	&< H_0(x)
+	< \frac{1}{3}w^2 (1+w^2+w^4+\ldots) \\
+	&= \frac{1}{3}w^2 \frac{1}{1-w^2}
+	= \frac{1}{3} \cdot \frac{1}{(2x+1)^2-1} \\
+	&= \frac{1}{12(x+1)x}
+	= \frac{1}{12} \cdot \left( \frac{1}{x} - \frac{1}{x+1} \right)
+\end{align*}
+
+Daber gilt für $x > 0$
+\begin{align*}
+	0
+	&< H(x)
+	= \sum_{n=0}^\infty H_0(x+n) \\
+	&< \frac{1}{12} \sum_{n=0}^\infty \left(\frac{1}{x+n} - \frac{1}{x+1+n}\right) \\
+	&= \frac{1}{12} \lim_{N\to\infty} \sum_{k=0}^N \left(\frac{1}{x+n} - \frac{1}{x+1+n}\right) \\
+	&= \frac{1}{12}\lim_{N\to\infty} \left(\frac{1}{x}-\frac{1}{x+N+1}\right)
+	= \frac{1}{12x}
+	\,.
+\end{align*}
+Mit $\theta(x) = 12x\cdot H(x)$ folgt die Behauptung.
+\end{enumerate}
+\end{bewe}
