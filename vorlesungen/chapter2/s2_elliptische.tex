@@ -1,0 +1,44 @@
+\section{Elliptische Funktionen}
+
+\subsection{Einführung}
+
+\emph{Problem} Gibt es nicht-konstante holomorphe bzw. meromorphe Funktionen $f$ auf $\CC$ mit zwei über $\RR$ linear unabhängigen Perioden, d.\,h. existieren $\omega_1, \omega_2 \in \CC\setminus\{0\}$, die über $\RR$ linear unabhängig sind und so dass $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$.
+
+\begin{erin*}
+Eine auf $\CC$ meromophe Funktion ist eine Abbildung $f\colon \CC \ra \closure \CC = \CC \cup \{\infty\}$ derart, dass $S(f) = f^{-1}(\{\infty\})$ diskret in $\CC$ ist, die Einschränkung $f_0 = f|_{\CC\setminus S(f)}$ holomorph ist und alle Punkte aus $S(f)$ Pole von $f_0$ sind.
+
+Sind $f, g$ auf $\CC$ meromorph, so ist $f_0 + g_0$ auf $\CC\setminus(S(f) \cup S(g))$ holomorph und hat in $S(f) \cup S(g)$ nur unwesentliche Singularitäten, also lässt sich $f_0 + g_0$ eindeutig zu einer auf $\CC$ meromorphen Funktion $f+g$ fortsetzen.
+Genauso kann man $f\cdot g$, $f'$ und $\frac{f}{g}$ (für $g\not\equiv 0$) als meromorphe Funktionen definieren. Damit bilden die auf $\CC$ meromorphen Funktionen einen Körper.
+\end{erin*}
+
+\begin{defi}
+Eine Teilmenge $L \subseteq \CC$ heißt \myemph{Gitter}\footnote{Im Englischen \emph{lattice}, deshalb werden Gitter mit $L$ bezeichnet.}, falls es über $\RR$ linear unabhängige Zahlen $\omega_1, \omega_2\in\CC$ gibt, so dass
+\[
+	L = \Set{ m_1\omega_1 + m_2 \omega_2 \mid m_1, m_2 \in \ZZ}
+	=: \ZZ\omega_1 \oplus \ZZ\omega_2
+	\,.
+\]
+Man nennt $\Set{\omega_1, \omega_2}$ eine \myemph[Gitter!Basis]{Basis} des Gitters $L$.
+\end{defi}
+
+\begin{bsp}
+Ein [Bild, siehe altes Skript]
+\end{bsp}
+
+\begin{beme}
+\begin{enumerate}
+\item Man zeigt leicht: $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass 
+\[
+	\begin{pmatrix}
+		\omega_1' \\
+		\omega_2'
+	\end{pmatrix}
+	= M \cdot
+		\begin{pmatrix}
+		\omega_1 \\
+		\omega_2
+	\end{pmatrix}
+	\,.
+\]
+\end{enumerate}
+\end{beme}

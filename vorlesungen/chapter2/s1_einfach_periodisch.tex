@@ -1,0 +1,170 @@
+\section{Einfach periodische Funktionen}
+
+\begin{defi}
+Sei $D \subseteq \CC$. Es gebe ein $\omega \in \CC\setminus\{0\}$ derart, dass aus $z\in D$ folgt, dass $z+\omega \in D$. Sei $f\colon D\ra \CC$. Gilt dann $f(z+\omega) = f(z)$ für alle $z \in D$, so heißt $f$ \myemph{einfach periodisch} mit Periode $\omega$.
+\end{defi}
+
+\begin{bsp}
+$e^z$ hat die Periode $2\pi i$ auf ganz $\CC$. Und $\sin z, \cos z$ haben Periode $2\pi$.
+\end{bsp}
+
+Hat $f\colon D \ra \CC$ die Periode $\omega$, so hat $g\colon \frac{1}{\omega}D \ra \CC$ mit $g(z) = f(\omega z)$ Periode 1.
+
+Die einfachste nicht-konstante auf $\CC$ holomorphe Funktion mit Periode 1 ist $e^{2\pi i z}$.
+Diese wird eine wichtige Rolle spielen: wir werden periodische Funktionen $f$ mit Periode 1 durch Summen von Potenzen $(e^{2\pi iz})^n$ für $n\in\ZZ$ ausdrücken.
+Wir werden annehmen, dass $D$ ein Streifen $D_{a,b} := \Set{z\in \CC \mid a < \Im(z) < b}$ mit $-\infty \leq a < b \leq \infty$ ist.
+Zum Beispiel $D = D_{0,\infty} = \Set{z\in\CC \mid \Im(z) > 0} =: \HH$ die obere Halbebene.
+
+\begin{satz}\label{satz:fourierentwicklung}
+Sei $f\colon D_{a,b} \ra \CC$ holomorph mit Periode 1.
+Dann lässt sich $f$ auf $D_{a,b}$ in eine Fourierreihe entwickeln, d.\,h. es gilt
+\[
+	f(z)
+	= \sum_{n=-\infty}^\infty a_ne^{2\pi inz}
+	\qquad \text{für } z\in D_{a,b}
+\]
+mit eindeutig bestimmten Koeffizienten $a_n\in\CC$ für $n\in\ZZ$.
+Diese konvergiert gleichmäßig und absolut auf Kompakta.
+Es gilt
+\[
+	a_n = \int_0^1 f(z)e^{-2\pi inz} \opd x
+	\qquad \text{für alle } n\in\ZZ
+\]
+wobei $z=x+iy_0$ mit $y_0\in (a,b)$ fest gewählt.
+(Zu beachten ist hier, dass über die reelle Variable $x$ integriert wird).
+\end{satz}
+
+\begin{bewe}
+Schreibe $D = D_{a,b}$. Betrachte die Abbildung
+\[
+	D\ra \CC, z\mapsto q := e^{2\pi iz}
+	\,.
+\]
+Diese bildet $D$ surjektiv auf das Ringgebiet
+\[
+	\mathcal{R} = \Set{q\in\CC \mid r < \abs q < R}
+\]
+mit $r := e^{-2\pi b}$ und $R := e^{-2\pi a}$ ab (\emph{Konvention} $R=\infty$, falls $a=-\infty$ und $r=0$ falls $b=\infty$). Denn es gilt $r < \abs q < R$, genau dann wenn $e^{-2\pi b} < e^{-2\pi y} < e^{-2\pi a}$, also wenn $a < y < b$.
+
+Setze $F\colon \mathcal R \ra \CC$ mit $F(q) := f(z)$ für $q = e^{2\pi iz}$. Beachte: dies ist wohldefiniert, denn ist $e^{2\pi iz} = e^{2\pi iz'}$, so folgt $z - z' \in \ZZ$, also $z' = z +n$, aber $f(z+n) = f(z)$, da $f$ periodisch ist.
+
+\emph{Behauptung} $F$ ist auf $\mathcal R$ holomorph.
+%Suggestiv nach Leibniz-Kalkül:
+%\[
+%	\derive{q} F(q)
+%	= \derive{(e^{2\pi iz})} F(e^{2\pi iz})
+%	= \frac{1}{\derive (e^{2\pi iz})} \cdot \derive F(e^{2\pi iz})
+%	= \frac{1}{2\pi i\cdot e^{2\pi iz}} \cdot f'(z) 
+%\]
+
+\emph{Denn:} Sei $q_0 \in \mathcal R$ fest. Betrachte $\lim_{q\to q_0} \frac{F(q) - F(q_0)}{q-q_0}$. Wähle dafür eine beliebige Folge $q_\nu = e^{2\pi iz_\nu}$, $q_0 = e^{2\pi iz_0}$ mit $q_\nu \to q_0$ und $q_\nu \not= q_0$ für alle $\nu \in \NN$.
+Es ist 
+\[
+	q_\nu - q_0
+	= e^{2\pi z_\nu} - e^{2\pi z_0}
+	= e^{2\pi z_0} \cdot (e^{2\pi (z_\nu-z_0)} - 1)
+\]
+
+Damit folgt $e^{2\pi (z_\nu-z_0)} \xto{\nu\to\infty} 1$, also $\Log e^{2\pi (z_\nu-z_0)} \xto{\nu\to\infty} \Log 1 = 0$.
+Aber es gibt $m_\nu \in \ZZ$, so dass gilt
+\[
+	\Log e^{2\pi i(z_\nu-z_0)}
+	= 2\pi i(z_\nu - z_0) + 2\pi im_\nu
+	= 2\pi i(\underbrace{z_\nu + m_\nu}_{=: z_\nu'}) + 2\pi iz_0
+\]
+und somit $z_\nu' \to z_0$.
+
+Daher
+\begin{align*}
+	\lim_{\nu \to \infty} \frac{F(q_\nu)-F(q_0)}{q_\nu - q_0}
+	&= \lim_{\nu \to \infty} \frac{f(z_\nu)-f(z_0)}{e^{2\pi iz_\nu} - e^{2\pi iz_0}}
+	= \lim_{\nu \to \infty} \frac{f(z_\nu')-f(z_0)}{e^{2\pi iz_\nu'} - e^{2\pi iz_0}} \\
+	&= \lim_{\nu\to\infty} \frac{1}{\frac{e^{2\pi iz_\nu'} - e^{2\pi iz_0}}{z_\nu'-z_0}} \cdot \frac{f(z_\nu') - f(z_0)}{z_\nu'-z_0} \\
+	&= \frac{1}{2\pi ie^{2\pi iz_0}} f'(z_0)
+	\,.
+\end{align*}
+
+Wende nun den Satz über die Laurent-Entwicklung auf $F$ an, mit diesem gilt:
+\[
+	F(q) = \sum_{n=-\infty}^\infty a_nq^n
+	\qquad \text{für } q\in \mathcal R
+\]
+mit eindeutig bestimmten Koeffizienten $a_n$, insbesondere ist die Reihe gleichmäßig und absolut konvergent auf Kompakta. Und
+\[
+	a_n = \frac{1}{2\pi i} \int_{\abs q = \rho} \frac{F(q)}{q^{n+1}} \opd q
+	\qquad \text{für alle } n\in\ZZ
+	\,,
+\]
+wobei über die Kreislinie, die genau einmal im mathematisch positiven Sinn um 0 mit dem Radius $\rho$ läuft, integriert wird. Diese wird gegeben durch $\rho e^{2\pi ix}$ mit $0 \leq x \leq 1$.
+Damit folgt
+\[
+	a_n
+	= \frac{1}{2\pi i} \int_0^1 \frac{F(\rho e^{2\pi ix})}{(\rho e^{2\pi ix})^{n+1}} \cdot \rho \cdot 2\pi i \cdot e^{2\pi ix} \opd x
+	= \int_0^1 \frac{F(\rho e^{2\pi ix})}{(\rho e^{2\pi ix})^n} \opd x
+\]
+Wähle nun $\rho = e^{-2\pi y_0}$ mit $a < y_0 < b$, dann $e^{2\pi iz} = e^{-2\pi y_0} \cdot e^{2\pi ix} = \rho \cdot e^{2\pi ix}$.
+Also erhalten wir
+\[
+	a_n = \int_0^1 f(z)e^{-2\pi inz} \opd x
+	\qquad \text{für alle } n\in\ZZ
+	\,.
+\]
+\end{bewe}
+
+\begin{bsp}
+Sei $D = D_{0, \infty} = \HH$. Sei $k \in \NN$, $k \geq 2$. Dann gilt
+\begin{equation}\label{eq:bsp2.4}
+	\sum_{n\in\ZZ} \frac{1}{(z+n)^k}
+	= \frac{(-2\pi i)^k}{(k-1)!} \sum_{n\geq 1} n^{k-1} e^{2\pi inz}
+	\,.
+\end{equation}
+\end{bsp}
+
+\begin{bewe}
+Die Reihe links in \eqref{eq:bsp2.4} ist auf $\CC\setminus\ZZ$ lokal gleichmäßig konvergent (Beweis ähnlich wie in \autoref{bsp:partialbruch_cot} für k=2). Daher ist dies eine holomorphe Funktion auf $\CC\setminus\ZZ$ also auch auf $\HH$. Wegen der absoluten Konvergenz ist die Reihe periodisch mit Periode 1, hat also eine Fourierentwicklung nach \autoref{satz:fourierentwicklung}.
+
+Mit der Partialbruchzerlegung des Kotangens (\autoref{bsp:partialbruch_cot}) folgt nun
+\begin{align*}
+	\pi\cot \pi z
+	&= \frac{1}{z} + \sum_{n\not=0} \left(\frac{1}{z-n} + \frac{1}{n}\right) \\
+	&= \frac{1}{z} + \sum_{n\geq 1} \left(\frac{1}{z-n} + \frac{1}{z+n}\right)
+	\qquad \text{für } z \in \CC\setminus\ZZ
+	\,.
+\end{align*}
+
+Aber es gilt auch
+\begin{align*}
+	\pi \cot \pi z
+	&= \pi \frac{\cos \pi z}{\sin \pi z}
+	= \pi \frac{\frac{e^{\pi iz}+e^{-\pi iz}}{2}}{\frac{e^{\pi iz} - e^{-\pi iz}}{2i}} \\
+	&= \pi i \frac{e^{\pi iz}+e^{-\pi iz}}{e^{\pi iz} - e^{-\pi iz}}
+	= \pi i \frac{e^{2\pi iz}+1}{e^{2\pi iz}-1}
+	= \pi i \frac{q+1}{q-1} \\
+	&= \pi i \frac{q-1+2}{q-1}
+	= \pi i \left(1-\frac{2}{1-q}\right)  \\
+	&= \pi i - 2\pi i \sum_{n\geq 0} q^n
+	\,.
+\end{align*}
+
+Also
+\[
+	\frac{1}{z} + \sum_{n\geq 1} \left(\frac{1}{z+n} + \frac{1}{z-n}\right)
+	= \pi i - 2\pi i \sum_{n\geq 0} e^{2\pi inz}
+	\qquad \text{für } z \in \HH
+	\,.
+\]
+
+Ableiten beider Seiten gibt
+\begin{align*}
+	-\sum_{n\in\ZZ} \frac{1}{(z+n)^2}
+	&= -\frac{1}{z^2} - \sum_{n\geq 1} \left(\frac{1}{(z+n)^2} + \frac{1}{(z-n)^2}\right) \\
+	&\mystackrel{!}{=} (-2\pi i)(2\pi i) \sum_{n\geq 1} ne^{2\pi inz}
+\end{align*}
+Also folgt der Fall $k=2$:
+\[
+	\sum_{n\in\ZZ} \frac{1}{(z+n)^2}
+	= (2\pi i)^2 \sum_{n\geq 1} ne^{2\pi inz}
+	\,.
+\]
+Für die höheren Fälle $k > 2$ leitet man die Identität für $k=2$ sukzessive ab.
+\end{bewe}

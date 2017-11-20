@@ -22,7 +22,5 @@ clean:
 	rm -f *.ilg
 	rm -f *.loe
 	rm -f *.synctex.gz
-	rm -f vorlesungen/chapter0/*.aux
-	rm -f vorlesungen/chapter0/*.log
-	rm -f vorlesungen/chapter1/*.aux
-	rm -f vorlesungen/chapter1/*.log
+	rm -f vorlesungen/chapter*/*.log
+	rm -f vorlesungen/chapter*/*.aux
