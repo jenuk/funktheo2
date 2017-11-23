@@ -1,10 +1,21 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mypackage}[2017/10/20 My Package]
 
-% Declares Options:
-% colorful - prints myemph and thm headings in color
-% no-proof - ignores bewe enviroment
-% no-indent - no hang-indent for theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% colorful  - prints myemph and thm headings in color
+% no-proof  - ignores bewe enviroment
+% no-indent - no automatic hang-indent for theorems
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
@@ -22,28 +33,18 @@
 \RequirePackage{stmaryrd} % \lightning
 \RequirePackage[dvipsnames]{xcolor} %makes things colorful
 \RequirePackage{etoolbox} % AtBeginEnviroment, AtEndEnviroment
-%\RequirePackage{miama} % qed - font %was too small
 \RequirePackage{aurical} % qed - font
 \RequirePackage{bm} % poor man bold, \bm
 \RequirePackage{nicefrac} % \nicefrac
 \RequirePackage{comment} % comment enviroments for shorter versions
 \RequirePackage{xparse} % for complex macros
 
-%\RequirePackage[inline, marginclue]{fixme} % includes colorful notes to fix in the future (use the draft Option in your documentclass, if there are notes)
-%\fxsetup{theme=color}
-
-\RequirePackage{tikz} % for painting and stuff
+\RequirePackage{tikz} % for drawing and stuff
 \usetikzlibrary{angles, patterns, quotes, calc, intersections}
 
 \RequirePackage{makeidx} % to create an index page
 \makeindex
-%\RequirePackage[nottoc]{tocbibind}
 \RequirePackage[totoc]{idxlayout}
-
-%\RequirePackage[]{appendix} %to create an Appendix
-%\renewcommand{\appendixname}{Anhang}
-%\renewcommand{\appendixtocname}{Anhang}
-%\renewcommand{\appendixpagename}{Anhang}
 
 %swap the meaning of two commands
 \RequirePackage{letltxmacro}
@@ -55,6 +56,12 @@
 
 
 %\setlength\parindent{0pt} % no automatic indention for new par
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % defining various sets
 \newcommand{\NN}{\ensuremath{\mathds{N}}}
@@ -73,13 +80,13 @@
 \newcommand{\Rla}{\Longleftrightarrow}
 \newcommand{\xto}{\xrightarrow}
 
-%defines \abs and \norm
+% Define Paired Delimiters
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-% Swap the definition of \abs* and \norm*, so that \abs
-% and \norm resizes the size of the brackets, and the
+% Swap the definition of \abs* etc., so that \abs
+% resizes the size of the brackets, and the
 % starred version does not.
 \makeatletter
 \let\oldabs\abs
@@ -92,15 +99,19 @@
 \def\floor{\@ifstar{\oldfloor}{\oldfloor*}}
 \makeatother
 
+
+
 %swap some greek letters
 \swap{\phi}{\varphi}
 \swap{\epsilon}{\varepsilon}
 \swap{\theta}{\vartheta}
+
 %making leqslant and geqslant the default
 \let\leqold\leqslant
 \let\geqold\geqslant
 \swap{\leq}{\leqold}
 \swap{\geq}{\geqold}
+
 %using widetilde instead of tilde
 \let\tildeold\widetilde
 \swap{\tilde}{\tildeold}
@@ -137,6 +148,17 @@
 \newcommand{\mail}[1]{\texttt{\href{mailto:#1}{#1}}}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Fonts and Utilities
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %for special emphasis
 %for black and white output
 \newcommand{\myemphfont}{\scshape}
@@ -150,7 +172,6 @@
     \renewcommand{\myheadfont}{\color{TealBlue!50!NavyBlue}\bfseries}
 }
 
-%\newcommand{\myemph}[1]{{\index{#1}\myemphfont #1}}
 \NewDocumentCommand{\myemph}{o m}
 {\IfValueTF{#1}
     {{\index{#1}\myemphfont #2}}
@@ -160,86 +181,101 @@
 
 %redefining qed
 \renewcommand{\qedsymbol}{\text{\Fontlukas\bfseries\slshape\myheadfont q.\,e.\,d.}}
-%\renewcommand{\qedsymbol}{\text{\Large\fmmfamily\myheadfont q.\,e.\,d.}}
 
-%for no hanging indent change this length to 0em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Defining hang indented Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% approximately same indent as in enumerate
 \newlength\myhangindent
-\setlength{\myhangindent}{1.5em}
+\setlength{\myhangindent}{2.5em}
 
-\makeatletter
-%Hanging paragraphs
-\newenvironment{hang}[1][\myhangindent]
-{\let\OLDPAR\par\hangindent#1\def\par{\OLDPAR\hangindent#1\parindent#1} \noindent\ignorespaces}
-%{\let\par\OLDPAR \par}
-{\par}
-\AfterEndEnvironment{hang}{\par\@afterindentfalse\@afterheading}
+% xdeclaretheoremstyle declares multiple styles
+%     - name:        nothing changes to \declaretheoremstyle
+%     - name-list:   theorem starts and ends with enumerate
+%     - name-indent: theorem is hangindented by \myhangindent
 
-%for hang-indented theorems
-%\begin{stackoverflow-magic}
 
-\newcommand{\dummy}[1]{#1}
-\newcommand{\xdeclaretheorem}[2][]{%
-  \declaretheorem[#1]{#2}%
-  \AtBeginEnvironment{#2}{%
-      \patchcmd\@thm
-        {\trivlist}
-        {\list{}{\leftmargin\myhangindent\itemindent-15em}}
-        {}{}%
-      %dummy makes things better, dunno why
-      \patchcmd\thmt@original@end\dummy{#2}{\endtrivlist}{\endlist}{}{}%
-    }
-    \AfterEndEnvironment{#2}{\par\@afterindentfalse\@afterheading}
+% xdeclaretheorem declares multiple theorems with similar styles from xdeclaretheorem
+%     - name-ind:   use style-indent
+%     - name-list:  use style-list
+%     - name-noind: use default style
+% additionally "name" is created with default name-ind
+% Package Option no-indent sets "name" to "name-noind"
+
+\newcommand{\xdeclaretheoremstyle}[2][]{
+	\declaretheoremstyle[
+		headindent=-\myhangindent,
+		preheadhook={\begin{addmargin}[\myhangindent]{0em}},
+		postfoothook={\end{addmargin}},
+		#1]{#2-indent}
+	\declaretheoremstyle[
+	   postheadhook=\leavevmode\enumerate,
+		prefoothook=\endenumerate,
+		#1]{#2-list}
+	\declaretheoremstyle[#1]{#2}
 }
-\makeatother
-%\end{stackoverflow magic}
+
+\NewDocumentCommand{\xdeclaretheorem}{o o m}{
+	\declaretheorem[#1-indent, #2]{#3}
+	\declaretheorem[#1-indent, #2]{#3-ind}
+	\declaretheorem[#1-list, #2]{#3-list}
+	\declaretheorem[#1, #2]{#3-noind}
+}
 
 \DeclareOption{no-indent}{
-    \renewcommand{\xdeclaretheorem}[2][]{\declaretheorem[#1]{#2}}
-    \setlength{\myhangindent}{0em}
+   \NewDocumentCommand{\xdeclaretheorem}{o o m}{
+		\declaretheorem[#1-indent, #2]{#3-ind}
+		\declaretheorem[#1-list, #2]{#3-list}
+		\declaretheorem[#1, #2]{#3}
+	}
 }
 
-%define theorem-environment
-\declaretheoremstyle[
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Declaring Theorem Styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\xdeclaretheoremstyle[
     bodyfont=\itshape,
-    headfont=\kern-\myhangindent\myheadfont,
-    headindent=0pt,
+    headfont=\myheadfont,
     notefont=\myemphfont,
     ]{theorem-style}
 
-\declaretheoremstyle[
+\xdeclaretheoremstyle[
     notefont=\myemphfont,
-    headfont=\kern-\myhangindent\myheadfont,
-    headindent=0pt,
+    headfont=\myheadfont,
     ]{definition-style}
 
-\declaretheoremstyle[
-    headfont=\kern-\myhangindent\myheadfont\mdseries\itshape,
-    headindent=0pt,
+\xdeclaretheoremstyle[
+    headfont=\myheadfont\mdseries\itshape,
     notefont=\myemphfont,
     ]{remark-style}
 
 \declaretheoremstyle[
-    headfont=\kern-\myhangindent\myheadfont\mdseries\itshape,
-    headindent=0pt,
+    headfont=\myheadfont\mdseries\itshape,
     notefont=\myemphfont,
     qed=\qedsymbol
     ]{proof-style}
 
-\xdeclaretheorem[name=Satz, style=theorem-style, parent=chapter]{satz}
-\xdeclaretheorem[name=Lemma, style=theorem-style, sibling=satz]{lemm}
-\xdeclaretheorem[name=Proposition, style=theorem-style, sibling=satz]{prop}
-\xdeclaretheorem[name=Korollar, style=theorem-style, sibling=satz]{koro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Declaring Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\xdeclaretheorem[name=Definition, style=definition-style, sibling=satz]{defi}
-\xdeclaretheorem[name=Beispiel, style=definition-style, sibling=satz]{bsp}
+\declaretheorem[parent=chapter]{thm-counter}
+\xdeclaretheorem[style=theorem-style][name=Satz,          sibling=thm-counter]{satz}
+\xdeclaretheorem[style=theorem-style][name=Lemma,         sibling=thm-counter]{lemm}
+\xdeclaretheorem[style=theorem-style][name=Proposition,   sibling=thm-counter]{prop}
+\xdeclaretheorem[style=theorem-style][name=Korollar,      sibling=thm-counter]{koro}
 
-\xdeclaretheorem[name=Bemerkung, style=remark-style, sibling=satz]{beme}
-\xdeclaretheorem[name=Zusatz, style=remark-style, sibling=satz]{zusa}
-\xdeclaretheorem[name=Erinnerung, style=remark-style, sibling=satz]{erin}
-\xdeclaretheorem[name=Erinnerung, style=remark-style, numbered=no]{erin*}
-\xdeclaretheorem[name=Notation, style=remark-style, sibling=satz]{nota}
+\xdeclaretheorem[style=definition-style][name=Definition, sibling=thm-counter]{defi}
+\xdeclaretheorem[style=definition-style][name=Beispiel,   sibling=thm-counter]{bsp}
 
-\xdeclaretheorem[name=Beweis, style=proof-style, numbered=no]{bewe}
+\xdeclaretheorem[style=remark-style][name=Bemerkung,      sibling=thm-counter]{beme}
+\xdeclaretheorem[style=remark-style][name=Erinnerung,     numbered=no]{erin*}
+\xdeclaretheorem[style=remark-style][name=Notation,       numbered=no]{nota}
+
+\xdeclaretheorem[style=proof-style][name=Beweis,          numbered=no]{bewe}
 
 \DeclareOption{no-proof}{\excludecomment{bewe}}
 
