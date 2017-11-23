@@ -40,5 +40,141 @@ Ein [Bild, siehe altes Skript]
 	\end{pmatrix}
 	\,.
 \]
+
+\item \emph{Periodentorus:} Ist $L$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$, so kann man eine Äquivalenzrelation auf $\CC$ definieren durch
+\[
+	z \sim z'
+	\Rla z-z' \in L
+	\,.
+\]
+Die Äquivalenzklasse von $z$ ist gerade $[z] := z+L := \Set{z + \omega \mid \omega \in L}$, man bezeichnet die Mengen der Äquivalenzklassen mit $\CC/L$.
+Man definiert $[z] + [z'] :=[z+z']$. Beachte: $\CC/L$ ist gerade die Faktorgruppe der abelschen Gruppe $(\CC, +)$ nach dem Normalteiler $(L, +)$.
+
+\emph{Geometrisches Modell von $\CC/L$} Offenbar ist jeder Punkt $z\in\CC$ äquivalent zu einem Punkt in der Grundmasche
+\[
+	\F(\omega_1, \omega_1)
+	= \Set{t_1\omega_1 + t_2\omega_2 \mid 0 \leq t_1, t_2 \leq 1}
+	\,,
+\]
+denn für alle $z\in\CC$ existieren $x,y\in\RR$ mit
+\[
+	z
+	= x\omega_1 + y\omega_2
+	= (x-\floor{x})\omega_1 + (y-\floor{y})\omega_2 + \underbrace{\floor{x}\omega_1 + \floor{y}\omega_2}_{\in L}
+	\,.
+\]
+Zwei Punkte in $\F(\omega_1, \omega_2)$ sind genau dann äquivalent, wenn sie entweder gleich oder auf gegenüberliegenden Rändern liegen.
+Man erhält ein geometrisches Modell von $\CC/L$ indem man gegnüberliegende Ränder identifiziert, man erhält dann einen Torus\footnote{Auch \emph{Donut} genannt.}.
 \end{enumerate}
 \end{beme}
+
+\begin{defi}
+Sei $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann heißt eine meromorphe Funktion $f\colon \CC \ra \closure \CC$ \myemph{elliptisch} bezüglich $L$, falls gilt $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$.
+\end{defi}
+
+\begin{beme}
+\begin{enumerate}
+\item Es gilt $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$ genau dann, wenn $f(z+\omega) = f(z)$ für alle $z\in\CC$ und $w\in L$.
+Deswegen heißen elliptische Funktionen auch doppelt periodische Funktionen.
+
+\item Ist $c\in\closure\CC$ und $f(z) = c$ und $f$ elliptisch, so gilt $f(z+\omega) = c$ für alle $\omega \in L$.
+Insbesondere macht es Sinn von den Null- oder Polstellen von $f$ modulo L zu sprechen.
+
+\item Die elliptischen Funktionen zu einem Gitter $L$ bilden einen Körper $K(L)$. Dieser enthält $\CC$. Und für $f\in K(L)$ gilt auch $f'\in K(L)$.
+
+\item \emph{Historie:} Der Name \emph{elliptische Funktionen} kommt von der Theorie der \emph{elliptischen Integrale}, d.\,h. Integralen der Form 
+\[
+	\int_a^z \frac{1}{\sqrt{P(t)}} \opd t
+	\,,
+\]
+wobei $P(t)$ ein Polynom dritten oder vierten Gerade ohne mehrfache Nullstellen ist.
+(Der Wert hängt im Allgemeinen von der Wahl von $a$, des Integtrationsweges und der Wahl der Wurzel ab.)
+Solche Integrale treten bei der Berechnung von Bogenlängen von Ellipsen auf.
+Man kann zeigen, dass die Umkehrfunktion eines elliptischen Integrales gerade eine elliptische Funktion ist.
+
+Geometrisch gesehen sind Ellipsen (gegeben durch Gleichung der Form $ax^2+by^2 = c$) verschieden von elliptischen Kurven (das sind Gleichungen der Form $y^2 = x^3+ax+b$ mit $4a^3 - 27b^2 \not= 0$).
+
+Erstere werden parametrisiert durch rationale Funktionen (z.,B. wird $x^2+y^2 = 1$ parametrisiert durch $(x, y) = (\frac{2t}{t^2+1}, \frac{t^2-1}{t^2+1})$), letztere durch elliptische Funktionen.
+Erstere haben \myquote{Geschlecht Null} (isomorph zu $\mathds{P}_1(\CC)$), letztere haben \myquote{Geschlecht Eins} (isomorph zu einem Torus).
+\end{enumerate}
+\end{beme}
+
+\subsection{Die Liouvillschen Sätze}
+
+Es handelt sich um vier Sätze, die notwendige Bedingungen geben für die Existenz von elliptischen Funktionen.
+
+\begin{satz}
+Eine elliptische Funktion $f\colon \CC \ra \closure \CC$ ohne Polstellen ist notwendigerweise konstant.
+\end{satz}
+
+\begin{bewe}
+Sei $f$ elliptisch zum Gitter $L = \ZZ\omega_1 \oplus \ZZ\omega_2$ mit Grundmasche
+\[
+	\F
+	= \Set{t_1\omega_1 + t_2\omega_2 \mid 0 \leq t_1, t_2 \leq 1}
+	\,.
+\]
+Beachte
+\begin{enumerate*}
+\item $\F$ ist kompakt
+\item zu jedem $z\in\CC$ gibt es $\omega \in L$, so dass $z+\omega \in \F$
+\item $f(z+w) = f(z)$ für alle $z \in \CC$ und $\omega \in L$.
+\end{enumerate*}
+
+Es folgt: $f$ nimmt schon jeden seiner Werte auf dem Kompaktum $\F$ an, und $f$ ist ganz, also insbesondere stetig und damit auf jedem Komapaktum beschränkt.
+Also ist $f$ bereits auf ganz $\CC$ beschränkt.
+Nach Lioville (Funktionentheorie 1) ist $f$ somit bereits konstant.
+\end{bewe}
+
+\begin{satz}
+Sei $f \in K(L)$.
+Dann gilt
+\[
+	\sum_{z\in\CC/L} \res_z f
+	= 0
+	\,,
+\]
+wobei die linke Seite über ein Repräsentantensystem aller Punkte $z\in \CC/L$ läuft und nur die Pole von $f$ ungleich Null sind.
+\end{satz}
+
+\begin{beme}
+Die Summe links ist wohldefiniert, denn
+\begin{enumerate}
+\item  $f$ hat nur endlich viele Polstellen modulo $L$.
+\emph{Denn} andernfalls hätte $f$ unendlich viele Polstellen in $\F$, und da $\F$ kompakt ist, hätte $S(f)$ nach dem Satz von Weierstraß hätte einen Häufungspunkt \blitz.
+
+\item Das Residuum ist invariant unter Verschiebung um $\omega \in L$.
+\emph{Denn} das Residuum ist der Koeffizient mit Nummer -1 in der Laurententwicklung.
+Um $z_0 + \omega$ ist dies eine Summe von Potenzen $\frac{1}{z-(z_0+\omega)} = \frac{1}{(z-\omega)-z_0}$, also erhält man die Laurententwicklung von $f(z-\omega) = f(z)$ um $z_0$.
+\end{enumerate}
+\end{beme}
+
+\begin{bewe}
+Für $a\in\CC$ sei $\F_a = a + \F = \Set{a + z \mid z\in\F}$.
+Dann kann $\CC/L$ mit $\F_a$ (modulo Randidentifikation) identifiziert werden, denn zu $z\in\CC$ existiert $\omega \in L$ mit $z-a+\omega \in \F$, d.\,h. $z+\omega \in a + \F = \F_a$.
+Man wähle $a\in\CC$ so, dass auf dem Rand $\partial \F_a$ von $\F_a$ kein Pol von $f$ liegt.
+Dies geht, da $f$ auf $\F$ nur endlich viele Pole hat.
+
+Man wende den Residuensatz an, unter Beachtung, dass nach der Wahl von $a$ das Innere $\innere F_a$ genau ein Repräsentanten jeder Polstelle von $f$ enthält.
+Es folgt also
+\begin{align*}
+	2\pi i \sum_{z\in\CC/L} \res_z f
+	&= 2\pi i \sum_{z\in \innere \F_a} \res_z f
+	= \int_{\partial \F_a} f(z)\opd z \\
+	&= \int_{C_1} f(z) \opd z + \int_{C_2} f(z) \opd z + \int_{C_3} f(z) \opd z + \int_{C_4} f(z) \opd z
+	\,.
+\end{align*}
+Hier heben sich das erste und das dritte und das zweite und das vierte Integral jeweils auf, die Summe ist also Null.
+\emph{Denn}
+\[
+	\int_{C_4} f(z)\opd z
+	= \int_{\omega_1 + C_4} f(z-\omega_1) \opd z
+	= \int_{\omega_1 + C_4} f(z)\opd z
+	= -\int_{C_2} f(z) \opd z
+	\,.
+\]
+\end{bewe}
+
+\begin{koro}
+Es gibt keine elliptische Funktion $f$ mit genau einer einfachen Polstelle modulo $L$.
+\end{koro}
