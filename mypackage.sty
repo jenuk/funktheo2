@@ -11,7 +11,7 @@
 \RequirePackage[ngerman]{babel}
 
 \RequirePackage{microtype} % improves microtypographie
-\RequirePackage[shortlabels]{enumitem} % gives enumerate an optional argument
+\RequirePackage[shortlabels, inline]{enumitem} % gives enumerate an optional argument, inline adds * Versions for inline lists
 \setlist[enumerate,1]{label={(\roman*)}} % default numbering is roman
 
 \RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} %nicer math
@@ -65,6 +65,7 @@
 \newcommand{\EE}{\ensuremath{\mathds{E}}}
 \newcommand{\HH}{\ensuremath{\mathds{H}}}
 \newcommand{\CCminusNN}{D_{-\NN_0}}
+\newcommand{\F}{\mathcal{F}}
 
 %shorter commands for arrows
 \newcommand{\ra}{\rightarrow}
@@ -75,15 +76,20 @@
 %defines \abs and \norm
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 % Swap the definition of \abs* and \norm*, so that \abs
 % and \norm resizes the size of the brackets, and the
 % starred version does not.
 \makeatletter
 \let\oldabs\abs
 \def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%
 \let\oldnorm\norm
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\let\oldceil\ceil
+\def\ceil{\@ifstar{\oldceil}{\oldceil*}}
+\let\oldfloor\floor
+\def\floor{\@ifstar{\oldfloor}{\oldfloor*}}
 \makeatother
 
 %swap some greek letters
@@ -112,6 +118,7 @@
 \DeclareMathOperator{\Log}{Log}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator*{\res}{res}
+\DeclareMathOperator{\innere}{int}
 \newcommand{\opd}{\,\mathrm{d}}
 \newcommand{\inv}[1]{#1^{-1}}
 \newcommand{\Set}[1]{\left\{\,#1\,\right\}}
