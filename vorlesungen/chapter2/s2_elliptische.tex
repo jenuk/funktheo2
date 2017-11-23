@@ -25,8 +25,7 @@ Man nennt $\Set{\omega_1, \omega_2}$ eine \myemph[Gitter!Basis]{Basis} des Gitte
 Ein [Bild, siehe altes Skript]
 \end{bsp}
 
-\begin{beme}
-\begin{enumerate}
+\begin{beme-list}
 \item Man zeigt leicht: $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass 
 \[
 	\begin{pmatrix}
@@ -65,15 +64,13 @@ denn für alle $z\in\CC$ existieren $x,y\in\RR$ mit
 \]
 Zwei Punkte in $\F(\omega_1, \omega_2)$ sind genau dann äquivalent, wenn sie entweder gleich oder auf gegenüberliegenden Rändern liegen.
 Man erhält ein geometrisches Modell von $\CC/L$ indem man gegnüberliegende Ränder identifiziert, man erhält dann einen Torus\footnote{Auch \emph{Donut} genannt.}.
-\end{enumerate}
-\end{beme}
+\end{beme-list}
 
 \begin{defi}
 Sei $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann heißt eine meromorphe Funktion $f\colon \CC \ra \closure \CC$ \myemph{elliptisch} bezüglich $L$, falls gilt $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$.
 \end{defi}
 
-\begin{beme}
-\begin{enumerate}
+\begin{beme-list}
 \item Es gilt $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$ genau dann, wenn $f(z+\omega) = f(z)$ für alle $z\in\CC$ und $w\in L$.
 Deswegen heißen elliptische Funktionen auch doppelt periodische Funktionen.
 
@@ -96,8 +93,7 @@ Geometrisch gesehen sind Ellipsen (gegeben durch Gleichung der Form $ax^2+by^2 =
 
 Erstere werden parametrisiert durch rationale Funktionen (z.,B. wird $x^2+y^2 = 1$ parametrisiert durch $(x, y) = (\frac{2t}{t^2+1}, \frac{t^2-1}{t^2+1})$), letztere durch elliptische Funktionen.
 Erstere haben \myquote{Geschlecht Null} (isomorph zu $\mathds{P}_1(\CC)$), letztere haben \myquote{Geschlecht Eins} (isomorph zu einem Torus).
-\end{enumerate}
-\end{beme}
+\end{beme-list}
 
 \subsection{Die Liouvillschen Sätze}
 
@@ -137,7 +133,7 @@ Dann gilt
 wobei die linke Seite über ein Repräsentantensystem aller Punkte $z\in \CC/L$ läuft und nur die Pole von $f$ ungleich Null sind.
 \end{satz}
 
-\begin{beme}
+\begin{beme-noind}
 Die Summe links ist wohldefiniert, denn
 \begin{enumerate}
 \item  $f$ hat nur endlich viele Polstellen modulo $L$.
@@ -147,7 +143,7 @@ Die Summe links ist wohldefiniert, denn
 \emph{Denn} das Residuum ist der Koeffizient mit Nummer -1 in der Laurententwicklung.
 Um $z_0 + \omega$ ist dies eine Summe von Potenzen $\frac{1}{z-(z_0+\omega)} = \frac{1}{(z-\omega)-z_0}$, also erhält man die Laurententwicklung von $f(z-\omega) = f(z)$ um $z_0$.
 \end{enumerate}
-\end{beme}
+\end{beme-noind}
 
 \begin{bewe}
 Für $a\in\CC$ sei $\F_a = a + \F = \Set{a + z \mid z\in\F}$.

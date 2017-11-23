@@ -1,7 +1,5 @@
 \section{Unendliche Produkte}
 
-\newdate{26. Oktober 2017}
-
 Gegeben sei eine Folge $(p_n)_{n\in\NN}$ komplexer Zahlen.
 Wir wollen nun in sinnvoller Weise das unendliche Produkt
 \[
@@ -45,8 +43,7 @@ Man setzt dann
 Dabei ist zu beachten, dass nach Definition ein konvergentes unendliches Produkt den Wert 0 genau dann hat, wenn ein Faktor gleich Null ist.
 \end{defi}
 
-\begin{bsp}
-\begin{enumerate}
+\begin{bsp-list}
 \item Das unendliche Produkt $\prod_{n\geq2}(1-\frac{1}{n^2})$ ist konvergent und hat den Wert $\frac{1}{2}$.
 \begin{bewe} Zunächst sind alle Faktoren ungleich Null und
 \begin{align*}
@@ -69,10 +66,9 @@ Denn
 	= \prod_{n=1}^N \frac{1}{n} = \frac{1}{N!}\xto{N\to\infty}0
 	\,.
 \]
-\end{enumerate}
-\end{bsp}
+\end{bsp-list}
 
-\begin{satz}\label{satz:konvergenz-unendlicher-produkte}
+\begin{satz-noind}\label{satz:konvergenz-unendlicher-produkte}
 Für eine unendliche Reihe $\prod_{n=1} ^\infty p_n$ gilt:
 \begin{enumerate}
 \item Ist $\prod_{n=1} ^\infty p_n$ konvergent, so gilt notwendigerweise $\lim\limits_{n\to\infty}p_n=1$.
@@ -92,7 +88,7 @@ Ist umgekehrt $S = \sum _{n=1}^\infty \Log p_n$, so gilt
 	e^S = \prod_{n=1} ^\infty p_n
 \]
 \end{enumerate}
-\end{satz}
+\end{satz-noind}
 
 \begin{bewe}
 \begin{enumerate}
@@ -175,12 +171,7 @@ Nun gilt wegen \eqref{eq:satz1.6.bewe} und $\lim \epsilon_N = 0$, dass
 Man schreibt oft $p_n = 1 + a_n$. Dann lautet die notwendige Konvergenzbedingung aus dem Satz, dass $a_n \xto{n\to\infty} 0$.
 \end{nota}
 
-
-
-
-\newdate{30. Oktober 2017}
-
-\begin{satz}\label{satz:zusammenhang-konvergenz-log-reihe}
+\begin{satz-noind}\label{satz:zusammenhang-konvergenz-log-reihe}
 Es gilt folgender Zusammenhang
 \begin{enumerate}
 \item Sei $1+a_n \not= 0$ für $n \geq 1$. Dann ist
@@ -192,7 +183,7 @@ genau dann absolut konvergent, wenn $\sum_{n=1}^\infty a_n$ absolut konvergiert.
 \item Sei $\sum_{n=1}^\infty a_n$ absolut konvergiert. Dann ist $\prod _{n=1}^\infty (1+a_n)$ konvergent.
 Außerdem ist das Produkt unbedingt konvergent, d.\,h. jede Umordnung konvergiert und hat den gleichen Limes.
 \end{enumerate}
-\end{satz}
+\end{satz-noind}
 
 \begin{bewe}
 \begin{enumerate}
@@ -302,10 +293,7 @@ Und eine Funktion $h$ wie oben heißt Lösung der Nullstellenverteilung.
 
 \noindent\emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von Weierstraß-Produkten konstruieren!
 
-\newdate{2. November 2017}
-
-\begin{satz}[Weierstraß'scher Produktsatz]\label{satz:weierstrasprodukt}
-\begin{enumerate}
+\begin{satz-list}[Weierstraß'scher Produktsatz]\label{satz:weierstrasprodukt}
 \item Sei $S\subseteq \CC$ diskret und für jedes $s\in S$ sei ein $m_s \in \NN$ gegeben. Dann hat die Nullstellenverteilung $\Set{(s, m_s) \mid s\in S}$ eine Lösung $h$.
 Alle Lösungen erhält man als $H(z) = h(z)\cdot e^{g(z)}$ wobei $h$ eine gegebene Lösung und $g$ ganz ist.
 
@@ -320,8 +308,7 @@ Dann gibt es zu jedem $s\in S$ ein Polynom $P_s$ und eine ganze Funktion $g$, so
 	\end{cases}
 \]
 wobei die Produkte rechts \myemph[Weierstraß-Produkt]{Weierstraß-Produkte} genannt werden, diese sind auf Kompakta $K\subseteq \CC$ unbedingt konvergent.
-\end{enumerate}
-\end{satz}
+\end{satz-list}
 
 \begin{bewe}
 \begin{enumerate}
@@ -417,7 +404,7 @@ Dann ist $g$ ganz, denn die Nullstellen kürzen sich gegen Polstellen.
 Es folgt $f = \frac{g}{h}$.
 \end{bewe}
 
-\begin{bsp}\label{bsp:nullstellenverteilungen}
+\begin{bsp-noind}\label{bsp:nullstellenverteilungen}
 Nullstellenverteilungen kann man beispielsweise so berechnen:
 \begin{enumerate}
 \item Sei $S = \Set{n^2 \mid n \in \NN_0}$, $m_s = 1$ für alle $s\in S$.
@@ -533,4 +520,4 @@ Also ist $g$ konstant auf $\dot{U}_\delta(0)$.
 Damit ist $g$ bereits auf ganz $\CC$ konstant, wegen des Identitätssatz.
 Insgesamt haben wir also $g\equiv 0$ (wegen $g(0) = 0$).
 \end{enumerate}
-\end{bsp}
+\end{bsp-noind}

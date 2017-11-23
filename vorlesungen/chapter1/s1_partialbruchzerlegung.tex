@@ -1,7 +1,5 @@
 \section{Partialbruchzerlegung}
 
-\newdate{23. Oktober 2017}
-
 \begin{satz}[Partialbruchzerlegung rationaler Funktionen]
 Seien $p, q$ zwei Polynome über $\CC$, $q \not\equiv 0$ und $R(z) = \frac{p(z)}{q(z)}$ für $z\in\CC$ mit $g(q)\not=0$ die zugehörige rationale Funktion.
 Seien $z_1, \ldots, z_k$ die verschiedenen Polstellen mit den Ordnungen $\mu_1,\ldots, \mu_k$.
@@ -51,8 +49,7 @@ Eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung 
 
 \noindent\emph{Lösung:} Man addiere konvergenz erzeugende Summanden!
 
-\begin{satz}[Partialbruchsatz von Mittag-Leffler]
-\begin{enumerate}
+\begin{satz-list}[Partialbruchsatz von Mittag-Leffler]
 \item Sei $S\subseteq\CC$ diskret. Jedem $s \in S$ sei eine ganze Funktion $h_s\colon \CC \ra \CC$ mit $h_s(0) = 0$ zugeordnet.
 (Man nennt $\Set{h_s}_{s \in S}$ eine \myemph[Verteilungen!Hauptteilverteilung]{Hauptteilverteilung}.)
 Dann gibt es eine holomorphe Funktion $h\colon \CC\setminus S \ra \CC$, deren Hauptteil in $s\in S$ durch $h_s(\frac{1}{z-s})$ gegeben wird.
@@ -65,8 +62,7 @@ Dann existieren Polynome $q_s$ ($s \in S$) und eine ganze Funktion $g$, sodass g
 	f(z) = \sum \limits _{s\in S} \left(p_s\left(\frac{1}{z-s}\right) - q_s(z)\right) + g(z)
 \]
 wobei die Summe in der Klammer auf kompakten Teilmengen $K \subseteq \CC \setminus S$ absolut gleichmäßig konvergiert.
-\end{enumerate}
-\end{satz}
+\end{satz-list}
 
 \begin{bewe}
 \begin{enumerate}
@@ -111,7 +107,7 @@ Nach der Eindeutigkeit stimmen daher beide Lösung bis auf eine ganze Funktion $
 \end{enumerate}
 \end{bewe}
 
-\emph{Praktische Anwendung von Satz 1.2} Gegeben sei eine meromorphe Funktion $f$ auf $\CC$ mit Polstellenmenge $S$.
+\noindent\emph{Praktische Anwendung von Satz 1.2} Gegeben sei eine meromorphe Funktion $f$ auf $\CC$ mit Polstellenmenge $S$.
 \begin{enumerate}
 \item Man bestimme die Hauptteile für alle $s\in S$.
 \item Man untersuche $\sum _{s\in S} p_s(\frac{1}{z-s})$ auf Konvergenz und bestimme gegebenenfalls Polynome $q_s$ ($s\in S$) (durch Abbruch der entsprechenden Taylor-Reihe), sodass $\sum _{s\in S} (p_s(\frac{1}{z-s})-q_s(z))$ auf Kompakta $K \subseteq \CC\setminus S$ gleichmäßig absolut konvergiert.
@@ -121,8 +117,7 @@ Nach der Eindeutigkeit stimmen daher beide Lösung bis auf eine ganze Funktion $
 \]
 \end{enumerate}
 
-\begin{bsp}\label{bsp:partialbruch_cot}\leavevmode
-\begin{enumerate}
+\begin{bsp-list}\label{bsp:partialbruch_cot}
 \item Es gilt
 \begin{equation}\label{eqn:bsp1.3.i}
 	\frac{\pi^2}{(\sin \pi z)^2} = \sum _ {n \in \ZZ} \frac{1}{(z-n)^2} \qquad \text{für } z\in \CC\setminus\ZZ
@@ -142,8 +137,7 @@ Siehe unten.
 \begin{bewe}
 Siehe unten.
 \end{bewe}
-\end{enumerate}
-\end{bsp}
+\end{bsp-list}
 
 \begin{bewe}
 \begin{enumerate}

@@ -12,7 +12,7 @@ Kann $\Gamma$ auf $\Set{z\in\CC \mid \Re(z) > 0}$ holomorph oder meromorph fortg
 Vielleicht sogar auf ganz $\CC$?
 Durch welche Eigenschaften ist $\Gamma$ charakterisiert?
 
-\emph{Heuristische Vorgehensweise:} %vllt \subsection{•}?
+\emph{Heuristische Vorgehensweise:}
 Für $n$ klein ist $(n-1)! = \Gamma(n)$ \myquote{klein}, nicht klar wie man interpolieren sollte.
 Für $n$ groß ist $\Gamma(n) = (n-1)!$ \myquote{riesengroß}, also wächst die Funktion \myquote{gleichmäßiger}und sollte daher einfacher zu interpolieren sein!
 
@@ -44,7 +44,7 @@ Durch einsetzen erhalten wir
 \end{equation}
 Also probiere man \eqref{gamma:herleitung_limes} als Definition für $\Gamma(x)$ oder sogar für $\Gamma(z)$ mit $z\in\CC, z \not= 0, -1, -2, \ldots$ aus, vorausgesetzt der Limes existiert.
 
-\begin{satz}\label{satz:gamma-fkt}
+\begin{satz-noind}\label{satz:gamma-fkt}
 Sei
 \[
 	D_{-\NN_0}
@@ -67,7 +67,7 @@ die \myemph[Gamma-Funktion!Eulersche Produktdarstellung]{Eulersche Produktdarste
 (Beachte $N^z = e^{z\Log N}$ für $z\in\CC$, $N \in \NN$.)
 \item Es gilt $\Gamma(z+1) = z\Gamma(z)$ für alle $z\in D_{-\NN_0}$ und $\Gamma(n) = (n-1)!$ für alle $n\in\NN$.
 \end{enumerate}
-\end{satz}
+\end{satz-noind}
 
 \begin{bewe}
 Zeige zunächst (i) und (ii):
@@ -169,7 +169,7 @@ Induktiv folgt damit $\Gamma(n+1) = n!$ für alle $n\in\NN_0$.
 \end{enumerate}
 \end{bewe}
 
-\begin{satz}\label{satz:gamma-eigenschaften}
+\begin{satz-noind}\label{satz:gamma-eigenschaften}
 Für die $\Gamma$-Funktion gelten folgende Eigenschaften:
 \begin{enumerate}
 \item Die Gammafunktion lässt sich in ganz $\CC$ meromorph fortsetzen mit einfachen Polstellen in $-\NN_0$ und holomorph in $D_{-\NN_0}$. Und es gilt
@@ -191,7 +191,7 @@ mit $\gamma = \lim_{n\to\infty} 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1
 	= \frac{\pi}{\sin(\pi z)}
 \]
 \end{enumerate}
-\end{satz}
+\end{satz-noind}
 
 \begin{bewe}
 \begin{enumerate}
@@ -301,8 +301,7 @@ also für $z\not\in \ZZ$ (\autoref{bsp:nullstellenverteilungen})
 \end{enumerate}
 \end{bewe}
 
-\begin{satz}[Charakterisierung nach Wielandt]\label{satz:wielandt}\leavevmode
-\begin{enumerate}
+\begin{satz-list}[Charakterisierung nach Wielandt]\label{satz:wielandt}
 \item Die Gammafunktion ist auf jedem Vertikalstreifen
 \[
 	\Set{z=x+iy \in\CC \mid a \leq x \leq b}
@@ -317,8 +316,7 @@ Sei $f\colon D\ra \CC$ eine holomorphe Funktion mit den Eigenschaften
 \end{enumerate}
 Dann gilt:
 $f(z) = f(1) \Gamma(z)$ für $z\in D$.
-\end{enumerate}
-\end{satz}
+\end{satz-list}
 
 \begin{beme}
 Die Voraussetzung $D$ Gebiet darf nicht weggelassen werden.
@@ -539,8 +537,7 @@ Damit folgt
 \]
 \end{bewe}
 
-\begin{satz}[Eulersches Integral]\index{Gamma-Funktion!Eulersches Integral}
-\begin{enumerate}
+\begin{satz-list}[Eulersches Integral]\index{Gamma-Funktion!Eulersches Integral}
 \item Das uneigentliche Integral
 \[
 	\int_0^\infty t^{z-1}e^{-t} \opd t
@@ -557,8 +554,7 @@ existieren.
 \[
 	\Gamma(z) = \int_0^\infty t^{z-1}e^{-t} \opd t
 \]
-\end{enumerate}
-\end{satz}
+\end{satz-list}
 
 \begin{bewe}
 \begin{enumerate}
@@ -653,8 +649,7 @@ klar ist.
 
 \noindent\emph{Problem:} Wie verhält sich $\Gamma(z)$ für sehr große Werte $\abs{z}$? Kann man $\Gamma(z)$ dort durch eine \myquote{einfache Funktion} gut approximieren?
 
-\begin{satz}[Stirlingsche Formel]\label{satz:stirling}\leavevmode
-\begin{enumerate}
+\begin{satz-list}[Stirlingsche Formel]\label{satz:stirling}
 \item Sei $\CC_- = \Set{z\in\CC \mid z \not= x \text{ für } x\in\RR\colon x \leq 0}$ die geschlitzte Ebene ohne die negative reelle Achse und $0$. 
 Für $z\in\CC_-$ gilt dann die Darstellung\footnote{Insbesondere gilt für natürliche Zahlen $n\in\NN$ \[(n-1)! \approx \sqrt{2\pi} \cdot n^{n-\frac{1}{2}} \cdot e^{-n}\]}
 \[
@@ -674,8 +669,7 @@ für $\abs z \to \infty$ gegen $0$ konvergiert.
 	= \sqrt{2\pi} \cdot x^{x-\frac{1}{2}} \cdot e^{x-\frac{1}{2}} \cdot e^{\frac{\theta(x)}{12x}}
 \]
 mit $0 < \theta(x) < 1$.
-\end{enumerate}
-\end{satz}
+\end{satz-list}
 
 Für den Beweis zeigen wir zunächst einige Lemma.
 
@@ -749,7 +743,7 @@ Mit $w=\frac{1}{2z+1}$ ist für $\abs w < \frac{1}{2}$ dann nach \autoref{lemma:
 \end{align*}
 \end{bewe}
 
-\begin{lemm}\label{lemma:stirling:hl3}
+\begin{lemm-noind}\label{lemma:stirling:hl3}
 Sei
 \[
 	H(z)
@@ -766,7 +760,7 @@ Sei
 	\,.
 \end{equation}
 \end{enumerate}
-\end{lemm}
+\end{lemm-noind}
 
 \begin{bewe}
 \begin{enumerate}
@@ -868,7 +862,7 @@ Insgesamt folgt also
 \end{enumerate}
 \end{bewe}
 
-\begin{lemm}\label{lemma:stirling:hl4}
+\begin{lemm-noind}\label{lemma:stirling:hl4}
 Sei 
 \[
 	h(z) = z^{z-\frac{1}{2}}e^{-z}e^{H(z)}
@@ -882,7 +876,7 @@ Sei
 \]
 \item $h(z)$ ist beschränkt in $1 \leq x \leq 2$.
 \end{enumerate}
-\end{lemm}
+\end{lemm-noind}
 
 \begin{bewe}
 \begin{enumerate}
