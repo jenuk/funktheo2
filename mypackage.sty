@@ -55,6 +55,14 @@
 }
 
 
+% ignore warnings of font rescale
+\RequirePackage{silence} % to ignore some warnings
+\WarningFilter{latexfont}{Font shape `T1/LukasSvatba/m/n'}
+\WarningFilter{latexfont}{Font shape `T1/LukasSvatba/bx/n'}
+\WarningFilter{latexfont}{Font shape `T1/LukasSvatba/bx/sl'}
+\WarningFilter{latexfont}{Font shape `U/stmry/b/n' undefined}
+\WarningFilter{latexfont}{Some font shapes were not available, defaults substituted.}
+
 %\setlength\parindent{0pt} % no automatic indention for new par
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
