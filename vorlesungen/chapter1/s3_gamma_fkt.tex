@@ -69,10 +69,10 @@ die \myemph[Gamma-Funktion!Eulersche Produktdarstellung]{Eulersche Produktdarste
 \end{enumerate}
 \end{satz-noind}
 
-\begin{bewe}
+\begin{bewe-noind}
 Zeige zunächst (i) und (ii):
 \begin{enumerate}
-\item[(i)+(ii)] Für $N\in\NN$ setze
+\item[(i, ii)] Für $N\in\NN$ setze
 \[
 	\Gamma_N(z)
 	:= \frac{N^z(N-1)!}{z(z+1)\ldots(z+N-1)}
@@ -167,7 +167,7 @@ Es gilt weiter
 \]
 Induktiv folgt damit $\Gamma(n+1) = n!$ für alle $n\in\NN_0$.
 \end{enumerate}
-\end{bewe}
+\end{bewe-noind}
 
 \begin{satz-noind}\label{satz:gamma-eigenschaften}
 Für die $\Gamma$-Funktion gelten folgende Eigenschaften:
@@ -193,8 +193,7 @@ mit $\gamma = \lim_{n\to\infty} 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1
 \end{enumerate}
 \end{satz-noind}
 
-\begin{bewe}
-\begin{enumerate}
+\begin{bewe-list}
 \item Es gilt mit \autoref{satz:gamma-fkt} (iii) für $N\in\NN_0$:
 \[
 	\Gamma(z+N+1)
@@ -235,7 +234,7 @@ Zunächst gilt
 	\geq 0
 	\,.
 \]
-denn 
+denn
 \begin{align*}
 	\log\left(1+\frac{1}{n}\right)
 	&= \int_1^{1+\frac{1}{n}} \frac{1}{t} \opd t
@@ -269,7 +268,7 @@ Nun folgt
 also
 \begin{align*}
 	z\Gamma(z)
-	&= \Gamma(z+1) 
+	&= \Gamma(z+1)
 	= \lim_{N\to\infty} \frac{N^{z+1} (N-1)!}{(z+1)(z+2)\ldots(z+N)} \\
 	&= \lim_{N\to\infty} \frac{N^z}{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}} \frac{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}N!}{(z+1)\ldots(z+N)} \\
 	&= e^{-\gamma z} \lim_{N\to\infty} \frac{e^{z(1+\frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N})}N!}{(z+1)\ldots(z+N)} \\
@@ -298,8 +297,7 @@ also für $z\not\in \ZZ$ (\autoref{bsp:nullstellenverteilungen})
 	&= \frac{1}{\pi} \sin(\pi z)
 	\,.
 \end{align*}
-\end{enumerate}
-\end{bewe}
+\end{bewe-list}
 
 \begin{satz-list}[Charakterisierung nach Wielandt]\label{satz:wielandt}
 \item Die Gammafunktion ist auf jedem Vertikalstreifen
@@ -332,8 +330,7 @@ Denn sei $D := \Set{z = x+iy\in\CC \mid \frac{1}{2} < x < 3} \dot\cup\ U_1(10)$ 
 Dann erfüllt $f$ offensichtlich die Bedingungen (a) und (b), aber es gilt nicht $f(z) = \Gamma(z)$ für alle $z\in D$.
 \end{beme}
 
-\begin{bewe}
-\begin{enumerate}
+\begin{bewe-list}
 \item Für beliebiges $z=x+iy\in\CC$ mit $0 < a \leq \Re(z) \leq b$ gilt wegen
 \[
 	\abs{N^z}
@@ -430,11 +427,10 @@ da $h(1) = f(1) - f(1)\Gamma(1) = 0$.
 Hieraus folgt $h \equiv 0$, also die Behauptung.
 \emph{Denn} wäre $h(z_0) \not= 0$, so gäbe es aus Gründen der Stetigkeit eine Umgebung $U_\delta(z_0)$ mit $h(w) \not=0$ für alle $w\in U_\delta(z_0)$.
 Damit folgt $h|_{U_\delta(1-z_0)} \equiv 0$, also da $\CC$ ein Gebiet ist mit dem Identitätssatz $h\equiv 0$.
-\end{enumerate}
-\end{bewe}
+\end{bewe-list}
 
 \begin{satz}[Legendresche Duplikationsformel]\label{satz:legendre_dupli}
-Es gilt 
+Es gilt
 \[
 	\Gamma\left(\frac{z}{2}\right) \Gamma\left(\frac{z+1}{2}\right)
 	= \sqrt{\pi} \cdot 2^{1-z} \cdot \Gamma(z)
@@ -556,8 +552,7 @@ existieren.
 \]
 \end{satz-list}
 
-\begin{bewe}
-\begin{enumerate}
+\begin{bewe-list}
 \item Sei $z = x+iy \in\CC$ fest mit $x = \Re(z) > 0$.
 Es ist
 \[
@@ -597,7 +592,7 @@ Daher folgt
 	\leq 2C(x)e^{\frac{1}{2}}
 	\,.
 \]
-Es folgt, dass 
+Es folgt, dass
 \[
 	\lim_{B\to\infty} \int_1^B t^{\Re(z)-1}e^{-t} \opd t
 \]
@@ -632,7 +627,7 @@ Schließlich ist für $1 \leq x \leq 2$
 Also ist $f(z)$ auf $1 \leq x \leq 2$ beschränkt.
 
 Schließlich muss man noch zeigen, dass $f(z)$ für $\Re(z) > 0$ holomorph ist.
-Es ist leicht zu sehen, dass 
+Es ist leicht zu sehen, dass
 \[
 	f_n(z) = \int_{\frac{1}{n}}^n t^{z-1}e^{-t} \opd t
 \]
@@ -644,13 +639,12 @@ Damit folgt die Behauptung mit dem Satz von Weierstraß und die Aussage des Satz
 	= \int_0^\infty e^{-t} \opd t = 1
 \]
 klar ist.
-\end{enumerate}
-\end{bewe}
+\end{bewe-list}
 
 \noindent\emph{Problem:} Wie verhält sich $\Gamma(z)$ für sehr große Werte $\abs{z}$? Kann man $\Gamma(z)$ dort durch eine \myquote{einfache Funktion} gut approximieren?
 
 \begin{satz-list}[Stirlingsche Formel]\label{satz:stirling}
-\item Sei $\CC_- = \Set{z\in\CC \mid z \not= x \text{ für } x\in\RR\colon x \leq 0}$ die geschlitzte Ebene ohne die negative reelle Achse und $0$. 
+\item Sei $\CC_- = \Set{z\in\CC \mid z \not= x \text{ für } x\in\RR\colon x \leq 0}$ die geschlitzte Ebene ohne die negative reelle Achse und $0$.
 Für $z\in\CC_-$ gilt dann die Darstellung\footnote{Insbesondere gilt für natürliche Zahlen $n\in\NN$ \[(n-1)! \approx \sqrt{2\pi} \cdot n^{n-\frac{1}{2}} \cdot e^{-n}\]}
 \[
 	\Gamma(z)
@@ -706,7 +700,7 @@ wobei sich die letzte Gleichheit aus $0 < \frac{1}{2x+1} < 1$ und
 ergibt.
 Damit erhalten wir
 \[
-	\log(x+1) - \log(x)	
+	\log(x+1) - \log(x)
 	= 2\cdot\mkern-15mu\sum_{\substack{\nu \geq 1\\ \scriptscriptstyle \nu \text{ ungerade}}} \mkern-10mu \frac{1}{\nu} \left(\frac{1}{2x+1}\right)^\nu.
 \]
 Für $x > 0$ folgt also
@@ -762,8 +756,7 @@ Sei
 \end{enumerate}
 \end{lemm-noind}
 
-\begin{bewe}
-\begin{enumerate}
+\begin{bewe-list}
 \item Sei $K\subseteq \CC_-$ kompakt.
 Für $n\in\NN_0$, $n$ groß, ist dann
 \[
@@ -859,11 +852,10 @@ Insgesamt folgt also
 	\lim_{\substack{\abs{z}\to\infty\\ \scriptscriptstyle z\in W_\delta}} H(z) = 0
 	\,.
 \]
-\end{enumerate}
-\end{bewe}
+\end{bewe-list}
 
 \begin{lemm-noind}\label{lemma:stirling:hl4}
-Sei 
+Sei
 \[
 	h(z) = z^{z-\frac{1}{2}}e^{-z}e^{H(z)}
 	\,.
@@ -878,8 +870,7 @@ Sei
 \end{enumerate}
 \end{lemm-noind}
 
-\begin{bewe}
-\begin{enumerate}
+\begin{bewe-list}
 \item Es ist $h(z) = \exp((z-\frac{1}{2})\Log(z) - z + H(z))$, also folgt
 \begin{align*}
 	\frac{h(z+1)}{h(z)}
@@ -915,11 +906,9 @@ und
 	&\mystackrel{$y\not=0$}{=} y \left(\left(x-\frac{1}{2}\right)\frac{\log\abs z}{y} - \Arg(z)\right)
 	\,.
 \end{align*}
-\end{enumerate}
-\end{bewe}
+\end{bewe-list}
 
-\begin{bewe}[Stirlingsche Formel \autoref{satz:stirling}]\leavevmode
-\begin{enumerate}
+\begin{bewe-list}[Stirlingsche Formel \autoref{satz:stirling}]
 \item Nach dem Satz von Wielandt (\autoref{satz:wielandt}) folgt mit \autoref{lemma:stirling:hl4}
 \[
 	\Gamma(z) = Ah(z)
@@ -971,5 +960,4 @@ Daber gilt für $x > 0$
 	\,.
 \end{align*}
 Mit $\theta(x) = 12x\cdot H(x)$ folgt die Behauptung.
-\end{enumerate}
-\end{bewe}
+\end{bewe-list}
