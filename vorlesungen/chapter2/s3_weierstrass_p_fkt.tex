@@ -1,0 +1,76 @@
+\section{Die Weierstraß'sche \texorpdfstring{\boldmath$\wp$}{p}-Funktion}
+
+Unsere Ziele in diesem Abschnitt sind
+\begin{enumerate}
+\item Die Konstruktion einer elliptischen Funktion $\wp(z)$ zum Gitter $L$ mit genau doppelten Polstellen in allen Gitterpunkten $\omega \in L$.
+Die Konstruktion erfolgt nach dem Rezept des Beweis des Partialbruchsatzes von Mittag-Leffler (\autoref{satz:mittag-leffler}):
+Ein guter Kandidat wäre
+\[
+	\sum_{\omega \in L} \frac{1}{(z-\omega)^2}
+	\,.
+\]
+Allerdings hat diese Reihe schlechte Konvergenzeigenschaften. Das Lösen wir durch konvergenzerzeugende Summanden, also ein besserer Kandidat
+\[
+	\wp(z)	
+	= \frac{1}{z^2} + \sum_{\omega \in L\setminus\{0\}} \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}
+\]
+
+\item Man zeige $K(L) = \CC(\wp) + \wp'\CC(\wp)$,
+wobei $\CC(\wp)$ der Körper der rationalen Funktionen in $\wp$ ist.\footnote{Das heißt jedes $f \in \CC(\wp)$ lässt sich mit $a_0$, \ldots, $a_n$ und $b_0$, \ldots, $b_m \in \CC$ schreiben als
+\[
+	f(z) = \frac{a_0+a_1\wp(z)+\ldots+a_n\wp(z)^n}{b_0+b_1\wp(z)+\ldots+b_m\wp(z)^m}
+\]}
+\end{enumerate}
+
+\begin{nota}
+In diesem Abschnitt sei $L = \ZZ\omega_1 \oplus \ZZ\omega_2 \subseteq \CC$ ein Gitter.
+Satt $\sum_{\omega \in L\setminus\{0\}} \ldots$ schreiben wir einfach $\sumprime_{\omega \in L} \ldots$
+\end{nota}
+
+\begin{lemm}
+Sei $r > 2$.
+Dann ist die Reihe
+\[
+	\sumprime_{w \in L} \frac{1}{\abs \omega ^2}
+\]
+konvergent.
+\end{lemm}
+
+\begin{bewe}
+Sei $f\colon \RR^2\setminus\{(0,0)\} \ra \RR$ mit
+\[
+	f(x, y)
+	= \frac{\abs{x\omega_1 + y\omega_2}^r}{\abs{xi+y}^r}
+	\,.
+\]
+Da $\Set{\omega_1, \omega_2}$ linear unabhängig über $\RR$ ist, gilt $f(x,y) >0$ für alle $(x, y) \in \RR^2\setminus\{(0,0)\}$.
+
+Außerdem gilt $f(\lambda x, \lambda y) = f(x, y)$ für alle $\lambda \in \RR^\times$ und $(x,y) \in \RR^2\setminus\{(0,0)\}$. Da $f$ stetig auf dem Kompaktum $S' = \Set{(x,y) \in \RR^2 \mid x^2 + y^2 = 1}$ ist, folgt, dass es $C > 0$ gibt mit $f(x, y) > C$ für alle $(x, y) \in \RR^2\setminus\{(0,0)\}$.
+Daher
+\[
+	\frac{1}{\abs{x\omega_1 + y\omega_2}^r}
+	< \frac{1}{C} \cdot \frac{1}{\abs{xi + y}^r}
+	\qquad \text{für alle } (x,y) \in \RR^2\setminus\{(0,0)\}
+	\,.
+\]
+Man wende dies an mit $(x, y) = (m, n) \in \ZZ^2$, $(m, n) \not= (0,0)$.
+Damit genügt es die Konvergenz für $L = \ZZ \oplus \ZZ$ zu zeigen, d.\,h.
+\[
+	\sumprime_{m,n} \frac{1}{\abs{mi+n}^r} < \infty
+\]
+Die euklidische Norm ist äquivalent zur Maximusmnorm auf $\RR^2$.
+Also genügt es zu zeigen, dass
+\[
+	\sumprime_{m,n} \frac{1}{\norm{(m,n)}_\infty^r} < \infty
+\]
+
+Es gilt
+\begin{align*}
+	\sumprime_{m,n} \frac{1}{\norm{(m,n)}_\infty^r}
+	&= \sum_{N=1}^\infty \underbrace{\# \Set{(m, n) \in \ZZ \mid \norm{(m,n)}_\infty^r = N}}_{=8N} \frac{1}{N^r} \\
+	&\leq 8 \sum_{N=1} \frac{1}{N^{r-1}}
+	< \infty
+	\qquad \text{für } r > 2
+	\,.
+\end{align*}
+\end{bewe}

@@ -99,7 +99,7 @@ Erstere haben \myquote{Geschlecht Null} (isomorph zu $\mathds{P}_1(\CC)$), letzt
 
 Es handelt sich um vier Sätze, die notwendige Bedingungen geben für die Existenz von elliptischen Funktionen.
 
-\begin{satz}
+\begin{satz}\label{satz:liouville-1}
 Eine elliptische Funktion $f\colon \CC \ra \closure \CC$ ohne Polstellen ist notwendigerweise konstant.
 \end{satz}
 
@@ -119,10 +119,10 @@ Beachte
 
 Es folgt: $f$ nimmt schon jeden seiner Werte auf dem Kompaktum $\F$ an, und $f$ ist ganz, also insbesondere stetig und damit auf jedem Komapaktum beschränkt.
 Also ist $f$ bereits auf ganz $\CC$ beschränkt.
-Nach Lioville (Funktionentheorie 1) ist $f$ somit bereits konstant.
+Nach Liouville (Funktionentheorie 1) ist $f$ somit bereits konstant.
 \end{bewe}
 
-\begin{satz}
+\begin{satz}\label{satz:liouville-2}
 Sei $f \in K(L)$.
 Dann gilt
 \[
@@ -173,4 +173,159 @@ Hier heben sich das erste und das dritte und das zweite und das vierte Integral 
 
 \begin{koro}
 Es gibt keine elliptische Funktion $f$ mit genau einer einfachen Polstelle modulo $L$.
+In anderen Worten hat ein $f\in K(L)\setminus\CC$ entweder mindestens einen Pol der Ordnung größer als 1 oder mindestens zwei modulo $L$ verschiedene Polstellen.
 \end{koro}
+
+\begin{defi-noind}
+Sei $D \subseteq \CC$ offen und $f\colon D \ra \closure \CC$ meromorph, $f \not\equiv 0$ und $z_0 \in D$.
+\begin{enumerate}
+\item Sei $c\in \CC$ und $k\in\NN_0$.
+Man sagt, dass $f$ in $z_0$ den Wert $c$ mit Vielfachheit $k$ annimmt, falls
+\[
+	ord_{z_0} (f-c) = k
+	\,.
+\]
+
+\item Sei $z_0$ eine Polstelle von $f$ der Ordnung $k\in\NN$ (also $\ord_{z_0} f = -k$).
+Man sagt, dass $f$ in $z_0$ den Wert $\infty$ mit Vielfachheit $k$ annimmt.
+\end{enumerate}
+\end{defi-noind}
+
+\begin{satz}\label{satz:liouville-3}
+Jedes $f \in K(L)\setminus\CC$ nimmt jeden Wert $c\in\closure\CC$ (mit Vielfachheiten gezählt) gleich oft an.
+Insbesondere gilt für alle $c\in\CC$
+\[
+	\sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ kein Pol}}} \ord_z(f-c)
+	= -\sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ Pol}}} \ord_z f
+\]
+\end{satz}
+
+\begin{bewe}
+Sei $c\in\CC$ fest.
+Dann ist $\frac{f'}{f-c} \in K(L)$, denn $f$ ist nicht konstant, $f'\in K(L)$ und $K(L)$ ist ein Körper.
+Wir wollen nun \autoref{satz:liouville-2} auf $\frac{f'}{f-c}$ anwenden.
+Zunächst gilt $\frac{f'}{f-c} = \frac{(f-c)'}{f-c}$, daher ist 
+\[
+	\res_z \frac{f'}{f-c}
+	= \res_z \frac{(f-c)'}{f-c}
+	= \ord_z (f-c)
+	\,,
+\]
+wobei die letzte Gleichheit aus dem Beweis des Satzes über das Null- und Pollstellenzählende Integral aus Funktionentheorie 1 folgt.
+Nach \autoref{satz:liouville-2} folgt dann
+\[
+	0
+	= \sum_{z\in\CC/L} \ord_z (f-c)
+	= \sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ kein Pol}}} \ord_z (f-c)
+	+ \sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ Pol}}} \underbrace{\ord_z (f-c)}_{=\ord_z f(z)}
+	\,.
+\]
+\end{bewe}
+
+\begin{defi}
+Man nennt
+\[
+	-\sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ Pol}}} \ord_z f \in \NN
+\]
+aus \autoref{satz:liouville-3} die \myemph{Ordnung von $f$}.
+\end{defi}
+
+\begin{satz}\label{satz:liouville-4}
+Sei $f\in K(L)\setminus\CC$.
+Seien $\alpha_1$, \ldots, $\alpha_r$ bzw. $\beta_1$, \ldots $\beta_s$ ein vollständiges Vertretersystem modulo $L$ der Null- bzw. Polstellen von $f$ mit Vielfachheiten gezählt, das heißt nicht notwendigerweise paarweise verschieden.
+Dann gilt
+\begin{enumerate}
+\item $r = s$,
+\item $\sum_{j=1}^s \alpha_j - \sum_{j=1}^s \beta_j \in L$.
+\end{enumerate}
+\end{satz}
+
+\begin{bewe-list}
+\item $r=s$ folgt aus \autoref{satz:liouville-3} mit $c=0$.
+
+\item Für den Beweis braucht man folgendes Lemma
+
+\begin{lemm}
+Sei $D$ ein Elementargebiet und $f$ eine auf $D$ meromorphe Funktion mit endlich vielen Null- und Polstellen $a_1$, \ldots, $a_n$. Sei $C$ eine stückweise glatte Kurve in $D\setminus\Set{a_1, \ldots, a_n}$.
+Sei zusätzlich $g\colon D \ra \CC$ holomorph. Dann gilt
+\[
+	\frac{1}{2\pi i} \int_C g(z) \frac{f'(z)}{f(z)} \opd z
+	= \sum_{\nu=1}^n \mathcal{X}(C, a_\nu) \cdot g(a_\nu) \cdot \ord_{a_\nu} f
+	\,.
+\]
+\end{lemm}
+\begin{bewe}
+Genauso wie für $g\equiv1$ im Null- und Polstellen zählendes Integral aus Funktionentheorie 1.
+Die Funktion $g(z) \frac{f'(z)}{f(z)}$ ist holomorph auf $D\setminus\Set{a_1, \ldots, a_n}$.
+Ist $a\in\Set{a_1\ldots,a_n}$, so gilt
+\[
+	\res_{z=a} g(z)\frac{f'(z)}{f(z)}
+	= g(a) \cdot \ord_a f
+	\,.
+\]
+Mit dem Residuensatz folgt die Behauptung.
+\end{bewe}
+
+Durch Abändern modulo $L$ kann man erreichen, dass $\alpha_1$, \ldots, $\alpha_s$, $\beta_1$, \ldots, $\beta_s \in \innere \F_a$ für ein geeignetes $a\in\CC$, wobei $\F_a = \F + a$ und $\F = \F(\omega_1, \omega_2) = \Set{t_1\omega_1 + t_2\omega_2 \mid 0 \leq t_1, t_2 \leq 1}$ die Grundmasche bezüglich einer Basis $\Set{\omega_1, \omega_2}$ von $L$.
+
+Man wende das Lemma an mit $g(z) = z$ und $C = \partial \F_a$ (positiv durchlaufen). Es folgt
+\[
+	\sum_{\nu = 1}^s \alpha_\nu - \sum_{\nu = 1}^s \beta_\nu
+	= \frac{1}{2\pi i} \int_{\partial \F_a} z \frac{f'(z)}{f(z)} \opd z
+	= \frac{1}{2\pi i} \left( \sum_{\nu = 1}^4 \int_{C_\nu} z \frac{f'(z)}{f(z)} \opd z\right)
+	\,,
+\]
+mit den Integrationswegen wie im Beweis von \autoref{satz:liouville-2}.
+
+Man betrachte das Integral über $C_2$ und $C_4$.
+Es gilt
+\begin{align*}
+	\int_{C_4} z \frac{f'(z)}{f(z)} \opd z
+	&= \int_{\underbrace{C_4 + \omega_1}_{=-C_2}} (z-\omega_1) \frac{f'(z-\omega_1)}{f(z-\omega_1} \opd z \\
+	&= -\int_{C_2} (z-\omega_1) \frac{f'(z)}{f(z)} \opd z
+	= -\int_{C_2} z\frac{f'(z)}{f(z)} \opd z + \omega_1 \int_{C_2} \frac{f'(z)}{f(z)} \opd z
+	\,.
+\end{align*}
+Also erhalten wir
+\[
+	\int_{C_2} z \frac{f'(z)}{f(z)} \opd z + \int_{C_4} z \frac{f'(z)}{f(z)} \opd z
+	= \omega_1 \int_{C_2} \frac{f'(z)}{f(z)} \opd z
+	\,.
+\]
+
+Nach Voraussetzung hat $f$ keine Null- oder Polstellen auf $C_2$. Daher kann man ein offenes Rechteck $R$ (insbesondere also ein Elementargebiet), welches $C_2$ enthält, finden, auf dem $f$ keine Null- und Polstellen hat. \emph{Denn} $f$ hat als meromorphe Funktion, die nicht identisch Null ist, nur isolierte Null- und Polstellen.
+
+Da $R$ ein Elementargebiet und $f$ holomorph und nullstellenfrei auf $R$ ist, existiert eine holomorphe Funktion $h\colon R \ra \CC$, so dass $f(z) = e^{h(z)}$ für alle $z\in R$.
+
+Durch Ableiten ergibt sich $f'(z) = h'(z) e^{h(z)} = h'(z)f(z)$. Damit erhalten wir
+\[
+	\frac{f'(z)}{f(z)}
+	= h'(z)
+	\,.
+\]
+Es folgt daher aus der Funktionentheorie 1:
+\[
+	\int_{C_2} \frac{f'(z)}{f(z)} \opd z
+	= h(a+\omega_1+\omega_2) - h(a + \omega_1)
+	\,.
+\]
+Aber wir wissen $e^{h(a+\omega_1+\omega_2)} = f(a+\omega_1+\omega_2) = f(a+\omega_1) = e^{h(a + \omega_1)}$. Damit folgt $h(a+\omega_1+\omega_2) - h(a + \omega_1) \in 2\pi i \ZZ$.
+
+Also folgt
+\[
+	\frac{\omega_1}{2\pi i} \int_{C_2+ C_4} \frac{f'(z)}{f(z)} \opd z \in \omega_1\ZZ
+	\,.
+\]
+
+Genauso zeigt man
+\[
+	\int_{C_1 + C_3} z\frac{f'(z)}{f(z)} \opd z
+	= \omega_2 \int_{C_1} \frac{f'(z)}{f(z)} \opd z
+	\,,
+\]
+dann gilt
+\[
+	\frac{\omega_2}{2\pi i} \int_{C_1 + C_3} \frac{f'(z)}{f(z)} \in \omega_2\ZZ
+	\,.
+\]
+\end{bewe-list}

@@ -147,6 +147,13 @@
     {\frac{\partial#2}{\partial#3}}
     {\frac{\opd#2}{\opd#3}}%
 }
+\newcommand{\sumprime}{%
+\mathop{\mathchoice
+  {\sideset{}{'}\sum}% Display Style
+  {\sum'}% Text Style
+  {\sum'}% Script Style
+  {\sum'}}% Scriptscript Style
+}
 
 %Defining text-Commands
 \newcommand{\myquote}[1]{\glqq{}#1\grqq{}}
