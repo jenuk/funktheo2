@@ -154,6 +154,13 @@
   {\sum'}% Script Style
   {\sum'}}% Scriptscript Style
 }
+\newcommand{\modulo}[2]{%
+\mathchoice
+	{\left.\raisebox{0.25em}{\scalebox{0.9}{$\textstyle #1$}}\scalebox{1}{$\displaystyle /$}\raisebox{-0.25em}{\scalebox{0.9}{$\textstyle #2$}}\right.}% Display
+	{\left.\raisebox{0.2em}{\scalebox{0.9}{$#1$}}\scalebox{0.9}{$/$}\raisebox{-0.2em}{\scalebox{0.9}{$#2$}}\right.}% Text
+	{\left.\raisebox{0.15em}{\scalebox{0.9}{$\scriptstyle #1$}}\scalebox{0.9}{$\scriptstyle /$}\raisebox{-0.15em}{\scalebox{0.9}{$\scriptstyle #2$}}\right.}% Script
+	{\left.{#1}/{#2}\right.}% Scriptscript
+}
 
 %Defining text-Commands
 \newcommand{\myquote}[1]{\glqq{}#1\grqq{}}
