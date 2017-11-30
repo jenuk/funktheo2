@@ -226,6 +226,7 @@
 % additionally "name" is created with default name-ind
 % Package Option no-indent sets "name" to "name-noind"
 
+\makeatletter
 \newcommand{\xdeclaretheoremstyle}[2][]{
 	\declaretheoremstyle[
 		headindent=-\myhangindent,
@@ -233,11 +234,12 @@
 		postfoothook={\end{addmargin}},
 		#1]{#2-indent}
 	\declaretheoremstyle[
-	   postheadhook=\leavevmode\enumerate,
+	    postheadhook=\leavevmode\nobreak\@afterheading\enumerate,
 		prefoothook=\endenumerate,
 		#1]{#2-list}
 	\declaretheoremstyle[#1]{#2}
 }
+\makeatother
 
 \NewDocumentCommand{\xdeclaretheorem}{o o m}{
 	\declaretheorem[#1-indent, #2]{#3}
