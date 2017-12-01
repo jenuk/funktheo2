@@ -29,7 +29,7 @@ In diesem Abschnitt sei $L = \ZZ\omega_1 \oplus \ZZ\omega_2 \subseteq \CC$ ein G
 Satt $\sum_{\omega \in L\setminus\{0\}} \ldots$ schreiben wir einfach $\sumprime_{\omega \in L} \ldots$
 \end{nota}
 
-\begin{lemm}
+\begin{lemm}\label{lemm:weierstrass-konv}
 Sei $r > 2$.
 Dann ist die Reihe
 \[
@@ -77,4 +77,260 @@ Es gilt
 	\qquad \text{für } r > 2
 	\,.
 \end{align*}
+\end{bewe}
+
+\begin{satz-list}
+\item Die Reihe
+\[
+	\wp(z)
+	:= \frac{1}{z^2} + \sumprime_{\omega \in L} \left(\frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}\right)
+	\qquad \text{für } z\in\CC\setminus L
+\]
+ist auf Kompakta $K\subseteq \CC\setminus L$ gleichmäßig, absolut konvergent und heißt \myemph{Weierstraß'sche $\wp$-Funktion}.
+Sie ist holomorph auf $\CC\setminus L$ und hat doppelte Pole in allen $w\in L$.
+
+\item Es gilt
+\[
+	\wp'(z) = -2\sum_{\omega \in L} \frac{1}{(z-\omega)^3}
+	\qquad \text{für } z\in\CC\setminus L
+\]
+wobei die Reihe absolut konvergiert.
+Insbesondere ist $\wp'$ ungerade und elliptisch.
+
+\item $\wp$ ist elliptisch zum Gitter $L$ mit Ordnung 2.
+\item Um $z=0$ hat $\wp(z)$ die Laurententwicklung
+\[
+	\wp(z) = \frac{1}{z^2} + \sum_{n\geq 1} (2n+1) G_{2n+2} z^{2n}
+	\qquad \text{für } 0 < \abs z < \rho
+	\,,
+\]
+wobei
+\[
+	G_{2k}
+	= \sumprime_{w\in L} \frac{1}{\omega^{2k}}
+	\qquad \text{für } k\in\NN, k\geq 2
+\]
+die sogeannten \myemph{homogenen Eisensteinreihen} vom Gewicht $2k$ zu $L$ sind. Und
+\[
+	\rho := \min \Set{ \abs\omega \mid \omega \in L, \omega \not= 0}
+	\,.
+\]
+\end{satz-list}
+
+\begin{bewe-list}
+\item Sei $K\subseteq \CC\setminus L$ kompakt.
+Es gelte $\abs z < R$ für alle $z\in K$.
+Sei $\omega \in L$ mit $\abs \omega > 2R$.
+Durch Abschätzen ergibt sich
+\begin{align*}
+	\abs{\frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}}
+	&= \abs{\frac{\omega^2-z^2+2\omega z -\omega^2}{(z-\omega)^2\omega^2}}
+	= \frac{\abs{z(2\omega - z)}}{\abs \omega ^2 \abs{z-\omega}^2} \\
+	&\leq \frac{R(2\abs \omega + R)}{\abs \omega ^2(\abs \omega - R)^2}
+	\leq \frac{R(2\abs \omega + \frac{\abs \omega}{2})}{\abs \omega ^2(\abs \omega - \frac{\abs \omega}{2})^2}
+	= \frac{10R}{\abs \omega ^3}
+	\,.
+\end{align*}
+Denn es gilt $\abs z \leq R < 2R < \abs w$ also $R < \frac{\abs \omega}{2}$ und
+\[
+	\abs{z-\omega}^2
+	= \abs{\omega - z}^2
+	\geq (\abs \omega - \abs z)^2
+	\geq (\abs \omega - R)^2
+	\,.
+\]
+Damit folgt die Behauptung wegen \autoref{lemm:weierstrass-konv} mit $r=3$.
+
+Nach dem Satz von Weierstraß (Funktionentheorie 1) ist somit $\wp(z)$ holomorph auf $\CC\setminus L$.
+Nach Definition hat $\wp(z)$ Pole zweiter Ordnung in $\omega \in L$.
+Der Hauptteil ist gerade $\frac{1}{(z-\omega)^2}$.
+
+\item Wegen lokaler gleichmäßiger Konvergent darf man die Reihe $\wp(z)$ gliedweise differenzieren
+\[
+	\wp'(z)
+	= -2\frac{1}{z^3} - 2 \sumprime_{\omega \in L} \frac{1}{(z-\omega)^3}
+	= -2\sum_{\omega\in L} \frac{1}{(z-\omega)^3}
+	\qquad \text{für } z\in\CC\setminus L
+	\,.
+\]
+Die absolute Konvergent lässt sich wie in (i) zeigen (Beachte Exponent 3 und \autoref{lemm:weierstrass-konv}).
+
+Wegen der absoluten Konvergenz der Reihe $\wp'$ ist $\wp'$ elliptisch, denn sei $\omega_0 \in L$:
+\begin{align*}
+	\wp'(z + \omega_0)
+	&= -2 \sum_{\omega \in L} \frac{1}{(z+\omega_0 - \omega)^3} \\
+	&= -2 \sum_{\omega \in L} \frac{1}{(z-(\omega - \omega_0))^3}
+	= -2 \sum_{\omega \in L} \frac{1}{(z - \omega)^3}
+	\,,
+\end{align*}
+denn die Reihe ist absolut also auch unbedingt konvergent und mit $\omega$ durchläuft auch $\omega-\omega_0$ ganz $L$.
+
+\item Für $j=1,2$ betrachten wir
+\[
+	\wp(z+\omega_j) - \wp(z)
+	\,.
+\]
+Differenziert man nun, erhält man, da $\wp'$ elliptisch ist
+\[
+	\wp'(z+\omega_j) - \wp'(z)
+	= 0
+	\,.
+\]
+Da $\CC\setminus L$ ein Gebiet ist, folgt, dass
+\[
+	\wp(z+\omega_j) - \wp(z)
+	= c_j
+\]
+konstant ist.
+Für $z = -\frac{\omega_j}{2} \not\in L$ gilt dann
+% Ich weiß nicht was ich hier mitgeschrieben habe. Stattdessen das aus dem alten Skript
+%\[
+%	c_j
+%	= \wp\left(\frac{\omega_j}{2}\right)
+%	= \wp\left(-\frac{\omega_j}{2}+\omega_j\right) - \wp\left(-\frac{\omega_j}{2}\right)
+%	= -\wp\left(\frac{\omega_j}{2}\right)
+%	= -c_j
+%	\,.
+%\]
+da $\wp$ gerade ist
+\[
+	0
+	= \wp\left(\frac{\omega_j}{2}\right) - \wp\left(\frac{\omega_j}{2}\right)
+	= \wp\left(-\frac{\omega_j}{2} + \omega_j\right) - \wp\left(- \frac{\omega_j}{2}\right)
+	= c_j
+	\,.
+\]
+
+Also ist $c_j = 0$ und damit $\wp$ elliptisch.
+Und $\ord \wp = 2$ folgt, da $\wp$ doppelte Polstellen in $L$ hat und holomorph auf $\CC\setminus L$ ist.
+
+\item Es gilt $\wp(z) = \frac{1}{z^2} + g(z)$ mit
+\[
+	g(z)
+	= \sumprime_{\omega \in L} \left(\frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}\right)
+	\qquad \text{für } \abs z < \rho
+	\,.
+\]
+Durch sukzessives ableiten erhält man
+\[
+	g^{(n)}(z)
+	= (-1)^n (n+1)! \sumprime_{\omega \in L} \frac{1}{(z-\omega)^{n+2}}
+	\qquad \text{für } n \geq 1
+	\,.
+\]
+
+Für $z=0$ gilt dann
+\begin{align*}
+	g^{(n)}(0)
+	&= (-1)^n (n+1)! \sumprime_{\omega \in L} \frac{1}{(-\omega)^{n+2}} \\
+	&= (n+1)! \sumprime_{\omega \in L} \frac{1}{\omega^{n+2}}
+	=
+	\begin{cases}
+		0 & n \text{ ungerade} \\
+		(n+1)!\ G_{n+2} & n \text{ gerade}
+	\end{cases}
+	\,.
+\end{align*}
+Es folgt mit dem Satz von Taylor
+\[
+	g(z)
+	= \sum_{n=0}^\infty \frac{g^{(n)}(0)}{n!}z^n
+	= \sum_{\substack{n \geq 1 \\ \scriptscriptstyle n \text{ gerade}}} (n+1)G_{n+2}z^n\,.
+\]
+\end{bewe-list}
+
+\begin{satz}\label{satz:diff-wp}
+Es gilt die Differentialgleichung
+\[
+	\wp'(z)^2
+	= 4\wp(z)^3 - g_2\wp(z) - g_3
+	\,,
+\]
+wobei $g_2 = 60G_4$ und $g_3 = 140G_6$, die sogenannten \myemph{Weierstraß-Konstanten} des Gitters $L$ sind.
+\end{satz}
+
+\begin{bewe}
+Wir wollen beide Seiten in eine Laurentreihe um $z=0$ entwickeln und die Differenz bilden.
+
+Es ist
+\[
+	\wp(z) = \frac{1}{z^2} + 3G_4z^2 + 5G_6z^4 + \ldots
+\]
+Also
+\[
+	\wp'(z) = -\frac{2}{z^3} + 6G_4z + 20G_6z^3 + \ldots
+\]
+Damit folgt
+\[
+	\wp'(z)^2 = \frac{4}{z^6} - \frac{24G_4}{z^2} - 80G_6 + \ldots
+\]
+Ähnlich erhalten wir
+\[
+	4\wp(z)^3
+	= \frac{4}{z^6} + \frac{36G_4}{z^2} + 60G_6 + \ldots
+\]
+Also
+\[
+	\wp'(z)^2 - 4\wp(z)^3 + g_2\wp(z)
+	= -140G_6 + \ldots 
+\]
+
+Wir erhalten, dass $H(z) := \wp'(z)^2 - 4\wp(z)^3 + g_2\wp(z) \in K(L)$ eine holomorphe Fortsetzung in $z=0$ hat, denn $H$ hat kein Hauptteil in $z=0$.
+Und hat dort den Wert $-140G_6 = -g_3$.
+Wegen der Periodizität ist daher $H(z) \in K(L)$ und holomorph auf ganz $\CC$.
+Nach dem 1. Liouvillschen Satz (\autoref{satz:liouville-1}) ist $H$ konstant,
+also $H(z) = H(0) = -g_3$.
+\end{bewe}
+
+\begin{beme}
+Eine elliptische Kurve $y^2=4x^3+ax-b$ wird für $a=-g_2$ und $b=-g_3$ durch die $\wp$-Funktion parametrisiert.
+\end{beme}
+
+\begin{koro}
+Sei $\omega_3 := \omega_1 + \omega_2$ und $e_j = \wp(\frac{\omega_j}{2})$ für $j=1,2,3$.
+Dann gilt
+\[
+	\wp'(z)^2 = 4(\wp(z)-e_1)(\wp(z)-e_2)(\wp(z)-e3)
+	\,.
+\]
+\end{koro}
+
+\begin{beme}
+Die Punkte $\frac{\omega_1}{2}$, $\frac{\omega_2}{2}$ und $\frac{\omega_3}{2}$ sind \emph{ausgezeichnet} dadurch, dass sie ein Vertretersystem modulo $L$ der sogennanten \myemph{Zweiteilungspunkten} von L sind, d.\,h. $z\in\CC$ mit
+\[
+	2z \equiv 0 \mod L
+\]
+\end{beme}
+
+\begin{bewe}
+Beachte da $\wp'$ elliptisch und ungerade ist, gilt
+\[
+	\wp'\left(\frac{\omega_j}{2}\right)
+	= \wp'\left(\frac{\omega_j}{2}-\omega_j\right)
+	= \wp'\left(-\frac{\omega_j}{2}\right)
+	= - \wp'\left(\frac{\omega_j}{2}\right)
+\]
+Also $\wp'(\frac{\omega_j}{2}) = 0$ für $j=1,2,3$.
+
+\emph{Behauptung}
+$e_1, e_2, e_3$ sind paarweise verschieden.
+Denn Angenommen es gilt $e_k = e_j$ mit $k \not= j$.
+So folgt
+\[
+	{\textstyle \ord_{\frac{\omega_k}{2}}} (\wp-e_k) \geq 2
+	\,,\qquad
+	{\textstyle \ord_{\frac{\omega_j}{2}}} (\wp-e_j) \geq 2
+	\,,
+\]
+denn $\wp(\frac{\omega_j}{2}) = e_j$ und $\wp'(\frac{\omega_j}{2}) = 0$ genauso für $k$.
+Da $\frac{\omega_k}{2} \not\equiv \frac{\omega_j}{2} \mod L$, folgt dass $\wp$ den Wert $e_j = e_k$ mindestens vier mal modulo $L$ annimmt.
+Aber die Ordnung von $\wp$ ist gleich 2. \blitz
+
+Das Polynom $4X^3-g_2X-g_3$ hat also nach \autoref{satz:diff-wp} die paarweise verschiedenen Nullstellen $e_1$, $e_2$ und $e_3$.
+Also
+\[
+	4X^3-g_2X-g_3 = 4(X-e_1)(X-e_2)(X-e_3)
+	\,.
+\]
+Mit $X = \wp(z)$ folgt die Behauptung mit \autoref{satz:diff-wp}.
 \end{bewe}
