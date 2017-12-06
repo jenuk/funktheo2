@@ -334,3 +334,141 @@ Also
 \]
 Mit $X = \wp(z)$ folgt die Behauptung mit \autoref{satz:diff-wp}.
 \end{bewe}
+
+\begin{erin*}
+Sei $K$ ein Körper (mit Addition $+$ und Multiplikation $\cdot$\,).
+Dann heißt $k\subseteq K$ \myemph{Teilkörper}, falls $(k,+)$ eine Untergruppe von $(K,+)$ und $(k^\times,\cdot)$ eine Untergruppe von $(K^\times, \cdot)$ ist.
+Man sagt auch, dass $K\mid k$ eine Körpererweiterung ist.
+Man beachte, dass $k$ zusammen mit eingeschränkter Addition $+$ und Multiplikation $\cdot$ selbst ein Körper ist.
+
+\emph{Beobachtung:}
+Man kann $K$ als $k$-Vektorraum auffassen, mit Skalarmultiplikation
+\[
+	k\times K\ra K,
+	\quad (\lambda,a)\mapsto \lambda a
+	\,.
+\]
+Man nennt $\dim_k(K)$ den \myemph{Körpergrad} der Erweiterung $K\mid k$ und schreibt dafür $[K:k]$.
+(Beispiel: $\CC\mid\RR$ hat Grad 2 ($\RR$-Basis von $\CC$ ist 1 und $i$).)
+
+Seien $K$ und $K'$ Körper.
+Eine Abbildung
+\[
+	\phi\colon K\ra K'
+\]
+heißt \myemph{Körperhomomorphismus}, falls für alle $a, b \in K$ gilt
+\begin{align*}
+	\phi(a+b) &= \phi(a)+\phi(b)\,, \\
+	\phi(a\cdot b) &= \phi(a)\cdot\phi(b)\,, \\
+	\phi(1)&=1
+\end{align*}
+Dann ist $\phi$ automatisch \emph{injektiv}, denn für $a \neq 0$ gilt
+\[
+	\phi(a)\phi(a^{-1})
+	= \phi(a a^{-1})
+	= \phi(1)= 1
+	\,,
+\]
+also folgt $\phi(a)\neq 0$.
+Man nennt $\phi$ einen Isomorphismus, falls $\phi$ \emph{bijektiv} ist (dafür genügt es nach Obigem die \emph{Surjektivität} von $\phi$ zu zeigen).
+\end{erin*}
+
+\begin{satz-list}[Struktursatz]
+\item Sei $K_+(L) = \Set{f\in K(L) \mid f \text{ gerade}}$ der Teilkörper der geraden elliptischen Funktionen.
+Dann ist die Abbildung
+\[
+	\phi\colon \CC(X) \ra K_+(L)\,,
+	\quad R(X) \mapsto R(\wp)	
+\]
+wohldefiniert und ein Körper-Isomorphismus.
+Insbesondere ist die Abbildung also surjektiv, das heißt $K_+(L) = \CC(\wp)$.
+
+\item Die Körpererweiterung $K(L) \mid K_+(L)$ hat Grad 2 und eine $K_+(L)$-Basis von $K(L)$ ist 1 und $\wp'$.
+Insbesondere ist also
+\[
+	K(L)
+	= \CC(\wp) \oplus \CC(\wp) \wp'
+	\,.
+\]
+\end{satz-list}
+
+\begin{beme}[Übung]
+	Man sieht direkt (mit Hilfe der Differentialgleichung \autoref{satz:diff-wp}), dass $\CC(\wp) \oplus \CC(\wp) \wp'$ tatsächlich ein Körper ist.
+\end{beme}
+
+\begin{bewe-list}
+\item \emph{Wohldefiniertheit}: Dafür zeigen wir zunächst, ist $P(X)\in \CC[X]$ nicht das Nullpolynom, so ist $P(\wp)$ auch nicht die Nullfunktion.
+
+Ist $P$ konstant, so folgt die Behauptung.
+Sonst sei $\grad(P(X)) = n \geq 1$.
+Dann hat $P(\wp)$ eine Polstelle der Ordnung $2n$ in $z = 0$, also kann $P(\wp)$ nicht identisch Null sein.
+
+Weiterhin gilt, da $\wp$ gerade ist, ist auch $R(\wp)$ gerade, also $R(\wp)\in K_+(L)$.
+
+Offensichtlich ist die Abbildung $\phi$ ein Homomorphismus.
+Also müssen wir noch die Surjektivität von $\phi$ zeigen, dafür genügt es für $f\in K_+(L)$ zu zeigen, dass $f\in\CC(\wp)$ gilt.
+
+\emph{Behauptung}: Sei $f\in K_+(L)$ und $S(f)\subseteq L$. Dann ist $f$ ein Polynom in $\wp$.
+
+\begin{bewe}
+Ohne Einschränkung sei $f$ nicht konstant.
+Nach dem 1. Satz von Liouville (\autoref{satz:liouville-1}) gilt dann $S(f) \neq \emptyset$.
+Sei $\omega_0 \in S(f)$.
+Wegen $f(z - \omega_0 + \omega) = f(z)$ für alle $\omega \in L$ folgt mit $z = \omega_0$, dass $f(\omega) = f(\omega_0) = \infty$ für alle $\omega\in L$.
+Also folgt $L \subseteq S(f)$ und wegen $S(f) \subset L$ folgt $S(f) = L$.
+
+Insbesondere ist $0\in S(f)$.
+Da $f$ \emph{gerade}, hat die Laurententwicklung von $f$ um 0 die Gestalt
+\[
+	f(z) = a_{-2N} z^{-2N} + \text{höhere Terme}
+	\qquad \text{für } 0< \abs{z} <\rho
+	\,,
+\]
+wobei $N\geq 1$, $a_{-2N} \neq 0$ (d.\,h., $f$ hat in 0 einen Pol der Ordnung $2N$).
+
+Außerdem gilt $\wp(z)^N = \frac{1}{z^{2N}} + \text{höhere Terme}$ für $0<\abs{z} < \rho$.
+Betrachte
+\[
+	g(z)
+	:= f(z) - a_{-2N} \cdot\wp(z)^N
+	\,.
+\]
+Dann hat $g(z)$ nach Konstruktion einen Pol in $z=0$ einer Ordnung echt kleiner als $2N$.
+Auch ist $g(z)$ elliptisch und gerade.
+Weiterhin gilt $S(g) \subseteq L$.
+Nun machen wir den gleichen Schluss mit $f(z)$ ersetzt durch $g(z)$.
+Verfährt man induktiv weiter, so erhält man nach endlich vielen Schritten ein Polynom $P(X)\in \CC[X]$, so dass $f - P(\wp)$ holomorph fortsetzbar ist in $z=0$ (d.\,h. dort keinen Hauptteil mehr hat).
+Wegen $f - P(\wp) \in K(L)$, ist somit $f - P(\wp)$ holomorph auf ganz $\CC$. Nach dem ersten Liouvill'schen Satz (\autoref{satz:liouville-1}) folgt $f-P(\wp)$ ist konstant.		
+\end{bewe}
+
+Sei $f\in K_+(L)$, $a\in S(f)$, $a \not\in L$.
+Es gelte, dass $f$ einen Pol der Ordnung $N$ in $a$ hat.
+Dann hat $(\wp(z) - \wp(a))^N f(z)$ eine hebbare Singularität in $z=a$, denn $(\wp(z) - \wp(a))^N$ hat eine Nullstelle von mindestens $N$-ter Ordnung in $z=a$.
+Da $f$ nur endlich viele Polstellen modulo $L$ hat, existieren $a_1$, \ldots, $a_s\in \CC\setminus L$ und $N_1$, \ldots, $N_s\in\NN$, so dass
+\[
+	\prod_{j=1}^s (\wp(z) - \wp(a_j) )^{N_j} \cdot f(z)
+\]
+höchstens Polstellen in $L$ hat.
+Da diese Funktion gerade ist, ist sie nach dem schon Bewiesenen ein Polynom in $\wp$.
+Daher ist $f$ eine rationale Funktion in $\wp$.
+
+
+
+\item Sei $f(z) \in K(L)$.
+Dann ist $f(-z)\in K(L)$.
+Also sind $f_1(z) = \frac{f(z) + f(-z)}{2}$ und $f_2(z) = \frac{f(z) - f(-z)}{2}$ in $K(L)$.
+Außerdem ist $f_1$ gerade und $f_2$ ungerade.
+Nun gilt mit (i)
+\[
+	f(z)
+	= f_1(z) + f_2(z)
+	= \underbrace{f_1(z)}_{\text{gerade}} + \underbrace{\frac{f_2(z)}{\wp'(z)}}_{\text{gerade}} \wp'(z)
+	\in \CC(\wp) + \CC(\wp)\wp'
+	\,.
+\]
+Es verbleibt zu zeigen, dass 1 und $\wp'$ über $K_+(L) = \CC(\wp)$ linear unabhängig sind.
+
+Gelte $g+h\wp ' = 0$ mit $g$, $h\in K_+(L)$.
+Ist nun $h\neq 0$, so folgt $\wp' = -\frac{g}{h}$ und dies ist ein Widerspruch, da $g$ und $h$ gerade sind.
+Also ist $h=0$ und damit auch $g=0$.
+\end{bewe-list}
