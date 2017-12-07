@@ -25,13 +25,13 @@
 \RequirePackage[shortlabels, inline]{enumitem} % gives enumerate an optional argument, inline adds * Versions for inline lists
 \setlist[enumerate,1]{label={(\roman*)}} % default numbering is roman
 
-\RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} %nicer math
+\RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} % nicer math
 \addtolength{\jot}{1em} % add space between lines in align
-\RequirePackage{thmtools, mathtools} %even better math
+\RequirePackage{thmtools, mathtools} % even better math
 \renewcommand{\listtheoremname}{Liste der Sätze}
-\RequirePackage{dsfont} %Double Stroke letters, i.e. \mathds{N}
+\RequirePackage{dsfont} % Double Stroke letters, i.e. \mathds{N}
 \RequirePackage{stmaryrd} % \lightning
-\RequirePackage[dvipsnames]{xcolor} %makes things colorful
+\RequirePackage[dvipsnames]{xcolor} % makes things colorful
 \RequirePackage{etoolbox} % AtBeginEnviroment, AtEndEnviroment
 \RequirePackage{aurical} % qed - font
 \RequirePackage{bm} % poor man bold, \bm
@@ -46,7 +46,7 @@
 \makeindex
 \RequirePackage[totoc]{idxlayout}
 
-%swap the meaning of two commands
+% swap the meaning of two commands
 \RequirePackage{letltxmacro}
 \newcommand{\swap}[2]{
 \LetLtxMacro{\temp}{#1}
@@ -63,7 +63,7 @@
 \WarningFilter{latexfont}{Font shape `U/stmry/b/n' undefined}
 \WarningFilter{latexfont}{Some font shapes were not available, defaults substituted.}
 
-%\setlength\parindent{0pt} % no automatic indention for new par
+% \setlength\parindent{0pt} % no automatic indention for new par
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,7 +82,7 @@
 \newcommand{\CCminusNN}{D_{-\NN_0}}
 \newcommand{\F}{\mathcal{F}}
 
-%shorter commands for arrows
+% shorter commands for arrows
 \newcommand{\ra}{\rightarrow}
 \newcommand{\Ra}{\Longrightarrow}
 \newcommand{\Rla}{\Longleftrightarrow}
@@ -109,23 +109,27 @@
 
 
 
-%swap some greek letters
+% swap some greek letters
 \swap{\phi}{\varphi}
 \swap{\epsilon}{\varepsilon}
 \swap{\theta}{\vartheta}
 
-%making leqslant and geqslant the default
+% making leqslant and geqslant the default
 \let\leqold\leqslant
 \let\geqold\geqslant
 \swap{\leq}{\leqold}
 \swap{\geq}{\geqold}
 
-%using widetilde instead of tilde
+% using widetilde instead of tilde
 \let\tildeold\widetilde
 \swap{\tilde}{\tildeold}
 
+% using subseteq instead of subset
+\let\subsetold\subseteq
+\swap{\subset}{\subsetold}
 
-%Defining math-Operators
+
+% Defining math-Operators
 \newcommand{\conj}[1]{\overline{#1}}
 \newcommand{\closure}[1]{\overline{#1}}
 \renewcommand{\Re}{\mathrm{Re}}
@@ -162,7 +166,7 @@
 	{\left.{#1}/{#2}\right.}% Scriptscript
 }
 
-%Defining text-Commands
+% Defining text-Commands
 \newcommand{\myquote}[1]{\glqq{}#1\grqq{}}
 \newcommand{\oE}{o.\,E.}
 \newcommand{\Ang}{\textit{Ang}}
@@ -181,13 +185,13 @@
 %       Fonts and Utilities
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%for special emphasis
-%for black and white output
+% for special emphasis
+% for black and white output
 \newcommand{\myemphfont}{\scshape}
 \newcommand{\myanmerkungfont}{\mdseries}
 \newcommand{\myheadfont}{\bfseries}
 
-%for a colorful document
+% for a colorful document
 \DeclareOption{colorful}{
     \renewcommand{\myemphfont}{\color{Orange}} % make this fancier later
     \renewcommand{\myanmerkungfont}{\mdseries}
@@ -201,7 +205,7 @@
 }
 \newcommand{\mystackrel}[2]{\overset{\text{\myanmerkungfont #1}}{#2}}
 
-%redefining qed
+% redefining qed
 \renewcommand{\qedsymbol}{\text{\Fontlukas\bfseries\slshape\myheadfont q.\,e.\,d.}}
 
 

@@ -42,7 +42,7 @@ Da dies für alle $\nu \in \Set{1,\ldots,k}$ gilt, folgt bereits $p_0 = \tilde{p
 \emph{Ziel:} Man beweise einen ähnlichen Satz für beliebige meromorphe Funktionen auf $\CC$.
 
 \begin{erin}
-Eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung $f\colon \CC\setminus S \ra \CC$, wobei $S\subseteq \CC$ diskret ist, d.\,h. $S$ hat in $\CC$ keinen Häufungspunkt (insbesondere ist $\CC\setminus S$ offen), und die Punkte aus S sind Pole von $f$.
+Eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung $f\colon \CC\setminus S \ra \CC$, wobei $S\subset \CC$ diskret ist, d.\,h. $S$ hat in $\CC$ keinen Häufungspunkt (insbesondere ist $\CC\setminus S$ offen), und die Punkte aus S sind Pole von $f$.
 \end{erin}
 
 \emph{Problem:} Ist $S$ unendlich, so ist die Summe über die Hauptteile $\sum _{s \in S} p_s(\frac{1}{z-s})$ im Allgemeinen nicht mehr konvergent.
@@ -50,7 +50,7 @@ Eine meromorphe Funktion auf $\CC$ wird gegeben durch eine holomorphe Abbildung 
 \emph{Lösung:} Man addiere konvergenz erzeugende Summanden!
 
 \begin{satz-list}[Partialbruchsatz von Mittag-Leffler]\label{satz:mittag-leffler}
-\item Sei $S\subseteq\CC$ diskret. Jedem $s \in S$ sei eine ganze Funktion $h_s\colon \CC \ra \CC$ mit $h_s(0) = 0$ zugeordnet.
+\item Sei $S\subset\CC$ diskret. Jedem $s \in S$ sei eine ganze Funktion $h_s\colon \CC \ra \CC$ mit $h_s(0) = 0$ zugeordnet.
 (Man nennt $\Set{h_s}_{s \in S}$ eine \myemph[Verteilungen!Hauptteilverteilung]{Hauptteilverteilung}.)
 Dann gibt es eine holomorphe Funktion $h\colon \CC\setminus S \ra \CC$, deren Hauptteil in $s\in S$ durch $h_s(\frac{1}{z-s})$ gegeben wird.
 (Man nennt $h$ eine Lösung der Hauptteilverteilung.)
@@ -61,7 +61,7 @@ Dann existieren Polynome $q_s$ ($s \in S$) und eine ganze Funktion $g$, sodass g
 \[
 	f(z) = \sum \limits _{s\in S} \left(p_s\left(\frac{1}{z-s}\right) - q_s(z)\right) + g(z)
 \]
-wobei die Summe in der Klammer auf kompakten Teilmengen $K \subseteq \CC \setminus S$ absolut gleichmäßig konvergiert.
+wobei die Summe in der Klammer auf kompakten Teilmengen $K \subset \CC \setminus S$ absolut gleichmäßig konvergiert.
 \end{satz-list}
 
 \begin{bewe-list}
@@ -69,7 +69,7 @@ wobei die Summe in der Klammer auf kompakten Teilmengen $K \subseteq \CC \setmin
 
 Sei nun $S$ unendlich.
 Zeige dafür zunächst, dass $S$ abzählbar ist.
-Sei $K \subseteq \CC$ kompakt, dann ist $K \cap S$ beschränkt.
+Sei $K \subset \CC$ kompakt, dann ist $K \cap S$ beschränkt.
 
 \emph{Angenommen} $K\cap S$ ist unendlich. Nach Bolzano-Weierstraß hat dann $K \cap S$, also auch $S$, einen Häufungspunkt. \blitz
 
@@ -88,12 +88,12 @@ Nach Definition der Konvergenz existiert daher ein Polynom $q_n(z)$ sodass
 \[
 	\abs{h_n\left(\frac{1}{z-s_n}\right)-q_n(z)} \leq \frac{1}{n^2} \qquad \forall z \in \CC\colon \abs{z} \leq \frac{\abs{s_n}}{2}
 \]
-Sei $K\subseteq\CC$ kompakt. Dann existiert $N\in \NN$ sodass für $n\in\NN$ mit $n\geq N$ und $z \in K$ gilt $\abs{z} \leq \frac{\abs{s_n}}{2}$ (denn $\abs{s_n} \to \infty$).
+Sei $K\subset\CC$ kompakt. Dann existiert $N\in \NN$ sodass für $n\in\NN$ mit $n\geq N$ und $z \in K$ gilt $\abs{z} \leq \frac{\abs{s_n}}{2}$ (denn $\abs{s_n} \to \infty$).
 Es folgt dass die Reihe
 \[
 	h(z) := h_0\left(\frac{1}{z-s_0}\right) + \sum\limits_{n\geq1} \left(h_n\left(\frac{1}{z-s_n}\right) - q_n(z)\right)
 \]
-auf Kompakta $K \subseteq \CC \setminus S$ gleichmäßig absolut konvergiert, denn $\sum_{n\geq 1} \frac{1}{n^2} < \infty$.
+auf Kompakta $K \subset \CC \setminus S$ gleichmäßig absolut konvergiert, denn $\sum_{n\geq 1} \frac{1}{n^2} < \infty$.
 Nach Weierstraß ist daher $h(z)$ auf $\CC\setminus S$ holomorph.
 Schreibt man $h(z) = h_m(\frac{1}{z-s_m}) + \text{Rest}$ ($m\geq 0$ fest),  so folgt, dass $h(z)$ eine Lösung der Hauptteilverteilung ist.
 
@@ -108,7 +108,7 @@ Nach der Eindeutigkeit stimmen daher beide Lösung bis auf eine ganze Funktion $
 \emph{Praktische Anwendung von Satz 1.2} Gegeben sei eine meromorphe Funktion $f$ auf $\CC$ mit Polstellenmenge $S$.
 \begin{enumerate}
 \item Man bestimme die Hauptteile für alle $s\in S$.
-\item Man untersuche $\sum _{s\in S} p_s(\frac{1}{z-s})$ auf Konvergenz und bestimme gegebenenfalls Polynome $q_s$ ($s\in S$) (durch Abbruch der entsprechenden Taylor-Reihe), sodass $\sum _{s\in S} (p_s(\frac{1}{z-s})-q_s(z))$ auf Kompakta $K \subseteq \CC\setminus S$ gleichmäßig absolut konvergiert.
+\item Man untersuche $\sum _{s\in S} p_s(\frac{1}{z-s})$ auf Konvergenz und bestimme gegebenenfalls Polynome $q_s$ ($s\in S$) (durch Abbruch der entsprechenden Taylor-Reihe), sodass $\sum _{s\in S} (p_s(\frac{1}{z-s})-q_s(z))$ auf Kompakta $K \subset \CC\setminus S$ gleichmäßig absolut konvergiert.
 \item Man bestimme eine ganze Funktion $g$, so dass
 \[
 	f(z) = \sum_{s\in S} \left(p_s\left(\frac{1}{z-s}\right)-q_s(z)\right) + g(z) \qquad \forall z\in \CC\setminus S
@@ -120,7 +120,7 @@ Nach der Eindeutigkeit stimmen daher beide Lösung bis auf eine ganze Funktion $
 \begin{equation}\label{eqn:bsp1.3.i}
 	\frac{\pi^2}{(\sin \pi z)^2} = \sum _ {n \in \ZZ} \frac{1}{(z-n)^2} \qquad \text{für } z\in \CC\setminus\ZZ
 \end{equation}
-wobei die Summe rechts auf Kompakta $K \subseteq \CC\setminus\ZZ$ gleichmäßig absolut konvergiert.
+wobei die Summe rechts auf Kompakta $K \subset \CC\setminus\ZZ$ gleichmäßig absolut konvergiert.
 \begin{bewe}
 Siehe unten.
 \end{bewe}
@@ -168,7 +168,7 @@ Für $z\not= n$, $z$ nahe bei $n$ gilt
 Also ist der Hauptteil von $\frac{\pi^2}{\sin(\pi z)^2}$ von $z=n$ bereits $\frac{1}{(z-n)^2}$.
 
 Konvergenz der Reihe in \eqref{eqn:bsp1.3.i}:
-Sei $K \subseteq \CC$ kompakt.
+Sei $K \subset \CC$ kompakt.
 Es gelte $\abs z \leq c$ für $z \in K$.
 Für $n\in \ZZ$ mit $\abs n \geq 2c$ gilt
 \[

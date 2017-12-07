@@ -12,7 +12,7 @@ Genauso kann man $f\cdot g$, $f'$ und $\frac{f}{g}$ (für $g\not\equiv 0$) als m
 \end{erin}
 
 \begin{defi}
-Eine Teilmenge $L \subseteq \CC$ heißt \myemph{Gitter}\footnote{Im Englischen \emph{lattice}, deshalb werden Gitter mit $L$ bezeichnet.}, falls es über $\RR$ linear unabhängige Zahlen $\omega_1, \omega_2\in\CC$ gibt, so dass
+Eine Teilmenge $L \subset \CC$ heißt \myemph{Gitter}\footnote{Im Englischen \emph{lattice}, deshalb werden Gitter mit $L$ bezeichnet.}, falls es über $\RR$ linear unabhängige Zahlen $\omega_1, \omega_2\in\CC$ gibt, so dass
 \[
 	L = \Set{ m_1\omega_1 + m_2 \omega_2 \mid m_1, m_2 \in \ZZ}
 	=: \ZZ\omega_1 \oplus \ZZ\omega_2
@@ -26,7 +26,7 @@ Ein [Bild, siehe altes Skript]
 \end{bsp}
 
 \begin{beme-list}
-\item Man zeigt leicht: $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass
+\item Man zeigt leicht: $L\subset \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass
 \[
 	\begin{pmatrix}
 		\omega_1' \\
@@ -67,7 +67,7 @@ Man erhält ein geometrisches Modell von $\CC/L$ indem man gegnüberliegende Rä
 \end{beme-list}
 
 \begin{defi}
-Sei $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann heißt eine meromorphe Funktion $f\colon \CC \ra \closure \CC$ \myemph{elliptisch} bezüglich $L$, falls gilt $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$.
+Sei $L\subset \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann heißt eine meromorphe Funktion $f\colon \CC \ra \closure \CC$ \myemph{elliptisch} bezüglich $L$, falls gilt $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$.
 \end{defi}
 
 \begin{beme-list}
@@ -177,7 +177,7 @@ In anderen Worten hat ein $f\in K(L)\setminus\CC$ entweder mindestens einen Pol 
 \end{koro}
 
 \begin{defi-noind}
-Sei $D \subseteq \CC$ offen und $f\colon D \ra \closure \CC$ meromorph, $f \not\equiv 0$ und $z_0 \in D$.
+Sei $D \subset \CC$ offen und $f\colon D \ra \closure \CC$ meromorph, $f \not\equiv 0$ und $z_0 \in D$.
 \begin{enumerate}
 \item Sei $c\in \CC$ und $k\in\NN_0$.
 Man sagt, dass $f$ in $z_0$ den Wert $c$ mit Vielfachheit $k$ annimmt, falls

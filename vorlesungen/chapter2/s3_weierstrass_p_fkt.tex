@@ -25,7 +25,7 @@ wobei $\CC(\wp)$ der Körper der rationalen Funktionen in $\wp$ ist.\footnote{Da
 \end{enumerate}
 
 \begin{nota}
-In diesem Abschnitt sei $L = \ZZ\omega_1 \oplus \ZZ\omega_2 \subseteq \CC$ ein Gitter.
+In diesem Abschnitt sei $L = \ZZ\omega_1 \oplus \ZZ\omega_2 \subset \CC$ ein Gitter.
 Satt $\sum_{\omega \in L\setminus\{0\}} \ldots$ schreiben wir einfach $\sumprime_{\omega \in L} \ldots$
 \end{nota}
 
@@ -86,7 +86,7 @@ Es gilt
 	:= \frac{1}{z^2} + \sumprime_{\omega \in L} \left(\frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}\right)
 	\qquad \text{für } z\in\CC\setminus L
 \]
-ist auf Kompakta $K\subseteq \CC\setminus L$ gleichmäßig, absolut konvergent und heißt \myemph{Weierstraß'sche $\wp$-Funktion}.
+ist auf Kompakta $K\subset \CC\setminus L$ gleichmäßig, absolut konvergent und heißt \myemph{Weierstraß'sche $\wp$-Funktion}.
 Sie ist holomorph auf $\CC\setminus L$ und hat doppelte Pole in allen $w\in L$.
 
 \item Es gilt
@@ -118,7 +118,7 @@ die sogeannten \myemph{homogenen Eisensteinreihen} vom Gewicht $2k$ zu $L$ sind.
 \end{satz-list}
 
 \begin{bewe-list}
-\item Sei $K\subseteq \CC\setminus L$ kompakt.
+\item Sei $K\subset \CC\setminus L$ kompakt.
 Es gelte $\abs z < R$ für alle $z\in K$.
 Sei $\omega \in L$ mit $\abs \omega > 2R$.
 Durch Abschätzen ergibt sich
@@ -337,7 +337,7 @@ Mit $X = \wp(z)$ folgt die Behauptung mit \autoref{satz:diff-wp}.
 
 \begin{erin}
 Sei $K$ ein Körper (mit Addition $+$ und Multiplikation $\cdot$\,).
-Dann heißt $k\subseteq K$ \myemph{Teilkörper}, falls $(k,+)$ eine Untergruppe von $(K,+)$ und $(k^\times,\cdot)$ eine Untergruppe von $(K^\times, \cdot)$ ist.
+Dann heißt $k\subset K$ \myemph{Teilkörper}, falls $(k,+)$ eine Untergruppe von $(K,+)$ und $(k^\times,\cdot)$ eine Untergruppe von $(K^\times, \cdot)$ ist.
 Man sagt auch, dass $K\mid k$ eine Körpererweiterung ist.
 Man beachte, dass $k$ zusammen mit eingeschränkter Addition $+$ und Multiplikation $\cdot$ selbst ein Körper ist.
 
@@ -408,14 +408,14 @@ Weiterhin gilt, da $\wp$ gerade ist, ist auch $R(\wp)$ gerade, also $R(\wp)\in K
 Offensichtlich ist die Abbildung $\phi$ ein Homomorphismus.
 Also müssen wir noch die Surjektivität von $\phi$ zeigen, dafür genügt es für $f\in K_+(L)$ zu zeigen, dass $f\in\CC(\wp)$ gilt.
 
-\emph{Behauptung}: Sei $f\in K_+(L)$ und $S(f)\subseteq L$. Dann ist $f$ ein Polynom in $\wp$.
+\emph{Behauptung}: Sei $f\in K_+(L)$ und $S(f)\subset L$. Dann ist $f$ ein Polynom in $\wp$.
 
 \begin{bewe-ind}
 Ohne Einschränkung sei $f$ nicht konstant.
 Nach dem 1. Satz von Liouville (\autoref{satz:liouville-1}) gilt dann $S(f) \neq \emptyset$.
 Sei $\omega_0 \in S(f)$.
 Wegen $f(z - \omega_0 + \omega) = f(z)$ für alle $\omega \in L$ folgt mit $z = \omega_0$, dass $f(\omega) = f(\omega_0) = \infty$ für alle $\omega\in L$.
-Also folgt $L \subseteq S(f)$ und wegen $S(f) \subset L$ folgt $S(f) = L$.
+Also folgt $L \subset S(f)$ und wegen $S(f) \subset L$ folgt $S(f) = L$.
 
 Insbesondere ist $0\in S(f)$.
 Da $f$ \emph{gerade}, hat die Laurententwicklung von $f$ um 0 die Gestalt
@@ -435,7 +435,7 @@ Betrachte
 \]
 Dann hat $g(z)$ nach Konstruktion einen Pol in $z=0$ einer Ordnung echt kleiner als $2N$.
 Auch ist $g(z)$ elliptisch und gerade.
-Weiterhin gilt $S(g) \subseteq L$.
+Weiterhin gilt $S(g) \subset L$.
 Nun machen wir den gleichen Schluss mit $f(z)$ ersetzt durch $g(z)$.
 Verfährt man induktiv weiter, so erhält man nach endlich vielen Schritten ein Polynom $P(X)\in \CC[X]$, so dass $f - P(\wp)$ holomorph fortsetzbar ist in $z=0$ (d.\,h. dort keinen Hauptteil mehr hat).
 Wegen $f - P(\wp) \in K(L)$, ist somit $f - P(\wp)$ holomorph auf ganz $\CC$. Nach dem ersten Liouvill'schen Satz (\autoref{satz:liouville-1}) folgt $f-P(\wp)$ ist konstant.

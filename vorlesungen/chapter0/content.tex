@@ -2,7 +2,7 @@
 \chapter{Wiederholung}
 
 \begin{defi}
-Sei $D \subseteq \CC$ offen. $f\colon D \ra \CC$ heißt \myemph{holomorph}, falls $f$ in jedem $z_0 \in D$ komplex differenzierbar ist, d.\,h.
+Sei $D \subset \CC$ offen. $f\colon D \ra \CC$ heißt \myemph{holomorph}, falls $f$ in jedem $z_0 \in D$ komplex differenzierbar ist, d.\,h.
 \[
 	f'(z_0) = \lim_{h \to \infty} \frac{f(z_o + h)-f(z_0)}{h}
 \]
@@ -10,16 +10,16 @@ existiert.
 \end{defi}
 
 \begin{satz}[Cauchyscher Integralsatz für Sterngebiete]
-Sei $D\subseteq\CC$ ein Sterngebiet, $f\colon D \ra \CC$ holomorph.
+Sei $D\subset\CC$ ein Sterngebiet, $f\colon D \ra \CC$ holomorph.
 Dann gilt
 \begin{enumerate}
 \item $f$ hat auf $D$ eine Stammfunktion.
-\item $\int _ C f(z) \opd z = 0$ für jede stückweise glatte, geschlossene Kurve $C \subseteq D$.
+\item $\int _ C f(z) \opd z = 0$ für jede stückweise glatte, geschlossene Kurve $C \subset D$.
 \end{enumerate}
 \end{satz}
 
 \begin{satz}[Cauchysche Integralformel]
-Sei $D\subseteq\CC$ offen und $\closure{U_r(z_0)} \subseteq D$. Dann gilt für alle $z\in U_r(z_0)$
+Sei $D\subset\CC$ offen und $\closure{U_r(z_0)} \subset D$. Dann gilt für alle $z\in U_r(z_0)$
 \[
 	f(z)
 	= \frac{1}{2\pi i} \int _ C \frac{f(w)}{w-z}\opd w
@@ -45,7 +45,7 @@ Daraus folgen einige Aussagen:
 \end{itemize}
 
 \begin{defi}[Singularitäten]
-Sei $D\subseteq \CC$ offen, $f\colon D \ra \CC$ holomorph, $a \not\in D$, $\dot{U}_r(a) \subseteq{D}$.
+Sei $D\subset \CC$ offen, $f\colon D \ra \CC$ holomorph, $a \not\in D$, $\dot{U}_r(a) \subset{D}$.
 Dann heißt $a$ eine \myemph{Singularität} von $f$.
 Die Klassifikationen einer Singularität sind
 \begin{itemize}
@@ -69,7 +69,7 @@ wobei $g\colon U_R(0) \ra \CC$ der \myemph{Nebenteil} und $h\colon U_{\inv r}(0)
 
 \emph{Anwendung auf Singularitäten:}
 $f\colon D \ra \CC$ holomorph und $a$ eine Singularität von $f$.
-Dann gibt es $\delta > 0$ mit $\dot U_\delta(a) \subseteq D$. Dann gilt
+Dann gibt es $\delta > 0$ mit $\dot U_\delta(a) \subset D$. Dann gilt
 \[
 	f(z) = \sum_{n=-\infty}^\infty a_n(z-a)^n \qquad z\in\dot U_\delta(a)
 \]
@@ -80,7 +80,7 @@ Dann gibt es $\delta > 0$ mit $\dot U_\delta(a) \subseteq D$. Dann gilt
 \end{itemize}
 
 \begin{satz}[Residuensatz]
-Sei $D\subseteq\CC$ ein Elementargebiet, $z_1, \ldots, z_k \in D$
+Sei $D\subset\CC$ ein Elementargebiet, $z_1, \ldots, z_k \in D$
 \[
 	f\colon D\setminus\Set{z_1, \ldots, z_k} \ra \CC
 \]

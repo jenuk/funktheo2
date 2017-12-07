@@ -233,7 +233,7 @@ Die unbedingte Konvergenz von $\prod_{n\geq N+1}(1+a_n)$  (also auch von $\prod_
 \end{bewe-list}
 
 \begin{satz}\label{satz:prod_holomorpher_fkt}
-Sei $D \subseteq \CC$ offen und $(f_n)_{n\in\NN}$ eine Folge holomorpher Funktionen $f_n\colon D\ra\CC$ derart, dass die Reihe $\sum_{n=1}^\infty f_n(z)$ auf jedem Kompaktum $K\subseteq D$ gleichmäßig, absolut konvergiert.
+Sei $D \subset \CC$ offen und $(f_n)_{n\in\NN}$ eine Folge holomorpher Funktionen $f_n\colon D\ra\CC$ derart, dass die Reihe $\sum_{n=1}^\infty f_n(z)$ auf jedem Kompaktum $K\subset D$ gleichmäßig, absolut konvergiert.
 Dann ist
 \[
 	F(z) := \prod_{n=1}^\infty (1+f_n(z)) \qquad z\in D
@@ -247,7 +247,7 @@ Unbedingte Konvergenz des Produktes folgt aus \autoref{satz:zusammenhang-konverg
 
 Es verbleibt zu zeigen, dass $F$ holomorph auf $D$ ist.
 
-Sei $U \subseteq D$ offen mit $\closure U \subseteq D$ kompakt.
+Sei $U \subset D$ offen mit $\closure U \subset D$ kompakt.
 Es genügt Holomorphie von $F$ für beliebiges solches $U$ zu zeigen.
 Da $\closure U$ kompakt ist, ist $\sum_{n=1}^\infty f_n(z)$ auf $\closure U$ (also auch auf $U$) absolut gleichmäßig konvergent.
 Nach dem notwendigen Konvergenzkriterium für gleichmäßige Konvergenz konvergiert daher $(f_n)_{n\in\NN}$ auf $U$ gleichmäßig gegen Null.
@@ -280,7 +280,7 @@ auf $U$ holomorph.
 Ist $h\colon U_r(z_0) \ra \CC$ holomorph, $h$ nicht identisch Null, $h(z) = (z-z_0)^m g(z)$ mit $m\in\ZZ$ und $g(z_0) \not= 0$, so nennt man $\ord_ {z_0} h = m$ die \myemph[Ordnung!Von $z_0$]{Ordnung von $z_0$ bezüglich $h$}.
 \end{erin}
 
-\emph{Problem:} Gegeben $S\subseteq \CC$ diskret. Zu jedem $s\in S$ sei ein $m_s \in \NN$ gegeben.
+\emph{Problem:} Gegeben $S\subset \CC$ diskret. Zu jedem $s\in S$ sei ein $m_s \in \NN$ gegeben.
 
 \emph{Frage:} Gibt es eine ganze Funktion $h\colon \CC \ra \CC$ derart, dass (i) $h(z) = 0$ genau dann, wenn $z\in S$ und (ii) $\ord_{z=s} h = m_s$ für alle $s \in S$.
 
@@ -290,10 +290,10 @@ Und eine Funktion $h$ wie oben heißt Lösung der Nullstellenverteilung.
 \emph{Antwort:} Ja! Solche $h$ kann man mit Hilfe von Weierstraß-Produkten konstruieren!
 
 \begin{satz-list}[Weierstraß'scher Produktsatz]\label{satz:weierstrasprodukt}
-\item Sei $S\subseteq \CC$ diskret und für jedes $s\in S$ sei ein $m_s \in \NN$ gegeben. Dann hat die Nullstellenverteilung $\Set{(s, m_s) \mid s\in S}$ eine Lösung $h$.
+\item Sei $S\subset \CC$ diskret und für jedes $s\in S$ sei ein $m_s \in \NN$ gegeben. Dann hat die Nullstellenverteilung $\Set{(s, m_s) \mid s\in S}$ eine Lösung $h$.
 Alle Lösungen erhält man als $H(z) = h(z)\cdot e^{g(z)}$ wobei $h$ eine gegebene Lösung und $g$ ganz ist.
 
-\item Sei $f$ ganz und nicht identisch Null, $S=\Set{z\in\CC \mid f(z) = 0}\subseteq\CC$ (Beachte $S$ ist diskret).
+\item Sei $f$ ganz und nicht identisch Null, $S=\Set{z\in\CC \mid f(z) = 0}\subset\CC$ (Beachte $S$ ist diskret).
 Für $s\in S$ sei $m_s := \ord_{z=s} f(z)$.
 Dann gibt es zu jedem $s\in S$ ein Polynom $P_s$ und eine ganze Funktion $g$, so dass gilt
 \[
@@ -303,7 +303,7 @@ Dann gibt es zu jedem $s\in S$ ein Polynom $P_s$ und eine ganze Funktion $g$, so
 		\displaystyle z^{m_0} \cdot \prod_{\substack{s\in S\\ \scriptscriptstyle s\not=0}} \left(1-\frac{z}{s}\right)^{m_s}\cdot e^{P_s(z)}\cdot e^{g(z)} & 0 \in S
 	\end{cases}
 \]
-wobei die Produkte rechts \myemph[Weierstraß-Produkt]{Weierstraß-Produkte} genannt werden, diese sind auf Kompakta $K\subseteq \CC$ unbedingt konvergent.
+wobei die Produkte rechts \myemph[Weierstraß-Produkt]{Weierstraß-Produkte} genannt werden, diese sind auf Kompakta $K\subset \CC$ unbedingt konvergent.
 \end{satz-list}
 
 \begin{bewe-list}
