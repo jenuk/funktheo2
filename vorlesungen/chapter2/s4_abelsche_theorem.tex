@@ -1,0 +1,177 @@
+\section{Das abelsche Theorem}
+
+Sei $L = \ZZ\omega_1 \oplus \ZZ\omega_2$ fest gewählt.
+
+\begin{satz}[Abelsches Theorem]
+Seien $\alpha_1$, \ldots, $\alpha_r$ und $\beta_1$, \ldots, $\beta_r$ jeweils Punkte in $\CC$, wobei die $\alpha_i$ bzw. $\beta_j$ jeweils mit Vielfachheiten auftreten dürfen, ansonsten aber jeweils untereinander inäquivalent modulo $L$ sind.
+Es gelte außerdem, dass $\alpha_i \not\equiv \beta_j$ modulo $L$ für alle $1 \leq i,j \leq r$.
+
+Dann gibt es ein $f\in K(L)$ mit Nullstellen (bzw. Polstellen) modulo $\CC$ genau in den Punkten $\alpha_1$, \ldots, $\alpha_r$ (respektive $\beta_1$, \ldots, $\beta_r$) mit den entsprechenden Vielfachheiten gezählt genau dann, wenn
+\begin{equation}\label{eqn:abelsches-thm}
+	\sum_{i=1}^r \alpha_i - \sum_{j=1}^r \beta_j \in L
+	\,.
+\end{equation}
+\end{satz}
+
+\begin{bewe}
+Gibt es $f\in K(L)$ mit der angegebenen Eigenschaft, so folgt \eqref{eqn:abelsches-thm} nach \autoref{satz:liouville-4}.
+Dies zeigt die Rückrichtung.
+
+Für die Hinrichtung wollen wir nun folgendermaßen vorgehen:
+Man konstruiert $f$ als Quotient zweier ganzer Funktionen, wobei der Zähler (bzw. Nenner) Nullstellen genau in den Punkten $\alpha_i + L$ (bzw. $\beta_j + L$) hat.
+Zähler und Nenner werden mit Hilfe der \emph{Weierstraß'schen $\sigma$-Funktion} konstruiert.
+
+\begin{lemm-list}
+\item Das unendliche Produkt
+\begin{equation}\label{eqn:weierstrass-sigma}
+	\sigma(z)
+	= z \prod_{\substack{\omega \in L\\ \scriptscriptstyle \omega \not= 0}} \left(1 - \frac{z}{\omega}\right)e^{\frac{z}{\omega}+\frac{1}{2}(\frac{z}{\omega})^2}
+\end{equation}
+konvergiert unbedingt und stellt eine ganze Funktion dar, die \myemph{Weierstraß'sche $\sigma$-Funktion}.
+Die Funktion $\sigma$ hat Nullstellen erster Ordnung in den Punkten aus $L$
+und ist sonst nullstellenfrei.
+
+\item Es gilt für alle $\omega_0 \in L$
+\[
+	\sigma(z + \omega_0)
+	= e^{a_{\omega_0}z + b_{\omega_0}} \sigma(z)
+	\qquad \text{für } z\in\CC
+	\,,
+\]
+wobei $a_{\omega_0}$ und $b_{\omega_0}$ von $\omega_0$ abhängige komplexe Zahen sind.
+\end{lemm-list}
+\begin{bewe-list}
+\item Die $\sigma$-Funktion ist konstruiert nach dem Rezept des Weierstraß'schen Produktsatzes (\autoref{satz:weierstrasprodukt}), d.\,h. man sucht eine ganze Funktion mit Nullstellen (erster Ordnung) genau in den Punkten aus $L\setminus \{0\}$ mit Hilfe des Ansatzes
+\[
+	\prod_{\substack{\omega \in L\\ \scriptscriptstyle \omega \not= 0}} \left(1 - \frac{z}{\omega}\right)e^{P_\omega(z)}
+	\,,
+\]
+wobei die Polynome $P_\omega(z)$ durch Abbrechen der Reihe
+\[
+	\sum_{\nu \geq 1} \frac{1}{\nu} \left(\frac{z}{\omega}\right)^\nu
+	\qquad \text{für } \abs z < \abs \omega
+\]
+erhalten werden (Konvergenzerzeugende Faktoren).
+
+Wie bei der Untersuchung des Produktes (siehe \autoref{bsp:nullstellenverteilungen} (ii))
+\[
+	\prod_{n\in\ZZ\setminus\{0\}} \left(1 - \frac{z}{n}\right)e^{\frac{z}{n}}
+\]
+zeigt man leicht, dass auf Kompakta $K \subseteq \CC$ und für alle $\omega \in L\setminus\{0\}$ mit Betrag $\abs \omega$ groß genug
+\[
+	\abs{ \left(1-\frac{z}{\omega}\right) e^{\frac{z}{\omega} + \frac{1}{2}(\frac{z}{\omega})^2} - 1}
+	\leq \frac{C_K}{\abs \omega ^3}
+\]
+mit $C_k > 0$ nur von $K$ abhängig.
+Da $\sumprime_{\omega \in L} \frac{1}{\abs \omega ^3} < \infty$ (\autoref{lemm:weierstrass-konv}), folgt nach \autoref{satz:prod_holomorpher_fkt}, dass das Produkt in \eqref{eqn:weierstrass-sigma} unbedingt konvergiert und damit $\sigma$ ganz ist.
+Die Aussagen über Nullstellen ist dann klar.\footnote{
+	Die Konvergenz des unendlichen Produkts \eqref{eqn:weierstrass-sigma} wird unter (ii) implizit nocheinmal gezeigt.}
+
+\item Da $\sigma(z)$ und $\sigma(z+\omega_0)$ für $\omega_0 \in L$ die selben Nullstellen (mit der gleichen Ordnung) haben, ist $\frac{\sigma(z+\omega_0)}{\sigma(z)}$ ganz und nullstellenfrei.
+Da $\CC$ ein Elementargebiet ist, gibt es also ein ganzes $h$ mit
+\[
+	\frac{\sigma(z+\omega_0)}{\sigma(z)}
+	= e^{h(z)}
+	\,.
+\]
+Daraus folgt
+\[
+	\sigma(z+\omega_0)
+	= \sigma(z) e^{h(z)}
+	\qquad \text{für } z\in\CC
+	\,.
+\]
+Es genügt offenbar zu zeigen, dass $h'' \equiv 0$ auf $\CC\setminus L$.\footnote{
+	Denn gilt $h'' \equiv 0$ in $\CC\setminus L$.
+	Dann folgt $h' \equiv c$ auf $\CC\setminus L$, da $\CC\setminus L$ ein Gebiet ist, also $h \equiv c$ auf ganz $\CC$ auf Stetigkeitsgründen.
+	Hieraus folgt, dass $h(z) = cz+b$ für alle $z\in \CC$, denn zwei Stammfunktionen einer holomorphen Funktion $f$ auf einem Elementargebiet unterscheiden sich nur bis auf eine Konstante.}
+
+Es gilt
+\[
+	\sigma'(z+\omega_0)
+	= \sigma'(z)e^{h(z)} + \sigma(z)h'(z)e^{h(z)}
+	\,.
+\]
+Also
+\[
+	h'(z)
+	= \frac{e^{-h(z)}\sigma'(z+\omega_0)-\sigma'(z)}{\sigma(z)}
+	= \frac{\sigma'(z+\omega_0)}{\sigma(z+\omega_0)} - \frac{\sigma'(z)}{\sigma(z)}
+\]
+
+Die Aussage $h''(z) = 0$ für alle $z\in\CC\setminus L$ bedeutet also
+\[
+	\left(\frac{\sigma'}{\sigma}\right)'(z+\omega_0)
+	= \left(\frac{\sigma'}{\sigma}\right)'(z)
+	\qquad \text{für } z\not\in L
+	\,.
+\]
+
+Dies sollfür alle $\omega_0 \in L$ gelten.
+Wir müssen also zeigen, dass $(\frac{\sigma'}{\sigma})'$ elliptisch bezüglich L ist.\footnote{
+	Man beachte, dass $\frac{\sigma'}{\sigma} = (\log \sigma)'$ die \emph{logarithmische Ableitung} von $\sigma$ ist.}
+Wir werden in der Tat zeigen, dass $(\frac{\sigma'}{\sigma})' = - \wp$ gilt.
+
+Die Funktion $\frac{\sigma(z)}{z}$ hat in $z=0$ eine hebbare Singularität und dort den Wert 1 (siehe \eqref{eqn:weierstrass-sigma}).
+Für $\abs z < \rho := \min\Set{\abs \omega \mid \omega \in L\colon \omega \not= 0}$ sind alle Faktoren von $\frac{\sigma(z)}{z}$ ungleich 0, nach \autoref{satz:konvergenz-unendlicher-produkte} (ii) gilt dann also dort
+\begin{align*}
+	\Log\frac{\sigma(z)}{z}
+	&= \sumprime_{\omega \in L} \Log \left( \left(1-\frac{z}{\omega}\right) e^{\frac{z}{\omega} + \frac{1}{2}(\frac{z}{\omega})^2} \right) + 2\pi i m_z \\
+	&= \sumprime_{\omega \in L} \left(\Log\left(1 - \frac{z}{\omega}\right) + \frac{z}{\omega} + \frac{1}{2}\left(\frac{z}{\omega}\right)^2\right) + 2\pi im_z
+	\,,
+\end{align*}
+für $m_z \in \ZZ$ und die letzte Gleichheit gilt für $z$ habe bei 0.
+
+\emph{Behauptung}: Die Reihe ist auf Kompakta $K\subseteq U_\delta(0)$ für $\delta < \rho$ klein gleichmäßig und absolut konvergent.
+Denn es gilt
+\[
+	\Log\left(1-\frac{z}{\omega}\right)
+	= - \sum_{\nu \geq 1} \frac{1}{\nu} \left(\frac{z}{\omega}\right)^\nu
+	\qquad \text{für } \abs{\frac{z}{\omega}} < 1
+	\,,
+\]
+also folgt für $z\in K$
+\begin{align*}
+	&\abs{\Log\left(1-\frac{z}{\omega}\right) + \frac{z}{\omega} + \frac{1}{2} \left(\frac{z}{\omega}\right)^2}
+	\leq \sum_{\nu\geq 3} \abs{\frac{z}{\omega}}^\nu \\
+	&\quad = \abs{\frac{z}{\omega}}^3 \frac{1}{1- \abs{\frac{z}{\omega}}}
+	\leq \frac{C_K}{\abs{\omega}^3}
+	\qquad \text{für } \abs \omega \text{ groß genug}
+\end{align*}
+mit $C_K > 0$ nur abhängig von $K$, denn $1-\abs{\frac{z}{\omega}} \geq \frac{1}{2}$ für $\abs \omega$ groß genug.
+Da $\sumprime_{\omega \in L} \frac{1}{\abs \omega ^3} < \infty$, folgt die Behauptung.\footnote{
+	Wendet man $\exp$ auf die Reihe an, so folgt insbesondere, die Konvergenz des Produkts \[\prod_{\substack{\omega \in L\\ \scriptscriptstyle \omega \not= 0}} \left(1-\frac{z}{\omega}\right)e^{\frac{z}{\omega} + \frac{1}{2}(\frac{z}{\omega})^2}\] für ein $z$ nahe bei 0, siehe (i).}
+
+Sei nun $z$ nahe bei 0.
+Dann ist
+\[
+	z \mapsto 2\pi im_z = \Log\left(\frac{\sigma(z)}{z}\right) - \sumprime_{\omega \in L} \left(\Log\left(1-\frac{z}{\omega}\right) + \frac{z}{\omega} + \frac{1}{2} \left(\frac{z}{\omega}\right)^2\right)
+\]
+als Differenz stetiger Funktionen stetig, da $m_z\in\ZZ$ ist also $m_z$ konstant.
+
+Gliedweises Ableiten (Satz von Weierstraß aus Funktionentheorie 1, man beachte, dass $\frac{\sigma(z)}{z}$ nahe bei 1 ist) liefert dann
+\[
+	\frac{\derive (\frac{\sigma(z)}{z})}{\frac{\sigma(z)}{z}}
+	= \sumprime_{\omega \in L} \left(\frac{-\frac{1}{\omega}}{1-\frac{z}{\omega}} + \frac{1}{\omega} + \frac{z}{\omega^2}\right)
+	\,,
+\]
+das heißt
+\begin{align*}
+	\frac{\sigma'(z)}{\sigma(z)} - \frac{1}{z}
+	&= \frac{\frac{\sigma'(z)z-\sigma(z)}{z^2}}{\frac{\sigma(z)}{z}} \\
+	&= - \sumprime_{\omega\in L} \left( \frac{1}{\omega-z} - \frac{1}{\omega} - \frac{z}{\omega^2} \right)
+	\qquad \text{für } z \not= 0
+	\,.
+\end{align*}
+Nochmaliges Ableiten liefert dann
+\[
+	\left(\frac{\sigma'}{\sigma}\right)'(z)
+	= -\frac{1}{z^2} - \sum_{\omega\in L} \left(\frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}\right)
+	= -\wp(z)
+	\,.
+\]
+Diese Gleichung gilt nun nahe bei 0.
+Aufgrund des Identitätssatzes gilt sie daher in $\CC\setminus L$.
+Dies beweist das Lemma.
+\end{bewe-list}
+\end{bewe}
