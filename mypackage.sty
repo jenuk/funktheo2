@@ -9,7 +9,7 @@
 
 % colorful  - prints myemph and thm headings in color
 % no-proof  - ignores bewe enviroment
-% no-indent - no automatic hang-indent for theorems
+% indent-thm - hang-indent for theorems
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,19 +242,19 @@
 \makeatother
 
 \NewDocumentCommand{\xdeclaretheorem}{o o m}{
-	\declaretheorem[#1-indent, #2]{#3}
-	\declaretheorem[#1-indent, #2]{#3-ind}
-	\declaretheorem[#1-list, #2]{#3-list}
-	\declaretheorem[#1, #2]{#3-noind}
+    \declaretheorem[#1, #2]{#3}
+    \declaretheorem[#1-indent, #2]{#3-ind}
+    \declaretheorem[#1-list, #2]{#3-list}
+    \declaretheorem[#1, #2]{#3-noind}
 }
 
-\DeclareOption{no-indent}{
+\DeclareOption{indent-thm}{
    \NewDocumentCommand{\xdeclaretheorem}{o o m}{
-		\declaretheorem[#1-indent, #2]{#3-ind}
-		\declaretheorem[#1-list, #2]{#3-list}
-		\declaretheorem[#1, #2]{#3}
+        \declaretheorem[#1-indent, #2]{#3}
+        \declaretheorem[#1-indent, #2]{#3-ind}
+        \declaretheorem[#1-list, #2]{#3-list}
         \declaretheorem[#1, #2]{#3-noind}
-	}
+    }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -262,22 +262,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \xdeclaretheoremstyle[
+    spaceabove=3em plus 0.4em minus 0.4em
+    spacebelow=3em plus 0.3em minus 0.2em
     bodyfont=\itshape,
     headfont=\myheadfont,
     notefont=\myemphfont,
     ]{theorem-style}
 
 \xdeclaretheoremstyle[
+    spaceabove=3em plus 0.4em minus 0.4em
+    spacebelow=3em plus 0.4em minus 0.4em
     notefont=\myemphfont,
     headfont=\myheadfont,
     ]{definition-style}
 
 \xdeclaretheoremstyle[
+    spaceabove=2em plus 0.4em minus 0.4em
+    spacebelow=2em plus 0.4em minus 0.4em
     headfont=\myheadfont\mdseries\itshape,
     notefont=\myemphfont,
     ]{remark-style}
 
 \xdeclaretheoremstyle[
+    spaceabove=2em plus 0.3em minus 0.2em
+    spacebelow=3em plus 0.4em minus 0.4em
     headfont=\myheadfont\mdseries\itshape,
     notefont=\myemphfont,
     qed=\qedsymbol
@@ -297,7 +305,7 @@
 \xdeclaretheorem[style=definition-style][name=Beispiel,   sibling=thm-counter]{bsp}
 
 \xdeclaretheorem[style=remark-style][name=Bemerkung,      sibling=thm-counter]{beme}
-\xdeclaretheorem[style=remark-style][name=Erinnerung,     numbered=no]{erin*}
+\xdeclaretheorem[style=remark-style][name=Erinnerung,     numbered=no]{erin}
 \xdeclaretheorem[style=remark-style][name=Notation,       numbered=no]{nota}
 
 \xdeclaretheorem[style=proof-style][name=Beweis,          numbered=no]{bewe}

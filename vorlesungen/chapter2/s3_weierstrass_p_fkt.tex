@@ -11,7 +11,7 @@ Ein guter Kandidat wäre
 \]
 Allerdings hat diese Reihe schlechte Konvergenzeigenschaften. Das Lösen wir durch konvergenzerzeugende Summanden, also ein besserer Kandidat
 \[
-	\wp(z)	
+	\wp(z)
 	= \frac{1}{z^2} + \sum_{\omega \in L\setminus\{0\}} \frac{1}{(z-\omega)^2} - \frac{1}{\omega^2}
 	\,.
 \]
@@ -272,7 +272,7 @@ Damit folgt
 Also
 \[
 	\wp'(z)^2 - 4\wp(z)^3 + g_2\wp(z)
-	= -140G_6 + \ldots 
+	= -140G_6 + \ldots
 \]
 
 Wir erhalten, dass $H(z) := \wp'(z)^2 - 4\wp(z)^3 + g_2\wp(z) \in K(L)$ eine holomorphe Fortsetzung in $z=0$ hat, denn $H$ hat kein Hauptteil in $z=0$.
@@ -335,7 +335,7 @@ Also
 Mit $X = \wp(z)$ folgt die Behauptung mit \autoref{satz:diff-wp}.
 \end{bewe}
 
-\begin{erin*}
+\begin{erin}
 Sei $K$ ein Körper (mit Addition $+$ und Multiplikation $\cdot$\,).
 Dann heißt $k\subseteq K$ \myemph{Teilkörper}, falls $(k,+)$ eine Untergruppe von $(K,+)$ und $(k^\times,\cdot)$ eine Untergruppe von $(K^\times, \cdot)$ ist.
 Man sagt auch, dass $K\mid k$ eine Körpererweiterung ist.
@@ -371,14 +371,14 @@ Dann ist $\phi$ automatisch \emph{injektiv}, denn für $a \neq 0$ gilt
 \]
 also folgt $\phi(a)\neq 0$.
 Man nennt $\phi$ einen Isomorphismus, falls $\phi$ \emph{bijektiv} ist (dafür genügt es nach Obigem die \emph{Surjektivität} von $\phi$ zu zeigen).
-\end{erin*}
+\end{erin}
 
 \begin{satz-list}[Struktursatz]
 \item Sei $K_+(L) = \Set{f\in K(L) \mid f \text{ gerade}}$ der Teilkörper der geraden elliptischen Funktionen.
 Dann ist die Abbildung
 \[
 	\phi\colon \CC(X) \ra K_+(L)\,,
-	\quad R(X) \mapsto R(\wp)	
+	\quad R(X) \mapsto R(\wp)
 \]
 wohldefiniert und ein Körper-Isomorphismus.
 Insbesondere ist die Abbildung also surjektiv, das heißt $K_+(L) = \CC(\wp)$.
@@ -393,7 +393,7 @@ Insbesondere ist also
 \end{satz-list}
 
 \begin{beme}[Übung]
-	Man sieht direkt (mit Hilfe der Differentialgleichung \autoref{satz:diff-wp}), dass $\CC(\wp) \oplus \CC(\wp) \wp'$ tatsächlich ein Körper ist.
+Man sieht direkt (mit Hilfe der Differentialgleichung \autoref{satz:diff-wp}), dass $\CC(\wp) \oplus \CC(\wp) \wp'$ tatsächlich ein Körper ist.
 \end{beme}
 
 \begin{bewe-list}
@@ -410,7 +410,7 @@ Also müssen wir noch die Surjektivität von $\phi$ zeigen, dafür genügt es f�
 
 \emph{Behauptung}: Sei $f\in K_+(L)$ und $S(f)\subseteq L$. Dann ist $f$ ein Polynom in $\wp$.
 
-\begin{bewe}
+\begin{bewe-ind}
 Ohne Einschränkung sei $f$ nicht konstant.
 Nach dem 1. Satz von Liouville (\autoref{satz:liouville-1}) gilt dann $S(f) \neq \emptyset$.
 Sei $\omega_0 \in S(f)$.
@@ -438,8 +438,8 @@ Auch ist $g(z)$ elliptisch und gerade.
 Weiterhin gilt $S(g) \subseteq L$.
 Nun machen wir den gleichen Schluss mit $f(z)$ ersetzt durch $g(z)$.
 Verfährt man induktiv weiter, so erhält man nach endlich vielen Schritten ein Polynom $P(X)\in \CC[X]$, so dass $f - P(\wp)$ holomorph fortsetzbar ist in $z=0$ (d.\,h. dort keinen Hauptteil mehr hat).
-Wegen $f - P(\wp) \in K(L)$, ist somit $f - P(\wp)$ holomorph auf ganz $\CC$. Nach dem ersten Liouvill'schen Satz (\autoref{satz:liouville-1}) folgt $f-P(\wp)$ ist konstant.		
-\end{bewe}
+Wegen $f - P(\wp) \in K(L)$, ist somit $f - P(\wp)$ holomorph auf ganz $\CC$. Nach dem ersten Liouvill'schen Satz (\autoref{satz:liouville-1}) folgt $f-P(\wp)$ ist konstant.
+\end{bewe-ind}
 
 Sei $f\in K_+(L)$, $a\in S(f)$, $a \not\in L$.
 Es gelte, dass $f$ einen Pol der Ordnung $N$ in $a$ hat.

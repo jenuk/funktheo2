@@ -4,12 +4,12 @@
 
 \emph{Problem} Gibt es nicht-konstante holomorphe bzw. meromorphe Funktionen $f$ auf $\CC$ mit zwei über $\RR$ linear unabhängigen Perioden, d.\,h. existieren $\omega_1, \omega_2 \in \CC\setminus\{0\}$, die über $\RR$ linear unabhängig sind und so dass $f(z+\omega_1) = f(z) = f(z+\omega_2)$ für alle $z\in\CC$.
 
-\begin{erin*}
+\begin{erin}
 Eine auf $\CC$ meromophe Funktion ist eine Abbildung $f\colon \CC \ra \closure \CC = \CC \cup \{\infty\}$ derart, dass $S(f) = f^{-1}(\{\infty\})$ diskret in $\CC$ ist, die Einschränkung $f_0 = f|_{\CC\setminus S(f)}$ holomorph ist und alle Punkte aus $S(f)$ Pole von $f_0$ sind.
 
 Sind $f, g$ auf $\CC$ meromorph, so ist $f_0 + g_0$ auf $\CC\setminus(S(f) \cup S(g))$ holomorph und hat in $S(f) \cup S(g)$ nur unwesentliche Singularitäten, also lässt sich $f_0 + g_0$ eindeutig zu einer auf $\CC$ meromorphen Funktion $f+g$ fortsetzen.
 Genauso kann man $f\cdot g$, $f'$ und $\frac{f}{g}$ (für $g\not\equiv 0$) als meromorphe Funktionen definieren. Damit bilden die auf $\CC$ meromorphen Funktionen einen Körper.
-\end{erin*}
+\end{erin}
 
 \begin{defi}
 Eine Teilmenge $L \subseteq \CC$ heißt \myemph{Gitter}\footnote{Im Englischen \emph{lattice}, deshalb werden Gitter mit $L$ bezeichnet.}, falls es über $\RR$ linear unabhängige Zahlen $\omega_1, \omega_2\in\CC$ gibt, so dass
@@ -26,7 +26,7 @@ Ein [Bild, siehe altes Skript]
 \end{bsp}
 
 \begin{beme-list}
-\item Man zeigt leicht: $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass 
+\item Man zeigt leicht: $L\subseteq \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass
 \[
 	\begin{pmatrix}
 		\omega_1' \\
@@ -79,7 +79,7 @@ Insbesondere macht es Sinn von den Null- oder Polstellen von $f$ modulo L zu spr
 
 \item Die elliptischen Funktionen zu einem Gitter $L$ bilden einen Körper $K(L)$. Dieser enthält $\CC$. Und für $f\in K(L)$ gilt auch $f'\in K(L)$.
 
-\item \emph{Historie:} Der Name \emph{elliptische Funktionen} kommt von der Theorie der \emph{elliptischen Integrale}, d.\,h. Integralen der Form 
+\item \emph{Historie:} Der Name \emph{elliptische Funktionen} kommt von der Theorie der \emph{elliptischen Integrale}, d.\,h. Integralen der Form
 \[
 	\int_a^z \frac{1}{\sqrt{P(t)}} \opd t
 	\,,
@@ -204,7 +204,7 @@ Insbesondere gilt für alle $c\in\CC$
 Sei $c\in\CC$ fest.
 Dann ist $\frac{f'}{f-c} \in K(L)$, denn $f$ ist nicht konstant, $f'\in K(L)$ und $K(L)$ ist ein Körper.
 Wir wollen nun \autoref{satz:liouville-2} auf $\frac{f'}{f-c}$ anwenden.
-Zunächst gilt $\frac{f'}{f-c} = \frac{(f-c)'}{f-c}$, daher ist 
+Zunächst gilt $\frac{f'}{f-c} = \frac{(f-c)'}{f-c}$, daher ist
 \[
 	\res_z \frac{f'}{f-c}
 	= \res_z \frac{(f-c)'}{f-c}
@@ -245,7 +245,7 @@ Dann gilt
 
 \item Für den Beweis braucht man folgendes Lemma
 
-\begin{lemm}
+\begin{lemm-ind}
 Sei $D$ ein Elementargebiet und $f$ eine auf $D$ meromorphe Funktion mit endlich vielen Null- und Polstellen $a_1$, \ldots, $a_n$. Sei $C$ eine stückweise glatte Kurve in $D\setminus\Set{a_1, \ldots, a_n}$.
 Sei zusätzlich $g\colon D \ra \CC$ holomorph. Dann gilt
 \[
@@ -253,8 +253,8 @@ Sei zusätzlich $g\colon D \ra \CC$ holomorph. Dann gilt
 	= \sum_{\nu=1}^n \mathcal{X}(C, a_\nu) \cdot g(a_\nu) \cdot \ord_{a_\nu} f
 	\,.
 \]
-\end{lemm}
-\begin{bewe}
+\end{lemm-ind}
+\begin{bewe-ind}
 Genauso wie für $g\equiv1$ im Null- und Polstellen zählendes Integral aus Funktionentheorie 1.
 Die Funktion $g(z) \frac{f'(z)}{f(z)}$ ist holomorph auf $D\setminus\Set{a_1, \ldots, a_n}$.
 Ist $a\in\Set{a_1\ldots,a_n}$, so gilt
@@ -264,7 +264,7 @@ Ist $a\in\Set{a_1\ldots,a_n}$, so gilt
 	\,.
 \]
 Mit dem Residuensatz folgt die Behauptung.
-\end{bewe}
+\end{bewe-ind}
 
 Durch Abändern modulo $L$ kann man erreichen, dass $\alpha_1$, \ldots, $\alpha_s$, $\beta_1$, \ldots, $\beta_s \in \innere \F_a$ für ein geeignetes $a\in\CC$, wobei $\F_a = \F + a$ und $\F = \F(\omega_1, \omega_2) = \Set{t_1\omega_1 + t_2\omega_2 \mid 0 \leq t_1, t_2 \leq 1}$ die Grundmasche bezüglich einer Basis $\Set{\omega_1, \omega_2}$ von $L$.
 
