@@ -12,6 +12,9 @@ silent:
 	pdflatex -interaction=batchmode script.tex
 	pdflatex -interaction=batchmode script.tex
 
+once:
+	pdflatex -interaction=batchmode script.tex
+
 clean:
 	rm -f *.aux
 	rm -f *.log
