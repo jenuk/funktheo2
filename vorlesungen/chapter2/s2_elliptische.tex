@@ -46,10 +46,10 @@ Ein [Bild, siehe altes Skript]
 	\Rla z-z' \in L
 	\,.
 \]
-Die Äquivalenzklasse von $z$ ist gerade $[z] := z+L := \Set{z + \omega \mid \omega \in L}$, man bezeichnet die Mengen der Äquivalenzklassen mit $\CC/L$.
-Man definiert $[z] + [z'] :=[z+z']$. Beachte: $\CC/L$ ist gerade die Faktorgruppe der abelschen Gruppe $(\CC, +)$ nach dem Normalteiler $(L, +)$.
+Die Äquivalenzklasse von $z$ ist gerade $[z] := z+L := \Set{z + \omega \mid \omega \in L}$, man bezeichnet die Mengen der Äquivalenzklassen mit $\modulo{\CC}{L}$.
+Man definiert $[z] + [z'] :=[z+z']$. Beachte: $\modulo{\CC}{L}$ ist gerade die Faktorgruppe der abelschen Gruppe $(\CC, +)$ nach dem Normalteiler $(L, +)$.
 
-\emph{Geometrisches Modell von $\CC/L$} Offenbar ist jeder Punkt $z\in\CC$ äquivalent zu einem Punkt in der Grundmasche
+\emph{Geometrisches Modell von $\modulo{\CC}{L}$} Offenbar ist jeder Punkt $z\in\CC$ äquivalent zu einem Punkt in der Grundmasche
 \[
 	\F(\omega_1, \omega_1)
 	= \Set{t_1\omega_1 + t_2\omega_2 \mid 0 \leq t_1, t_2 \leq 1}
@@ -63,7 +63,7 @@ denn für alle $z\in\CC$ existieren $x,y\in\RR$ mit
 	\,.
 \]
 Zwei Punkte in $\F(\omega_1, \omega_2)$ sind genau dann äquivalent, wenn sie entweder gleich oder auf gegenüberliegenden Rändern liegen.
-Man erhält ein geometrisches Modell von $\CC/L$ indem man gegnüberliegende Ränder identifiziert, man erhält dann einen Torus\footnote{Auch \emph{Donut} genannt.}.
+Man erhält ein geometrisches Modell von $\modulo{\CC}{L}$ indem man gegnüberliegende Ränder identifiziert, man erhält dann einen Torus\footnote{Auch \emph{Donut} genannt.}.
 \end{beme-list}
 
 \begin{defi}
@@ -126,18 +126,18 @@ Nach Liouville (Funktionentheorie 1) ist $f$ somit bereits konstant.
 Sei $f \in K(L)$.
 Dann gilt
 \[
-	\sum_{z\in\CC/L} \res_z f
+	\sum_{z\in\modulo{\CC}{L}} \res_z f
 	= 0
 	\,,
 \]
-wobei die linke Seite über ein Repräsentantensystem aller Punkte $z\in \CC/L$ läuft und nur die Pole von $f$ ungleich Null sind.
+wobei die linke Seite über ein Repräsentantensystem aller Punkte $z\in \modulo{\CC}{L}$ läuft und nur die Pole von $f$ ungleich Null sind.
 \end{satz}
 
 \begin{beme-noind}
 Die Summe links ist wohldefiniert, denn
 \begin{enumerate}
 \item  $f$ hat nur endlich viele Polstellen modulo $L$.
-\emph{Denn} andernfalls hätte $f$ unendlich viele Polstellen in $\F$, und da $\F$ kompakt ist, hätte $S(f)$ nach dem Satz von Weierstraß hätte einen Häufungspunkt \blitz.
+\emph{Denn} andernfalls hätte $f$ unendlich viele Polstellen in $\F$, und da $\F$ kompakt ist, hätte $S(f)$ nach dem Satz von Weierstraß einen Häufungspunkt \blitz.
 
 \item Das Residuum ist invariant unter Verschiebung um $\omega \in L$.
 \emph{Denn} das Residuum ist der Koeffizient mit Nummer -1 in der Laurententwicklung.
@@ -147,14 +147,14 @@ Um $z_0 + \omega$ ist dies eine Summe von Potenzen $\frac{1}{z-(z_0+\omega)} = \
 
 \begin{bewe}
 Für $a\in\CC$ sei $\F_a = a + \F = \Set{a + z \mid z\in\F}$.
-Dann kann $\CC/L$ mit $\F_a$ (modulo Randidentifikation) identifiziert werden, denn zu $z\in\CC$ existiert $\omega \in L$ mit $z-a+\omega \in \F$, d.\,h. $z+\omega \in a + \F = \F_a$.
+Dann kann $\modulo{\CC}{L}$ mit $\F_a$ (modulo Randidentifikation) identifiziert werden, denn zu $z\in\CC$ existiert $\omega \in L$ mit $z-a+\omega \in \F$, d.\,h. $z+\omega \in a + \F = \F_a$.
 Man wähle $a\in\CC$ so, dass auf dem Rand $\partial \F_a$ von $\F_a$ kein Pol von $f$ liegt.
 Dies geht, da $f$ auf $\F$ nur endlich viele Pole hat.
 
 Man wende den Residuensatz an, unter Beachtung, dass nach der Wahl von $a$ das Innere $\innere F_a$ genau ein Repräsentanten jeder Polstelle von $f$ enthält.
 Es folgt also
 \begin{align*}
-	2\pi i \sum_{z\in\CC/L} \res_z f
+	2\pi i \sum_{z\in\modulo{\CC}{\L}} \res_z f
 	&= 2\pi i \sum_{z\in \innere \F_a} \res_z f
 	= \int_{\partial \F_a} f(z)\opd z \\
 	&= \int_{C_1} f(z) \opd z + \int_{C_2} f(z) \opd z + \int_{C_3} f(z) \opd z + \int_{C_4} f(z) \opd z
@@ -192,11 +192,11 @@ Man sagt, dass $f$ in $z_0$ den Wert $\infty$ mit Vielfachheit $k$ annimmt.
 \end{defi-noind}
 
 \begin{satz}\label{satz:liouville-3}
-Jedes $f \in K(L)\setminus\CC$ nimmt jeden Wert $c\in\closure\CC$ (mit Vielfachheiten gezählt) gleich oft an.
+Jedes $f \in K(L)\setminus\CC$ nimmt jeden Wert $c\in\closure\CC$ (mit Vielfachheiten gezählt) modulo $L$ gleich oft an.
 Insbesondere gilt für alle $c\in\CC$
 \[
-	\sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ kein Pol}}} \ord_z(f-c)
-	= -\sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ Pol}}} \ord_z f
+	\sum_{\substack{z\in\modulo{\CC}{L}\\ \scriptscriptstyle z \text{ kein Pol}}} \ord_z(f-c)
+	= -\sum_{\substack{z\in\modulo{\CC}{L}\\ \scriptscriptstyle z \text{ Pol}}} \ord_z f
 \]
 \end{satz}
 
@@ -215,9 +215,9 @@ wobei die letzte Gleichheit aus dem Beweis des Satzes über das Null- und Pollst
 Nach \autoref{satz:liouville-2} folgt dann
 \[
 	0
-	= \sum_{z\in\CC/L} \ord_z (f-c)
-	= \sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ kein Pol}}} \ord_z (f-c)
-	+ \sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ Pol}}} \underbrace{\ord_z (f-c)}_{=\ord_z f(z)}
+	= \sum_{z\in\modulo{\CC}{L}} \ord_z (f-c)
+	= \sum_{\substack{z\in\modulo{\CC}{L}\\ \scriptscriptstyle z \text{ kein Pol}}} \ord_z (f-c)
+	+ \sum_{\substack{z\in\modulo{\CC}{L}\\ \scriptscriptstyle z \text{ Pol}}} \underbrace{\ord_z (f-c)}_{=\ord_z f(z)}
 	\,.
 \]
 \end{bewe}
@@ -225,7 +225,7 @@ Nach \autoref{satz:liouville-2} folgt dann
 \begin{defi}
 Man nennt
 \[
-	-\sum_{\substack{z\in\CC/L\\ \scriptscriptstyle z \text{ Pol}}} \ord_z f \in \NN
+	-\sum_{\substack{z\in\modulo{\CC}{L}\\ \scriptscriptstyle z \text{ Pol}}} \ord_z f \in \NN
 \]
 aus \autoref{satz:liouville-3} die \myemph[Ordnung!Von $f$]{Ordnung von $f$}.
 \end{defi}
@@ -244,7 +244,7 @@ Dann gilt
 \item $r=s$ folgt aus \autoref{satz:liouville-3} mit $c=0$.
 
 \item Für den Beweis braucht man folgendes Lemma
-
+\vspace{-4em}
 \begin{lemm-ind}
 Sei $D$ ein Elementargebiet und $f$ eine auf $D$ meromorphe Funktion mit endlich vielen Null- und Polstellen $a_1$, \ldots, $a_n$. Sei $C$ eine stückweise glatte Kurve in $D\setminus\Set{a_1, \ldots, a_n}$.
 Sei zusätzlich $g\colon D \ra \CC$ holomorph. Dann gilt

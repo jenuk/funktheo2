@@ -28,7 +28,8 @@ Dann heißt das \myemph[unendliches Produkt]{unendliche Produkt}
 \]
 konvergent, falls der Limes
 \[
-	\lim_{\substack{N\to\infty\\ \scriptscriptstyle N \geq m+1}} P_n \text{ mit } P_N = \prod _ {n=m+1} ^N p_n
+	\lim_{\substack{N\to\infty\\ \scriptscriptstyle N \geq m+1}} P_N
+	\qquad \text{mit } P_N = \prod_{n=m+1}^N p_n
 \]
 existiert und ungleich Null ist.
 Man setzt dann
@@ -365,9 +366,9 @@ Die holomorphen Funktionen $A_n(z)$ für $\abs z < \abs{s_n}$ sind durch die Bed
 \]
 eindeutig bestimmt.
 
-\emph{Denn} wäre $\widetilde{A}_n$ eine weitere solche Funktion, so würde gelten $e^{-\widetilde{A}_n(z)} = e^{-A_n(z)}$. Damit folgt $e^{\widetilde{A}_n(z) - A_n(z)} = 1$. Also $\widetilde{A}_n(z) - A_n(z) = 2\pi it_z$ mit $t_z \in \ZZ$.
-Da $U_{\abs{s_n}}(0)$ zusammenhängend und $\widetilde{A}_n - A_n$ stetig ist, ist $z \mapsto 2\pi it_z$ stetig, also folgt $B := t_z$ konstant.
-Also gilt $\tilde{A_n}(z) - A_n(z) = B$.
+\emph{Denn} wäre $\tilde{A}_n$ eine weitere solche Funktion, so würde gelten $e^{-\tilde{A}_n(z)} = e^{-A_n(z)}$. Damit folgt $e^{\tilde{A}_n(z) - A_n(z)} = 1$. Also $\tilde{A}_n(z) - A_n(z) = 2\pi it_z$ mit $t_z \in \ZZ$.
+Da $U_{\abs{s_n}}(0)$ zusammenhängend und $\tilde{A}_n - A_n$ stetig ist, ist $z \mapsto 2\pi it_z$ stetig, also folgt $B := t_z$ konstant.
+Also gilt $\tilde{A}_n(z) - A_n(z) = B$.
 Und mit $z=0$ folgt $B=0$.
 
 Daher muss gelten $A_n(z) = -m_n\Log(1-\frac{z}{s_n})$ für $\abs z \leq \abs{s_n}$.

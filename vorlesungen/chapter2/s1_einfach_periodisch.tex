@@ -70,7 +70,7 @@ Aber es gibt $m_\nu \in \ZZ$, so dass gilt
 \[
 	\Log e^{2\pi i(z_\nu-z_0)}
 	= 2\pi i(z_\nu - z_0) + 2\pi im_\nu
-	= 2\pi i(\underbrace{z_\nu + m_\nu}_{=: z_\nu'}) + 2\pi iz_0
+	= 2\pi i(\underbrace{z_\nu + m_\nu}_{=: z_\nu'}) - 2\pi iz_0
 \]
 und somit $z_\nu' \to z_0$.
 
@@ -92,7 +92,7 @@ Wende nun den Satz über die Laurent-Entwicklung auf $F$ an, mit diesem gilt:
 mit eindeutig bestimmten Koeffizienten $a_n$, insbesondere ist die Reihe gleichmäßig und absolut konvergent auf Kompakta. Und
 \[
 	a_n = \frac{1}{2\pi i} \int_{\abs q = \rho} \frac{F(q)}{q^{n+1}} \opd q
-	\qquad \text{für alle } n\in\ZZ
+	\qquad \text{für alle } n\in\ZZ,\ r < \rho < R
 	\,,
 \]
 wobei über die Kreislinie, die genau einmal im mathematisch positiven Sinn um 0 mit dem Radius $\rho$ läuft, integriert wird. Diese wird gegeben durch $\rho e^{2\pi ix}$ mit $0 \leq x \leq 1$.
@@ -126,7 +126,7 @@ Die Reihe links in \eqref{eq:bsp2.4} ist auf $\CC\setminus\ZZ$ lokal gleichmäß
 Mit der Partialbruchzerlegung des Kotangens (\autoref{bsp:partialbruch_cot}) folgt nun
 \begin{align*}
 	\pi\cot \pi z
-	&= \frac{1}{z} + \sum_{n\not=0} \left(\frac{1}{z-n} + \frac{1}{n}\right) \\
+	&= \frac{1}{z} + \sum_{\substack{n\in\ZZ \\ \scriptscriptstyle n\not=0}} \left(\frac{1}{z-n} + \frac{1}{n}\right) \\
 	&= \frac{1}{z} + \sum_{n\geq 1} \left(\frac{1}{z-n} + \frac{1}{z+n}\right)
 	\qquad \text{für } z \in \CC\setminus\ZZ
 	\,.
