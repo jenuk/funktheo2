@@ -1,0 +1,166 @@
+\section{Motivation}
+
+\emph{Grob gesagt} sind Modulformen auf der oberen Halbebene $\HH = \Set{z \in \CC \mid \Im(z) > 0}$ holomorphe Funktionen, die gewisse einfache Transformationseigenschaften unter diskreten Untergrupen von gebrochen linearen Transformationen haben.
+
+Dies wollen wir nun genauer formulieren.
+Sei $\SL_2(\RR) = \Set{M \in M_{2,2}(\RR) \mid \det(M) = 1}$.
+Dann ist $\SL_2(\RR)$ eine Gruppe unter der gewöhnlichen Matrizenmultiplikation.
+Jedes $M = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \in \SL_2(\RR)$ definiert eine sogenannte gebrochen lineare Transformation von $\HH$ in sich selbst\footnote{Diese wird auch \myemph{Möbiustransformation} genannt.}
+\[
+	z \mapsto \frac{az + b}{cz + d}
+	\,,
+\]
+\emph{denn} sei $z\in\HH$, d.\,h. $z=x+iy$ mit $y > 0$, dann gilt $cz+d \not= 0$ und
+\begin{align*}
+	\Im\left(\frac{az+b}{cz+d}\right)
+	&= \Im\left( \frac{(az+b)\conj{(cz+d)}}{\abs{cz+d}^2}\right)
+	= \Im\left( \frac{ac\abs z^2 + bd + adz + bc\conj z}{\abs{cz+d}^2} \right) \\
+	&= \frac{(ad - bc)y}{\abs{cz+d}^2}
+	= \frac{y}{\abs{cz+d}^2}
+	> 0
+	\,.
+\end{align*}
+
+Eine \emph{Modulform} ist dann eine holomorphe Funktion $f\colon \HH \ra \CC$, die der Transformationseigenschaft
+\[
+	f\left(\frac{az+b}{cz+d}\right) = (cz+d)^k f(z)
+\]
+für alle $M = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)$ einer diskreten Untergruppe der $\SL_2(\RR)$ genügt mit einem $k\in\ZZ$ und gewissen sonstigen Eigenschaften genügt.
+Hierbei wird die Zahl $k$ als das \myemph[Modulform!Gewicht]{Gewicht} der Modulform $f$ bezeichnet.
+
+Über die Theorie der Modulformen hat die Funktionentheorie Anwendungen auf zahlentheoretische Probleme.
+
+\subsection{Beispiel aus der Theorie der quadratischen Formen}
+
+Sei $m\in\NN$ und $A = ( a_{\mu\nu})_{1\leq\mu,\nu\leq m} \in M_{m,m}(\ZZ)$.
+
+\emph{Voraussetzungen}: $A$ ist gerade, d.\,h. die $a_{\mu\mu}$ sind für alle $\mu = 1$, \ldots, $m$ gerade, und $A$ ist symmetrisch, d.\,h. $a_{\mu\nu} = a_{\nu\mu}$ für alle $\mu$, $\nu = 1$, \ldots, $m$.
+Zum Beispiel
+\[
+	A =
+	\begin{pmatrix}
+	2 & & & 0 \\
+	& 2 \\
+	& & \ddots \\
+	0 & & & 2
+	\end{pmatrix}
+	\,.
+\]
+Für $x = \left(\begin{smallmatrix}x_1 \\ \vdots \\ x_m\end{smallmatrix}\right) \in M_{m,1}(\RR)$ sei
+\[
+	Q(x)
+	= \frac{1}{2} x^t A x
+	\,.
+\]
+
+Es gilt somit
+\begin{align*}
+	Q(x)
+	&= \frac{1}{2} (x_1e_1^t + \ldots + x_me_m^t) A (x_1e_1 + \ldots + x_me_m) \\
+	&= \frac{1}{2} \sum_{1\leq\mu,\nu\leq m} x_\mu x_\nu e_\mu^t A e_\nu
+	= \frac{1}{2} \sum_{1\leq\mu,\nu\leq m} a_{\mu\nu}x_\mu x_\nu \\
+	&= \sum_{1\leq \mu < \nu \leq m} a_{\mu\nu}x_\mu x_\nu + \sum_{\mu=1}^m \frac{a_{\mu\mu}}{2} x_\mu^2
+	\,.
+\end{align*}
+für $e_\nu$ der $\nu$-te Standard-Einheitsnvektor.
+Die letzte Gleichheit gilt wegen $a_{\mu\nu} = a_{\nu\mu}$.
+Also ist $Q(x)$ eine ganzzahlige (man beachte, dass $a_{\mu\mu}$ gerade ist) quadratische Form (d.\,h. ein homogenes Polynom vom Grad 2) in den Variablen $x_1$, \ldots, $x_m$.
+
+Wir wollen nun zusätzlich Voraussetzen, dass $Q$ positiv definit ist, d.\,h. $Q(x) > 0$ für alle $x \in M_{m,1}(\RR)$ mit $x\not=0$.
+
+Für $n\in\NN$ setzen wir nun
+\[
+	r_Q(n)
+	:= \# \Set{x \in M_{m,1}(\ZZ) \mid Q(x) = n}
+\]
+die Anzahl der Darstellungen von $n$ durch $Q$.
+\begin{bsp}
+Sei
+\[
+	A =
+	\begin{pmatrix}
+	2 & & & 0 \\
+	& 2 \\
+	& & \ddots \\
+	0 & & & 2
+	\end{pmatrix}
+	\,.
+\]
+Dann ist
+\[
+	Q(x) = x_1^2 + \ldots + x_m^2
+	\,,
+\]
+also ist in diesem Fall $r_Q(n)$ die Anzahl der Darstellungen von $n$ als Summe von $m$ Quadraten.
+\end{bsp}
+
+\begin{lemm}
+Für eine solche Quadratische Form $Q$ gilt dann $r_Q(n) < \infty$.
+\end{lemm}
+
+\begin{bewe}
+Aus der Linearen Algebra wissen wir, dass sich $A$ durch eine orthogonale Matrix diagonalisieren lässt, d.\,h. es gibt ein orthogonales $U \in \GL_m(\RR)$, d.\,h. $U^tU = E$, so dass
+\[
+	U^tAU =
+	\begin{pmatrix}
+	\lambda_1 & & & 0 \\
+	& \lambda_2 \\
+	& & \ddots \\
+	0 & & & \lambda_m
+	\end{pmatrix}
+	\,,
+\]
+mit $\lambda_\nu \in \RR$ für alle $\nu=1$, \ldots, $m$\footnote{Dies sind gerade die Eigenwerte von $A$}.
+Da $Q$ positiv definit ist, gilt
+\[
+	\lambda_\nu = 
+	e_\nu^t 	
+			\begin{pmatrix}
+			\lambda_1 & & & 0 \\
+			& \lambda_2 \\
+			& & \ddots \\
+			0 & & & \lambda_m
+			\end{pmatrix}
+		e_\nu
+	= (Ue_\nu)^tA(Ue_\nu)
+	> 0
+\]
+für alle $1 \leq \nu \leq m$. Sei
+\[
+	M
+	:= \Set{x\in M_{m,1}(\RR) \mid Q(x) = n}
+	\,.
+\]
+Es ist
+\[
+	Q(x)
+	= \frac{1}{2}x^tAx
+	= \frac{1}{2} x^t(U ^t)^{-1}
+			\begin{pmatrix}
+			\lambda_1 & & & 0 \\
+			& \lambda_2 \\
+			& & \ddots \\
+			0 & & & \lambda_m
+			\end{pmatrix}
+		U^{-1}x
+		\,.
+\]
+Gilt $y = U^{-1} x$, so ist
+\begin{align*}
+	M &= \Set{Uy \;\Big|\; y \in M_{m,1}(\RR)\colon \frac{1}{2} \sum_{\nu=1}^r \lambda_\nu y_\nu^2 = n} \\
+	&= \text{Bild von U unter der kompakten Menge } \Set{y \in M_{m,1}(\RR) \;\Big|\; \sum_{\nu=1}^m \lambda_\nu y_\nu^2 = 2n}
+	\,.
+\end{align*}
+Da $U$ stetig ist, ist damit $M$ kompakt.
+Es folgt, dass $M \cap M_{m,1}(\ZZ)$ als diskrete Teilmenge einer kompakten Menge endlich ist.
+\end{bewe}
+
+\emph{Problem} Man gebe eine \emph{genaue} Darstellung für $r_Q(n)$ oder zumindest eine asymptotische Formel für $n \to \infty$ an.
+
+\emph{Idee} Für $\tau\in\HH$ setzt man
+\[
+	\theta_Q(\tau)
+	:= \sum_{x\in\ZZ^m} e^{2\pi i Q(x) \tau}
+	\,.
+\]
+Dies ist eine sogenannte \myemph{Thetareihe}, d.\,h. $\theta_Q$ ist die erzeugte Fouriereihe von $n \mapsto r_Q(n)$.

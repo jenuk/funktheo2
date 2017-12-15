@@ -21,7 +21,7 @@ Für die Hinrichtung wollen wir nun folgendermaßen vorgehen:
 Man konstruiert $f$ als Quotient zweier ganzer Funktionen, wobei der Zähler (bzw. Nenner) Nullstellen genau in den Punkten $\alpha_i + L$ (bzw. $\beta_j + L$) hat.
 Zähler und Nenner werden mit Hilfe der \emph{Weierstraß'schen $\sigma$-Funktion} konstruiert.
 
-\begin{lemm-list}
+\begin{lemm-list}\label{lemma:weierstrass-sigma}
 \item Das unendliche Produkt
 \begin{equation}\label{eqn:weierstrass-sigma}
 	\sigma(z)
@@ -174,4 +174,27 @@ Diese Gleichung gilt nun nahe bei 0.
 Aufgrund des Identitätssatzes gilt sie daher in $\CC\setminus L$.
 Dies beweist das Lemma.
 \end{bewe-list}
+
+Es gelte jetzt \eqref{eqn:abelsches-thm}, d.\,h.
+\[
+	\tilde \omega = \sum_{i=1}^r \alpha_i - \sum_{j=1}^r \beta_j \in L
+	\,.
+\]
+Sei
+\[
+	f(z)
+	:= \frac{\sigma(z-\alpha_1+\tilde\omega) \prod_{j=2}^r \sigma(z-\alpha_j)}{\prod_{j=1}^r \sigma(z-\beta_j)}
+	\,.
+\]
+Dann ist $f$ auf $\CC$ meromorph und hat nach \autoref{lemma:weierstrass-sigma} (i) Null- bzw. Polstellen mit den entsprechenden Vielfachheiten genau in den Punkten $\alpha_i + L$ bzw. $\beta_j + L$ (beachte $\alpha_i \not\equiv \beta_j \mod L$).
+
+Weiterhin gilt nach \autoref{lemma:weierstrass-sigma} (ii) für alle $\omega \in L$
+\begin{align*}
+	f(z + \omega)
+	&= \frac{\sigma(z-\alpha_1+\tilde\omega+\omega) \prod_{j=2}^r \sigma(z+\omega-\alpha_j)}{\prod_{j=1}^r \sigma(z+\omega-\beta_j)} \\
+	&= \frac{e^{a_\omega(z-\alpha_1+\tilde\omega) + b_\omega} \prod_{j=2}^r e^{a_\omega(z-\alpha_j)+ b_\omega}}{\prod_{j=1}^r e^{a_\omega(z-\beta_j) + b_\omega}}
+	\cdot \frac{\sigma(z-\alpha_1 + \tilde\omega) \prod_{j=2}^r \sigma(z-\alpha_j)}{\prod_{j=1}^r \sigma(z-\beta_j)} \\
+	&= e^{a_\omega \tilde\omega} e^{a_\omega \overbrace{\scriptstyle (-\sum_{j=1}^r \alpha_j + \sum_{j=1}^r \beta_j)}^{=-\tilde\omega}} f(z)
+	= f(z)
+\end{align*}
 \end{bewe}
