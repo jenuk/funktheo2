@@ -1,0 +1,20 @@
+\section{Modulgruppe und Fundamentalbereich}
+
+\begin{defi}
+Sei $(G, \circ, e)$ eine Gruppe und $S$ eine nicht-leere Menge. Man sagt, dass $G$ auf $S$ (von links) \myemph[Gruppenoperation]{operiert}, wenn eine Abbildung $G \times S \ra S$, $(g, s) \mapsto g \circ s$ gegeben ist, so dass
+\[
+	(g_1 \circ (g_2 \circ s)) = (g_1 \circ g_2) \circ s
+\]
+und
+\[
+	e \circ s = s
+\]
+für alle $g_1$, $g_2 \in G$ und $s \in S$.
+
+Die Gruppe $G_s = \Set{g \in G \mid g \circ s = s}$ heißt \myemph{Stabilisator} von $s$.
+Die Menge
+\[
+	Gs = {g \circ s \mid g\in G}
+\]
+heißt \myemph{Orbit} von $s$ in $G$.
+\end{defi}

@@ -161,6 +161,200 @@ Es folgt, dass $M \cap M_{m,1}(\ZZ)$ als diskrete Teilmenge einer kompakten Meng
 \[
 	\theta_Q(\tau)
 	:= \sum_{x\in\ZZ^m} e^{2\pi i Q(x) \tau}
+\]
+eine sogenannte \myemph{Thetareihe}, d.\,h. $\theta_Q$ ist die erzeugte Fouriereihe von $n \mapsto r_Q(n)$.
+
+Formal gilt dann
+\[
+	\theta_Q(\tau) = 1 + \sum_{n=1}^\infty r_Q(n)e^{2\pi i n\tau}
+\]
+d.\,h. $\theta_Q$ ist die von den $r_Q(n)$ erzeugte Fourierreihe.
+
+\begin{lemm}
+Die Reihe $\theta_Q(\tau)$ konvergiert gleichmäßig absolut auf kompakten Teilmengen $K \subset \HH$ und stellt dort eine holomorphe Funktion da.
+\end{lemm}
+
+\begin{bewe}
+Sei $\tau = u + iv$ mit $v > 0$ und
+\[
+	S(\tau)
+	:= \sum_{x\in\ZZ^m} \abs{e^{2\pi i Q(x)\tau}}
+	= \sum_{x\in\ZZ^m} e^{-2\pi Q(x)v}
 	\,.
 \]
-Dies ist eine sogenannte \myemph{Thetareihe}, d.\,h. $\theta_Q$ ist die erzeugte Fouriereihe von $n \mapsto r_Q(n)$.
+Sei $\norm\cdot$ die euklidische Norm auf $\RR^m$.
+Die stetige Funktion $Q(x)$ mit $x\in M_{m,1}(\RR) \cong \RR^m$ nimmt auf dem Kompaktum $\Set{x \in \RR^m \mid \norm x = 1}$ ihr Maximum an.
+Wegen $Q(x) > 0$ für alle $x \not= 0$ existiert also ein $c > 0$ mit
+\[
+	Q\left(\frac{x}{\norm x}\right)
+	\geq c
+	\qquad \text{für alle } x\in\RR^m,\ x\not=0
+	\,,
+\]
+also
+\[
+	Q(x)
+	\geq c \norm x ^2
+	= c \cdot \sum_{\nu=1}^m x_\nu^2
+	\qquad \text{für } x \in \RR^m
+	\,.
+\]
+Daher folgt
+\begin{align*}
+	S(\tau)
+	&\leq \sum_{x\in\ZZ^m} e^{-2\pi c(x_1^2 + \ldots + x_m^2)v}
+	= \left(\sum_{x\in\ZZ} e^{-2\pi x^2v}\right)^m \\
+	&\leq \left(1 + 2\sum_{\lambda=1}^\infty e^{-2\pi \lambda^2 v}\right)^m \\
+	&\leq \left(1 + 2\sum_{\lambda=1}^\infty e^{-2\pi c \epsilon \lambda}\right)^m
+	< \infty
+	\,,
+\end{align*}
+für $v \geq \epsilon > 0$. Die letzte Reihe ist die geometriche Reihe mit $0 < q := e^{-2\pi c \epsilon} < 1$
+Hieraus folgt die Behauptung.
+\end{bewe}
+
+\subsubsection*{Fundamentale Tatsachen}
+
+Sei $N$ die Stufe von $A$ (bzw. $Q$), d.\,h. die kleinste natürliche Zahl, so dass $N \cdot A^{-1}$ ganzzahlig und gerade ist (z.\,B. hat $A = 2E_m$ die Stufe 4).
+Sei $\Gamma_0(N) = \Set{(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}) \in \SL_2(\ZZ) \mid N|c}$, dies ist offensichtlich eine Untergruppe von $\SL_2(\ZZ)$.
+Es gelte aus Gründen der Einfachheit $4|m$.
+Sei $M_{\frac{m}{2}}(\Gamma_0(N))$ der $\CC$-VR der Modulformen vom Gewicht $\frac{m}{2}$ bezüglich der Gruppe $\Gamma_0(N)$.
+Dann gilt für $f\colon H \ra \CC$ genau dann  $f \in M_{\frac{m}{2}}(\Gamma_0(N))$ wenn $f$ holomorph ist mit
+\[
+	f\left(\frac{a\tau + b}{c\tau + d}\right) = \epsilon_m \begin{pmatrix}a&b\\c&d\end{pmatrix} (c\tau + d)^{\frac{m}{2}} f(\tau)
+	\qquad \text{für alle } \begin{pmatrix}a&b\\c&d\end{pmatrix} \in \Gamma_0(N)
+\]
+und $f$ ist holomorph in den Spitzen von $\Gamma_0(N)''$.
+Wobei $\epsilon_m (\begin{smallmatrix}a&b\\c&d\end{smallmatrix})$ eine gewisse vierte Einheitswurzel ist und $z^{\frac{m}{2}} = e^{-\frac{m}{2}\Log(z)}$ für $m$ ungerade ist.
+Ist nun $m$ gerade, gilt $\epsilon_m (\begin{smallmatrix}a&b\\c&d\end{smallmatrix}) \in \{\pm1\}$.
+Dann gilt $\theta_Q \in M_\frac{m}{2}(\Gamma_0(N))$.
+
+\begin{beme-list}
+\item Offenbar ist $M_{\frac{m}{2}}(\Gamma_0(N))$ ein $\CC$-VR.
+\item Ist $m$ ungerade, hat man \emph{Modulformen halbganzen Gewichts}, die Theorie ist jedoch viel komplizierter.
+\item Die Bedingung \emph{holomorph in den Spitzen} wird später erklärt.
+Wendet man das Transformationsgesetzt auf $M = (\begin{smallmatrix}1&1\\0&1\end{smallmatrix}) \in \Gamma_0(N)$ an, so ergibt sich
+\[
+	f(\tau + 1) = f(\tau)
+	\qquad \text{für } \tau\in\HH
+\]
+d.\,h. $f$ hat eine Fourierreihe
+\[
+	f(\tau) = \sum_{n\in\ZZ} a(n)e^{2\pi i \tau n} = \sum_{n\in\ZZ} a(n)q^n
+	\qquad \text{für } q = e^{2\pi i \tau}
+	\,.
+\]
+Die Bedingung holomorph in den Spitzen bedeutet unter Anderem, dass $a(n) = 0$ für alle $n < 0$, d.\,h.
+\[
+	f(\tau)
+	= \sum_{n=0}^\infty a(n)q^n
+	\,,
+\]
+hat in $q=0$ eine hebbare Singularitäten.
+\end{beme-list}
+\begin{bsp-list}
+\item Sei $A = \mathrm{diag}(2,2,2,2)$, $m=4$.
+Dann ist $\theta_Q \in M_2(\Gamma_0(4))$.
+\item $M_{\frac{m}{2}}(\Gamma_0(N))$ ist endlich dimensionaler $\CC$-VR.
+\item Für $m \geq 4$ hat man eine Zerlegung
+\[
+	M_{\frac{m}{2}}(\Gamma_0(N))
+	= \E_{\frac{m}{2}}(\Gamma_0(N)) \oplus \Sp_{\frac{m}{2}}(\Gamma_0(N))
+	\,,
+\]
+wobei $\E_{\frac{m}{2}}(\Gamma_0(N))$ der Raum der \emph{Eisensteinreihen} und $\Sp_{\frac{m}{2}}(\Gamma_0(N))$ der Raum der \emph{Spitzenformen} von Gewicht $\frac{m}{2}$ sind
+(Bedingung für $\Sp_{\frac{m}{2}}$: $f$ verschwindet in den Spitzen, also insbesondere $a(0) = 0$).
+
+Ist $m$ gerade, $m\geq 4$, besitzt $\E_{\frac{m}{2}}(\Gamma_0(N))$ eine \emph{ausgezeichnete Basis} von Funktionen, deren Fourierkoeffizienten sich durch elementare Teilerfunktionen ausdrücken lassen.
+Beispiel: ist $k$ gerade, $k \geq 4$, so ist $\E_k(\SL_2(\ZZ)) = \CC\cdot E_k$ mit
+\[
+	E_k(\tau)
+	= \frac{1}{2} \sum_{\ggt(c,d) = 1} \frac{1}{(c\tau + d)^k}
+	\qquad \text{für } \tau\in\HH
+	\,.
+\]
+Man zeigt
+\[
+	E_k(\tau) = 1 + c_k \sum_{n=1}^\infty \sigma_{k-1}(n)e^{2\pi \tau n}
+	\,,
+\]
+wobei $c_k$ eine Konstante und $\sigma_{k-1}(n) := \sum_{d|n}d^{k-1}$.
+Im Gegensatz hierzu kennt man die Fourierkoeffizieten der Spitzenformen nicht.
+\end{bsp-list}
+
+\emph{Anwendungen}
+\begin{enumerate}
+\item Ist nun $m$ und $N$ klein, so gilt manchmal
+\[
+	S_{\frac{m}{2}}(\Gamma_0(N)) = \{0\}
+	\,.
+\]
+Dies führt zu genauen Formeln von $r_Q(n)$.
+\begin{bsp}
+Sei $m=4$, $Q(x) = x_1^2+x_2^2+x_3^2+x_4^2$.
+Dann ist $\theta_Q \in M_2(\Gamma_0(4))$.
+Man weiß: $\dim M_2(\Gamma_0(4)) = 2$ inbesondere $M_2(\Gamma_0(4)) = E_2(\Gamma_0(4))$,
+\[
+	E_2(\Gamma_0(4)) = \CC\cdot(P(\tau) - 4P(\psi\tau)) \oplus \CC\cdot(P(\tau) - 2P(2\tau))
+\]
+mit
+\[
+	P(\tau)
+	= \frac{3}{\pi^2} \sum_{n\in\ZZ} \sum_{\substack{m\in\ZZ\\ \scriptscriptstyle m\not=0}} \frac{1}{(m+n\tau)^2}
+	= 1 - 24 \sum_{n=1}^\infty \sigma_i(n) e^{2\pi i n\tau}
+	\,.
+\]
+Es gilt daher
+\[
+	\theta_Q(\tau)
+	= \alpha\cdot(P(\tau) - 4P(\psi\tau)) + \beta\cdot(P(\tau) - 2P(2\tau))
+	\,.
+\]
+Ein Vergleich der ersten beiden Fourierkoeffizienten liefert
+\[
+	1
+	= -3\alpha - \beta
+	\qquad\text{und} \qquad
+	8 = -24\alpha - 24\beta
+	\,,
+\]
+also $\alpha = -\frac{1}{3}$ und $\beta = 0$.
+Dies liefert dann
+\[
+	r_Q(n)
+	= - \frac{1}{3} \left(-24\sigma_1(n) + 4\cdot24\cdot\sigma_1\left(\frac{n}{4}\right)\right)
+	\,,
+\]
+d.\,h.
+\[
+	r_Q(n)
+	= 8 \left(\sigma_1(n) - 4\sigma\left(\frac{n}{4}\right)\right)
+	\,.
+\]
+
+Insbesondere gilt $r_Q(n) \geq 1$ für alle $n\in \NN$\footnote{Dies ist der Satz von Lagrange aus der Zahlentheorie.}
+\end{bsp}
+
+\item Für beliebiges gerades $m$ und $N$ erhält man nur asymptotische Formeln, denn man weiß, dass
+\begin{equation}\label{eq:theta-asymp}
+	a(n) = \mathcal O(n^{\frac{m}{4}})
+\end{equation}
+für alle
+\[
+	f
+	= \sum_{n=1}^\infty a(n)q^n \in S_{\frac{m}{2}}(\Gamma_0(N))
+	\,.
+\]
+
+Schreibe
+\[
+	\theta_Q
+	= (\text{Eisensteinreihen}) + (\text{Spitzenformen})
+	\,,
+\]
+Fourierkoeffizientenvergleich liefert
+\[
+	r_Q(n) = (\text{elementare Teilerfunktion der Größenordnung } n^{\frac{m}{2}-1}) + \mathcal O (n^{\frac{m}{4}})
+\]
+wenn $n \to \infty$. Die Abschätzung \eqref{eq:theta-asymp} kann noch beachtlich verbessert werden.
+\end{enumerate}
