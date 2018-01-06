@@ -14,7 +14,244 @@ für alle $g_1$, $g_2 \in G$ und $s \in S$.
 Die Gruppe $G_s = \Set{g \in G \mid g \circ s = s}$ heißt \myemph{Stabilisator} von $s$.
 Die Menge
 \[
-	Gs = {g \circ s \mid g\in G}
+	Gs = \Set{g \circ s \mid g\in G}
 \]
 heißt \myemph{Orbit} von $s$ in $G$.
 \end{defi}
+
+Operiert $G$ auf $S$, so definiert dies eine Äquivalenzrelation auf $S$ durch
+\[
+	s \sim s'
+	\Rla \exists g \in G\colon s' = g \circ s
+	\,.
+\]
+Die Äquivalenzklasse von $s \in S$ ist der Orbit von $s$ unter $G$.
+Man hat daher eine disjunkte Vereinigung 
+\[
+	S = \bigcup_{j\in I} Gs_j
+\]
+wobei $Gs_j$ die verschiedenen Orbits durchläuft.
+
+\begin{satz-list}
+\item Die Gruppe $\SL_2(\RR)$ operiert auf $\HH$ via
+\[
+		\begin{pmatrix}
+			a & b \\
+			c & d
+		\end{pmatrix}
+		\circ z
+	:= \frac{az+b}{cz+d}
+	\,.
+\]
+
+\item Sei $\Aut(\HH) := \Set{f\colon\HH \ra \HH \mid f \text{ biholomorph}}$ die \myemph{Automorphismengruppe von $\HH$}.
+Dann ist die Abbildung
+\begin{align*}
+	\modulo{\SL_2(\RR)}{\Set{\pm E}} &\ra \Aut(\HH)\\
+		\overline{\begin{pmatrix}
+			a & b \\
+			c & d
+		\end{pmatrix}}
+		&\mapsto
+		\left( z \mapsto \frac{az+b}{cz+d} \right)
+\end{align*}
+ein Isomorphismus, wobei $E$ die Einheitsmatrix ist.
+\end{satz-list}
+
+\begin{bewe-list}
+\item Dass mit $z$ auch $\frac{az+b}{cz+d}$ wieder in $\HH$ liegt, wurde schon im vorherigen Abschnitt gezeigt (siehe \eqref{eq:moebiusnachh} auf Seite \pageref{eq:moebiusnachh}).
+Offenbar ist $(\begin{smallmatrix} 1 & 0\\0&1\end{smallmatrix}) \circ z = z$ und
+\begin{align*}
+		\begin{pmatrix}
+			a_1 & b_1 \\
+			c_1 & d_1
+		\end{pmatrix}
+		\circ
+		\left(\begin{pmatrix}
+			a_2 & b_2 \\
+			c_2 & d_2
+		\end{pmatrix}
+		\circ z\right)
+	&=
+		\begin{pmatrix}
+			a_1 & b_1 \\
+			c_1 & d_1
+		\end{pmatrix}
+		\circ
+		\frac{a_2z+b_2}{c_2z+d_2} \\
+	&= \frac{a_1(a_2z+b_2)+b_1(c_2z+d_2)}{c_1(a_2z+b_2)+d_1(c_2z+d)} \\
+	&= \frac{(a_1a_2+b_1c_2)z+(a_1b_2+b_1d_2)}{(c_1a_2+d_1c_2)z + (c_1b_2+d_1d_2)} \\
+	&=
+		\left(\begin{pmatrix}
+			a_1 & b_1 \\
+			c_1 & d_1
+		\end{pmatrix}
+		\circ
+		\begin{pmatrix}
+			a_2 & b_2 \\
+			c_2 & d_2
+		\end{pmatrix}\right)
+		\circ z
+\end{align*}
+also operiert $\SL_2(\RR)$ auf $\HH$ in angegebener Weise.
+
+\item Sei $(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}) \in \SL_2(\RR)$.
+Dann ist offenbar $z \mapsto \frac{az+b}{cz+d}$ eine biholomorphe Abbildung von $\HH$ in sich selbst.\footnote{die Umkehrabbildung ist durch $w \mapsto (\begin{smallmatrix}a&b\\c&d\end{smallmatrix})^{-1} \circ w$ gegeben.}
+Nach (i) ist
+\[
+	\phi\colon \SL_2(\RR) \ra \Aut(\HH),
+		\begin{pmatrix}
+			a & b \\
+			c & d
+		\end{pmatrix}
+		\mapsto
+		\left( z \mapsto \frac{az+b}{cz+d} \right)
+\]
+ein Gruppenhomorphismus.
+
+Wir zeigen als nächstes, dass $\phi$ surjektiv ist, dafür betrachten wir die zunächst die folgenden beiden Aussagen
+\begin{enumerate}
+\item Die Operation von $\SL_2(\RR)$ auf $\HH$ ist transitiv, d.\,h. zu gegebenem $z_1$, $z_2 \in \HH$ gibt es stets ein $M\in\SL_2(\RR)$ mit $M \circ z_1 = z_2$.
+
+\begin{bewe}
+Es genügt zu zeigen: zu gegebenem $z\in\HH$ gibt es $M\in \SL_2(\RR)$ mit
+\[
+	M \circ i = z
+	\,.
+\]
+Sei $z=x+iy$ und
+\[
+	M
+	:= \begin{pmatrix}
+			y^{\frac{1}{2}} & xy^{-\frac{1}{2}} \\
+			0 & y^{\frac{1}{2}}
+		\end{pmatrix}
+	\in \SL_2(\RR)
+	\,.
+\]
+Dann gilt
+\[
+	M \circ i
+	= \frac{y^{\frac{1}{2}}i + xy^{-\frac{1}{2}}}{y^{-\frac{1}{2}}}
+	= yi+x
+	= z
+	\,.
+\]
+Dies zeigt (a).
+\end{bewe}
+\item Ist $f \in \Aut(\HH)$ und $f(i) = i$, so existiert $(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}) \in \SL_2(\RR)$ mit
+\[
+	f(z)
+	= \frac{az+b}{cz+d}
+	\,.
+\]
+
+\begin{bewe}
+Für $z\in\HH$ sei $g(z) := \frac{z-i}{z+i}$.
+Dann ist $g$ eine biholomorphe Abbildung von $\HH$ auf dem Einheitskreis $\EE := \Set{w \in \CC \mid \abs w < 1}$ mit $g(i) = 0$.
+Sei $F := g \circ f \circ g^{-1}$.
+Dann ist $F \in \Aut(\EE)$ und $F(0) = 0$, denn $f(i) = i$.
+Nach dem Schwarzschen Lemma (Funktionentheorie 1), muss gelten
+\[
+	\abs{F(w)} \leq \abs w,
+	\quad \abs{F^{-1}(w)} \leq \abs w
+	\qquad \text{für } w\in\EE
+	\,,
+\]
+also
+\[
+	\abs{F(w)} \leq \abs w \leq \abs{F(w)}
+	\,,
+\]
+das heißt
+\[
+	\abs{F(w)} = \abs{w}
+	\qquad \text{für alle } w \in \EE
+	\,.
+\]
+Nach dem Schwarzschen Lemma folgt jetzt
+\[
+	F(w) = e^{i\theta}w
+	\qquad \text{für } w \in \EE
+	\,,
+\]
+wobei $\theta \in \RR$ fest ist.
+Es folgt
+\[
+	f(z)
+	= (g^{-1} \circ F \circ g)(z)
+	= g^{-1}((F \circ g)(z))
+	= g^{-1} \circ (e^{i\theta} \cdot \frac{z-i}{z+i})
+	\,.
+\]
+Wie man leicht sieht, ist
+\[
+	g^{-1}(w)
+	= \frac{-wi-i}{w-1}
+	\,.
+\]
+Also folgt
+\begin{align*}
+	f(z)
+	&= \frac{-ie^{i\theta}\frac{z-i}{z+i} - i}{e^{i\theta}\frac{z-i}{z+i}-1}
+	= \frac{i(e^{i\theta}+1)z - e^{i\theta} + 1}{(e^{i\theta}-1)z-i(e^{i\theta}+1)} \\
+	&= \frac{\cos(\frac{\theta}{2})z + \sin(\frac{\theta}{2})}{-\sin(\frac{\theta}{2})z + \cos(\frac{\theta}{2})}
+	= \underbrace{\begin{pmatrix}
+			\cos(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) \\
+			- \sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+		\end{pmatrix}}_{\in\SL_2(\RR)}
+		\circ z
+		\,.
+\end{align*}
+Dies zeigt (b).
+\end{bewe}
+\end{enumerate}
+
+Sei nun $f\in\Aut(\HH)$.
+Nach (a) existiert $M\in\SL_2(\RR)$ mit $M\circ i = f(i)$.
+Die biholomorphe Abbildung $z\mapsto f^{-1}(M\circ z)$ lässt dann $i$ fest.
+Nach (b) existiert also $M_i \in \SL_2(\RR)$, so dass
+\[
+	f^{-1}(M \circ z) = M_i \circ z
+	\,.
+\]
+Ersetzt man nun $z$ durch $M_i^{-1} \circ z$, so folgt
+\[
+	f^{-1}(M \circ (M_i^{-1} \circ z))
+	= z
+	\,,
+\]
+also
+\[
+	MM_i^{-1}z = f(z)
+	\qquad \text{für alle } z \in \HH
+	\,.
+\]
+Dies zeigt die Surjektivität von $\phi$.
+
+Offenbar ist $\pm (\begin{smallmatrix} 1 & 0\\ 0 & 1\end{smallmatrix}) \in \ker \phi$.
+Sei $M = (\begin{smallmatrix} a & b\\ c & d\end{smallmatrix}) \in \ker \phi$, also $\frac{az+b}{cz+d} = z$.
+Daraus folgt $(\begin{smallmatrix} a & b\\ c & d\end{smallmatrix}) = \pm (\begin{smallmatrix} 1 & 0\\ 0 & 1\end{smallmatrix})$.
+Die Behauptung folgt jetzt mit dem Homomorphiesatz.
+\end{bewe-list}
+
+Wir interessieren und im folgenden für diskrete Untergruppen $\Gamma \subset \SL_2(\RR)$ und deren Operation auf $\HH$.
+Besonders wichtig sind $\Gamma = \SL_2(\ZZ)$ oder $\Gamma$ eine Untergruppe von endlichem Index von $\SL_2(\ZZ)$.
+
+\begin{defi}
+Die Gruppe 
+\[
+	\SL_2(\ZZ) = \Set{ \begin{pmatrix} a & b \\ c& d\end{pmatrix} \in M_{2,2}(\ZZ) \mid ad-bc = 1}
+\]
+heißt \myemph[volle Modulgruppe]{(volle) Modulgruppe}.
+
+Spezielle Matrizen in $\SL_2(\ZZ)$ sind $T = (\begin{smallmatrix} 1 & 1 \\ 0 & 1\end{smallmatrix})$, operiert durch $z \mapsto z + 1$ (\emph{Translation}), und $S = (\begin{smallmatrix} 0 & -1 \\ 1 & 0\end{smallmatrix})$, operiert durch $z \mapsto -\frac{1}{z}$ (\emph{Stürzung}).
+\end{defi}
+
+\begin{beme}
+Der Begriff \emph{Modulgruppe} (oder auch \emph{Modulform}) hat nichts mit Moduln im Sinne der Algebra zu tun, sondern stammt aus der algebraischen Geometrie:
+ein \emph{Modul} ist (klassich) eine Größe, die man einer gegebenen algebraischen Funktion $f$ (etwa $f(x) = \sqrt{4x^3 - g_2x-g_3}$, elliptische Kurve) zuordnen kann und die sich nicht ändert, wenn man $f$ gewissen Transformationen unterwirft (im obigen Beispiel ist ein Modul von $f$ etwa $j := \frac{g_2^3}{g_2^3-27g_3^2}$, parametrisiert man $g_2$ und $g_3$ durch $\tau\in\HH$, so ist $j(\frac{a\tau+b}{c\tau+d}) = j(\tau)$ für alle $(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}) \in \SL_2(\ZZ)$).
+\end{beme}
+
+\emph{Ziel}: Aus einem Orbit $\Set{M \circ z \mid M \in \Gamma}$ wähle man einen geeigneten Repräsentanten aus.
+Die Menge dieser Repräsentanten soll einfach beschrieben werden können und schöne geometrische Eigenschaften haben (z.\,B. zusammenhängend als topologischer Raum, meßbar, \ldots).

@@ -11,7 +11,8 @@ Jedes $M = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \in \
 	\,,
 \]
 \emph{denn} sei $z\in\HH$, d.\,h. $z=x+iy$ mit $y > 0$, dann gilt $cz+d \not= 0$ und
-\begin{align*}
+\begin{align}\label{eq:moebiusnachh}
+	\nonumber
 	\Im\left(\frac{az+b}{cz+d}\right)
 	&= \Im\left( \frac{(az+b)\conj{(cz+d)}}{\abs{cz+d}^2}\right)
 	= \Im\left( \frac{ac\abs z^2 + bd + adz + bc\conj z}{\abs{cz+d}^2} \right) \\
@@ -19,7 +20,7 @@ Jedes $M = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \in \
 	= \frac{y}{\abs{cz+d}^2}
 	> 0
 	\,.
-\end{align*}
+\end{align}
 
 Eine \emph{Modulform} ist dann eine holomorphe Funktion $f\colon \HH \ra \CC$, die der Transformationseigenschaft
 \[
