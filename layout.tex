@@ -10,6 +10,7 @@
 \fancyhead[OR]{\textbf{\nouppercase\leftmark}}
 \fancyhead[ER, OL]{}
 
+\makeatletter
 \renewcommand{\maketitle}{
 \begin{titlepage}
 \vspace*{3cm}
@@ -18,13 +19,13 @@
 \rule{12cm}{1.5pt}
 \vspace{0.5cm}
 
-{\Huge\bfseries Funktionentheorie II}
+{\Huge\bfseries \@title}
 
 \vspace{1cm}
 
-{\LARGE im Wintersemster 2017\,/\,18
+{\LARGE \@date
 
-Vorlesung von Prof. Dr. Winfried Kohnen}
+Vorlesung von \@author}
 \vspace{1cm}
 \rule{12cm}{1.5pt}
 
@@ -35,3 +36,6 @@ Heidelberg, den \today}
 \end{center}
 \end{titlepage}
 }
+\makeatother
+
+\allowdisplaybreaks
