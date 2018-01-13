@@ -95,6 +95,7 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\erzeug{\langle}{\rangle}
 % Swap the definition of \abs* etc., so that \abs
 % resizes the size of the brackets, and the
 % starred version does not.
@@ -169,6 +170,13 @@
 	{\left.\raisebox{0.2em}{\scalebox{0.9}{$#1$}}\scalebox{0.9}{$/$}\raisebox{-0.2em}{\scalebox{0.9}{$#2$}}\right.}% Text
 	{\left.\raisebox{0.15em}{\scalebox{0.9}{$\scriptstyle #1$}}\scalebox{0.9}{$\scriptstyle /$}\raisebox{-0.15em}{\scalebox{0.9}{$\scriptstyle #2$}}\right.}% Script
 	{\left.{#1}/{#2}\right.}% Scriptscript
+}
+\newcommand{\abcd}{%
+\mathchoice
+  {\begin{pmatrix}a&b\\c&d\end{pmatrix}}% Display Style
+  {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Text Style
+  {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Script Style
+  {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Scriptscript Style
 }
 
 % Defining text-Commands

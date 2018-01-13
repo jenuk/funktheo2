@@ -26,7 +26,7 @@ Operiert $G$ auf $S$, so definiert dies eine Äquivalenzrelation auf $S$ durch
 	\,.
 \]
 Die Äquivalenzklasse von $s \in S$ ist der Orbit von $s$ unter $G$.
-Man hat daher eine disjunkte Vereinigung 
+Man hat daher eine disjunkte Vereinigung
 \[
 	S = \bigcup_{j\in I} Gs_j
 \]
@@ -239,7 +239,7 @@ Wir interessieren und im folgenden für diskrete Untergruppen $\Gamma \subset \S
 Besonders wichtig sind $\Gamma = \SL_2(\ZZ)$ oder $\Gamma$ eine Untergruppe von endlichem Index von $\SL_2(\ZZ)$.
 
 \begin{defi}
-Die Gruppe 
+Die Gruppe
 \[
 	\SL_2(\ZZ) = \Set{ \begin{pmatrix} a & b \\ c& d\end{pmatrix} \in M_{2,2}(\ZZ) \mid ad-bc = 1}
 \]
@@ -255,3 +255,221 @@ ein \emph{Modul} ist (klassich) eine Größe, die man einer gegebenen algebraisc
 
 \emph{Ziel}: Aus einem Orbit $\Set{M \circ z \mid M \in \Gamma}$ wähle man einen geeigneten Repräsentanten aus.
 Die Menge dieser Repräsentanten soll einfach beschrieben werden können und schöne geometrische Eigenschaften haben (z.\,B. zusammenhängend als topologischer Raum, meßbar, \ldots).
+
+\begin{defi}
+$\F \subset \HH$ heißt \myemph{Fundamentalbereich} für die Operation von $\Gamma \subset \SL_2(\ZZ)$ auf $\HH$, falls gilt
+\begin{enumerate}
+\item $\F$ ist offen,
+\item zu jedem $z\in \HH$ gibt es $M \in \Gamma$ mit $M \circ z \in \closure\F$,
+\item sind $z_1$, $z_2 \in \F$ und $z_2 = M \circ z_1$ mit $M \in \Gamma$, dann ist $M = \pm E$, also $z_1 = z_2$,
+\item $\#\Set{M \in \Gamma \mid M \circ \closure\F \cap \closure\F \not= \emptyset} < \infty$.\footnote{Diese Eigenschaft ergibt sich bereits aus (i)--(iii)}
+\end{enumerate}
+\end{defi}
+
+\begin{satz}
+Die Menge $\F := \Set{z = x+iy \in \HH \mid \abs z >1, \abs x < \frac{1}{2}}$ ist ein Fundamentalbereich für die Operationen von Gamma $\Gamma(1) = \SL_2(\ZZ)$ auf $\HH$.
+\end{satz}
+
+\begin{bewe-list}
+\item Klar!
+\item Jedem $z\in\HH$ ordne man seine \emph{Höhe} $h(z) := \Im(z)$ zu.
+Dann gilt
+\[
+    h(M \circ z) = \frac{h(z)}{\abs{cz+d}^2}
+\]
+für $M = (\begin{smallmatrix}a & b\\c & d\end{smallmatrix})\in \Gamma(1)$ (siehe \eqref{eq:moebiusnachh} auf Seite \pageref{eq:moebiusnachh}).
+
+\begin{lemm-ind}
+Jeder Orbit $\Gamma(1) \circ z$ enthält Punkte $w$ maximaler Höhe.
+Diese sind charakterisiert durch die Eigenschaft $\abs{cw + d} \geq 1$ für alle $(c,d) \in \ZZ^2$ mit $\ggt(c,d) = 1$.
+\end{lemm-ind}
+\begin{bewe-ind}
+Sei $z = x+iy \in \HH$ fest. Dann hat die Ungleichung $\abs{cz + d} \leq 1$ nur endlich viele Lösungen $(c, d) \in \ZZ^2$ (Schnitt einer kompakten Menge $\abs z \leq 1$ und einer diskreten Menge $\ZZ z \oplus \ZZ$ (Gitter). Man hat
+\[
+    h(M \circ z) \geq h(z)
+    \Rla \abs{cz+d} \leq 1
+    \qquad \text{für } M = (\begin{smallmatrix}a & b\\c & d\end{smallmatrix})
+    \,.
+\]
+Da die Höhe $h(M \circ z)$ nur von der zweiten Zeile von $M$ abhängt, folgt, dass es nur endlich viele verschiedene Werte $h(M \circ z)$ mit $h(M \circ z) \geq h(z)$ gibt, wobei $M \in \Gamma(1)$.
+Also gibt es einen Punkt maximaler Höhe.
+
+Sei $w\in \Gamma(1) \circ z$.
+Dann ist $h(w)$ maximal, genau dann wenn $h(w) \geq h(M \circ z)$ für alle $M \in \Gamma(1)$.
+Schreibe $z = M_0 \circ w$.
+Da mit $M$ auch $MM_0$ alle Elemente von $\Gamma(1)$ durchläuft, gilt
+
+\begin{align*}
+    && &h(w) \geq h(M \circ z) &&\text{für alle } M = \abcd \in \Gamma(1) \\
+    &\Rla& &h(w) \geq h(M \circ w) &&\text{für alle } M = \abcd \in \Gamma(1) \\
+    &\Rla& &\abs{cw+d} \geq 1 &&\text{für alle } M = \abcd \in \Gamma(1) \\
+    &\Rla& &\abs{cw+d} \geq 1 &&\text{für alle } (c, d) \in \ZZ^2 \text{ mit } \ggt(c,d) = 1\,,
+\end{align*}
+denn ist umgekehrt $\ggt(c,d) = 1$, so gibt es $a, b \in \ZZ$ mit $ad - bc = 1$, denn $\ZZ$ ist ein Hauptidealring, also ist $\abcd \in \Gamma(1)$.
+\end{bewe-ind}
+
+Die Höhe ist invariant unter Translation $(\begin{smallmatrix} 1 & b \\ 0 & 1\end{smallmatrix})$ mit $b\in\ZZ$.
+Man kann daher $b$ so wählen, dass $\abs{\Re(z+b)} \leq \frac{1}{2}$.
+Daher gilt:
+
+\begin{lemm-ind}
+Sei
+\[
+    \F' := \Set{w = x+iy \in \HH \mid \abs x \leq {\textstyle\frac{1}{2}},\ \abs{cw+d} \geq 1\ \forall (c,d) \in \ZZ^2 \text{ mit } \ggt(c,d) = 1}
+    \,.
+\]
+Dann existiert zu jedem $z\in\HH$ ein $M \in \Gamma(1)$, so dass $M \circ z \in \F'$.
+\end{lemm-ind}
+
+\begin{lemm-ind}\label{lemm:fundamental_gamma1_lemm3}
+Es gilt $\F' = \closure \F = \Set{z = x+iy \in \HH \mid \abs z \geq 1, \abs x \leq \frac{1}{2}}$.
+\end{lemm-ind}
+
+\begin{bewe-ind}
+$\F' \subset \closure \F$ klar, denn $\ggt(1,0) = 1$.
+
+Umgekehrt: Sei $z\in \closure\F$ und $(c,d) \in \ZZ^2$ mit $\ggt(c,d) = 1$.
+Dann
+\begin{align*}
+    \abs{cz+d}^2
+    &= \abs{cx + d + icy}^2 = (cx+d)^2 + c^2y^2 \\
+    &= c^2(x^2+y^2) + 2cdx + d^2
+    \geq c^2 + 2cdx + d^2 \\
+    &\geq c^2 - \abs{cd} + d^2
+    \geq 1
+    \,,
+\end{align*}
+wobei die letzte Ungleichung gilt, weil die quadratischen Formen $x^2 \pm xy + y^2$ positiv definit sind.
+Also $z \in \F'$. Also $\F' = \closure\F$.
+\end{bewe-ind}
+
+\item[(iii)+(iv)] Die Aussagen folgen aus folgendem Lemma
+
+\begin{lemm-list}
+\item Seien $z, z' \in \closure \F$ mit $z' = M \circ z$ mit $M \in \Gamma(1)$.
+Sei $z' \not= z$.
+Dann ist entweder $x = \pm \frac{1}{2}$ (und dann $x' = \mp \frac{1}{2}$, $z' = z - 1$ und $M = \pm T^{\pm 1}$) oder $\abs z = 1$, $z' = -\frac{1}{z}$, $M = \pm S$.
+\item Sei $z \in \closure\F$. Dann gilt für den Stabilisator von $z$
+\begin{equation}\label{eq:fundamental_gamma1}
+    \Gamma(1)_z
+    =
+    \begin{cases}
+        \erzeug{ST} & \text{falls } z = \rho \\
+        \erzeug{TS} & \text{falls } z = -\conj\rho \\
+        \erzeug{S} & \text{falls } z = i \\
+        \Set{\pm E} & \text{sonst}
+    \end{cases}
+    \,.
+\end{equation}
+Mit $\rho = e^{\frac{2}{3}\pi i} = \frac{-1+i\sqrt{3}}{2}$. Die Gruppen rechts sind endlich.
+\end{lemm-list}
+
+\begin{bewe-ind}
+Zunächst ist
+\[
+    ST
+    = \begin{pmatrix} 1 & 1 \\ 0 & 1\end{pmatrix} \begin{pmatrix} 0 & -1 \\ 1 & 0\end{pmatrix}
+    = \begin{pmatrix} 1 & -1 \\ 1 & 0\end{pmatrix}
+    \,.
+\]
+Damit ergibt sich
+\[
+    (ST)^3 = (TS)^3 = S^2 = -E
+    \,.
+\]
+Deswegen sind die rechts in \eqref{eq:fundamental_gamma1} stehenden Untergruppen endlich und zyklisch, der Ordnung 6 beziehungsweise 4.
+Auch in diesen enthalten ist $-E$.
+
+Die rechts in \eqref{eq:fundamental_gamma1} stehende UG fixieren die entsprechenden $z$ tatsächlich:
+\begin{enumerate}
+\item $z=i$: $S \circ i = - \frac{1}{i} = i$ für $z=i$.
+\item $z = \rho$: $\rho^3 = 1$, $(\rho - 1)(1 + \rho + \rho^2) = 0$.
+Da $\rho \not= 1$ folgt $1 + \rho + \rho^2 = 0$.
+Daher $ST \circ \rho = S \circ (\rho + 1) = - \frac{1}{\rho + 1} = - \frac{1}{-\rho^2} = \frac{1}{\rho^2} = \rho$.
+Also $ST \circ \rho = \rho$.
+\item $z = - \conj\rho$: Genauso wie mit $z = \rho$.
+\end{enumerate}
+
+Seien $z$, $z' \in \closure \F$, $z' = M \circ z$ für $M = \abcd \in \Gamma(1)$.
+Da $\closure\F = \F'$ (\autoref{lemm:fundamental_gamma1_lemm3}), folgt $z'$ und $z$ sind in selben Orbit und Punkte maximaler Höhe, also $h(z') = h(M \circ z) = h(z)$, also $\abs{cz+d} = 1$.
+Also
+\[
+    1 = \abs{cz+d}^2 \geq \abs{c}^2 - \abs{cd} + \abs{d}^2 \geq \left(\abs{d} - \frac{\abs{c}}{2}\right)^2 + \frac{3}{4}\abs{c}^2 \geq 1.
+\]
+Also muss überall Gleichheit gelten, insbesondere
+\[
+    \left(\abs{d} - \frac{\abs c}{2}\right)^2 + \frac{3}{4}\abs c ^2 = 1
+    \,.
+\]
+
+\emph{1. Fall}: $c=0$, $d=\pm 1$
+
+Dann
+\[
+    M
+    = \begin{pmatrix}\pm1 & b \\ 0 & \pm 1\end{pmatrix}
+    \qquad \text{mit } b \in \ZZ
+    \,.
+\]
+Also gilt
+\[
+    M
+    = \pm\begin{pmatrix}1 & b \\ 0 & 1\end{pmatrix}
+    \qquad \text{mit } b \in \ZZ
+    \,.
+\]
+Damit gilt $z' = M \circ z = z + b$.
+Da $-\frac{1}{2} \leq x, x' \leq \frac{1}{2}$, folgt entweder $b=0$ (also $M=\pm E$, $z'=z$) oder $b=1$ (dann $x=-\frac{1}{2}$, $x'=\frac{1}{2}$, $M = \pm(\begin{smallmatrix}1 & 1 \\ 0 & 1\end{smallmatrix}) =  \pm T$) oder $b = -1$ (dann $x=\frac{1}{2}$, $x'=-\frac{1}{2}$, $M = \pm T^{-1}$)
+
+\emph{2. Fall}: $c=\pm 1$, $d=0$
+
+Dann
+\[
+    M
+    = \begin{pmatrix}a & \mp 1 \\ \pm 1 & 0\end{pmatrix}
+    \qquad \text{mit } b \in \ZZ
+    \,.
+\]
+Also
+\[
+    M
+    = \begin{pmatrix}a & - 1 \\ 1 & 0\end{pmatrix}
+    \qquad \text{mit } a \in \ZZ
+    \,.
+\]
+Dann
+\[
+    z' = M \circ z = a - \frac{1}{z}
+    \,.
+\]
+
+\emph{Beobachtung}: $\abs z = 1$. Dann gilt auch $\abs{- \frac{1}{z}} = 1$ und $-\frac{1}{z} \in \closure\F$.
+Es folgt wie oben einer der Fälle
+\begin{enumerate}
+\item $a=0$
+
+$M = (\begin{smallmatrix}0 & -1 \\ 1 & 0\end{smallmatrix}) = S$, $z' = -\frac{1}{z} = \pm S \circ z$.
+Ist $z' = z$ so folgt $z=i$.
+
+
+\item $a=1$
+
+$M = \pm (\begin{smallmatrix}1 & -1\\1&0\end{smallmatrix}) = \pm TS$.
+Dann
+\[
+    -\frac{1}{2} = \Re\left(-\frac{1}{z}\right) = \Re\left(\frac{-\conj z}{\abs z ^2}\right) = -x
+    \,.
+\]
+Also $x=\frac{1}{2}$, wegen $x^2+y^2 = 1$ folgt $y = \frac{\sqrt{3}}{2}$, d.\,h. $z = \frac{1+i\sqrt{3}}{2} = - \conj\rho$. Also $z' = -\frac{1}{z} + 1 = 1 + \frac{1}{\conj\rho} = 1 + \rho = -\conj\rho$.
+
+
+\item $a=-1$
+
+Es folgt wie oben $z' = z = \rho$, $M = \pm(ST)^2$.
+\end{enumerate}
+
+\emph{3. Fall}: $c=\pm 1$, $d=\pm 1$
+
+Man zeigt $z' = z = \rho$ und $M = \pm ST$ oder $z' = z = -\conj\rho$ und $M = \pm (TS)^2$.
+\end{bewe-ind}
+\end{bewe-list}
