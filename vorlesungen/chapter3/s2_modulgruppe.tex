@@ -345,7 +345,7 @@ Also $z \in \F'$. Also $\F' = \closure\F$.
 
 \item[(iii)+(iv)] Die Aussagen folgen aus folgendem Lemma
 
-\begin{lemm-list}
+\begin{lemm-list}\label{lemm:fundamental_gamma1_lemm4}
 \item Seien $z, z' \in \closure \F$ mit $z' = M \circ z$ mit $M \in \Gamma(1)$.
 Sei $z' \not= z$.
 Dann ist entweder $x = \pm \frac{1}{2}$ (und dann $x' = \mp \frac{1}{2}$, $z' = z - 1$ und $M = \pm T^{\pm 1}$) oder $\abs z = 1$, $z' = -\frac{1}{z}$, $M = \pm S$.
@@ -473,3 +473,34 @@ Es folgt wie oben $z' = z = \rho$, $M = \pm(ST)^2$.
 Man zeigt $z' = z = \rho$ und $M = \pm ST$ oder $z' = z = -\conj\rho$ und $M = \pm (TS)^2$.
 \end{bewe-ind}
 \end{bewe-list}
+
+\begin{koro}
+Die Gruppe $\SL_2(\ZZ)$ wird erzeugt von $T = (\begin{smallmatrix}1 & 1\\0 & 1\end{smallmatrix})$ und $S = (\begin{smallmatrix}0 & 1 \\ 1 & 0\end{smallmatrix})$.
+\end{koro}
+
+\begin{bewe}
+Man zeigt zunächst: Sei $\Gamma(1)'$ die von $S$ und $T$ erzeugte Untergruppe.
+Sei $z \in \HH$.
+Dann existiert $M' \in \Gamma(1)'$ mit $M' \circ z \in \closure\F$.
+\emph{Denn}: Man zeigt wie vorher: Der Orbit $\Gamma(1)' \circ z$ hat Elemente maximaler Höhe.
+Sei $M' \in \Gamma'(1)$ mit Höhe $h(M' \circ z)$ maximal.
+Sei $n \in \ZZ$ mit
+\[
+    \abs*{\Re(\underbrace{T^nM'\circ z)}_{=: z'}} \leq \frac{1}{2}
+\]
+\emph{Behauptung}: $z' \in \closure\F$.
+Andernfalls $\abs{z'} < 1$.
+Aber
+\[
+    h(S \circ z') = \Im\left(-\frac{1}{z'}\right) = \frac{\Im(z')}{\abs{z'}^2}
+    > \Im(z') = h(z') = h(M' \circ z)
+\]
+ein Widerspruch zur Maximalität von $h(z')$.
+
+Sei $M \in \Gamma(1)$.
+
+Zu zeigen: $M \in \Gamma(1)'$.
+Wähle $z_0 \in \F$ fest, z.\,B. $z_0 = 2i$.
+Zu $z = M \circ z_0$ existiert ein $M' \in \Gamma(1)'$ mit $M' \circ z = M'M \circ z_0 \in \closure\F$, wie gerade gezeigt.
+Nach \autoref{lemm:fundamental_gamma1_lemm4} folgt $M'M = \pm E$. Also $M' = \pm M^{-1} \in <S, T, -E>= <S, T>$ wegen $S^2 = -E$.
+\end{bewe}

@@ -1,0 +1,72 @@
+\section{Definition von Modulfunktionen und Modulformen}
+
+\begin{defi}
+Sei $k\in\ZZ$.
+Eine Funktion $f\colon \HH \ra \closure\CC$ heißt \myemph{Modulfunktion} vom \emph{Gewicht} $k$, falls gilt
+\begin{enumerate}
+\item $f$ ist meromorph
+\item $f(\frac{az+b}{cz+d}) = (cz+d)^kf(z)$ für alle $\abcd \in \Gamma(1)$
+\item $f$ ist meromorph in $\infty$.
+\end{enumerate}
+
+\emph{Erklärung von (iii)}: man wende (ii) an mit $M = T = (\begin{smallmatrix}1&1\\0&1\end{smallmatrix})$, also $f(z+1) = f(z)$.
+Wir können jetzt vorgehen wie in \autoref{satz:fourierentwicklung}:
+Sei $\mathcal{R} = \Set{q\in \CC \mid 0 < \abs q < 1}$ ein Ringgebiet, $z \mapsto q = e^{2\pi i z}$ bildet $\HH$ auf $\mathcal{R}$ ab.
+Sei $F\colon \mathcal{R} \ra \closure\CC$ gegeben durch $F(q) = f(z)$.
+Dann ist $F$ auf $\mathcal{R}$ holomorph bis auf Polstellen, die sich nicht gegen $q=0$ häufen können (sonst sind keine Häufungen möglich,denn $f$ ist meromorph).
+Man fordert, dass $F$ in $q=0$ eine isolierte nicht-wesentliche Singularität hat (also hebbar oder Pol).
+
+Nach \autoref{satz:fourierentwicklung} hat dann $F$ eine Laurententwicklung
+\[
+    F(q) = \sum_{n\in\ZZ} a_nq^n
+    \qquad \text{für } 0 < \abs q < \abs{q_0}
+    \,,
+\]
+wobei $a_n=0$ für alle bis auf endlich viele $n<0$.
+\[
+    f(z) = \sum_{n\in\ZZ} a_ne^{2\pi i z}
+    \qquad \text{für } 0 < \abs{y_0} < \abs{y}
+    \,.
+\]
+\end{defi}
+
+\begin{defi}
+Eine solche Funktion wie oben heißt \myemph{Modulform} vom Gewicht $k$, falls $f$ auf $\HH$ holomorph und holomorph in $\infty$ ist.
+
+Letzteres bedeutet, dass $F(q)$ in $q=0$ eine hebbare Singularität besitzt, also $f(z) = \sum_{n \geq 0} a_ne^{2\pi i nz}$ für alle $z\in\HH$.
+
+Eine Modulform heißt \myemph{Spitzenform}, falls $a_0 = 0$.
+\end{defi}
+
+\begin{defi}
+Sei $f\colon \HH \ra \CC$ Funktion, $M = \abcd \in \SL_2(\RR)$, $k\in\ZZ$.
+Man setzt
+\[
+    (f|_k M)(z) := (cz+d)^{-k} f\left(\frac{az+b}{cz+d}\right)
+    \,.
+\]
+Der Operator $f \mapsto (f|_k M)(z)$ heißt \myemph{Peterssonscher Strichoperator}.
+\end{defi}
+
+\begin{lemm}
+Es gilt $f|_kE = f$ und $(f|_kM_1)|_kM_2 = f|_k(M_1M_2)$.
+Das heißt $\SL_2(\RR)$ operiert von rechts auf Funktionen $f\colon \HH \ra \CC$ durch $(f, M) \mapsto f|_k M$.
+\end{lemm}
+
+\begin{bewe}
+$f|_kE = f$ ist klar.
+
+Setze $j(M, z) := cz+d$ für $M = \abcd$.
+Dann $j(M_1M_2, z) = j(M_1, M_2 \circ z) j(M_2 \circ z)$ (nachrechnen).
+Dann
+\[
+    (f|_kM)(z) = j(M,z)^{-k}f(M \circ z)
+\]
+Daher
+\begin{align*}
+    ((f|_kM_1)|_kM_2)(z)
+    &= j(M_2, z)^{-k}j(M_1, M_2\circ z)^{-k} f(M_1 \circ (M_2 \circ z)) \\
+    &= j(M_1M_2, z)^{-k}f(M_1M_2 \circ z)
+    \,.
+\end{align*}
+\end{bewe}
