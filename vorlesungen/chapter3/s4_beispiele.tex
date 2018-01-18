@@ -28,7 +28,7 @@ Daher ist $\theta_A(z)$ holomorph af $\HH$.
 Siehe \autoref{lemm:konvergenz_theta} (Im Beweis wurde nicht benutzt, dass $A$ ganzzahlig gerade ist).
 \end{bewe}
 
-\begin{satz}[Theta-Transformationsformel]
+\begin{satz}[Theta-Transformationsformel]\label{satz:theta_trafo}
 Es gilt
 \[
     \theta_{A^{-1}}\Big(-\frac{1}{z}\Big)
@@ -42,3 +42,240 @@ Hierbei ist $(\frac{z}{i})^{\frac{m}{2}} = e^{\frac{m}{2}\Log(\frac{z}{i})}$.
 \begin{beme}
 Ist $A > 0$, dann ist $A^{-1} > 0$ (denn $A^{-1} = A[A^{-1}]$).
 \end{beme}
+
+\begin{bewe}
+Sei $z\in\HH$ fest.
+Für $w\in\CC^m$ setze
+\[
+    f(w) := \sum_{g \in \ZZ^m} e^{\pi i A[g+w]z}
+    \,.
+\]
+Dann gilt
+\[
+    \theta_A(z) = f(0)
+    \,.
+\]
+
+\emph{Behauptung}: Die Reihe $f(w)$ ist auf Kompakta $K \subseteq \CC^m$ gleichmäßig, absolut konvergent.
+Insbesondere ist $f(w)$ stetig und separat in jeder Variablen holomorph.
+
+\emph{Denn}: Da $A$ positiv definit ist, existiert $\delta > 0$ mit $A[g] \geq \delta \norm{g}^2 = \delta g^tg$ für alle $g \in \ZZ^m$ (siehe Abschnitt 1).
+Betrachte also
+\[
+    \Im(A[g+w]z)\,.
+\]
+Schreibe $A[g+w] = A[g] + 2w^tAg + A[w]$.
+Daher
+\begin{align}\label{eq:theta_transfo}
+    \Im(A[g+w]z)
+    &= A[g]y + 2\Im(w^tAgz) + \Im(A[w]z) \nonumber \\
+    &\geq y\delta g^tg + 2\Im(w^tAgz) + \Im(A[w]z)
+    \,.
+\end{align}
+Sei $K \subset \CC^m$ kompakt.
+Da die Abbildung $g \mapsto g^tg$ quadratisch und $g \mapsto \Im(w^tAgz)$ linear ist für alle $z \in K$ und für fast alle $g \in \ZZ^m$ die rechte Seite von \eqref{eq:theta_transfo} $ \geq \frac{1}{2}y\delta g^tg$.
+
+Es gilt daher für alle $w\in\CC^m$
+\[
+    \sum_{g\in\ZZ^m} \abs{e^{\pi i A[g+w]z}}
+    = \sum_{g\in\ZZ^m} e^{-\Im(\pi A[g+w]z)}
+    \leq C + \sum_{g\in\ZZ^m} e^{-\frac{\pi y \delta}{2} g^tg}
+    < \tilde{C} < \infty
+    \,.
+\]
+
+\medskip
+
+Wegen absoluter Konvergenz der Reihe $f(w)$ gilt
+\[
+    f(w+h) = f(w)
+    \qquad \text{für alle } h \in \ZZ^m
+    \,.
+\]
+Daher hat $f(w)$ eine Fourierentwicklung der Form
+\[
+    f(w)
+    = \sum_{h\in\ZZ^m} a(h) e^{2\pi i h^tw}
+    \qquad \text{für } w \in \CC^m
+    \,,
+\]
+die gleichmäßig absolut auf Kompakta konvergiert. Mit Fourierkoeffizienten
+\[
+    a(h) = \int_0^1 \ldots \int_0^1 f(w)e^{-2\pi i h^tw} \opd u
+    \qquad w = u+iv, v\in\RR^m \text{ fest}
+\]
+Für $m=1$ wird dies im Detail in \autoref{satz:fourierentwicklung} gezeigt, der Fall $m \geq 1$ folgt aus dem Fall $m=1$ und Induktion.
+
+Es folgt
+\[
+    a(h) = \int_{I_m} f(w)e^{-2\pi i h'w} \opd u
+    \qquad \text{wobei } I_m = [0,1]^m \subset \RR^m \text{ (Fubini)}\,.
+\]
+
+Einsetzen liefert
+\[
+    a(h)
+    = \int_{I_m} \left(\sum_{g\in\ZZ^m} e^{\pi i(A[g+w]z-2h^tw])}\right) \opd u
+    \,.
+\]
+Vertauschen von Summation und Integration ist gerechtfertig, wegen der absoluten Konvergenz, also gilt:
+\begin{align*}
+    a(h)
+    &= \sum_{g\in\ZZ^m} \left(\int_{I_m} e^{\pi i(A[g+w]z-2h^tw])} \opd u\right) \\
+    &= \sum_{g\in\ZZ^m} \left(\int_{g+I_m} \underbrace{e^{\pi i(A[w]z-2h^tw])}}_{\text{unabhängig von $g$}} \opd u\right) \qquad (u \mapsto u-g) \\
+    &= \int_{\bigcup\limits_{g\in\ZZ^m} g+I_m} e^{\pi i(A[w]z-2h^tw])} \opd u
+        \qquad (\text{Poissonscher Summationstrick}) \\
+    &= \int_{\RR^m}  e^{\pi i(A[w]z-2h^tw])} \opd u
+    \,.
+\end{align*}
+Quadratische Ergänzung (ähnlich wie für $m=1$, nachrechnen), es gilt
+\[
+    A[w]z - 2h^tw
+    = zA[w - A^{-1}hz^{-1}]-A^{-1}[h]z^{-1}
+    \,.
+\]
+Damit erhalten wir
+\begin{align*}
+    a(h)
+    &= e^{-\pi iA^{-1}[h]z^{-1}} \int_{\RR^m} e^{\pi i z A[w-A^{-1}hz^{-1}]} \\
+    &\qquad \left( w = u+iv, \text{ wähle } v = \Im(A^{-1}hz^{-1}),\ u\mapsto u + \Re(A^{-1}hz^{-1}) \right) \\
+    &= e^{-\pi iA^{-1}[h]z^{-1}} \int_{\RR^m} e^{\pi iA[u]z} \opd u
+\end{align*}
+
+Also haben wir
+\[
+    \theta_A(z)
+    = f(0)
+    = \sum_{h\in\ZZ^m} a(h)
+    = \underbrace{\sum_{h\in\ZZ^m} e^{\pi i(-\frac{1}{z})A^{-1}[h]}}_{=\theta_{A^{-1}}(-\frac{1}{z})} \cdot \left( \int_{\RR^m} e^{\pi iA[u]z} \opd u \right)
+    \,.
+\]
+
+Wir müssen nun nur noch das Integral berechnen.
+Dafür wollen wir $A$ diagonalisieren:
+Nach LA existiert $U \in \GL_n(\RR)$ mit
+\[
+    A[U] = \begin{pmatrix}d_1 & &\\ & \ddots & \\ & & d_m\end{pmatrix} = D^tD = E[D]
+    \qquad \text{mit } D = \begin{pmatrix}\sqrt{d_1} & &\\ & \ddots & \\ & & \sqrt{d_m}\end{pmatrix}
+\]
+Also $A = E[DU^{-1}] = B^tB$ mit $B := DU^{-1} \in \GL_n(\RR)$.
+Wir erhalten
+\begin{align*}
+    \int_{\RR^m} e^{\pi iA[u]z} \opd u
+    &= \int_{\RR^m} e^{\pi i(Bu)^t(Bu)z} \opd u \\
+    &= \abs{\det B^{-1}} \int_{\RR^m} e^{\pi iu^tuz} \opd u \qquad (u \mapsto B^{-1}u) \\
+\end{align*}
+Die Substitution $u \mapsto B^{-1}u$ hat die Jacobi-Determinante $\det B^{-1}$.
+Aus $A = B^tB$ folgt $\det A = (\det B)^2$, also $\abs{\det B^{-1}} = (\sqrt{\det A})^{-1}$.
+Mit mehrfacher Anwendung von Fubini folgt
+\begin{align*}
+    \int_{\RR^m} e^{\pi iA[u]z} \opd u
+    &= (\det A)^{-\frac{1}{2}} \int_{\RR^m} e^{\pi i (u_1^2 + \ldots + u_m^2)z} \opd u \\
+    &= (\det A)^{-\frac{1}{2}} \int_{-\infty}^\infty\ldots\int_{-\infty}^\infty e^{\pi i (u_1^2 + \ldots + u_m^2)z} \opd u
+    = \left( \int_{-\infty}^\infty e^{\pi i t^2 z} \opd t \right)^m
+\end{align*}
+
+Berechne $\int_{-\infty}^\infty e^{\pi i t^2 z} \opd t$ zunächst für $z = iy$, $y > 0$.
+
+\begin{lemm-ind}\label{lemm:theta_trafo}
+\[
+    \int_{-\infty}^\infty e^{\pi iyt^2} \opd t = y^{-\frac{1}{2}}
+\]
+\end{lemm-ind}
+
+\begin{bewe-ind}
+Setze $t = \frac{x}{\sqrt{\pi y}}$.
+Dann
+\[
+    \int_{-\infty}^\infty e^{\pi iyt^2} \opd t
+    = \frac{1}{\sqrt{\pi y}} \int_{-\infty}^\infty e^{-x^2} \opd x
+    \,.
+\]
+Also zu zeigen
+\[
+    \int_{-\infty}^\infty e^{-x^2} \opd x = 2\int_0^\infty e^{-x^2} \opd x
+    = \sqrt{\pi}
+    \,.
+\]
+Eulersche Ergänzungsstaz (\autoref{satz:gamma-eigenschaften})
+\[
+    \Gamma(s) \Gamma(1-s) = \frac{\pi}{\sin(\pi s)}
+    \,,
+\]
+setze $s = \frac{1}{2}$, dann $\Gamma(\frac{1}{2}) = \pi$, also $\Gamma(\frac{1}{2}) = \sqrt{\pi}$.
+Euler Integral (\autoref{satz:eulerint})
+\[
+    \Gamma(s) = \int_0^\infty t^{s-1}e^{-t} \opd t \qquad (\Re(s) > 0)\,.
+\]
+Damit folgt für $s=\frac{1}{2}$
+\[
+    \sqrt \pi = \Gamma(\frac{1}{2}) = \int_0^\infty t^{-\frac{1}{2}}e^{-t} \opd t
+    = \int_0^\infty x^{-1}e^{-x^2}\cdot 2x \opd x %t = x^2
+    = 2 \int_0^\infty e^{-x^2} \opd x
+\]
+\end{bewe-ind}
+
+Die Funktion $(\frac{z}{i})^{-\frac{m}{2}}$ und $(\int_{-\infty}^\infty e^{\pi i t^2 z} \opd t)^m$ sind auf $\HH$ holomorph und stimmen auf der positiven imaginären Achse überein (\autoref{lemm:theta_trafo}).
+Nach dem Identitässatz stimmen sie also auf $\HH$ überein.
+Damit folgt die Behauptung.
+\end{bewe}
+
+\begin{satz}
+Sei $A \in M_m(\ZZ)$, $A$ symmetrisch, positiv definit, gerade und $\det A = 1$.
+Dann gilt $8 | m$ und $\theta_A \in \M_{\frac{m}{2}}$.
+\end{satz}
+\begin{beme}
+Solche $A$ existieren und können konstruiert werden mit Hilfe der Theorie der unimodularen Gitter.
+\end{beme}
+
+\begin{bewe}
+Zunächst beachte: Ist $A \in M_m(\RR)$, $A$ symmetrisch, positiv definit und $B = A[U]$ mit $U \in \GL_m(\ZZ)$, so gilt $\theta_B(Z) = \theta_A(z)$.
+
+\emph{Denn}:
+\[
+    \theta_B(z)
+    = \sum_{g \in \ZZ^m} e^{\pi iB[g]z}
+    = \sum_{g \in \ZZ^m} e^{\pi i A[U][g]z}
+    = \sum_{g \in \ZZ^m} e^{\pi i A[Ug]z}
+\]
+denn wegen $U\in\GL_m(\ZZ)$, durchläuft mit $g$ auch $Ug$ alle Elemente aus $\ZZ^m$.
+
+Sei $\det A = 1$.
+Dann ist $A^{-1} = A[U]$ mit $U = A^{-1}$ mit $U = A^{-1} \in \GL_m(\ZZ)$.
+Aus den Voraussetzungen folgt damit
+\[
+    \theta_A = \theta_{A^{-1}}
+    \,.
+\]
+Also folgt mit \autoref{satz:theta_trafo}
+\[
+    \theta_{A}\Big(-\frac{1}{z}\Big)
+    = \sqrt{\det A} \cdot \Big(\frac{z}{i}\Big)^{\frac{m}{2}} \theta_A(z)
+    \,.
+\]
+
+\emph{Angenommen}: $8 \nmid m$.
+
+Dann kann man annehmen $m \equiv 4 \mod 8$, denn man kann $A$ immer ersetzen durch
+\[
+    (**)\quad \begin{pmatrix}A&\\&A\end{pmatrix} \qquad \text{oder} \qquad (*) \quad \begin{pmatrix}A\\&A\\&&A\\&&&A\end{pmatrix}
+\]
+und diese Matrizen haben den gleichen Typ.
+
+\begin{tabular}{l l}
+$m \equiv 1$ & nehme (**) dann $m \equiv 4 \mod 8$ \\
+$m \equiv 2$ & nehme (*)\phantom{*} dann $m \equiv 4 \mod 8$ \\
+$m \equiv 3$ & nehme (**) dann $m \equiv 4 \mod 8$ \\
+$m \equiv 4$ & \ldots
+\end{tabular}
+
+Sei also $m \equiv 4 \mod 8$.
+Dann gilt $\theta_A(-\frac{1}{z}) = z^{\frac{m}{2}} \cdot i^{-\frac{m}{2}} \theta_A(z)$.
+Also $\theta_A|_{\frac{m}{2}}S = \theta_A$. Aber $A$ gerade, also $\frac{1}{2}g^tAg = \frac{1}{2}A[g] \in \ZZ$.
+Also Fourierentwicklung von $\theta_A$ ist in $e^{2\pi iz}$, d\,h. $\theta|_{\frac{m}{2}}T = \theta_A$.
+Also $\theta_A|TS = \theta_A|T|S = - \theta_a$.
+Also $\theta_A = \theta_A|(-E) = \theta_A|(TS)^3 = \theta_A|TS|TS|TS = -\theta_A$.
+Also $\theta_A = 0$ \blitz konstanter Term ist 1.
+
+Also $8|m$, Aber dann $\theta_A|T = \theta_A$, $\theta_A|S = \theta_A$. Also $\theta_A \in M_{\frac{m}{2}}$.
+\end{bewe}
