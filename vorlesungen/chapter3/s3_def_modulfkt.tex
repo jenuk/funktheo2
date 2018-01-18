@@ -13,7 +13,7 @@ Eine Funktion $f\colon \HH \ra \closure\CC$ heißt \myemph{Modulfunktion} vom \e
 Wir können jetzt vorgehen wie in \autoref{satz:fourierentwicklung}:
 Sei $\mathcal{R} = \Set{q\in \CC \mid 0 < \abs q < 1}$ ein Ringgebiet, $z \mapsto q = e^{2\pi i z}$ bildet $\HH$ auf $\mathcal{R}$ ab.
 Sei $F\colon \mathcal{R} \ra \closure\CC$ gegeben durch $F(q) = f(z)$.
-Dann ist $F$ auf $\mathcal{R}$ holomorph bis auf Polstellen, die sich nicht gegen $q=0$ häufen können (sonst sind keine Häufungen möglich,denn $f$ ist meromorph).
+Dann ist $F$ auf $\mathcal{R}$ holomorph bis auf Polstellen, die sich nicht gegen $q=0$ häufen können (sonst sind keine Häufungen möglich, denn $f$ ist meromorph).
 Man fordert, dass $F$ in $q=0$ eine isolierte nicht-wesentliche Singularität hat (also hebbar oder Pol).
 
 Nach \autoref{satz:fourierentwicklung} hat dann $F$ eine Laurententwicklung
@@ -32,7 +32,6 @@ wobei $a_n=0$ für alle bis auf endlich viele $n<0$.
 
 \begin{defi}
 Eine solche Funktion wie oben heißt \myemph{Modulform} vom Gewicht $k$, falls $f$ auf $\HH$ holomorph und holomorph in $\infty$ ist.
-
 Letzteres bedeutet, dass $F(q)$ in $q=0$ eine hebbare Singularität besitzt, also $f(z) = \sum_{n \geq 0} a_ne^{2\pi i nz}$ für alle $z\in\HH$.
 
 Eine Modulform heißt \myemph{Spitzenform}, falls $a_0 = 0$.
@@ -48,7 +47,7 @@ Man setzt
 Der Operator $f \mapsto (f|_k M)(z)$ heißt \myemph{Peterssonscher Strichoperator}.
 \end{defi}
 
-\begin{lemm}
+\begin{lemm}\label{lemm:strich_operiert}
 Es gilt $f|_kE = f$ und $(f|_kM_1)|_kM_2 = f|_k(M_1M_2)$.
 Das heißt $\SL_2(\RR)$ operiert von rechts auf Funktionen $f\colon \HH \ra \CC$ durch $(f, M) \mapsto f|_k M$.
 \end{lemm}
@@ -70,3 +69,42 @@ Daher
     \,.
 \end{align*}
 \end{bewe}
+
+\begin{koro}
+Eine Funktion $f\colon \HH \ra \CC$ erfüllt
+\begin{equation}\label{eq:koro_modulbed}
+    f\left(\frac{az+b}{cz+d}\right)
+    = (cz+d)^kf(z)
+    \qquad \text{für alle } \abcd \in \Gamma(1)
+\end{equation}
+genau dann, wenn sie
+\[
+    f(z+1) = f(z)
+    \qquad \text{und} \qquad
+    f\Big(-\frac{1}{z}\Big) = z^k f(z)
+\]
+erfüllt.
+\end{koro}
+
+\begin{bewe}
+Es gilt \eqref{eq:koro_modulbed} genau dann, wenn $f|_k M = f$ für alle $M\in\Gamma(1)$.
+Aus $f|_kM = f$ folgt $f|_kM^{-1} = f$ für alle $M\in\Gamma(1)$.
+Ferner wird $\Gamma(1)$ von $S = (\begin{smallmatrix}0 & -1\\ 1 & 0\end{smallmatrix})$ und $T = (\begin{smallmatrix}1 & 1\\ 0 & 1\end{smallmatrix})$ erzeugt und $f|_kS = f$ bedeutet $f(-\frac{1}{z}) = z^k f(z)$ und $f|_kT = f$ bedeutet $f(z+1) = f(z)$.
+Die Aussage folgt aus \autoref{lemm:strich_operiert}.
+\end{bewe}
+
+\begin{nota}
+$\mathcal{M}_k =$ $\CC$-Vektorraum der Modulformen von Gewicht $k$ und $\mathcal{S}_k$ der Unterraum der Spitzenformen.
+\end{nota}
+
+\begin{beme-list}
+\item $k$ ungerade, dann ist $\mathcal{M}_k = \{0\}$.
+\emph{Denn}: operiere mit $M = -E$. Dann
+\[
+    f(z) = f((-E) \circ z) = (-1)^k f(z)
+    \,,
+\]
+also $f \equiv 0$.
+\item $f \in \mathcal{M}_k$, $g\in \mathcal{M}_l$, dann ist $fg \in \mathcal{M}_{kl}$.
+\item Eine Funktion $f\colon \HH \ra \CC$ ist Modulform vom Gewicht $k$ genau dann, wenn $f$ eine Fourierentwickling $f(z) = \sum_{n\geq 0} a_nz^{2\pi inz}$ hat, die konvergent für alle $z\in \HH$ ist, und es gilt $f(-\frac{1}{z}) = z^kf(z)$.
+\end{beme-list}

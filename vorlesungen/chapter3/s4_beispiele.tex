@@ -1,0 +1,44 @@
+\section{Beispiele für Modulformen}
+
+\subsection{Thetareihen}
+
+\begin{nota-list}
+\item $A \in M_m(\RR)$, $A$ ist symmetrisch, falls $A = A^t$. Man schreibt $A > 0$, falls $A$ positiv definit ist, d.\,h. $x^tAx > 0$ für alle $x\in\RR^m$, $x\not=0$.
+\item Ist $A \in M_m(\CC)$, $A$ symmetrisch, $B \in M_{m,n}(\CC)$. Setze $A[B] := B'AB \in M_{n,n}(\CC)$.
+Dann gilt $A[B_1B_2] = (A[B_1])[B_2]$ (nachrechnen).
+\end{nota-list}
+
+\begin{defi}
+Sei $A \in M_m(\RR)$ symmetrisch und positiv definit.
+Dann heißt
+\[
+    \theta_A(z)
+    := \sum_{g \in \ZZ^m} e^{\pi i A[g]z}
+    \qquad \text{für } z \in \HH
+\]
+\myemph{Thetareihe}.
+\end{defi}
+
+\begin{lemm}
+Die Reihe $\theta_A(z)$ konvergiert gleichmäßig absolut für $y \geq y_0 > 0$, insbesondere auf Kompakta $K \subset \HH$.
+Daher ist $\theta_A(z)$ holomorph af $\HH$.
+\end{lemm}
+
+\begin{bewe}
+Siehe \autoref{lemm:konvergenz_theta} (Im Beweis wurde nicht benutzt, dass $A$ ganzzahlig gerade ist).
+\end{bewe}
+
+\begin{satz}[Theta-Transformationsformel]
+Es gilt
+\[
+    \theta_{A^{-1}}\Big(-\frac{1}{z}\Big)
+    = \sqrt{\det A} \cdot \Big(\frac{z}{i}\Big)^{\frac{m}{2}} \theta_A(z)
+    \qquad \text{für alle } z \in \HH
+    \,.
+\]
+Hierbei ist $(\frac{z}{i})^{\frac{m}{2}} = e^{\frac{m}{2}\Log(\frac{z}{i})}$.
+\end{satz}
+
+\begin{beme}
+Ist $A > 0$, dann ist $A^{-1} > 0$ (denn $A^{-1} = A[A^{-1}]$).
+\end{beme}
