@@ -220,7 +220,7 @@ Nach dem Identitässatz stimmen sie also auf $\HH$ überein.
 Damit folgt die Behauptung.
 \end{bewe}
 
-\begin{satz}
+\begin{satz}\label{satz:theta_modulform}
 Sei $A \in M_m(\ZZ)$, $A$ symmetrisch, positiv definit, gerade und $\det A = 1$.
 Dann gilt $8 | m$ und $\theta_A \in \M_{\frac{m}{2}}$.
 \end{satz}
@@ -279,3 +279,233 @@ Also $\theta_A = 0$ \blitz konstanter Term ist 1.
 
 Also $8|m$, Aber dann $\theta_A|T = \theta_A$, $\theta_A|S = \theta_A$. Also $\theta_A \in M_{\frac{m}{2}}$.
 \end{bewe}
+
+\emph{Problem}: Wie erhält man Matrizen $A$ wie in \autoref{satz:theta_modulform} gefordert?
+
+\emph{Idee}: Man verwende die Theorie der \emph{unimodularen Gitter}!
+
+\subsubsection{Exkurs: unimodulare Gitter}
+
+\begin{defi}
+	Eine Teilmenge $L \subset \RR^m$ heißt \myemph{Gitter}, falls eine Basis $\Set{v_1, \ldots, v_m}$ des $\RR^m$ existiert, so dass $L = \ZZ v_1 \oplus \ldots \oplus \ZZ v_m$.
+\end{defi}
+
+\begin{bsp}
+	$L = \ZZ^m$
+\end{bsp}
+
+\begin{beme}
+	Ist $m = 2$ und $\RR^2 \cong \CC$, so wurden Gitter $L \subset \CC$ im Kapitel über elliptischen Funktionen betrachtet.
+	
+	Ist $B$ die Matrix, deren Spalten gerade die Komponenten von $v_1$, \ldots, $v_m$ sind, so gilt $L = B(\ZZ^m)$.
+	Weiterhin gilt
+	\[
+	\abs{\det B} = \vol(\modulo{\RR^m}{L}) = \int_\F\opd\mu
+	\,,
+	\]
+	wobei $\F$ ein \emph{Fundamentalbereich} ist, z.\,B. die \emph{Grundmasche}.
+	
+	\emph{Fakt}: Ist $L_1 \subset L$ ein $\ZZ$-Untermodul von $L$ mit $[L_1:L] < \infty$, so ist auch $L_1 \subset \RR^m$ ein Gitter.
+	
+	Schränkt man die quadratische Form
+	\[
+	\RR^m \ra \RR, \quad
+	x \mapsto x^t x = \sum_{\nu=1}^m x_\nu^2
+	\]
+	auf $L$ ein, so erhält man eine quadratische Form auf $L$ welche für $x = Bg \in L$ beliebig mit $g\in\ZZ^m$ gegeben ist durch
+	\[
+	x^tx = (Bg)^t(Bg) =g^tB^tBg = g^tAg
+	\,,
+	\]
+	wobei $A = B^tB = (v_i \cdot v_j)_{1 \leq i,j \leq m}$.
+	Nach Konstruktion ist $A$ symmetrisch und positiv definit.
+	
+	Man konstruiere Matrizen $A$ wie in \autoref{satz:theta_modulform}, indem man geeignete Gitter $L \subset \RR^m$ und deren \emph{Gram-Matrix} $A$ anschaut.
+\end{beme}
+
+\begin{bsp}
+	Sei $m \in \NN$, $8|m$.
+	Sei
+	\[
+	E_m := \Set{x\in\ZZ^m \biggm| \sum_{\nu=1}^m x_\nu \equiv 0 \mod 2}
+	\,.
+	\]
+	Die Abbildung $\ZZ^m \ra \modulo{\ZZ}{2\ZZ}, x \mapsto \conj{\sum_{\nu = 1}^m x_\nu}$ ist ein surjektiver Homomorphismus und sein Kern ist $E_m$, nach dem Homomorphiesatz ist daher $\modulo{\ZZ^m}{E_m} \cong \modulo{\ZZ}{2\ZZ}$.
+	Also $[\ZZ^m:E_m] = 2$, insbesondere ist $E_m$ also auch ein Gitter.
+	
+	Sei $L_m := E_m + \ZZ e$, wobei $e^t = (\frac{1}{2}, \frac{1}{2}, \ldots, \frac{1}{2}) \in \RR^m$.
+	Man zeigt, dass auch $L_m \subset \RR^m$ ein Gitter ist und $[L_m : E_m] = 2$.
+	Explizit kann man $L_m$ angeben:
+	\[
+	L_m = \Set{x \in \RR^m \biggm| x_i \in \frac{1}{2}\ZZ,\ x_i - x_j \in \ZZ \text{ für alle } i, j \text{ und } \frac{1}{2} \sum_{\nu =1}^m x_\nu \in \ZZ}
+	\]
+	
+	Es kann gezeigt werden, dass $x \cdot y \in \ZZ$ für alle $x, y \in L_m$ und $x \cdot x \in 2\ZZ$ für alle $x \in L_m$. Insbesondere ist $e \cdot e = \frac{1}{4} m = \frac{m}{4} \in 2\ZZ$ wegen $8|m$.
+	
+	Es verbleibt zu zeigen, dass $\det A = 1$.
+	Zunächst gilt
+	\begin{align*}
+	&E_m \underset{2}{\subset} \ZZ^m \subset \RR^m \\
+	&E_m \underset{2}{\subset} L_m \subset \RR^m
+	\end{align*}
+	Damit erhalten wir
+	\begin{align*}
+	&\vol(\modulo{\RR^m}{E_m}) = 2 \cdot \vol(\modulo{\RR^m}{\ZZ^m}) = 2 \\
+	&\vol(\modulo{\RR^m}{E_m}) = 2 \cdot \vol(\modulo{\RR^m}{L_m})
+	\end{align*}
+	Also
+	\[
+	\vol(\modulo{\RR^m}{L_m}) = 1
+	\,.
+	\]
+	Woraus wir $\abs{\det B} = 1$ und damit $\det A = 1$, wegen $A = B^tB$, erhalten.
+	
+	\emph{Speziell} heißt $L_8$ \myemph{Leech-Gitter}.
+	Eine Basis hierfür ist gegeben durch
+	\begin{align*}
+	&\frac{1}{2}(e_1 + e_8) - \frac{1}{2}(e_2 + \ldots + e_7)\,,\\
+	&e_1+e_2\,,\\
+	&e_i - e_{i-1} \qquad \text{ für } 2 \leq i \leq 7\,.
+	\end{align*}
+	
+	Damit ergibt sich
+	\[
+	A = 
+	\begin{pmatrix}
+	2 & 0 & -1 \\
+	0 & 2 & 0 & -1 \\
+	-1 & 0 & 2 & -1 \\
+	& -1 & -1 & 2 & -1 \\
+	& & & -1 & 2 & -1 \\
+	& & & & -1 & 2 & -1 \\
+	& & & & & -1 & 2 & -1 \\
+	& & & & & & -1 & 2 \\
+	\end{pmatrix}
+	\]
+	und $A$ ist positiv definit, symmetrisch und $\det A = 1$.
+\end{bsp}
+
+\subsection{Eisensteinreihen}
+
+\begin{defi}
+	Sei $k \in \NN$, $k$ gerade, $k \geq 4$. Dann heißt
+	\[
+	G_k(z) := \sumprime_{m,n} \frac{1}{(mz+n)^k}
+	\qquad \text{für } z \in \HH
+	\]
+	\myemph{Eisensteinreihe} vom Gewicht $k$.
+\end{defi}
+
+\begin{beme-list}
+	\item $\sumprime_{m,n}$ bedeutet die Summation über alle $(m, n) \in \ZZ^2$ mit $(m,n) \not= (0,0)$.
+	
+	\item Beachte $\sumprime_{m,n} \frac{1}{(mz+n)^k} = 0$ falls $k$ ungerade (ersetze $(m, n)$ durch $(-m, -n)$).
+	
+	\item Es wird $k \geq 4$ gefordert, damit die Reihe konvergiert.
+\end{beme-list}
+
+\begin{satz-list}
+	\item Die Reihe $G_k(z)$ ist absolut, gleichmäßig konvergent auf 
+	\[
+		D_\epsilon = \Set{z = x + iy \mid y \geq \epsilon,\ \abs{x}^2 \leq \frac{1}{\epsilon}}
+	\]
+	für $\epsilon > 0$.
+	
+	\item $G_k \in \M_k$.
+\end{satz-list}
+
+\begin{bewe-list}
+	\item Zunächst gilt
+	\begin{equation}\label{eq:satz_konv_eisensteinreihen}
+	\abs{mz + n}^2 \geq \delta (m^2+n^2) = \delta \abs{mi +n}^2
+	\qquad \text{für alle } m, n\in\ZZ, z \in D_\epsilon
+	\end{equation}
+	für $\delta > 0$ geeignet ist.
+	\emph{Denn}:
+	\eqref{eq:satz_konv_eisensteinreihen} ist äquivalent zu 
+	\[
+	m^2(x^2+y^2) + 2mnx+n^2 \geq \delta (m^2 + n^2) \qquad \text{für alle } m, n\in\ZZ, z \in D_\epsilon
+	\,.
+	\]
+	Dies gilt genau dann, wenn
+	\[
+	(x^2+y^2-\delta)m^2 + 2xmn + (1-\delta)n^2 \geq 0 \qquad \text{für alle } m, n\in\ZZ, z \in D_\epsilon
+	\,.
+	\]
+	Es genügt also zu zeigen, dass die quadratische Form
+	\[
+	(X, Y) \mapsto (x^2+y^2 - \delta)X^2 + 2xXY + (1-\delta)Y^2
+	\]
+	positiv definit ist für alle $z \in D_\epsilon$ mit geeignetem $\delta > 0$.
+	Das heißt es muss gelten:
+	\begin{enumerate}
+		\item $1 - \delta > 0$
+		\item Diskriminante $(2x)^2 - 4(x^2+y^2-\delta)(1-\delta) < 0$
+	\end{enumerate}
+	
+	Dies gilt tatsächlich
+	\begin{enumerate}
+		\item falls $\delta < 1$.
+		
+		\item ist äquivalent zu $y^2(1- \delta) - \delta x^2 - \delta(1-\delta) > 0$.
+		Aber für $z \in D_\epsilon$ gilt $x^2 \leq \frac{1}{\epsilon}$, also gilt dort
+		\[
+		y^2(1 - \delta) - \delta x^2 - \delta(1 - \delta)
+		> y^2 (1- \delta) - \delta\epsilon^{-1}-\delta(1-\delta)
+		\,,
+		\]
+		also reicht es zu zeigen, dass für alle $z \in D_\epsilon$ gilt
+		\[
+		y^2 > \frac{\delta\epsilon^{-1} + \delta(1-\delta)}{1 - \delta}
+		\,.
+		\]
+		Aber $y^2 \geq \epsilon^2$ ist nach unten beschränkt und $\frac{\delta\epsilon^{-1} + \delta(1-\delta)}{1 - \delta} \xto{\delta \to 0} 0$.
+	\end{enumerate}
+	Also gibt es $\delta > 0$ mit den gewünschten Eigenschaften.
+	
+	Damit folgt nun für alle $z\in D_\epsilon$
+	\[
+	\sumprime_{m,n} \frac{1}{\abs{mz+n}^k} \leq \delta^{-\frac{k}{2}} \sumprime_{m,n} \frac{1}{\abs{mz+n}^k}
+	\]
+	die Konvergenz der rechten Seite folgt aus \autoref{lemm:weierstrass-konv} und damit folgt die gleichmäßige, absolute Konvergenz auf $D_\epsilon$ von $G_k$.
+	
+	\item zu zeigen
+	\begin{enumerate}
+		\item $G_k(z + 1) = G_k(z)$, $G_k(-\frac{1}{z}) = z^kG_k(z)$
+		\item $G_k$ ist holomorph in $\infty$.
+	\end{enumerate}
+	
+	(a) Aufgrund der absoluten Konvergenz folgt
+	\begin{align*}
+	G_k(z+1)
+	&= \sumprime_{m,n} \frac{1}{(m(z+1)+n)^k}
+	= \sumprime_{m,n} \frac{1}{(mz+(m+n))^k} \\
+	&= \sumprime_{m,n} \frac{1}{(mz+n)^k}
+	= G_k(z)
+	\,,	
+	\end{align*}
+	denn wenn $(m,n)$ alle Elemente von $\ZZ^2\setminus\{0\}$ durchläuft, so auch $(m,n+m)$.
+	
+	Außerdem gilt
+	\[
+	G_k\Bigl(-\frac{1}{z}\Bigr)
+	= \sumprime_{m,n} \frac{1}{(m(-\frac{1}{z})+n)^k}
+	= z^k \sumprime_{m,n} \frac{1}{(nz+m)^k}
+	= z^k G_k(z)
+	\,.
+	\]
+	
+	(b) Es ist zu zeigen, dass die Funktion $H(q) := G_k(z)$ mit $q = e^{2\pi iz}$, $0 < \abs q < 1$ in $q = 0$ eine hebbare Singularität hat.
+	Nach dem Riemann'schen Hebbarkeitssatz bedeutet dies, dass $H(q)$ in einer kleinen punktierten Umgebnung von $q=0$ beschränkt ist.
+	Dies ist sicherlich der Fall, wenn $\lim_{q \to 0} H(q)$ existiert, d.\,h. $\lim_{y \to \infty} G_k(z)$ existiert.
+	
+	Wähle Folge $(z_\nu)_\nu$ in $\HH$ mit $y_\nu \to \infty$. Wegen $G_k(z+1) = G_k(z)$ kann man annehmen, dass $\abs{x_\nu} \leq \frac{1}{2}$.
+	Wegen der gleichmäßigen Konvergenz in $D_\epsilon$ folgt
+	\[
+	\lim_{\nu \to \infty} G_k(z_\nu)
+	= \lim_{\nu \to \infty} \sumprime_{m,n} \frac{1}{(mz_\nu+n)^k}
+	= \sumprime_{m,n} \lim_{\nu \to \infty} \frac{1}{\underbrace{(mz_\nu+n)^k}_{\to 0 \text{ für } m\not=0}}
+	= \sum_{n \not= 0} \frac{1}{n^k}
+	< \infty
+	\]
+\end{bewe-list}
