@@ -28,7 +28,7 @@ Operiert $G$ auf $S$, so definiert dies eine Äquivalenzrelation auf $S$ durch
 Die Äquivalenzklasse von $s \in S$ ist der Orbit von $s$ unter $G$.
 Man hat daher eine disjunkte Vereinigung
 \[
-	S = \bigcup_{j\in I} Gs_j
+	S = \mathop{\stackrel{\bullet}{\bigcup}}_{j\in I} Gs_j
 \]
 wobei $Gs_j$ die verschiedenen Orbits durchläuft.
 
@@ -235,7 +235,7 @@ Daraus folgt $(\begin{smallmatrix} a & b\\ c & d\end{smallmatrix}) = \pm (\begin
 Die Behauptung folgt jetzt mit dem Homomorphiesatz.
 \end{bewe-list}
 
-Wir interessieren und im folgenden für diskrete Untergruppen $\Gamma \subset \SL_2(\RR)$ und deren Operation auf $\HH$.
+Wir interessieren uns im folgenden für diskrete Untergruppen $\Gamma \subset \SL_2(\RR)$ und deren Operation auf $\HH$.
 Besonders wichtig sind $\Gamma = \SL_2(\ZZ)$ oder $\Gamma$ eine Untergruppe von endlichem Index von $\SL_2(\ZZ)$.
 
 \begin{defi}
@@ -475,7 +475,7 @@ Man zeigt $z' = z = \rho$ und $M = \pm ST$ oder $z' = z = -\conj\rho$ und $M = \
 \end{bewe-list}
 
 \begin{koro}
-Die Gruppe $\SL_2(\ZZ)$ wird erzeugt von $T = (\begin{smallmatrix}1 & 1\\0 & 1\end{smallmatrix})$ und $S = (\begin{smallmatrix}0 & 1 \\ 1 & 0\end{smallmatrix})$.
+Die Gruppe $\SL_2(\ZZ)$ wird erzeugt von $T = (\begin{smallmatrix}1 & 1\\0 & 1\end{smallmatrix})$ und $S = (\begin{smallmatrix}0 & -1 \\ 1 & 0\end{smallmatrix})$.
 \end{koro}
 
 \begin{bewe}
