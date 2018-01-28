@@ -509,3 +509,156 @@ Also $8|m$, Aber dann $\theta_A|T = \theta_A$, $\theta_A|S = \theta_A$. Also $\t
 	< \infty
 	\]
 \end{bewe-list}
+
+\begin{satz}
+	Sei $k \in \NN$. Es gilt für $k$ gerade
+	\[
+	G_k(z) = 2\zeta(k) + \frac{2(2\pi i)^k}{(k-1)!} \sum_{n\geq1} \sigma_{k-1}(n) e^{2\pi inz}
+	\qquad \text{für } z\in\HH
+	\]
+	mit der \myemph{Riemann'schen $\zeta$-Funktion}
+	\[
+	\zeta(k) = \sum_{k=1}^\infty \frac{1}{n^k}
+	\]
+	und
+	\[
+	\sigma_{k-1}(n) = \sum_{\substack{d|n \\ \scriptscriptstyle d >0}} d^{k-1}
+	\]
+\end{satz}
+
+\begin{bewe}
+	Der Teil der Reihe von $G_k$ mit $m=0$ ist gerade $\sum_{n\not=0} \frac{1}{n^k} = 2\zeta(k)$ (dann sind alle $n\in\ZZ$, $n\not=0$).
+	Damit folgt wegen der absoluten Konvergenz:
+	\[
+	G_k(z)
+	= 2 \zeta(k) + \sum_{m\not=0} \left(\sum_{n\in\ZZ} \frac{1}{(mz+n)^k}\right)
+	= 2 \zeta(k) + 2 \sum_{m \geq 1} \left( \sum_{n\in\ZZ} (mz+n)^{-k}\right)
+	\,.
+	\]
+	In \autoref{bsp:eisensteinreihentrafo} wurde bewiesen
+	\[
+	\sum_{n\in\ZZ} \frac{1}{(z+n)^k}
+	= \frac{(-2\pi i)^k}{(k-1)!} \sum_{n\geq1} n^{k-1}e^{2\pi inz}
+	\,.
+	\]
+	Benutze dies mit $z \mapsto mz$ mit $m \geq 1$ und $N := mn$, so folgt
+	\begin{align*}
+	G_k(z)
+	&= 2\zeta(k) + \frac{2(2\pi i)^k}{(k-1)!} \sum_{m\geq1, n\geq1} e^{2\pi inmz} \\
+	&= 2\zeta(k) + \frac{2(2\pi i)^k}{(k-1)!} \sum_{N\geq1} \left(\sum_{n|N} n^{k-1}\right) e^{2\pi iNz}
+	\,.
+	\end{align*}
+\end{bewe}
+
+\begin{satz}\label{satz:bernoullie}
+	Man definiere die \myemph{Bernoulliezahlen} $B_n$ für alle $n\in\NN$ durch die Taylorentwicklung
+	\[
+	\frac{t}{e^t-1} = \sum_{n=0}^\infty \frac{B_n}{n!} t^n
+	\qquad \abs t < 2\pi
+	\,.
+	\]
+	Dann gilt
+	\begin{enumerate}
+		\item $B_n \in \QQ$ für alle $n\in\NN$. Speziell ist $B_0 = 1$, $B_1 = -\frac{1}{2}$ und $B_n = 0$ für alle $n\in\NN$ mit $n$ ungerade.
+		
+		\item Es gilt die Rekursionsformel $\sum_{\nu=0}^n \binom{n}{\nu} B_\nu = (-1)^nB_n$.
+		
+		\item (Euler) Für $k\in\NN$ gerade, $k \geq 2$ gilt
+		\[
+		\zeta(k) = \frac{(-1)^{\frac{k}{2}-1} 2^{k-1}B_k}{k!} \pi^k
+		\]
+	\end{enumerate}
+\end{satz}
+
+\begin{beme}
+	Die Funktion $\frac{w}{e^w-1}$ hat in $w=0$ eine hebbare Singularität\footnote{wegen $e^w = 1 + w + \frac{w^2}{2!} + \ldots$ und der konstanten Term in der Entwicklung von $w=0$ ist $B_0 = 1$} und hat in $w = 2\pi in$ für $n\in\ZZ$, $n\not=0$ einfache Polstellen.
+	Da die Taylorreihe im größtmöglichen Kreis konvergiert (Funktionentheorie I), ist die Entwicklung von $\frac{w}{e^w-1}$ in $w=0$ konvergent für $\abs w < 2\pi$.
+\end{beme}
+
+\begin{bewe-list}
+	\item Man anti-symmetrisiere!
+	\[
+	-t = \frac{t}{e^t-1} - \frac{-t}{e^{-t}-1}
+	= \sum_{n \geq 0} \frac{B_n-(-1)^nB_n}{n!} t^n
+	= 2 \sum_{\substack{n\geq 1\\ \scriptscriptstyle n \text{ ungerade}}} \frac{B_n}{n!} t^n
+	\]
+	Also $2B_1 = -1$ beziehungsweise $B_1 = -\frac{1}{2}$ und $B_n = 0$ für alle $n\in\NN$ ungerade.
+	
+	\item Es gilt
+	\begin{align*}
+	\sum_{n\geq1} \left(\sum_{\nu = 0}^n \binom{n}{\nu} B_\nu \right) \frac{t^n}{n!}
+	&= \sum_{\substack{n\geq 0 \\ \scriptscriptstyle 0 \leq \nu \leq n}} \frac{1}{\nu!(n-\nu)!} B_\nu t^n % Setze k := n-\nu
+	= \sum_{\nu \geq 0, k \geq 0} \frac{1}{\nu!k!} B_\nu t^{\nu+k} \\
+	&= \left(\sum_{\nu\geq0} \frac{B_\nu}{\nu!}t^\nu\right) \left(\sum_{k\geq0} \frac{t^k}{k!}\right)
+	= \frac{t}{e^t-1} \cdot e^t \cdot \frac{e^{-t}}{e^{-t}} \\
+	&= \frac{t}{1-e^{-t}}
+	= \frac{-t}{e^{-t}-1}
+	= \sum_{n\geq1} (-1)^n B_n\frac{t^n}{n!}
+	\,.
+	\end{align*}
+	Also gilt die Rekursionsformel und man schließt, dass alle $B_n \in \QQ$.\footnote{z.\,B. $n=3$: $B_0 + 3B_1 + 3B_2 + B_3 = -B_3$, also $B_2 = \frac{1}{6}$}
+	
+	\item Setze $t = 2\pi iz$ mit $\abs z < 1$, $z\not=0$.
+	Dann
+	\[
+	\frac{2\pi iz}{e^{2\pi iz - 1}}
+	= \sum_{n \geq 0} \frac{B_n}{n!} (2\pi iz)^n
+	= 1 - \pi iz + \sum_{\substack{n\geq 2\\ \scriptscriptstyle n \text{ gerade}}} \frac{B_n}{n!} (-1)^\frac{n}{2} 2^n\pi^n z^n
+	\]
+	denn
+	\begin{align*}
+	\cot \pi z - i
+	&= \frac{\cos \pi z}{\sin\pi z}
+	= \frac{\frac{e^{\pi iz} + e^{-\pi iz}}{2}}{\frac{e^{\pi iz} - e^{-\pi iz}}{2i}} - i
+	= i\frac{e^{2\pi iz}+1}{e ^{2\pi iz} -1} - i \\
+	&= i\left( \frac{e^{2\pi iz} + 1 - e^{2\pi iz} + 1}{e^{2\pi iz} - 1}\right)
+	= \frac{2i}{e^{2\pi iz}}
+	\end{align*}
+	
+	Es folgt
+	\[
+	\pi z \cot \pi z = 1 - \pi iz + \sum_{\substack{n\geq 2\\ \scriptscriptstyle n \text{ gerade}}} \frac{B_n}{n!} (-1)^{\frac{n}{2}} 2^n \pi^n + \pi iz
+	\]
+	Partialbruchzerlegung des Kotangens (siehe \autoref{bsp:partialbruch_cot}):
+	\[
+	\pi \cot \pi z = \frac{1}{z} + \sum_{n\geq1} \left(\frac{1}{z-n} + \frac{1}{z+n}\right)
+	\]
+	also
+	\begin{align*}
+	\pi z \cot \pi z
+	&= 1 + \sum_{n\geq1} \frac{2z^2}{z^2-n^2}
+	= 1 - 2z^2\sum_{n\geq1} \frac{1}{(1-(\frac{z}{n})^2)n^2} \\ % geometrische Reihe
+	&= 1 - 2z^2 \sum_{n\geq1} \frac{1}{n^2} \sum_{k \geq 0} \Big(\frac{z}{n}\Big)^{2k}
+	= 1 - 2 \sum_{k \geq 0} \sum_{n \geq 1} \frac{1}{n^{2k+2}} z^{2k+2} \\
+	&= 1 - 2\sum_{\substack{k\geq2\\ \scriptscriptstyle k \text{ gerade}}} \zeta(k)z^k
+	\,.
+	\end{align*}
+	Mit einem Koeffizientenvergleich ergibt sich die Behauptung.
+\end{bewe-list}
+
+\begin{defi}
+	Man definiere die \myemph{normalisierte Eisensteinreihe} $E_k(z)$ vom Gewicht $k$ durch
+	\[
+	E_k(z) := \frac{1}{\zeta(k)} G_k(z)
+	\,.
+	\]
+	Aus \autoref{satz:bernoullie} (iii) folgt dann
+	\[
+	E_k(z) = 1 - \frac{2k}{B_k} \sum_{n\geq1} \sigma_{k-1}(n) q^n
+	\]
+	hierbei sind alle Fourierkoeffizienten von $E_k$ rational.
+\end{defi}
+
+Insbesondere findet man
+\[
+E_4 = 1 + 240 \sum_{n\geq 1} \sigma_3(n)q^n, \qquad
+E_6 = 1 - 504 \sum_{n \geq 1} \sigma_5(n)q^n
+\,.
+\]
+Man kann zeigen: $E_4$ und $E_6$ erzeugen die Algebra der Moulformen für $\Gamma(1)$.
+Das heißt, jedes $f \in \M_k$ hat eine eindeutige Darstellung
+\[
+f = \sum_{\substack{\alpha, \beta \geq 0\\ \scriptscriptstyle 4\alpha + 6\beta = k}} \lambda_{\alpha, \beta} E_4^\alpha E_6^\beta
+\,,
+\]
+wobei $\lambda_{\alpha, \beta} \in \CC$.

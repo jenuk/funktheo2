@@ -1,0 +1,35 @@
+\section{Valenzformel und Anwedungen}
+
+\begin{erin}
+$f\colon \dot{U}_r(a) \ra \CC$ holomorph mit $f\not\equiv 0$ und $a$ keine wesentliche Singularität.
+Dann besitzt $f$ eine Laurent-Entwicklung um $a$
+\[
+	f(z) = \sum_{n=-\infty}^\infty a_n(z-a)^n
+	\qquad \text{für } z \in \dot{U}_r(a)
+\]
+und fast alle $a_n$ mit $n < 0$ sind gleich 0. Dann
+\[
+	\ord_a f := \min\Set{n \in \ZZ \mid a_n \not= 0}
+	\,.
+\]
+\end{erin}
+
+\begin{defi}
+Sei $f$ eine Modulfunktion (siehe \autoref{def:modulfunktion}) vom Gewicht $k$.
+Man setzt
+\[
+	\ord_\infty f := \ord_0 F
+\]
+mit $F(q) = f(z)$ für $q = e^{2\pi iz}$.
+\end{defi}
+
+\begin{satz}[Valenzformel]
+Sei $f$ eine Modulfunktion vom Gewicht $k$, $f\not\equiv 0$.
+Dann gilt
+\[
+	\ord_\infty f + \frac{1}{2} \ord_i f + \frac{1}{3} \ord_\rho f + \sum_{\substack{z \in \modulo{\HH}{\Gamma(1)} \\ \scriptscriptstyle z \not\sim i, z\not\sim \rho}} \ord_z f = \frac{k}{12}
+\]
+
+mit $\rho = e^{\frac{2\pi i}{3}}$.
+\emph{Beachte} Die Vorfaktoren oben sind gerade die Ordnung der Gruppe $\modulo{\Gamma(1)_z}{\pm E}$.
+\end{satz}
