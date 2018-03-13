@@ -81,3 +81,231 @@ mit $F(q) = f(z)$ für $q = e^{2\pi iz}$.
 	Dies ist ein Widerspruch, also ist $\phi$ injektiv.
 	Es folgt, dass $\dim\M_k = \dim\phi(M_k) \leq \dim \CC^{N+1} = N + 1$.
 \end{bewe-list}
+
+\begin{bewe}[\autoref{satz:valenzformel}]
+	\emph{Idee}: Man integriere $\frac{1}{2\pi i} \frac{f'(z)}{f(z)}$ längs eines modifizierten Randes $\partial \F$ des Abschlusses von $\F$.
+	Man wertet dann das Integral aus, einmal mit Hilfe des Satzes über das Null- und Polstellenzählendes Integral, zum anderem unter Benutzung der Formeln $f(\frac{az+b}{cz+d}) = (cz+d)^k f(z)$.
+	
+	\emph{1. Fall} $f$ habe keine Null- oder Polstellen auf $\partial \F$ mit Ausnahme möglicherweise $i, \rho = e^{\frac{2\pi i}{3}}$ (und demensprechend auch $-\conj\rho$):
+	
+	Sei $C$ die unten beschriebene Kurve, genau einmal positiv durchlaufen und sei $C$ so gewählt, dass $C$ genau einen Vertreter jeder Null- und Polstelle von $f$ (mit Ausnahme von $i, \rho, -\closure\rho$, falls diese vorkommen) enthält.
+	
+	[Bild] (wobei das Geradenstück $\overrightarrow{EA}$ weit genug oben ist um Aussagen über \glqq$C$ enthält ...\grqq{} zu garantieren, siehe \autoref{beme:valenzformel}.)
+	
+	Nach dem Satz über das Null- und Polstellenzählende Integral gilt
+	\begin{equation}\label{eq:valenzformel_Kurvenintegral}
+	\frac{1}{2\pi i} \int_C \frac{f'(z)}{f(z)} \opd z = \sum_{\substack{[z] \in \modulo{\HH}{\Gamma(1)} \\ z \not\sim i, \rho}} \ord_z f
+	\end{equation}
+	
+	Man werte das Integral in \eqref{eq:valenzformel_Kurvenintegral} nun anders aus.
+	
+	\begin{enumerate}
+		\item Die Substitution $z \mapsto q = e^{2\pi iz}$ bildet $\overrightarrow{EA}$ auf eine Kreisline $\omega$ um $q=0$ ab, diese ist negativ orientiert, genau einmal durchlaufen und $\omega$ enthält keine Null- oder Polstellen von $F$ mit Ausnahme von möglicherweise $q=0$.
+		\emph{Denn}: $\overrightarrow{EA}$ wird parametrisiert durch $i\delta - t$ für $t \in (-\frac{1}{2}, \frac{1}{2})$.
+		Also $q = e^{2\pi iz} = e^{-2\pi\delta} e^{-2\pi t}$.
+		Es gilt
+		\[
+		f(z) = \sum_{n \geq N} a_n e^{2\pi inz},
+		\qquad F(q) = \sum_{n \geq N} a_n q^n
+		\,.
+		\]
+		Also
+		\[
+		f'(z) = 2\pi i \sum_{n\geq N} na_n e^{2\pi inz},
+		\qquad F'(q) = \sum_{n \geq N} n a_nq^{n-1}
+		\]
+		Also
+		\[
+		f'(z) \opd z = 2\pi iq F'(q) \opd z = F'(q) \opd q
+		\]
+		Beachte $\derive[q] = \derive[e^{2\pi iz}] = 2\pi i q$.
+		Damit
+		\[
+		\frac{f'(z)}{f(z)} \opd z = \frac{F'(q)}{F(q)} \opd q
+		\,.
+		\]
+		Daher (Substitution $q = e^{2\pi iz}$):
+		\[
+		\frac{1}{2\pi i} \int_{\overrightarrow{EA}} \frac{f'(z)}{f(z)} \opd z
+		= \int_\omega \frac{F'(q)}{F(q)} \opd q = - \ord_{q=0} F = - \ord_\infty f\,.
+		\]
+		
+		\item Der Kreisbogen $\ark{BB'}$ wird parametrisiert durch $\rho + re^{it}$ für $\frac{\pi}{2} \geq t \geq \alpha$ wobei $r > 0$ fest und der Winkel $\alpha$ von $r$ abhängt.
+		
+		Schreibe $f(z) = (z - \rho)^m g(z)$ wobei $g$ holomorph ungleich Null in $z = \rho$ und $m \in \ZZ$. (Dann ist $m = \ord_\rho f$.)
+		Daher 
+		\[
+		\frac{f'(z)}{f(z)} = \frac{m}{z-\rho} + \frac{g'(z)}{g(z)}
+		\]
+		Also
+		\begin{align*}
+		\frac{1}{2\pi i} \int_{\ark{BB'}} \frac{f'(z)}{f(z)} \opd z
+		&= \frac{1}{2\pi i} \int_{\frac{\pi}{2}}^\alpha \left(\frac{m}{re^{it}} + \frac{g'(\rho + re^{it})}{g(\rho + re^{it})}\right) ri e^{it} \opd t \\
+		&= \frac{1}{2\pi} \cdot m \cdot \left(d- \frac{\pi}{2}\right) + \frac{r}{2\pi} \int_{\frac{\pi}{2}}^\alpha \frac{g'(\rho + re^{it})}{g(\rho + re^{it})} e^{it} \opd t
+		\,.
+		\end{align*}
+		Man lasse nun $r \to 0$ gehen. Dann gilt $\alpha \to \frac{\pi}{6}$.
+		Man erhält für das Integral nach dem Grenzübergang $r \to 0$ den Wert $\frac{m}{2\pi} (\frac{\pi}{6} - \frac{\pi}{2}) = \frac{m}{2} \cdot \frac{-2}{6} = -\frac{1}{6} \ord_\rho f$.
+		
+		Man findet in der selben Weise
+		\[
+		\frac{1}{2\pi i} \int_{\ark{DD'}} \frac{f'(z)}{f(z)} \opd z \to -\frac{1}{6} \ord_{-\conj\rho} f = - \frac{1}{6} \ord_\rho f
+		\]
+		Ferner
+		\[
+		\frac{1}{2\pi i} \int_{\ark{CC'}} \frac{f'(z)}{f(z)} \opd z \to - \frac{1}{2} \ord_i f
+		\]
+		
+		Auswertung des Integrals längs des Geradenstücks
+		\[
+		\frac{1}{2\pi i} \int_{\overrightarrow{AB}} \frac{f'(z)}{f(z)} \opd z
+		= \frac{1}{2\pi i} \int_{\overrightarrow{ED'}} \frac{f'(z)}{f(z)} \opd z
+		= - \frac{1}{2\pi i} \int_{\overrightarrow{D'E}} \frac{f'(z)}{f(z)} \opd z
+		\]
+		
+		Also
+		\[
+		\frac{1}{2\pi i} \int_{\overrightarrow{AB}} \frac{f'(z)}{f(z)} \opd z + \frac{1}{2\pi i} \int_{\overrightarrow{D'E}} \frac{f'(z)}{f(z)} = 0
+		\]
+	\end{enumerate}
+	
+	
+	Sei $S = (\begin{smallmatrix} 0 & -1 \\ 1 & 0 \end{smallmatrix})$ also $S \circ z = - \frac{1}{z}$.
+	Dann bildet $S$ den Bogen $\ark{C'D}$ auf den Bogen $\ark{CB'}$ ab.
+	Es gilt $f(S \circ z) = f(-\frac{1}{z}) = z^kf(z)$, damit folgt
+	\begin{align*}
+	(*) :&= \frac{1}{2\pi i} \int_{\ark{B'C}} \frac{f'(z)}{f(z)} \opd z + \frac{1}{2\pi i} \int_{\ark{C'D}} \frac{f'(z)}{f(z)} \opd z\\
+	&= \frac{1}{2\pi i} \int_{\ark{B'C}} \frac{f'(z)}{f(z)} \opd z - \frac{1}{2\pi i} \int_{\ark{B'C}} \frac{f'(S \circ z)}{f(S \circ z)} \opd (S \circ z)
+	\end{align*}
+	Mit
+	\[
+	\frac{kz^{k-1}f(z) + z^kf'(z)}{\opd z}
+	= \derive[z^kf(z)]
+	= \derive[f(S \circ z)]
+	= f'(S \circ z) \derive (S \circ z)
+	\]
+	
+	\[
+	\frac{f'(S \circ z) \opd (S \circ z)}{f(S \circ z)}
+	= \frac{kz^{k-1}f(z) + z^kf'(z)}{z^kf(z)} \opd z
+	= \left(\frac{k}{z} + \frac{f'(z)}{f(z)}\right)
+	\]
+	folgt
+	\begin{align*}
+	\lim_{r \to 0} (*)
+	&= \lim_{r \to 0} \frac{1}{2\pi i} \int_{\ark{B'C}} \frac{k}{z} \opd z
+	= \frac{k}{2\pi i} \int_{2\pi / 3}^{\frac{\pi}{2}} \frac{\opd(e^{it})}{e^{it}} \\
+	&= - \frac{k}{2\pi} \left(\frac{\pi}{2} - \frac{2\pi}{3}\right)
+	= - \frac{k}{2} \left(\frac{1}{2} - \frac{2}{3}\right)
+	= \frac{k}{12}
+	\end{align*}
+	
+	
+	2. Fall $f$ hat keine Null- oder Polstellen auf $\partial F \setminus \Set{i, \rho, -\conj\rho}$.
+	
+	Man modifiziert und verfährt dann wie in Fall 1.
+\end{bewe}
+
+
+\begin{lemm}
+	Seien $E_4$ und $E_6$ die normalisierten Eisensteinreihen vom Gewicht $4$ beziehungsweise $6$.
+	Sei $\Delta := \frac{1}{1728} (E_4^3 - E_6^2)$.
+	Dann gilt
+	\begin{enumerate}
+		\item $\Delta$ ist eine Spitzenform vom Gewicht $12$,
+		\item $\Delta = q + \ldots $, insbesondere ist $\ord_\infty \Delta = 1$,
+		\item $\Delta(z) \not= 0$ für alle $z \in \HH$.
+	\end{enumerate}
+\end{lemm}
+
+\begin{bewe}
+	Klarerweise ist $\Delta \in \M_{12}$.
+	Es gilt
+	\begin{align*}
+	E_4 &= 1 + 240 \sum_{n\geq1} \sigma_3(n)q^n \qquad
+	E_6 = 1 - 504\sum_{n \geq 1} \sigma_{5}(n)q^n
+	\,.
+	\end{align*}
+	Also gilt
+	\begin{align*}
+	E_4^3 &= 1 + 3\cdot 240 e^{2\pi inz} + \text{höhere Terme} \\
+	E_6^2 &= 1 + 2\cdot 504 e^{2\pi inz} + \text{höhere Terme}
+	\,.
+	\end{align*}
+	Damit folgt (i) und (ii).
+	
+	Nach der Valenzformel mit $k=12$ gilt
+	\[
+	\underbrace{\ord_\infty \Delta}_{=1} + \underbrace{\frac{1}{2} \ord_i \Delta + \frac{1}{3} \ord_\rho \Delta + \sum_{\substack{[z] \in \modulo{\HH}{\Gamma(1)} \\ \scriptscriptstyle z \not\sim i, z\not\sim \rho}} \ord_z \Delta}_{\geq 0} = 1
+	\]
+	Also $\frac{1}{2} \ord_i \Delta + \frac{1}{3} \ord_\rho \Delta + \sum_{\substack{[z] \in \modulo{\HH}{\Gamma(1)} \\ \scriptscriptstyle z \not\sim i, z\not\sim \rho}} \ord_z \Delta = 0$ und $\Delta(z) \not= 0$ für alle $z\in\HH$.
+\end{bewe}
+
+\begin{beme-list}
+	\item Man nennt $\Delta$ \myemph{Diskriminante-Funktion} (Der Name kommt aus der Theorie der elliptischen Funktionen, man kann $\Delta$ interpretieren als die Diskriminante des Polynoms dritten Grades der rechten Seite der Differentialgleichung von $\wp_L$ mit $L = \ZZ z \oplus \ZZ$).
+	
+	\item Schreibt man $\Delta = \sum_{n \geq 1} \tau(n) q^n$ so gilt, dass $\tau(n) \in \ZZ$ für alle $n \geq 1$.
+	Mann nennt $n \mapsto \tau(n)$ \myemph{Ramanujan-Funktion}.
+	
+	\emph{Vermutung}: (Lehmer) $\tau(n) \not= 0$ für alle $n \geq 1$.
+	
+	\item Darstellung von Jacobi $\Delta(z) = q\prod_{n \geq 1} (1-q^n)^{24}$.
+\end{beme-list}
+
+\begin{koro}\label{koro:Mk}]
+	Sei $k$ gerade.
+	Dann gilt
+	\begin{enumerate}
+		\item $\M_k = \Set{0}$ für $k < 0$ und $k=2$,
+		\item $\M_0 = \CC$,
+		\item Für $k \geq 4$ ist $M_k = \CC E_k \oplus \mathcal{S}_k$,
+		\item Die Abbildung $M_{k-12} \ra S_{k}$, $f \mapsto f\Delta$ ist ein Isomorphismus.
+	\end{enumerate}
+\end{koro}
+
+\begin{bewe-list}
+	\item  Für $k < 0$ schon gezeigt (\autoref{koro:dimMk}).
+	Sei $k = 2$. Angenommen $f \in \M_k$, $f \not\equiv 0$. Dann gilt $\frac{1}{6} = n + \frac{n'}{2} + \frac{n''}{3}$ mit $n, n', n'' \in \NN_0$, dies ist nicht möglich.
+	
+	\item $\CC \subset \M_0$ ist klar.
+	Sei nun $f \in \M_0$. \emph{Angenommen}: $f$ ist nicht konstant.
+	Dann existieren $c_1, c_2, z_1, z_2 \in \CC$ mit $f(z_1) = c_1$ und $f(z_2) = c_2$ und $c_1 \not= c_2$.
+	Sei $g(z) := f(z) - c_1$. Dann ist $g \in \M_0$ mit $g(z_1) = 0$ und $g(z_2) \not= 0$.
+	Also $g \in \M_0$, $g \not\equiv 0$.
+	Aber $g$ hat eine Nullstelle in $z_1$ also $\ord_{z_1} g > 0$, dies ist ein Widerspruch zur Valenzformel.
+	
+	\item Sei $f \in \M_k$. Da $E_k = 1 + ...$ ist $g := f - a_0E_k \in \mathcal{S}_k$.
+	Es ist klar, dass die Summe direkt ist.
+	
+	\item Die Abbildung ist eine injektive lineare Abbildung von $M_{k-12}$ nach $S_k$ (denn $f(z) \Delta(z) = 0$ impliziert $f(z) = 0$ für alle $z\in\HH$).
+	
+	Es verbleibt die Surjektivität zu zeigen:
+	Sei $g \in \mathcal{S}_k$, $f := \frac{g}{\Delta}$.
+	Dann ist $f$ holomorph denn $\Delta(z) \not= 0$ für alle $z \in \HH$ und $ord_\infty f = \ord_\infty g - \ord_\infty \Delta \geq 0$, denn $\ord_\infty g \geq 1$, da $g \in \mathcal S_k$, also ist $f$ holomorph in $\infty$. Also ist $f\in\M_{k-12}$ und $g = f\Delta$.
+\end{bewe-list}
+
+Aus den Formeln in \autoref{koro:Mk} folgt für $k=4, 6, 8, 10$:
+\[
+\M_k = \CC E_K, \qquad \mathcal{S}_{12} = \CC\Delta
+\]
+
+\begin{koro}
+	Sei $k \geq 0$ gerade. Dann gilt
+	\begin{equation}\label{eq:dimformel}
+	\dim_\CC \M_k=
+	\begin{cases}
+	\lfloor \frac{k}{12} \rfloor & \text{wenn } k \equiv 2 \mod 12 \\
+	\lfloor \frac{k}{12} \rfloor + 1 & \text{wenn } k \not\equiv 2 \mod 12
+	\end{cases}
+	\end{equation}
+\end{koro}
+
+\begin{bewe}
+	Man prüft nach, dass \eqref{eq:dimformel} richtig ist für $0 \leq k < 12$.
+	Für $k \geq 4$ ist $M_k = \CC E_k + \mathcal{S}_k$.
+	Also
+	\[
+	\dim \M_k = 1 + \dim S_k = 1 + \dim \M_{k-12}
+	\]
+	Beide Seiten von \eqref{eq:dimformel} wachsen also um $1$, wenn man $k$ durch $k+12$ ersetzt, damit folgt die Behauptung mit Induktion.
+\end{bewe}
