@@ -23,13 +23,61 @@ Man setzt
 mit $F(q) = f(z)$ für $q = e^{2\pi iz}$.
 \end{defi}
 
-\begin{satz}[Valenzformel]
-Sei $f$ eine Modulfunktion vom Gewicht $k$, $f\not\equiv 0$.
-Dann gilt
-\[
-	\ord_\infty f + \frac{1}{2} \ord_i f + \frac{1}{3} \ord_\rho f + \sum_{\substack{z \in \modulo{\HH}{\Gamma(1)} \\ \scriptscriptstyle z \not\sim i, z\not\sim \rho}} \ord_z f = \frac{k}{12}
-\]
-
-mit $\rho = e^{\frac{2\pi i}{3}}$.
-\emph{Beachte} Die Vorfaktoren oben sind gerade die Ordnung der Gruppe $\modulo{\Gamma(1)_z}{\pm E}$.
+\begin{satz}[Valenzformel]\label{satz:valenzformel}
+	Sei $f$ eine Modulfunktion vom Gewicht $k$, $f\not\equiv 0$.
+	Dann gilt
+	\[
+	\ord_\infty f + \frac{1}{2} \ord_i f + \frac{1}{3} \ord_\rho f + \sum_{\substack{[z] \in \linksmodulo{\Gamma(1)}{\HH} \\ \scriptscriptstyle z \not\sim i, z\not\sim \rho}} \ord_z f = \frac{k}{12}
+	\]
+	
+	mit $\rho = e^{\frac{2\pi i}{3}}$.
+	\emph{Beachte} Die Vorfaktoren oben sind gerade die Ordnung der Gruppe $\modulo{\Gamma(1)_z}{\pm E}$.
 \end{satz}
+
+\begin{beme-list}\label{beme:valenzformel}
+	\item $\ord_z f$ hängt nur von der Klasse $[z]$ in $\linksmodulo{\Gamma(1)}{\HH}$ ab, denn
+	\[
+	f\bigg(\frac{az+b}{cz+d}\bigg) = \underbrace{(cz+d)^k}_{\not=0} f(z)
+	\qquad \text{für } \abcd \in \Gamma(1)
+	\,.
+	\]
+	
+	\item Die linke Seite hat nur endlich viele Summanden, d.\,h. $f$ hat nur endlich viele Null- und Polstellen modulo $\Gamma(1)$, \emph{denn}
+	sei $\F = \Set{z=x+iy \mid \abs z > 1,\ \abs x < \frac{1}{2}}$ der \emph{Standard Fundamentalbereich} für $\SL_2(\ZZ)$.
+	Dann ist jedes $z\in\HH$ äquivalent zu einem Punkt in $\closure \F$ und es genügt zu zeigen, dass $f$ nur endlich viele Null- und Polstellen in $\closure\F$ hat.
+	Nach Voraussetzung ist $f$ auf $\HH$ und in $\infty$ meromorph und $f \not\equiv 0$. Daher ist $F$ in $\abs q < 1$ meromorph, $F \not\equiv 0$, also sind die Pole und Nullstellen von $F$ isolierte Punkte.
+	Daher hat $F$ in $0 < \abs q < e^{-2\pi \delta}$ für ein geeignetes $\delta > 0$ keine Null oder Polstellen, d.\,h. $f$ hat in $y > \delta$ keine Null- oder Polstellen.
+	Aber $\closure\F = \Set{z \in \closure\F \mid y \leq \delta} \cup \Set{z \in\closure\F \mid y > \delta}$ und die erste Menge ist kompakt, also hat $f$ dort nur endlich viele Null- und Polstellen.
+\end{beme-list}
+
+\begin{koro}\label{koro:dimMk}
+	Es ist $\dim_\CC \M_k < \infty$. Genauer ist $\M_k = \Set{0}$ für $k < 0$ und $\dim M_k \leq \floor{\frac{k}{12}} + 1$ für $k \geq 0$.
+\end{koro}
+
+\begin{bewe-list}
+	\item Sei $k < 0$. \emph{Angenommen} es gibt $f \in \M_k$ mit $f\not\equiv 0$. Alle Terme links in der Formel sind $\geq 0$, denn $f$ ist holomorph auf $\HH$ und in $\infty$. Aber rechts steht eine Zahl $< 0$. Dies ist ein Widerspruch
+	
+	\item Sei $k \geq 0$. Sei $N := \floor{\frac{k}{12}} \geq 0$. Sei
+	\[
+	\phi\colon \M_k \ra \CC^{N+1},
+	\quad f \mapsto \underbrace{(a_0(f), a_1(f), \ldots, a_N(f))}_{\text{Fourierkoeffizienten von $f$}}
+	\,.
+	\]
+	Dann ist $\phi$ linear.
+	
+	\emph{Beh.} $\phi$ ist injektiv.
+	Sei $\phi(f) = 0$, also $a_0 = a_1 = \ldots = a_N = 0$.
+	\emph{Angenommen} $f \not\equiv 0$.
+	Dann gilt $\ord_\infty f \geq N + 1$.
+	Nach der Valenzformel folgt
+	\[
+	\floor{\frac{k}{12}} + 1
+	= N + 1
+	\leq \ord_\infty f
+	\leq \ord_\infty f + (\ldots)
+	= \floor{\frac{k}{12}}
+	\,.
+	\]
+	Dies ist ein Widerspruch, also ist $\phi$ injektiv.
+	Es folgt, dass $\dim\M_k = \dim\phi(M_k) \leq \dim \CC^{N+1} = N + 1$.
+\end{bewe-list}
