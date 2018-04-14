@@ -1,0 +1,45 @@
+\documentclass[border=20pt]{standalone}
+\newcounter{chapter} %dummy for import reasons
+\usepackage{../../../mypackage}
+
+\begin{document}
+\begin{tikzpicture}
+\coordinate (a) at (2, 0.8);
+\coordinate (b) at (1, 2.4);
+\coordinate (off) at (5.6, 3);
+
+\coordinate (ab) at ($ (a)+(b) $);
+\coordinate (aoff) at ($(a) + (off)$);
+\coordinate (boff) at ($(b) + (off)$);
+\coordinate (aboff) at ($(ab) + (off)$);
+
+% Achsen
+\draw[thick, ->] (-1, 0) -- (9, 0) node[right] {$\Re$};
+\draw[thick, ->] (0, -1) -- (0, 7) node[right] {$\Im$};
+
+\draw (0,0) -- (a) -- (ab) -- (b) -- cycle;
+\node [below left] at (0,0) {$0$};
+\node [below right] at (a) {$\omega_1$};
+\node [above] at (ab) {$\omega_1 + \omega_2$};
+\node [above left] at (b) {$\omega_2$};
+\node at ($ (ab) !.5! (0,0) $) {$\F$};
+
+\begin{scope}[decoration={
+		markings,
+		mark=at position 0.5 with {\arrow{>}}}]
+	\draw [postaction={decorate}] (off) -- (aoff);
+	\draw [postaction={decorate}] (aoff) -- (aboff);
+	\draw [postaction={decorate}] (aboff) -- (boff);
+	\draw [postaction={decorate}] (boff) -- (off);
+\end{scope}
+\node [below] at ($(off) !.5! (aoff)$) {$C_1$};
+\node [right] at ($(aoff) !.5! (aboff)$) {$C_2$};
+\node [above] at ($(aboff) !.5! (boff)$) {$C_3$};
+\node [left] at ($(boff) !.5! (off)$) {$C_4$};
+\node [below left] at (off) {$a$};
+\node [below right] at (aoff) {$\omega_1 + a$};
+\node [above right] at (aboff) {$\omega_1 + \omega_2 + a$};
+\node [above left] at (boff) {$\omega_2 + a$};
+\node at ($ (aboff) !.5! (off) $) {$\F_a$};
+\end{tikzpicture}
+\end{document}

@@ -21,9 +21,19 @@ Eine Teilmenge $L \subset \CC$ heißt \myemph{Gitter}\footnote{Im Englischen \em
 Man nennt $\Set{\omega_1, \omega_2}$ eine \myemph[Gitter!Basis]{Basis} des Gitters $L$.
 \end{defi}
 
-\begin{bsp}
-Ein [Bild, siehe altes Skript]
-\end{bsp}
+\begin{figure}[h!]
+\begin{center}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\includestandalone[width=.9\textwidth]{vorlesungen/chapter2/images/gitter}
+		\caption{Gitter mit Basis $\omega_1 = 1$, $\omega_2 = i$}
+	\end{subfigure}%
+	\begin{subfigure}[t]{0.45\textwidth}
+		\includestandalone[width=.9\textwidth]{vorlesungen/chapter2/images/gitter2}
+		\caption{Gitter mit Basis $\omega_1 = 0,3+0,6i$, $\omega_2 = 1 - 0.1i$}
+	\end{subfigure}%
+	\caption{Zwei Gitter}
+\end{center}
+\end{figure}
 
 \begin{beme-list}
 \item Man zeigt leicht: $L\subset \CC$ ein Gitter mit Basis $\Set{\omega_1, \omega_2}$. Dann ist $\Set{\omega_1', \omega_2'}$ genau dann eine weitere Basis von $L$, wenn es ein $M \in GL_2(\ZZ) = \Set{A = \left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right) \mid \det A = \pm 1}$ gibt, so dass
@@ -151,8 +161,16 @@ Dann kann $\modulo{\CC}{L}$ mit $\F_a$ (modulo Randidentifikation) identifiziert
 Man wähle $a\in\CC$ so, dass auf dem Rand $\partial \F_a$ von $\F_a$ kein Pol von $f$ liegt.
 Dies geht, da $f$ auf $\F$ nur endlich viele Pole hat.
 
+\begin{figure}
+\begin{center}
+	\includestandalone{vorlesungen/chapter2/images/fundamentalmasche}
+	\caption{Die Grundmasche $\F$ und die verschobene Grundmasche $\F_a$}
+	\label{fig:grundmasche}
+\end{center}
+\end{figure}
+
 Man wende den Residuensatz an, unter Beachtung, dass nach der Wahl von $a$ das Innere $\innere F_a$ genau ein Repräsentanten jeder Polstelle von $f$ enthält.
-Es folgt also
+Es folgt also, mit den Benennung aus \autoref{fig:grundmasche}
 \begin{align*}
 	2\pi i \sum_{z\in\modulo{\CC}{L}} \res_z f
 	&= 2\pi i \sum_{z\in \innere \F_a} \res_z f
@@ -275,7 +293,7 @@ Man wende das Lemma an mit $g(z) = z$ und $C = \partial \F_a$ (positiv durchlauf
 	= \frac{1}{2\pi i} \left( \sum_{\nu = 1}^4 \int_{C_\nu} z \frac{f'(z)}{f(z)} \opd z\right)
 	\,,
 \]
-mit den Integrationswegen wie im Beweis von \autoref{satz:liouville-2}.
+mit den Integrationswegen $C_\nu$ wie in \autoref{fig:grundmasche}.
 
 Man betrachte das Integral über $C_2$ und $C_4$.
 Es gilt

@@ -1,0 +1,15 @@
+\documentclass[border=20pt]{standalone}
+\newcounter{chapter} %dummy for import reasons
+\usepackage{../../../mypackage}
+
+\begin{document}
+\begin{tikzpicture}
+% Achsen
+\draw[thick, ->] (-3.5, 0) -- (3.5, 0) node[right] {$\Re$};
+\draw[thick, ->] (0, -3.5) -- (0, 3.5) node[right] {$\Im$};
+
+\foreach \x in {-4,-3,-2,-1,0,1,2,3,4}
+	\foreach \y in {-3,-2,-1,0,1,2,3}
+		{\draw [fill=black] (0.3*\x, 0.6*\x) + (\y, -0.1*\y) circle (0.02);}
+\end{tikzpicture}
+\end{document}
