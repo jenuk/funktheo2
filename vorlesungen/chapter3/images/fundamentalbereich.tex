@@ -1,0 +1,52 @@
+\documentclass[border=20pt]{standalone}
+\newcounter{chapter}
+\usepackage{../../../mypackage}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+% Achsen
+\draw[->] (-2, 0) -- (2, 0) node[right] {$\Re$};
+\draw[->] (0, -1) -- (0, 3) node[right] {$\Im$};
+
+\coordinate (m) at (0,0);
+\def\radius{1};
+\draw [name path={halbkreis}] ($(m) + (\radius, 0)$) arc (0:180:\radius); % halbkreis
+
+\def\l{2.7};
+\coordinate (a) at ($(-\radius /2,0)$);
+\coordinate (a2) at ($(-\radius /2,\l)$);
+\coordinate (b) at ($(\radius /2, 0)$);
+\coordinate (b2) at ($(\radius /2, \l)$);
+
+\path [name path={linea}](a) -- (a2);
+\path [name path={lineb}](b) -- (b2);
+
+\path [name intersections={of=linea and halbkreis, by= schnittpa}];
+\path [name intersections={of=lineb and halbkreis, by= schnittpb}];
+
+\draw (a2) -- (schnittpa);
+\draw (b2) -- (schnittpb);
+\draw [dotted] (a) -- (schnittpa);
+\draw [dotted] (b) -- (schnittpb);
+
+\begin{scope}[even odd rule]
+\clip 
+(a2) -- (schnittpa) -- (schnittpb) -- (b2) --(a2)
+(0,0) circle (\radius);
+\fill[fill = black!30!white, opacity=0.2] (a2) -- (schnittpa) -- (schnittpb) -- (b2) --(a2);
+\end{scope}
+
+\coordinate (shift) at (0, -0.19);
+\node at ($(a) + (shift) $) {$-\frac{1}{2}$}; 
+\node at ($(b) + (shift) $) {$\frac{1}{2}$}; 
+\node at ($(1, 0) + (shift) $) {$1$}; 
+\node at ($(-1, 0) + (shift) $) {$-1$}; 
+
+\node at (0.25 ,1.7) {$\F$};
+
+\node at ($(schnittpa) + (-0.6, 0.1)$){$\rho = e^{2 \pi i /3}$};
+\draw [fill] (schnittpa) circle [radius = 0.02];
+
+\end{tikzpicture}
+\end{document}
