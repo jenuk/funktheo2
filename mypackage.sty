@@ -324,28 +324,18 @@
 %%%    Declaring Theorems
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\declaretheorem[parent=section]{thm-counter}
 \declaretheorem[parent=section]{satz-counter}
-\declaretheorem[parent=section]{nonsatz-counter}
-\xdeclaretheorem[style=theorem-style][name=Satz,          sibling=thm-counter]{satz}
-\xdeclaretheorem[style=theorem-style][name=Lemma,         sibling=thm-counter]{lemm}
-\xdeclaretheorem[style=theorem-style][name=Proposition,   sibling=thm-counter]{prop}
-\xdeclaretheorem[style=theorem-style][name=Korollar,      sibling=thm-counter]{koro}
+\declaretheorem[parent=section]{nonsatz}
+\renewcommand*{\thenonsatz}{\thesection.\alph{nonsatz}}
+\xdeclaretheorem[style=theorem-style][name=Satz,          sibling=satz-counter]{satz}
+\xdeclaretheorem[style=theorem-style][name=Lemma,         sibling=nonsatz]{lemm}
+\xdeclaretheorem[style=theorem-style][name=Proposition,   sibling=nonsatz]{prop}
+\xdeclaretheorem[style=theorem-style][name=Korollar,      sibling=nonsatz]{koro}
 
-\xdeclaretheorem[style=definition-style][name=Definition, sibling=thm-counter]{defi}
-\xdeclaretheorem[style=definition-style][name=Beispiel,   sibling=thm-counter]{bsp}
+\xdeclaretheorem[style=definition-style][name=Definition, sibling=nonsatz]{defi}
+\xdeclaretheorem[style=definition-style][name=Beispiel,   sibling=nonsatz]{bsp}
 
-\xdeclaretheorem[style=remark-style][name=Bemerkung,      sibling=thm-counter]{beme}
-
-%\xdeclaretheorem[style=theorem-style][name=Lemma,         numbered=no]{lemm}
-%\xdeclaretheorem[style=theorem-style][name=Proposition,   numbered=no]{prop}
-%\xdeclaretheorem[style=theorem-style][name=Korollar,      numbered=no]{koro}
-%
-%\xdeclaretheorem[style=definition-style][name=Definition, numbered=no]{defi}
-%\xdeclaretheorem[style=definition-style][name=Beispiel,   numbered=no]{bsp}
-%
-%\xdeclaretheorem[style=remark-style][name=Bemerkung,      numbered=no]{beme}
-
+\xdeclaretheorem[style=remark-style][name=Bemerkung,      sibling=nonsatz]{beme}
 \xdeclaretheorem[style=remark-style][name=Erinnerung,     numbered=no]{erin}
 \xdeclaretheorem[style=remark-style][name=Notation,       numbered=no]{nota}
 
