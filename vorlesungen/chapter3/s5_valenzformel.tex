@@ -88,13 +88,19 @@ mit $F(q) = f(z)$ für $q = e^{2\pi iz}$.
 	
 	\emph{1. Fall} $f$ habe keine Null- oder Polstellen auf $\partial \F$ mit Ausnahme möglicherweise $i, \rho = e^{\frac{2\pi i}{3}}$ (und demensprechend auch $-\conj\rho$):
 	
-	Sei $C$ die unten beschriebene Kurve, genau einmal positiv durchlaufen und sei $C$ so gewählt, dass $C$ genau einen Vertreter jeder Null- und Polstelle von $f$ (mit Ausnahme von $i, \rho, -\closure\rho$, falls diese vorkommen) enthält.
+	Sei $\mathcal C$ die in \autoref{fig:valenzformel-weg} beschriebene Kurve, genau einmal positiv durchlaufen und sei $\mathcal C$ so gewählt, dass $\mathcal C$ genau einen Vertreter jeder Null- und Polstelle von $f$ (mit Ausnahme von $i, \rho, -\closure\rho$, falls diese vorkommen) enthält.
 	
-	[Bild] (wobei das Geradenstück $\overrightarrow{EA}$ weit genug oben ist um Aussagen über \glqq$C$ enthält ...\grqq{} zu garantieren, siehe \autoref{beme:valenzformel}.)
+	\begin{figure}
+	\begin{center}
+		\includestandalone[scale=.8]{vorlesungen/chapter3/images/valenzformelweg}
+		\caption{Die Kurve $\mathcal C$.}
+		\label{fig:valenzformel-weg}
+	\end{center}
+	\end{figure}
 	
 	Nach dem Satz über das Null- und Polstellenzählende Integral gilt
 	\begin{equation}\label{eq:valenzformel_Kurvenintegral}
-	\frac{1}{2\pi i} \int_C \frac{f'(z)}{f(z)} \opd z = \sum_{\substack{[z] \in \modulo{\HH}{\Gamma(1)} \\ z \not\sim i, \rho}} \ord_z f
+	\frac{1}{2\pi i} \int_{\mathcal C} \frac{f'(z)}{f(z)} \opd z = \sum_{\substack{[z] \in \modulo{\HH}{\Gamma(1)} \\ z \not\sim i, \rho}} \ord_z f
 	\end{equation}
 	
 	Man werte das Integral in \eqref{eq:valenzformel_Kurvenintegral} nun anders aus.
@@ -201,9 +207,17 @@ mit $F(q) = f(z)$ für $q = e^{2\pi iz}$.
 	\end{align*}
 	
 	
-	2. Fall $f$ hat keine Null- oder Polstellen auf $\partial F \setminus \Set{i, \rho, -\conj\rho}$.
+	2. Fall $f$ hat Null- oder Polstellen auf $\partial F \setminus \Set{i, \rho, -\conj\rho}$.
 	
-	Man modifiziert und verfährt dann wie in Fall 1.
+	Man modifiziert den Weg wie in \autoref{fig:abwandlung-weg} und verfährt dann wie in Fall 1.
+	
+	\begin{figure}
+	\begin{center}
+		\includestandalone[scale=.8]{vorlesungen/chapter3/images/abwandlungweg}
+		\caption{Die abgewandelte Kurve $\mathcal C$.}
+		\label{fig:abwandlung-weg}
+	\end{center}
+	\end{figure}
 \end{bewe}
 
 

@@ -1,0 +1,86 @@
+\documentclass[border=20pt]{standalone}
+\usepackage{../../../mypackage}
+\usetikzlibrary{arrows}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=3]
+% Achsen
+\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$\Re$};
+\draw[->] (0, -.5) -- (0, 3) node[right] {$\Im$};
+
+% Halbkreis
+\coordinate (m) at (0,0);
+\def\radius{1};
+\draw [name path={halbkreis}, dashed, darkgray] ($(m) + (\radius, 0)$) arc (0:180:\radius);
+
+% Berechnung verschiedener Punkte
+% schnittpa = \rho und schnittpb = -\conj\rho
+\def\l{2.7};
+\coordinate (a) at ($(-\radius /2,0)$);
+\coordinate (a2) at ($(-\radius /2,\l)$);
+\coordinate (b) at ($(\radius /2, 0)$);
+\coordinate (b2) at ($(\radius /2, \l)$);
+\path [name path={linea}] (a) -- (a2);
+\path [name path={lineb}] (b) -- (b2);
+\path [name intersections={of=linea and halbkreis, by= schnittpa}];
+\path [name intersections={of=lineb and halbkreis, by= schnittpb}];
+
+\def\smallradius{0.15};
+\coordinate (A) at (a2);
+\coordinate (E) at (b2);
+\coordinate (B) at ($ (schnittpa)+(0, \smallradius) $);
+\coordinate (Dprime) at ($ (schnittpb)+(0, \smallradius) $);
+\path [name path=kreisClinks, domain=90:270] plot ({\smallradius*cos(\x)}, {\smallradius*sin(\x)+1});
+\path [name path=kreisCrechts, domain=-90:90] plot ({\smallradius*cos(\x)}, {\smallradius*sin(\x)+1});
+\path [name intersections={of=kreisClinks and halbkreis, by=C}];
+\path [name intersections={of=kreisCrechts and halbkreis, by=Cprime}];
+\path [name path=kreisBrechts, domain=-90:90] plot ({\smallradius*cos(\x)-0.5}, {\smallradius*sin(\x)+sqrt(3)/2});
+\path [name path=kreisDlinks, domain=90:270] plot ({\smallradius*cos(\x)+0.5}, {\smallradius*sin(\x)+sqrt(3)/2});
+\path [name intersections={of=kreisDlinks and halbkreis, by=D}];
+\path [name intersections={of=kreisBrechts and halbkreis, by=Bprime}];
+
+
+% Integrationsweg
+\begin{scope}[decoration={
+	markings,
+	mark=at position 0.65 with {\arrow{>}}}]
+\draw [postaction={decorate}] (A) -- ($ (A)-(0, 0.6)$) arc (90:270:\smallradius) -- (B);
+\draw (B) arc (90:30:\smallradius);
+\draw (Bprime) arc (111.4:98:\radius);
+\draw [postaction={decorate}] (C) arc (180:0:\smallradius);
+\draw (D) arc (180-111.4:180-98:\radius);
+\draw (Dprime) arc (90:150:\smallradius);
+\draw [postaction={decorate}] (Dprime) -- ($ (E)-(0, 0.6+2*\smallradius)$) arc (270:90:\smallradius) -- (E);
+\draw [postaction={decorate}] (E) -- (A);
+\node [mark=*, above left] at (A) {$A$};
+\node [mark=*, left] at (B) {$B$};
+\node [mark=*, below] at (Bprime) {$B'$};
+\node [mark=*, below] at (C) {$C$};
+\node [mark=*, below] at (Cprime) {$C'$};
+\node [mark=*, below] at (D) {$D$};
+\node [mark=*, right] at (Dprime) {$D'$};
+\node [mark=*, above right] at (E) {$E$};
+\end{scope}
+
+% Benennung der Punkte
+\fill (A) circle (0.015);
+\fill (B) circle (0.015);
+\fill (Bprime) circle (0.015);
+\fill (C) circle (0.015);
+\fill (Cprime) circle (0.015);
+\fill (D) circle (0.015);
+\fill (Dprime) circle (0.015);
+\fill (E) circle (0.015);
+
+\draw ($ (a) + (0, 0.03) $) -- ($ (a) - (0, 0.03) $);
+\draw ($ (b) + (0, 0.03) $) -- ($ (b) - (0, 0.03) $);
+\node [below] at (a) {$-\frac{1}{2}$};
+\node [below] at (b) {$\frac{1}{2}$};
+\draw (1, 0.03) -- (1, -0.03);
+\node [below] at (1,0) {$1$};
+\draw (-1, 0.03) -- (-1, -0.03);
+\node [below] at (-1,0) {$-1$};
+
+\end{tikzpicture}
+\end{document}
