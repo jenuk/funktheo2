@@ -9,6 +9,6 @@ Bei Fehlern, kannst du mir gerne schreiben oder ein Issue eröffnen.
 
 ## Makefile
 
-Mit dem Makefile kann das Skript kompliert werden (via `script`), dabei wird das Skript zweimal kompiliert, damit Referenzen richtig verlinkt werden und die Indizes erstellt.
-Und temporäre Dateien können wieder gelöscht werden (via `clean`). Einfaches ausführen von `make`führt erst `script` und anschließend `clean` aus.
-Das Skript kann auch ohne Ausgabe von LaTeX kompiliert werden (via `silent`).
+Mit dem Makefile kann das Skript kompliert werden (via `script`), dabei wird das Skript mehrmals kompiliert, damit Referenzen richtig verlinkt werden, und die Indizes werden erstellt.
+Temporäre Dateien können wieder gelöscht werden (via `clean`). Einfaches ausführen von `make`führt erst `script` und anschließend `clean` aus.
+Das Skript kann auch ohne Ausgabe von LaTeX kompiliert werden (via `silent` für ein mehrmaliges kompilieren und `once` für einmaliges kompilieren).
